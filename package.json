@@ -53,7 +53,7 @@
     "vite": "^6.0.1"
   },
   "main": "index.js",
-  "repository": "https://github.com/dec-project/suntori-client.git",
+  "repository": "https://github.com/dec-project/haeyum-client.git",
   "author": "ohamin26 <ohamin26@gmail.com>",
   "license": "MIT",
   "eslintConfig": {
