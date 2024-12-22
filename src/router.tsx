@@ -6,7 +6,6 @@ type routeElement = {
   children?: { path: string; element: React.ReactNode }[];
 };
 
-const routes: routeElement[] = [
-];
+const routes: routeElement[] = [];
 
 export const router = createBrowserRouter(routes);
