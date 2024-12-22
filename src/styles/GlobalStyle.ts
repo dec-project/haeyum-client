@@ -16,8 +16,15 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   *, html, body{
-    background-color: #faf5f0;;
+    background-color: #faf5f0;
   }
+  html, body {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+
   html, body, div, span, h1, h2, h3, h4, h5, h6, p, 
   a, dl, dt, dd, ol, ul, li, form, label, table{
     margin: 0;
