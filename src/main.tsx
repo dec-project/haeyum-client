@@ -6,7 +6,7 @@ import theme from './common/styles/theme.ts';
 
 createRoot(document.getElementById('root')!).render(
   // <StrictMode>
-  <ThemeProvider theme={{ theme }}>
+  <ThemeProvider theme={theme}>
     <GlobalStyle />
     <App />
   </ThemeProvider>
