@@ -31,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     border: 0;
     font-size: 12px;
-    font-family: 'pretendard';
+    font-family: 'pretendard', sans-serif;
     font-weight: 400;
     vertical-align: baseline;
   }
