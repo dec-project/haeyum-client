@@ -8,6 +8,10 @@ const GlobalStyle = createGlobalStyle`
     src: "url(${Pretendard}) format('woff2')";
   }
   ${reset}
+  :root {
+    --min-width: 320px;
+    --max-width: 640px;
+  }
   a{
     text-decoration: none;
     color: inherit;
