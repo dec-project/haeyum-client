@@ -21,27 +21,23 @@ const themeColors = {
 };
 
 const typography = {
-  // Titles
   title1Bold: { fontSize: '1.75rem', lineHeight: 1.4, fontWeight: 700 }, // 28
   title2Bold: { fontSize: '1.375rem', lineHeight: 1.5, fontWeight: 700 }, // 22
   title3Bold: { fontSize: '1.125rem', lineHeight: 1.5, fontWeight: 700 }, // 18
   title4Bold: { fontSize: '1rem', lineHeight: 1.5, fontWeight: 700 }, // 16
 
-  // Subtitles
   subtitleMedium: { fontSize: '1rem', lineHeight: 1.5, fontWeight: 500 }, // 16
 
-  // Body text
   body1Regular: { fontSize: '1rem', lineHeight: 1.5, fontWeight: 400 }, // 16
   body2Regular: { fontSize: '0.875rem', lineHeight: 1.6, fontWeight: 400 }, // 14
 
-  // Captions
   captionBold: { fontSize: '0.813rem', lineHeight: 1.6, fontWeight: 700 }, // 13
-  captionMedium: { fontSize: '0.75rem', lineHeight: 1.5, fontWeight: 500 }, // 12
 
-  // Labels
   labelBold: { fontSize: '0.875rem', lineHeight: 1.6, fontWeight: 700 }, // 14
   labelMedium: { fontSize: '0.875rem', lineHeight: 1.6, fontWeight: 500 }, // 14
   labelRegular: { fontSize: '0.813rem', lineHeight: 1.6, fontWeight: 400 }, // 13
+
+  navMedium: { fontSize: '0.75rem', lineHeight: 1.5, fontWeight: 500 }, // 12
 };
 
 const theme = {
