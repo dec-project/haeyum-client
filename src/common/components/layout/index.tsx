@@ -6,9 +6,11 @@ const Layout = ({ children }: { children: ReactNode }) => {
 };
 
 const Container = styled.main`
+  width: 100%;
   min-width: var(--min-width);
   max-width: var(--max-width);
   margin: 0 auto;
+  padding: 0 16px;
 `;
 
 export default Layout;
