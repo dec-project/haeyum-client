@@ -33,6 +33,9 @@ jobs:
         run: |
           yarn test || echo "Test failed" > test_result.log
 
+      - name: Build Project
+        run: yarn build
+
       - name: Post Test Results
         if: ${{ github.event_name == 'pull_request' }}
         uses: actions/github-script@v6
