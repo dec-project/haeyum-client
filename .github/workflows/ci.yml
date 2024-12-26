@@ -10,6 +10,10 @@ on:
       - main
       - develop
 
+permissions:
+  issues: write
+# https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#permissions
+
 jobs:
   build:
     runs-on: ubuntu-latest
