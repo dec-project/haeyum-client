@@ -21,23 +21,46 @@ const themeColors = {
 };
 
 const typography = {
-  title1Bold: { fontSize: '1.75rem', lineHeight: 1.4, fontWeight: 700 }, // 28
-  title2Bold: { fontSize: '1.375rem', lineHeight: 1.5, fontWeight: 700 }, // 22
-  title3Bold: { fontSize: '1.125rem', lineHeight: 1.5, fontWeight: 700 }, // 18
-  title4Bold: { fontSize: '1rem', lineHeight: 1.5, fontWeight: 700 }, // 16
-
-  subtitleMedium: { fontSize: '1rem', lineHeight: 1.5, fontWeight: 500 }, // 16
-
-  body1Regular: { fontSize: '1rem', lineHeight: 1.5, fontWeight: 400 }, // 16
-  body2Regular: { fontSize: '0.875rem', lineHeight: 1.6, fontWeight: 400 }, // 14
-
-  captionBold: { fontSize: '0.813rem', lineHeight: 1.6, fontWeight: 700 }, // 13
-
-  labelBold: { fontSize: '0.875rem', lineHeight: 1.6, fontWeight: 700 }, // 14
-  labelMedium: { fontSize: '0.875rem', lineHeight: 1.6, fontWeight: 500 }, // 14
-  labelRegular: { fontSize: '0.813rem', lineHeight: 1.6, fontWeight: 400 }, // 13
-
-  navMedium: { fontSize: '0.75rem', lineHeight: 1.5, fontWeight: 500 }, // 12
+  title1: {
+    bold: { fontSize: '1.75rem', lineHeight: 1.4, fontWeight: 700 }, // 28
+    medium: { fontSize: '1.75rem', lineHeight: 1.4, fontWeight: 500 }, // 28
+    regular: { fontSize: '1.75rem', lineHeight: 1.4, fontWeight: 400 }, // 28
+  },
+  title2: {
+    bold: { fontSize: '1.375rem', lineHeight: 1.5, fontWeight: 700 }, // 22
+    medium: { fontSize: '1.375rem', lineHeight: 1.5, fontWeight: 500 }, // 22
+    regular: { fontSize: '1.375rem', lineHeight: 1.5, fontWeight: 400 }, // 22
+  },
+  title3: {
+    bold: { fontSize: '1.125rem', lineHeight: 1.5, fontWeight: 700 }, // 18
+    medium: { fontSize: '1.125rem', lineHeight: 1.5, fontWeight: 500 }, // 18
+    regular: { fontSize: '1.125rem', lineHeight: 1.5, fontWeight: 400 }, // 18
+  },
+  body1: {
+    bold: { fontSize: '1rem', lineHeight: 1.5, fontWeight: 700 }, // 16
+    medium: { fontSize: '1rem', lineHeight: 1.5, fontWeight: 500 }, // 16
+    regular: { fontSize: '1rem', lineHeight: 1.5, fontWeight: 400 }, // 16
+  },
+  body2: {
+    bold: { fontSize: '0.875rem', lineHeight: 1.6, fontWeight: 700 }, // 14
+    medium: { fontSize: '0.875rem', lineHeight: 1.6, fontWeight: 500 }, // 14
+    regular: { fontSize: '0.875rem', lineHeight: 1.6, fontWeight: 400 }, // 14
+  },
+  caption: {
+    bold: { fontSize: '0.813rem', lineHeight: 1.6, fontWeight: 700 }, // 13
+    medium: { fontSize: '0.813rem', lineHeight: 1.6, fontWeight: 500 }, // 13
+    regular: { fontSize: '0.813rem', lineHeight: 1.6, fontWeight: 400 }, // 13
+  },
+  label: {
+    bold: { fontSize: '0.875rem', lineHeight: 1.6, fontWeight: 700 }, // 14
+    medium: { fontSize: '0.875rem', lineHeight: 1.6, fontWeight: 500 }, // 14
+    regular: { fontSize: '0.875rem', lineHeight: 1.6, fontWeight: 400 }, // 14
+  },
+  nav: {
+    bold: { fontSize: '0.75rem', lineHeight: 1.5, fontWeight: 700 }, // 12
+    medium: { fontSize: '0.75rem', lineHeight: 1.5, fontWeight: 500 }, // 12
+    regular: { fontSize: '0.75rem', lineHeight: 1.5, fontWeight: 400 }, // 12
+  },
 };
 
 const theme = {

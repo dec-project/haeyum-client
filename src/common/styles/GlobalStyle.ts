@@ -23,10 +23,8 @@ const GlobalStyle = createGlobalStyle`
     background-color: #faf5f0;
   }
   html, body {
-    display: flex;
-    justify-content: center;
-    height: 100%;
     width: 100%;
+    height: 100%;
   }
 
   html, body, div, span, h1, h2, h3, h4, h5, h6, p, 
