@@ -27,3 +27,19 @@ jobs:
 
       - name: Run Tests
         run: yarn test
+
+      - name: Post Test Results
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const testResult = fs.existsSync('test_result.log') 
+              ? '❌ Test가 실패했습니다. details을 확인해주세요.' 
+              : '✅ 모든 Test를 통과했습니다';
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              body: testResult,
+              ...context.repo,
+            })
