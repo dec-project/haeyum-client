@@ -28,13 +28,13 @@ jobs:
       # - name: Lint
       #   run: yarn lint
 
+      - name: Build Project
+        run: yarn build
+
       - name: Run Tests
         id: tests
         run: |
           yarn test || echo "Test failed" > test_result.log
-
-      - name: Build Project
-        run: yarn build
 
       - name: Post Test Results
         if: ${{ github.event_name == 'pull_request' }}
