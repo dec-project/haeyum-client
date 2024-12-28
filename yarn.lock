@@ -3342,6 +3342,7 @@ __metadata:
     "@types/react-dom": "npm:^18.3.1"
     "@vitejs/plugin-react": "npm:^4.3.4"
     "@vitejs/plugin-react-swc": "npm:^3.5.0"
+    esbuild: "npm:^0.24.2"
     eslint: "npm:^9.15.0"
     eslint-plugin-react-hooks: "npm:^5.0.0"
     eslint-plugin-react-refresh: "npm:^0.4.14"
