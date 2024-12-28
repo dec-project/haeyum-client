@@ -12,42 +12,28 @@ on:
 
 jobs:
   build:
+      if: ${{ !(github.event_name == 'pull_request' && github.event.pull_request.draft) }}
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: yarn install --immutable --immutable-cache --check-cache
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
 
-      - name: Install dependencies
-        run: yarn install
-
-      # - name: Lint
-      #   run: yarn lint
-
+      # Build
       - name: Build Project
         run: yarn build
 
+      # Test
       - name: Run Tests
-        id: tests
-        run: |
-          yarn test || echo "Test failed" > test_result.log
+        run: yarn test
 
-      - name: Post Test Results
-        if: ${{ github.event_name == 'pull_request' }}
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const fs = require('fs');
-            const testResult = fs.existsSync('test_result.log')
-              ? '❌ Test에 실패했습니다. Details를 확인해주세요.'
-              : '✅ 모든 Test를 통과했습니다.';
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              body: testResult,
-              ...context.repo,
-            });
+      # Lint
+      # - name: Lint Code
+      #   run: yarn lint
