@@ -29,7 +29,6 @@ package-lock.json
 .vscode/
 
 .yarn/*
-!.yarn/cache
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
