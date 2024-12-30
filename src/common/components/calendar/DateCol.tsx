@@ -15,10 +15,10 @@ interface DateButtonProps {
   disabled: boolean;
 }
 
-export default function DateCol({ setPickerType, selectedDate, setSelectedDate }: DatePickerProps) {
-  const [currentMonth, setCurrentMonth] = useState(selectedDate);
-  const { currentMonthAllDates, weekDays } = useCalender(currentMonth);
+export default function DateCol({ setPickerType }: DatePickerProps) {
   const { startDate, endDate, setStartDate, setEndDate } = useCalendarStore();
+  const [currentMonth, setCurrentMonth] = useState(startDate || endDate || new Date());
+  const { currentMonthAllDates, weekDays } = useCalender(currentMonth);
 
   const nextMonth = () => {
     setCurrentMonth(addMonths(currentMonth, 1));
@@ -33,7 +33,11 @@ export default function DateCol({ setPickerType, selectedDate, setSelectedDate }
       setStartDate(null);
       setEndDate(null);
     }
-    setSelectedDate(date);
+    if (!startDate) {
+      setStartDate(date);
+    } else if (!endDate) {
+      setEndDate(date);
+    }
   };
 
   const isDateDisabled = (date: Date) => {
@@ -44,12 +48,6 @@ export default function DateCol({ setPickerType, selectedDate, setSelectedDate }
       return true;
     }
 
-    if (startDate && !endDate) {
-      return date < startDate;
-    }
-    if (endDate && !startDate) {
-      return date > endDate;
-    }
     return false;
   };
 
@@ -61,17 +59,15 @@ export default function DateCol({ setPickerType, selectedDate, setSelectedDate }
   useEffect(() => {
     if (startDate && endDate) {
       if (startDate > endDate) {
-        setSelectedDate(null);
+        setStartDate(null);
+        setEndDate(null);
       }
     }
-  }, [startDate, endDate]);
-
-  useEffect(() => {
     if (startDate && endDate && Math.abs(differenceInDays(startDate, endDate)) > 90) {
-      setSelectedDate(null);
+      setEndDate(null);
       alert('90일 이상 선택할 수 없습니다.');
     }
-  }, [selectedDate]);
+  }, [startDate, endDate]);
 
   return (
     <Container>
@@ -108,9 +104,7 @@ export default function DateCol({ setPickerType, selectedDate, setSelectedDate }
               onClick={() => !disabled && onChangeDate(date)}
               isCurrentMonth={isSameMonth(currentMonth, date)}
               isSelectedDay={
-                selectedDate
-                  ? (startDate ? isSameDay(startDate, date) : false) || (endDate ? isSameDay(endDate, date) : false)
-                  : false
+                (startDate ? isSameDay(startDate, date) : false) || (endDate ? isSameDay(endDate, date) : false)
               }
               isInRange={isInRange(date)}
               disabled={disabled}

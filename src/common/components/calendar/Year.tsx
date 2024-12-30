@@ -3,9 +3,11 @@ import { DatePickerProps } from '.';
 import CaretLeftIcon from '@/common/assets/icon/icon-calender-arrow-left.svg';
 import CaretRightIcon from '@/common/assets/icon/icon-calender-arrow-right.svg';
 import { Container, Header, Img, Title } from './CommonStyle';
+import { useCalendarStore } from '@/common/stores/useCalendarStore';
 
-export default function Year({ selectedDate, setSelectedDate, setPickerType }: DatePickerProps) {
-  const currentYear = selectedDate.getFullYear();
+export default function Year({ setPickerType }: DatePickerProps) {
+  const { startDate, endDate, setStartDate } = useCalendarStore();
+  const currentYear = (startDate || endDate || new Date()).getFullYear();
   const startYear = 1970;
   const endYear = new Date().getFullYear();
 
@@ -13,19 +15,19 @@ export default function Year({ selectedDate, setSelectedDate, setPickerType }: D
   const visibleYears = years.filter((year) => year >= currentYear - 5 && year <= currentYear + 5);
 
   const onPrevYears = () => {
-    const newYear = Math.max(startYear, selectedDate.getFullYear() - 10);
-    setSelectedDate(new Date(selectedDate.setFullYear(newYear)));
+    const newYear = Math.max(startYear, (startDate || endDate || new Date()).getFullYear() - 10);
+    setStartDate(new Date((startDate || new Date()).setFullYear(newYear)));
   };
 
   const onNextYears = () => {
-    const newYear = Math.min(endYear, selectedDate.getFullYear() + 10);
-    setSelectedDate(new Date(selectedDate.setFullYear(newYear)));
+    const newYear = Math.min(endYear, (startDate || endDate || new Date()).getFullYear() + 10);
+    setStartDate(new Date((startDate || endDate || new Date()).setFullYear(newYear)));
   };
 
   const onSelectYear = (year: number) => {
-    const newDate = new Date(selectedDate);
+    const newDate = new Date(startDate || endDate || new Date());
     newDate.setFullYear(year);
-    setSelectedDate(newDate);
+    setStartDate(newDate);
     setPickerType('month');
   };
 

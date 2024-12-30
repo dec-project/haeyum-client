@@ -6,19 +6,21 @@ import styled from 'styled-components';
 import useCalender from '@/common/hooks/useCalender/useCalender';
 import { DatePickerProps } from '.';
 import { Container, Header, Img, Title } from './CommonStyle';
+import { useCalendarStore } from '@/common/stores/useCalendarStore';
 
-export default function Month({ setPickerType, selectedDate, setSelectedDate }: DatePickerProps) {
-  const { allMonth } = useCalender(selectedDate);
+export default function Month({ setPickerType }: DatePickerProps) {
+  const { startDate, endDate, setStartDate } = useCalendarStore();
+  const { allMonth } = useCalender(startDate || endDate || new Date());
   const onNextYear = () => {
-    setSelectedDate(addYears(selectedDate, 1));
+    setStartDate(addYears(startDate || new Date(), 1));
   };
 
   const onPrevYear = () => {
-    setSelectedDate(subYears(selectedDate, 1));
+    setStartDate(subYears(startDate || new Date(), 1));
   };
 
   const onChangeMonth = (month: Date) => {
-    setSelectedDate(month);
+    setStartDate(month || new Date());
   };
 
   return (
@@ -31,7 +33,7 @@ export default function Month({ setPickerType, selectedDate, setSelectedDate }: 
               setPickerType('year');
             }}
           >
-            <Title>{format(selectedDate, 'MMM yyyy')}</Title>
+            <Title>{format(startDate || endDate || new Date(), 'MMM yyyy')}</Title>
           </button>
           <button
             type="button"
@@ -39,15 +41,15 @@ export default function Month({ setPickerType, selectedDate, setSelectedDate }: 
               setPickerType('date');
             }}
           >
-            <Img height={13} src={CaretDownIcon} alt="" />
+            <Img src={CaretDownIcon} />
           </button>
         </YearDisplay>
         <ButtonGroup>
           <button type="button" onClick={onPrevYear}>
-            <Img src={CaretLeftIcon} alt="" />
+            <Img src={CaretLeftIcon} />
           </button>
           <button type="button" onClick={onNextYear}>
-            <Img src={CaretRightIcon} alt="" />
+            <Img src={CaretRightIcon} />
           </button>
         </ButtonGroup>
       </Header>
@@ -56,7 +58,7 @@ export default function Month({ setPickerType, selectedDate, setSelectedDate }: 
           <MonthButton
             type="button"
             key={index}
-            isSelected={isSameMonth(selectedDate, month)}
+            isSelected={isSameMonth(startDate || endDate || new Date(), month)}
             onClick={() => onChangeMonth(month)}
           >
             {format(month, 'MMM')}
