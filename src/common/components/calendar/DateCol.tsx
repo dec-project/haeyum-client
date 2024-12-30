@@ -63,7 +63,7 @@ export default function DateCol({ setPickerType, selectedDate, setSelectedDate }
       <Header>
         <Navigation>
           <button type="button" onClick={prevMonth}>
-            <img height={10} src={CaretLeftIcon} alt="" />
+            <img height={15} src={CaretLeftIcon} alt="" />
           </button>
           <MonthPicker>
             <button
@@ -75,7 +75,7 @@ export default function DateCol({ setPickerType, selectedDate, setSelectedDate }
             </button>
           </MonthPicker>
           <button type="button" onClick={nextMonth}>
-            <img height={10} src={CaretRightIcon} alt="" />
+            <img height={15} src={CaretRightIcon} alt="" />
           </button>
         </Navigation>
       </Header>
