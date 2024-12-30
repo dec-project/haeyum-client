@@ -3,15 +3,15 @@ import CaretLeftIcon from '@/common/assets/icon/icon-calender-arrow-left.svg';
 import CaretRightIcon from '@/common/assets/icon/icon-calender-arrow-right.svg';
 import CaretDownIcon from '@/common/assets/icon/icon-arrow-down.svg';
 import styled from 'styled-components';
-import useCalender from '@/common/hooks/useCalender/useCalender';
 import { DatePickerProps } from '.';
 import { Container, Header, Img, Title } from './CommonStyle';
 import { useCalendarStore } from '@/common/stores/useCalendarStore';
 import { useEffect } from 'react';
+import useCalender from '../../hooks/useCalender/useCalender';
 
 export default function Month({ setPickerType }: DatePickerProps) {
   const { startDate, endDate, setStartDate, setEndDate } = useCalendarStore();
-  const { allMonth } = useCalender(startDate || endDate || new Date());
+  const { allMonth } = useCalender(startDate || endDate || new Date(), startDate || endDate || new Date());
   const onNextYear = () => {
     if (new Date().getFullYear() === (startDate || endDate || new Date()).getFullYear()) return;
     setStartDate(addYears(startDate || new Date(), 1));
