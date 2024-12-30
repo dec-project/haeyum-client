@@ -36,6 +36,13 @@ export default function DateCol({ setPickerType, selectedDate, setSelectedDate }
   };
 
   const isDateDisabled = (date: Date) => {
+    const minDate = new Date(1970, 0, 1);
+    const maxDate = new Date();
+
+    if (date < minDate || date > maxDate) {
+      return true;
+    }
+
     if (startDate && !endDate) {
       return date < startDate;
     }

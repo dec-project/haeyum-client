@@ -23,5 +23,4 @@ export default function CalendarLayout({ selectedDate, setSelectedDate }: Exclud
 
 const Container = styled.div`
   position: relative;
-  background-color: white;
 `;
