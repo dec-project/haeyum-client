@@ -1,6 +1,7 @@
 import { format, subYears, addYears, isSameMonth } from 'date-fns';
 import CaretLeftIcon from '@/common/assets/icon/icon-calender-arrow-left.svg';
 import CaretRightIcon from '@/common/assets/icon/icon-calender-arrow-right.svg';
+import CaretDownIcon from '@/common/assets/icon/icon-arrow-down.svg';
 import styled from 'styled-components';
 import useCalender from '@/common/hooks/useCalender/useCalender';
 import { DatePickerProps } from '.';
@@ -30,15 +31,15 @@ export default function Month({ setPickerType, selectedDate, setSelectedDate }: 
               setPickerType('date');
             }}
           >
-            <span>...</span>
+            <Img height={13} src={CaretDownIcon} alt="" />
           </button>
         </YearDisplay>
         <ButtonGroup>
           <button type="button" onClick={onPrevYear}>
-            <img height={10} src={CaretLeftIcon} alt="" />
+            <Img src={CaretLeftIcon} alt="" />
           </button>
           <button type="button" onClick={onNextYear}>
-            <img height={10} src={CaretRightIcon} alt="" />
+            <Img src={CaretRightIcon} alt="" />
           </button>
         </ButtonGroup>
       </Header>
@@ -84,6 +85,11 @@ const YearDisplay = styled.span`
     border: none;
     text-align: center;
   }
+`;
+
+const Img = styled.img`
+  height: 15px;
+  margin-top: 5px;
 `;
 
 const ButtonGroup = styled.div`
