@@ -54,7 +54,7 @@ export default function Month({ setPickerType }: DatePickerProps) {
         </ButtonGroup>
       </Header>
       <MonthGrid>
-        {allMonth.map((month, index) => (
+        {allMonth.map((month: Date, index: number) => (
           <MonthButton
             type="button"
             key={index}
