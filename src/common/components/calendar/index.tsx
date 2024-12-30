@@ -1,7 +1,6 @@
-import { Dispatch, SetStateAction, useRef, useState } from 'react';
-import styled from 'styled-components';
-import DateCol from './DateCol';
-import Month from './Month';
+import { Dispatch, SetStateAction } from 'react';
+import { useCalendarStore } from '@/common/stores/useCalendarStore';
+import CalendarLayout from './CalendarLayout';
 
 export type PickerType = 'date' | 'month' | 'year' | '';
 export interface DatePickerProps {
@@ -10,24 +9,12 @@ export interface DatePickerProps {
   setPickerType: Dispatch<SetStateAction<PickerType>>;
 }
 
-export default function DatePicker({ selectedDate, setSelectedDate }: Exclude<DatePickerProps, 'setPickerType'>) {
-  const ref = useRef(null);
-  const [pickerType, setPickerType] = useState<PickerType>('date');
-
-  const renderPickerByType = (type: PickerType) => {
-    switch (type) {
-      case 'date':
-        return <DateCol selectedDate={selectedDate} setSelectedDate={setSelectedDate} setPickerType={setPickerType} />;
-      case 'month':
-        return <Month selectedDate={selectedDate} setSelectedDate={setSelectedDate} setPickerType={setPickerType} />;
-      default:
-        return;
-    }
-  };
-  return <Container ref={ref}>{renderPickerByType(pickerType)}</Container>;
+export default function Calendar() {
+  const { startDate, endDate, setStartDate, setEndDate } = useCalendarStore();
+  return (
+    <div>
+      <CalendarLayout selectedDate={startDate || new Date()} setSelectedDate={setStartDate} setPickerType={() => {}} />
+      <CalendarLayout selectedDate={endDate || new Date()} setSelectedDate={setEndDate} setPickerType={() => {}} />
+    </div>
+  );
 }
-
-const Container = styled.div`
-  position: relative;
-  background-color: white;
-`;
