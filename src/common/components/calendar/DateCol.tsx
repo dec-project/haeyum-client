@@ -1,31 +1,26 @@
-import styled from 'styled-components';
-import { format, addMonths, subMonths, isSameMonth, isSameDay, isWithinInterval, differenceInDays } from 'date-fns';
-import CaretLeftIcon from '@/common/assets/icon/icon-calender-arrow-left.svg';
-import CaretRightIcon from '@/common/assets/icon/icon-calender-arrow-right.svg';
-import useCalender from '@/common/hooks/useCalender/useCalender';
+import { format, addMonths, subMonths, isWithinInterval, differenceInDays } from 'date-fns';
 import { useEffect, useState } from 'react';
 import { useCalendarStore } from '@/common/stores/useCalendarStore';
 import { DatePickerProps } from '.';
-import { Container, Header, Img, Title } from './CommonStyle';
-
-interface DateButtonProps {
-  isCurrentMonth: boolean;
-  isSelectedDay: boolean;
-  isInRange: boolean;
-  disabled: boolean;
-}
+import { Container } from './CommonStyle';
+import useCalender from '../../hooks/useCalender/useCalender';
+import DatePicker from './DatePicker';
+import DateButton from './DateButton';
 
 export default function DateCol({ setPickerType }: DatePickerProps) {
   const { startDate, endDate, setStartDate, setEndDate } = useCalendarStore();
-  const [currentMonth, setCurrentMonth] = useState(startDate || endDate || new Date());
-  const { currentMonthAllDates, weekDays } = useCalender(currentMonth);
+  const [startMonth, setStartMonth] = useState(startDate || endDate || new Date());
+  const [endMonth, setEndMonth] = useState(addMonths(startMonth, 1));
+  const { startMonthDates, endMonthDates, weekDays } = useCalender(startMonth, endMonth);
 
-  const nextMonth = () => {
-    setCurrentMonth(addMonths(currentMonth, 1));
+  const nextMonths = () => {
+    setStartMonth(addMonths(startMonth, 1));
+    setEndMonth(addMonths(endMonth, 1));
   };
 
-  const prevMonth = () => {
-    setCurrentMonth(subMonths(currentMonth, 1));
+  const prevMonths = () => {
+    setStartMonth(subMonths(startMonth, 1));
+    setEndMonth(subMonths(endMonth, 1));
   };
 
   const onChangeDate = (date: Date) => {
@@ -43,12 +38,7 @@ export default function DateCol({ setPickerType }: DatePickerProps) {
   const isDateDisabled = (date: Date) => {
     const minDate = new Date(1970, 0, 1);
     const maxDate = new Date();
-
-    if (date < minDate || date > maxDate) {
-      return true;
-    }
-
-    return false;
+    return date < minDate || date > maxDate;
   };
 
   const isInRange = (date: Date) => {
@@ -64,6 +54,7 @@ export default function DateCol({ setPickerType }: DatePickerProps) {
       }
     }
     if (startDate && endDate && Math.abs(differenceInDays(startDate, endDate)) > 90) {
+      setStartDate(null);
       setEndDate(null);
       alert('90일 이상 선택할 수 없습니다.');
     }
@@ -71,89 +62,32 @@ export default function DateCol({ setPickerType }: DatePickerProps) {
 
   return (
     <Container>
-      <Header>
-        <Navigation>
-          <button type="button" onClick={prevMonth}>
-            <Img src={CaretLeftIcon} />
-          </button>
-          <MonthPicker>
-            <button
-              onClick={() => {
-                setPickerType('month');
-              }}
-            >
-              <Title>{format(currentMonth, 'MMM yyyy')}</Title>
-            </button>
-          </MonthPicker>
-          <button type="button" onClick={nextMonth}>
-            <Img src={CaretRightIcon} />
-          </button>
-        </Navigation>
-      </Header>
-      <WeekdaysGrid>
-        {weekDays.map((days: string, index: number) => (
-          <div key={index}>{days}</div>
-        ))}
-      </WeekdaysGrid>
-      <DatesGrid>
-        {currentMonthAllDates.map((date: Date, index: number) => {
-          const disabled = !isSameMonth(currentMonth, date) || isDateDisabled(date);
-          return (
-            <DateButton
-              key={index}
-              onClick={() => !disabled && onChangeDate(date)}
-              isCurrentMonth={isSameMonth(currentMonth, date)}
-              isSelectedDay={
-                (startDate ? isSameDay(startDate, date) : false) || (endDate ? isSameDay(endDate, date) : false)
-              }
-              isInRange={isInRange(date)}
-              disabled={disabled}
-            >
-              {date.getDate()}
-            </DateButton>
-          );
-        })}
-      </DatesGrid>
+      <DatePicker
+        title={format(startMonth, 'MMM yyyy')}
+        dates={startMonthDates}
+        weekDays={weekDays}
+        currentMonth={startMonth}
+        onChangeDate={onChangeDate}
+        isDateDisabled={isDateDisabled}
+        isInRange={isInRange}
+        startDate={startDate}
+        endDate={endDate}
+        setPickerType={setPickerType}
+      />
+
+      <DatePicker
+        title={format(endMonth, 'MMM yyyy')}
+        dates={endMonthDates}
+        weekDays={weekDays}
+        currentMonth={endMonth}
+        onChangeDate={onChangeDate}
+        isDateDisabled={isDateDisabled}
+        isInRange={isInRange}
+        startDate={startDate}
+        endDate={endDate}
+        setPickerType={setPickerType}
+      />
+      <DateButton prevMonths={prevMonths} nextMonths={nextMonths} />
     </Container>
   );
 }
-
-const MonthPicker = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const Navigation = styled.div`
-  display: flex;
-  gap: 4rem;
-
-  button {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-`;
-
-const WeekdaysGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  place-items: center;
-`;
-
-const DatesGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-`;
-
-const DateButton = styled.button.withConfig({
-  shouldForwardProp: (prop) => !['isCurrentMonth', 'isSelectedDay', 'isInRange', 'disabled'].includes(prop),
-})<DateButtonProps>`
-  padding: 0.5rem;
-  border-radius: ${({ isSelectedDay }) => (isSelectedDay ? '9999px' : '0')};
-  border: none;
-  background-color: ${({ isSelectedDay, isInRange, theme }) =>
-    isSelectedDay ? theme.themeColors.secondary : isInRange ? theme.colors.orange200 : 'transparent'};
-  color: ${({ isCurrentMonth, disabled, theme }) =>
-    disabled ? '#d1d5db' : isCurrentMonth ? theme.themeColors.textPrimary : '#d1d5db'};
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-`;
