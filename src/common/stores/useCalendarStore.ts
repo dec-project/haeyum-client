@@ -8,8 +8,8 @@ type CalendarStoreType = {
 };
 
 export const useCalendarStore = create<CalendarStoreType>((set) => ({
-  startDate: new Date(),
-  endDate: new Date(),
+  startDate: null,
+  endDate: null,
   setStartDate: (date: Date | null) => set({ startDate: date }),
   setEndDate: (date: Date | null) => set({ endDate: date }),
 }));
