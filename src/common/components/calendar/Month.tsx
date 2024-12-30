@@ -24,7 +24,14 @@ export default function Month({ setPickerType, selectedDate, setSelectedDate }: 
     <Container>
       <Header>
         <YearDisplay>
-          {format(selectedDate, 'MMM yyyy')}
+          <button
+            type="button"
+            onClick={() => {
+              setPickerType('year');
+            }}
+          >
+            {format(selectedDate, 'MMM yyyy')}
+          </button>
           <button
             type="button"
             onClick={() => {
