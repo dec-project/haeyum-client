@@ -63,7 +63,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  width: 216px;
+  width: 223px;
 `;
 
 const Header = styled.div`
