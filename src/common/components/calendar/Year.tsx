@@ -60,15 +60,15 @@ const YearGrid = styled.div`
 const YearButton = styled.button.withConfig({
   shouldForwardProp: (prop) => !['isSelected'].includes(prop),
 })<{ isSelected: boolean }>`
-  padding: 0.5rem;
-  border-radius: 0.25rem;
+  padding: 0.875rem;
+  border-radius: 9999px;
   ${({ theme }) => theme.typography.body1.regular}
-  background-color: ${({ isSelected, theme }) => (isSelected ? theme.colors.orange200 : 'transparent')};
+  background-color: ${({ isSelected, theme }) => (isSelected ? theme.colors.orange400 : 'transparent')};
   color: ${({ isSelected, theme }) => (isSelected ? theme.colors.white : theme.themeColors.textPrimary)};
   border: none;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.orange200};
-    color: ${({ theme }) => theme.themeColors.textPrimary};
+    background-color: ${({ isSelected, theme }) => (isSelected ? theme.colors.orange400 : theme.colors.orange200)};
+    color: ${({ isSelected, theme }) => (isSelected ? theme.themeColors.textPrimary : theme.colors.white)};
   }
 `;
