@@ -57,7 +57,9 @@ const YearGrid = styled.div`
   gap: 0.5rem;
 `;
 
-const YearButton = styled.button<{ isSelected: boolean }>`
+const YearButton = styled.button.withConfig({
+  shouldForwardProp: (prop) => !['isSelected'].includes(prop),
+})<{ isSelected: boolean }>`
   padding: 0.5rem;
   border-radius: 0.25rem;
   ${({ theme }) => theme.typography.body1.regular}

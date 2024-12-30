@@ -85,7 +85,9 @@ const MonthGrid = styled.div`
   grid-template-columns: repeat(3, 1fr);
 `;
 
-const MonthButton = styled.button<{ isSelected: boolean }>`
+const MonthButton = styled.button.withConfig({
+  shouldForwardProp: (prop) => !['isSelected'].includes(prop),
+})<{ isSelected: boolean }>`
   border-radius: 9999px;
   border: none;
   padding: 0.875rem;

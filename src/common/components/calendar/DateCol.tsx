@@ -151,7 +151,9 @@ const DatesGrid = styled.div`
   grid-template-columns: repeat(7, 1fr);
 `;
 
-const DateButton = styled.button<DateButtonProps>`
+const DateButton = styled.button.withConfig({
+  shouldForwardProp: (prop) => !['isCurrentMonth', 'isSelectedDay', 'isInRange', 'disabled'].includes(prop),
+})<DateButtonProps>`
   padding: 0.5rem;
   border-radius: ${({ isSelectedDay }) => (isSelectedDay ? '9999px' : '0')};
   border: none;
