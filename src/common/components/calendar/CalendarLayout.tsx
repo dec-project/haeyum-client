@@ -26,4 +26,8 @@ export default function CalendarLayout({ selectedDate, setSelectedDate }: Exclud
 
 const Container = styled.div`
   position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 200px;
 `;

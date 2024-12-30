@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { DatePickerProps } from '.';
 import CaretLeftIcon from '@/common/assets/icon/icon-calender-arrow-left.svg';
 import CaretRightIcon from '@/common/assets/icon/icon-calender-arrow-right.svg';
+import { Container, Header, Img, Title } from './CommonStyle';
 
 export default function Year({ selectedDate, setSelectedDate, setPickerType }: DatePickerProps) {
   const currentYear = selectedDate.getFullYear();
@@ -32,11 +33,11 @@ export default function Year({ selectedDate, setSelectedDate, setPickerType }: D
     <Container>
       <Header>
         <button type="button" onClick={onPrevYears} disabled={visibleYears[0] === startYear}>
-          <Img src={CaretLeftIcon} alt="Previous 10 years" />
+          <Img src={CaretLeftIcon} />
         </button>
-        <span>{`${visibleYears[0]} - ${visibleYears[visibleYears.length - 1]}`}</span>
+        <Title>{`${visibleYears[0]} - ${visibleYears[visibleYears.length - 1]}`}</Title>
         <button type="button" onClick={onNextYears} disabled={visibleYears[visibleYears.length - 1] === endYear}>
-          <Img src={CaretRightIcon} alt="Next 10 years" />
+          <Img src={CaretRightIcon} />
         </button>
       </Header>
       <YearGrid>
@@ -50,27 +51,6 @@ export default function Year({ selectedDate, setSelectedDate, setPickerType }: D
   );
 }
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 223px;
-`;
-
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem;
-
-  button {
-    background: none;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-  }
-`;
-
 const YearGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -80,17 +60,13 @@ const YearGrid = styled.div`
 const YearButton = styled.button<{ isSelected: boolean }>`
   padding: 0.5rem;
   border-radius: 0.25rem;
-  background-color: ${({ isSelected }) => (isSelected ? '#f5ebd9' : 'transparent')};
-  color: ${({ isSelected }) => (isSelected ? '#FFFFFF' : '#333333')};
+  ${({ theme }) => theme.typography.body1.regular}
+  background-color: ${({ isSelected, theme }) => (isSelected ? theme.colors.orange200 : 'transparent')};
+  color: ${({ isSelected, theme }) => (isSelected ? theme.colors.white : theme.themeColors.textPrimary)};
   border: none;
 
   &:hover {
-    background-color: #f5ebd9;
-    color: #333333;
+    background-color: ${({ theme }) => theme.colors.orange200};
+    color: ${({ theme }) => theme.themeColors.textPrimary};
   }
-`;
-
-const Img = styled.img`
-  height: 15px;
-  margin-top: 5px;
 `;
