@@ -91,12 +91,12 @@ export default function DateCol({ setPickerType }: DatePickerProps) {
         </Navigation>
       </Header>
       <WeekdaysGrid>
-        {weekDays.map((days, index) => (
+        {weekDays.map((days: string, index: number) => (
           <div key={index}>{days}</div>
         ))}
       </WeekdaysGrid>
       <DatesGrid>
-        {currentMonthAllDates.map((date, index) => {
+        {currentMonthAllDates.map((date: Date, index: number) => {
           const disabled = !isSameMonth(currentMonth, date) || isDateDisabled(date);
           return (
             <DateButton

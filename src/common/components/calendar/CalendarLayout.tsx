@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import DateCol from './DateCol';
 import Month from './Month';
-import { DatePickerProps, PickerType } from '.';
+import { PickerType } from '.';
 import Year from './Year';
 
 export default function CalendarLayout() {
