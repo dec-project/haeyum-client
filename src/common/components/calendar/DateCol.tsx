@@ -3,13 +3,9 @@ import { format, addMonths, subMonths, isSameMonth, isSameDay, isWithinInterval 
 import CaretLeftIcon from '@/common/assets/icon/icon-calender-arrow-left.svg';
 import CaretRightIcon from '@/common/assets/icon/icon-calender-arrow-right.svg';
 import useCalender from '@/common/hooks/useCalender/useCalender';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useCalendarStore } from '@/common/stores/useCalendarStore';
-
-export interface DatePickerProps {
-  selectedDate: Date | null;
-  setSelectedDate: (date: Date | null) => void;
-}
+import { DatePickerProps } from '.';
 
 interface DateButtonProps {
   isCurrentMonth: boolean;
@@ -18,8 +14,8 @@ interface DateButtonProps {
   disabled: boolean;
 }
 
-export default function DateCol({ selectedDate, setSelectedDate }: DatePickerProps) {
-  const [currentMonth, setCurrentMonth] = useState(selectedDate || new Date());
+export default function DateCol({ setPickerType, selectedDate, setSelectedDate }: DatePickerProps) {
+  const [currentMonth, setCurrentMonth] = useState(selectedDate);
   const { currentMonthAllDates, weekDays } = useCalender(currentMonth);
   const { startDate, endDate, setStartDate, setEndDate } = useCalendarStore();
 
@@ -54,6 +50,14 @@ export default function DateCol({ selectedDate, setSelectedDate }: DatePickerPro
     return isWithinInterval(date, { start: startDate, end: endDate });
   };
 
+  useEffect(() => {
+    if (startDate && endDate) {
+      if (startDate > endDate) {
+        setSelectedDate(null);
+      }
+    }
+  }, [startDate, endDate]);
+
   return (
     <Container>
       <Header>
@@ -62,7 +66,13 @@ export default function DateCol({ selectedDate, setSelectedDate }: DatePickerPro
             <img height={10} src={CaretLeftIcon} alt="" />
           </button>
           <MonthPicker>
-            <span>{format(currentMonth, 'MMM yyyy')}</span>
+            <button
+              onClick={() => {
+                setPickerType('month');
+              }}
+            >
+              {format(currentMonth, 'MMM yyyy')}
+            </button>
           </MonthPicker>
           <button type="button" onClick={nextMonth}>
             <img height={10} src={CaretRightIcon} alt="" />
@@ -82,7 +92,11 @@ export default function DateCol({ selectedDate, setSelectedDate }: DatePickerPro
               key={index}
               onClick={() => !disabled && onChangeDate(date)}
               isCurrentMonth={isSameMonth(currentMonth, date)}
-              isSelectedDay={selectedDate ? isSameDay(selectedDate, date) : false}
+              isSelectedDay={
+                selectedDate
+                  ? (startDate ? isSameDay(startDate, date) : false) || (endDate ? isSameDay(endDate, date) : false)
+                  : false
+              }
               isInRange={isInRange(date)}
               disabled={disabled}
             >
