@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { format, addMonths, subMonths, isSameMonth, isSameDay, isWithinInterval } from 'date-fns';
+import { format, addMonths, subMonths, isSameMonth, isSameDay, isWithinInterval, differenceInDays } from 'date-fns';
 import CaretLeftIcon from '@/common/assets/icon/icon-calender-arrow-left.svg';
 import CaretRightIcon from '@/common/assets/icon/icon-calender-arrow-right.svg';
 import useCalender from '@/common/hooks/useCalender/useCalender';
@@ -64,6 +64,13 @@ export default function DateCol({ setPickerType, selectedDate, setSelectedDate }
       }
     }
   }, [startDate, endDate]);
+
+  useEffect(() => {
+    if (startDate && endDate && Math.abs(differenceInDays(startDate, endDate)) > 90) {
+      setSelectedDate(null);
+      alert('90일 이상 선택할 수 없습니다.');
+    }
+  }, [selectedDate]);
 
   return (
     <Container>
