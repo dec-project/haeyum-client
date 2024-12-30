@@ -5,18 +5,18 @@ import Month from './Month';
 import { DatePickerProps, PickerType } from '.';
 import Year from './Year';
 
-export default function CalendarLayout({ selectedDate, setSelectedDate }: Exclude<DatePickerProps, 'setPickerType'>) {
+export default function CalendarLayout() {
   const ref = useRef(null);
   const [pickerType, setPickerType] = useState<PickerType>('date');
 
   const renderPickerByType = (type: PickerType) => {
     switch (type) {
       case 'date':
-        return <DateCol selectedDate={selectedDate} setSelectedDate={setSelectedDate} setPickerType={setPickerType} />;
+        return <DateCol setPickerType={setPickerType} />;
       case 'month':
-        return <Month selectedDate={selectedDate} setSelectedDate={setSelectedDate} setPickerType={setPickerType} />;
+        return <Month setPickerType={setPickerType} />;
       case 'year':
-        return <Year selectedDate={selectedDate} setSelectedDate={setSelectedDate} setPickerType={setPickerType} />;
+        return <Year setPickerType={setPickerType} />;
       default:
         return;
     }
