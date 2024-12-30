@@ -1,4 +1,5 @@
 import { useCalendarStore } from '@/common/stores/useCalendarStore';
+import { format } from 'date-fns';
 import styled from 'styled-components';
 
 export default function DateDisplay() {
@@ -8,9 +9,9 @@ export default function DateDisplay() {
       <Container>
         {startDate || endDate ? (
           <>
-            <Text>{startDate ? startDate.toLocaleDateString() : '선택되지 않음'}</Text>
+            <Text>{startDate ? format(startDate, 'yyyy. MM. dd') : '선택되지 않음'}</Text>
             <Text>~</Text>
-            <Text>{endDate ? endDate.toLocaleDateString() : '선택되지 않음'}</Text>
+            <Text>{endDate ? format(endDate, 'yyyy. MM. dd') : '선택되지 않음'}</Text>
           </>
         ) : (
           <Text>기간을 선택해주세요</Text>
@@ -40,5 +41,5 @@ const Container = styled.div`
 const Text = styled.span`
   ${({ theme }) => theme.typography.body1.regular}
   color: ${({ theme }) => theme.colors.orange500};
-  margin: 0 0.75rem;
+  margin: auto;
 `;
