@@ -5,6 +5,7 @@ import CaretDownIcon from '@/common/assets/icon/icon-arrow-down.svg';
 import styled from 'styled-components';
 import useCalender from '@/common/hooks/useCalender/useCalender';
 import { DatePickerProps } from '.';
+import { Container, Header, Img, Title } from './CommonStyle';
 
 export default function Month({ setPickerType, selectedDate, setSelectedDate }: DatePickerProps) {
   const { allMonth } = useCalender(selectedDate);
@@ -30,7 +31,7 @@ export default function Month({ setPickerType, selectedDate, setSelectedDate }: 
               setPickerType('year');
             }}
           >
-            {format(selectedDate, 'MMM yyyy')}
+            <Title>{format(selectedDate, 'MMM yyyy')}</Title>
           </button>
           <button
             type="button"
@@ -66,42 +67,13 @@ export default function Month({ setPickerType, selectedDate, setSelectedDate }: 
   );
 }
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  width: 223px;
-`;
-
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 0.5rem;
-`;
-
 const YearDisplay = styled.span`
   display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  font-size: 12px;
-  font-weight: 500;
-  button {
-    background: none;
-    border: none;
-    text-align: center;
-  }
-`;
-
-const Img = styled.img`
-  height: 15px;
-  margin-top: 5px;
 `;
 
 const ButtonGroup = styled.div`
   button {
-    width: 1.5rem;
+    width: 1.7rem;
     height: 1rem;
     background: none;
     border: none;
@@ -116,14 +88,13 @@ const MonthGrid = styled.div`
 const MonthButton = styled.button<{ isSelected: boolean }>`
   border-radius: 9999px;
   border: none;
-  padding: 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  background-color: ${({ isSelected }) => (isSelected ? '#f5ebd9' : 'transparent')};
-  color: ${({ isSelected }) => (isSelected ? '#FFFFFF' : '#333333')};
+  padding: 0.875rem;
+  ${({ theme }) => theme.typography.label.medium}
+  background-color: ${({ isSelected, theme }) => (isSelected ? theme.themeColors.secondary : 'transparent')};
+  color: ${({ isSelected, theme }) => (isSelected ? theme.colors.white : theme.themeColors.textPrimary)};
 
   &:hover {
-    background-color: ${({ isSelected }) => (isSelected ? '#d1d5db' : '#f5ebd9')};
-    color: ${({ isSelected }) => (isSelected ? '#333333' : '#d1d5db')};
+    background-color: ${({ isSelected, theme }) => (isSelected ? theme.colors.orange400 : theme.colors.orange200)};
+    color: ${({ isSelected, theme }) => (isSelected ? theme.themeColors.textPrimary : theme.colors.white)};
   }
 `;

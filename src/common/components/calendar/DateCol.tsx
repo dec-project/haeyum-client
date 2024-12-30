@@ -6,6 +6,7 @@ import useCalender from '@/common/hooks/useCalender/useCalender';
 import { useEffect, useState } from 'react';
 import { useCalendarStore } from '@/common/stores/useCalendarStore';
 import { DatePickerProps } from '.';
+import { Container, Header, Img, Title } from './CommonStyle';
 
 interface DateButtonProps {
   isCurrentMonth: boolean;
@@ -77,7 +78,7 @@ export default function DateCol({ setPickerType, selectedDate, setSelectedDate }
       <Header>
         <Navigation>
           <button type="button" onClick={prevMonth}>
-            <img height={15} src={CaretLeftIcon} alt="" />
+            <Img src={CaretLeftIcon} />
           </button>
           <MonthPicker>
             <button
@@ -85,11 +86,11 @@ export default function DateCol({ setPickerType, selectedDate, setSelectedDate }
                 setPickerType('month');
               }}
             >
-              {format(currentMonth, 'MMM yyyy')}
+              <Title>{format(currentMonth, 'MMM yyyy')}</Title>
             </button>
           </MonthPicker>
           <button type="button" onClick={nextMonth}>
-            <img height={15} src={CaretRightIcon} alt="" />
+            <Img src={CaretRightIcon} />
           </button>
         </Navigation>
       </Header>
@@ -123,22 +124,8 @@ export default function DateCol({ setPickerType, selectedDate, setSelectedDate }
   );
 }
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-`;
-
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem;
-`;
-
 const MonthPicker = styled.div`
   display: flex;
-  font-size: 0.875rem;
   align-items: center;
 `;
 
@@ -168,8 +155,9 @@ const DateButton = styled.button<DateButtonProps>`
   padding: 0.5rem;
   border-radius: ${({ isSelectedDay }) => (isSelectedDay ? '9999px' : '0')};
   border: none;
-  background-color: ${({ isSelectedDay, isInRange, theme }: DateButtonProps & { theme: any }) =>
-    isSelectedDay ? theme.colors.orange : isInRange ? '#f5ebd9' : 'transparent'};
-  color: ${({ isCurrentMonth, disabled }) => (disabled ? '#d1d5db' : isCurrentMonth ? '#000000' : '#d1d5db')};
+  background-color: ${({ isSelectedDay, isInRange, theme }) =>
+    isSelectedDay ? theme.themeColors.secondary : isInRange ? theme.colors.orange200 : 'transparent'};
+  color: ${({ isCurrentMonth, disabled, theme }) =>
+    disabled ? '#d1d5db' : isCurrentMonth ? theme.themeColors.textPrimary : '#d1d5db'};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 `;
