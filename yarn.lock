@@ -493,14 +493,14 @@ __metadata:
 "@esbuild/linux-x64@npm:0.21.5":
   version: 0.21.5
   resolution: "@esbuild/linux-x64@npm:0.21.5"
+  checksum: 10c0/9e5663fcace9c8456e9934a9ed6e7428db4080024eef3bfeaf82d476120bd881382c958be2785463d6b44467b3d3f870d6cce09a9cb37bcef19afeb97814d674
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"@esbuild/linux-x64@npm:0.24.2, @esbuild/linux-x64@npm:^0.24.2":
+"@esbuild/linux-x64@npm:0.24.2":
   version: 0.24.2
   resolution: "@esbuild/linux-x64@npm:0.24.2"
-  checksum: 10c0/7ec13e71530f3369442b9c05c823bdfca6bf5f030b130f633bee5d14cd13d8c1b910a8dcfb6d38c4702a4e599d6097fc37cc2901710dfb2bd67f19aa7c918b75
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
@@ -1469,14 +1469,14 @@ __metadata:
 "@swc/core-linux-x64-gnu@npm:1.10.3":
   version: 1.10.3
   resolution: "@swc/core-linux-x64-gnu@npm:1.10.3"
+  checksum: 10c0/fcdbaf7539eb5006d10dfd97d26ae35fd1539b985fcad8fdba0dee6947fcdee20f93333309855b5fe01b4d1e507e8c06ee41921c1a0c71c2d8c7812a39b39404
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@swc/core-linux-x64-gnu@npm:1.10.4, @swc/core-linux-x64-gnu@npm:^1.10.4":
+"@swc/core-linux-x64-gnu@npm:1.10.4":
   version: 1.10.4
   resolution: "@swc/core-linux-x64-gnu@npm:1.10.4"
-  checksum: 10c0/dc9aa11f1e8af734429bfe271373d6f8ebc53cd742ac448de7829215043c8e790b7b4887109ac933226a246861c1ce560080fc2784d5ffa00074e082cb4560b9
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
@@ -3450,7 +3450,7 @@ __metadata:
   resolution: "haeyum-client@workspace:."
   dependencies:
     "@chromatic-com/storybook": "npm:3.2.2"
-    "@esbuild/linux-x64": "npm:^0.24.2"
+    "@esbuild/linux-x64": "npm:0.21.5"
     "@eslint/js": "npm:^9.15.0"
     "@rollup/rollup-linux-x64-gnu": "npm:^4.29.1"
     "@storybook/addon-essentials": "npm:8.4.7"
@@ -3461,7 +3461,7 @@ __metadata:
     "@storybook/react-vite": "npm:8.4.7"
     "@storybook/test": "npm:8.4.7"
     "@swc/core": "npm:^1.10.4"
-    "@swc/core-linux-x64-gnu": "npm:^1.10.4"
+    "@swc/core-linux-x64-gnu": "npm:1.10.3"
     "@tanstack/react-query": "npm:^5.62.8"
     "@tanstack/react-query-devtools": "npm:^5.62.8"
     "@testing-library/dom": "npm:^10.4.0"
