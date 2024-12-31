@@ -18,7 +18,7 @@ export default function CalendarLayout() {
       case 'year':
         return <Year setPickerType={setPickerType} />;
       default:
-        return;
+        return <DateCol setPickerType={setPickerType} />;
     }
   };
   return <Container ref={ref}>{renderPickerByType(pickerType)}</Container>;
