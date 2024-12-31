@@ -493,7 +493,6 @@ __metadata:
 "@esbuild/linux-x64@npm:0.21.5":
   version: 0.21.5
   resolution: "@esbuild/linux-x64@npm:0.21.5"
-  checksum: 10c0/9e5663fcace9c8456e9934a9ed6e7428db4080024eef3bfeaf82d476120bd881382c958be2785463d6b44467b3d3f870d6cce09a9cb37bcef19afeb97814d674
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
@@ -982,10 +981,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-x64-gnu@npm:4.29.1, @rollup/rollup-linux-x64-gnu@npm:^4.29.1":
+"@rollup/rollup-linux-x64-gnu@npm:4.29.1":
   version: 4.29.1
   resolution: "@rollup/rollup-linux-x64-gnu@npm:4.29.1"
-  checksum: 10c0/185b4ba65a6ff9dd60d34421b12be76b0bf7ca1e78d1fda5563bd4b2153626252b39e0255031f09eb66b57e60055e1010954ac8f12265b87b834ab8af5414972
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
@@ -1469,7 +1467,6 @@ __metadata:
 "@swc/core-linux-x64-gnu@npm:1.10.3":
   version: 1.10.3
   resolution: "@swc/core-linux-x64-gnu@npm:1.10.3"
-  checksum: 10c0/fcdbaf7539eb5006d10dfd97d26ae35fd1539b985fcad8fdba0dee6947fcdee20f93333309855b5fe01b4d1e507e8c06ee41921c1a0c71c2d8c7812a39b39404
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
@@ -3450,9 +3447,7 @@ __metadata:
   resolution: "haeyum-client@workspace:."
   dependencies:
     "@chromatic-com/storybook": "npm:3.2.2"
-    "@esbuild/linux-x64": "npm:0.21.5"
     "@eslint/js": "npm:^9.15.0"
-    "@rollup/rollup-linux-x64-gnu": "npm:^4.29.1"
     "@storybook/addon-essentials": "npm:8.4.7"
     "@storybook/addon-interactions": "npm:8.4.7"
     "@storybook/addon-onboarding": "npm:8.4.7"
@@ -3461,7 +3456,6 @@ __metadata:
     "@storybook/react-vite": "npm:8.4.7"
     "@storybook/test": "npm:8.4.7"
     "@swc/core": "npm:^1.10.4"
-    "@swc/core-linux-x64-gnu": "npm:1.10.3"
     "@tanstack/react-query": "npm:^5.62.8"
     "@tanstack/react-query-devtools": "npm:^5.62.8"
     "@testing-library/dom": "npm:^10.4.0"
