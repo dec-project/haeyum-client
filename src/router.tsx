@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Home from './pages/home/index';
 import Search from './pages/search/index';
 import Chats from './pages/chats/index';
+import Result from './pages/search/result';
 
 type routeElement = {
   path: string;
@@ -14,6 +15,7 @@ const routes: routeElement[] = [
   { path: '/', element: <Home /> },
   { path: '/search', element: <Search /> },
   { path: '/chats', element: <Chats /> },
+  { path: '/result', element: <Result /> },
 ];
 
 export const router = createBrowserRouter(routes);
