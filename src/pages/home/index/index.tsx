@@ -1,5 +1,4 @@
 import Calendar from '@/common/components/calendar';
-import React from 'react';
 
 const Home = () => {
   return (

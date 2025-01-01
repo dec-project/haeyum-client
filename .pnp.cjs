@@ -42,9 +42,11 @@ const RAW_RUNTIME_STATE =
           ["@testing-library/dom", "npm:10.4.0"],\
           ["@testing-library/jest-dom", "npm:6.6.3"],\
           ["@testing-library/react", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:16.1.0"],\
+          ["@testing-library/react-hooks", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:8.0.1"],\
           ["@types/node", "npm:22.10.3"],\
           ["@types/react", "npm:18.3.18"],\
           ["@types/react-dom", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:18.3.5"],\
+          ["@types/testing-library__react-hooks", "npm:4.0.0"],\
           ["@vitejs/plugin-react", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:4.3.4"],\
           ["@vitejs/plugin-react-swc", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:3.7.2"],\
           ["date-fns", "npm:4.1.0"],\
@@ -2444,6 +2446,61 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@testing-library/react-hooks", [\
+      ["npm:8.0.1", {\
+        "packageLocation": "./.yarn/cache/@testing-library-react-hooks-npm-8.0.1-e0c7be6ffb-83bef2d4c4.zip/node_modules/@testing-library/react-hooks/",\
+        "packageDependencies": [\
+          ["@testing-library/react-hooks", "npm:8.0.1"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:8.0.1", {\
+        "packageLocation": "./.yarn/__virtual__/@testing-library-react-hooks-virtual-420cda987f/0/cache/@testing-library-react-hooks-npm-8.0.1-e0c7be6ffb-83bef2d4c4.zip/node_modules/@testing-library/react-hooks/",\
+        "packageDependencies": [\
+          ["@testing-library/react-hooks", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:8.0.1"],\
+          ["@babel/runtime", "npm:7.26.0"],\
+          ["@types/react", "npm:18.3.18"],\
+          ["@types/react-dom", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:18.3.5"],\
+          ["@types/react-test-renderer", null],\
+          ["react", "npm:18.3.1"],\
+          ["react-dom", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:18.3.1"],\
+          ["react-error-boundary", "virtual:420cda987f358b1b0af3c40430e450da4462789d87dfdf84318ef0ceb71d107cfe4d7da8a2812fec824648f4d9495be4a5e2baab9afad5886f96e8d2c92caf86#npm:3.1.4"],\
+          ["react-test-renderer", null]\
+        ],\
+        "packagePeers": [\
+          "@types/react-dom",\
+          "@types/react-test-renderer",\
+          "@types/react",\
+          "react-dom",\
+          "react-test-renderer",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["virtual:9648a2d92bca0b637e23fdd10888d7aaafa39a51a5e98ba4bb0868877c98dc266401e574608b19199127dbe127062184c28ca699b81da63fc52ab3eafb43566a#npm:8.0.1", {\
+        "packageLocation": "./.yarn/__virtual__/@testing-library-react-hooks-virtual-447f52f9b9/0/cache/@testing-library-react-hooks-npm-8.0.1-e0c7be6ffb-83bef2d4c4.zip/node_modules/@testing-library/react-hooks/",\
+        "packageDependencies": [\
+          ["@testing-library/react-hooks", "virtual:9648a2d92bca0b637e23fdd10888d7aaafa39a51a5e98ba4bb0868877c98dc266401e574608b19199127dbe127062184c28ca699b81da63fc52ab3eafb43566a#npm:8.0.1"],\
+          ["@babel/runtime", "npm:7.26.0"],\
+          ["@types/react", null],\
+          ["@types/react-dom", null],\
+          ["@types/react-test-renderer", null],\
+          ["react", null],\
+          ["react-dom", null],\
+          ["react-error-boundary", "virtual:447f52f9b9d5580a0d9cb9fce03b01562e492b5b5cc1d2bbd1f8616f8ab684ea789bbf3dd9b94fa1cadb6a229454933ca7b364a7ad3d57530d667bf65f37cc83#npm:3.1.4"],\
+          ["react-test-renderer", null]\
+        ],\
+        "packagePeers": [\
+          "@types/react-dom",\
+          "@types/react-test-renderer",\
+          "@types/react",\
+          "react-dom",\
+          "react-test-renderer",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@testing-library/user-event", [\
       ["npm:14.5.2", {\
         "packageLocation": "./.yarn/cache/@testing-library-user-event-npm-14.5.2-ec9587901c-68a0c2aa28.zip/node_modules/@testing-library/user-event/",\
@@ -2629,6 +2686,16 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@types-stylis-npm-4.2.5-402b8fb751-23f5b35a3a.zip/node_modules/@types/stylis/",\
         "packageDependencies": [\
           ["@types/stylis", "npm:4.2.5"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/testing-library__react-hooks", [\
+      ["npm:4.0.0", {\
+        "packageLocation": "./.yarn/cache/@types-testing-library__react-hooks-npm-4.0.0-9648a2d92b-a977f2333f.zip/node_modules/@types/testing-library__react-hooks/",\
+        "packageDependencies": [\
+          ["@types/testing-library__react-hooks", "npm:4.0.0"],\
+          ["@testing-library/react-hooks", "virtual:9648a2d92bca0b637e23fdd10888d7aaafa39a51a5e98ba4bb0868877c98dc266401e574608b19199127dbe127062184c28ca699b81da63fc52ab3eafb43566a#npm:8.0.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -4493,9 +4560,11 @@ const RAW_RUNTIME_STATE =
           ["@testing-library/dom", "npm:10.4.0"],\
           ["@testing-library/jest-dom", "npm:6.6.3"],\
           ["@testing-library/react", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:16.1.0"],\
+          ["@testing-library/react-hooks", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:8.0.1"],\
           ["@types/node", "npm:22.10.3"],\
           ["@types/react", "npm:18.3.18"],\
           ["@types/react-dom", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:18.3.5"],\
+          ["@types/testing-library__react-hooks", "npm:4.0.0"],\
           ["@vitejs/plugin-react", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:4.3.4"],\
           ["@vitejs/plugin-react-swc", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:3.7.2"],\
           ["date-fns", "npm:4.1.0"],\
@@ -5753,6 +5822,43 @@ const RAW_RUNTIME_STATE =
           ["loose-envify", "npm:1.4.0"],\
           ["react", "npm:18.3.1"],\
           ["scheduler", "npm:0.23.2"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["react-error-boundary", [\
+      ["npm:3.1.4", {\
+        "packageLocation": "./.yarn/cache/react-error-boundary-npm-3.1.4-2310dba89e-f977ca6182.zip/node_modules/react-error-boundary/",\
+        "packageDependencies": [\
+          ["react-error-boundary", "npm:3.1.4"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:420cda987f358b1b0af3c40430e450da4462789d87dfdf84318ef0ceb71d107cfe4d7da8a2812fec824648f4d9495be4a5e2baab9afad5886f96e8d2c92caf86#npm:3.1.4", {\
+        "packageLocation": "./.yarn/__virtual__/react-error-boundary-virtual-10593c4e9b/0/cache/react-error-boundary-npm-3.1.4-2310dba89e-f977ca6182.zip/node_modules/react-error-boundary/",\
+        "packageDependencies": [\
+          ["react-error-boundary", "virtual:420cda987f358b1b0af3c40430e450da4462789d87dfdf84318ef0ceb71d107cfe4d7da8a2812fec824648f4d9495be4a5e2baab9afad5886f96e8d2c92caf86#npm:3.1.4"],\
+          ["@babel/runtime", "npm:7.26.0"],\
+          ["@types/react", "npm:18.3.18"],\
+          ["react", "npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["virtual:447f52f9b9d5580a0d9cb9fce03b01562e492b5b5cc1d2bbd1f8616f8ab684ea789bbf3dd9b94fa1cadb6a229454933ca7b364a7ad3d57530d667bf65f37cc83#npm:3.1.4", {\
+        "packageLocation": "./.yarn/__virtual__/react-error-boundary-virtual-4c27f2ca72/0/cache/react-error-boundary-npm-3.1.4-2310dba89e-f977ca6182.zip/node_modules/react-error-boundary/",\
+        "packageDependencies": [\
+          ["react-error-boundary", "virtual:447f52f9b9d5580a0d9cb9fce03b01562e492b5b5cc1d2bbd1f8616f8ab684ea789bbf3dd9b94fa1cadb6a229454933ca7b364a7ad3d57530d667bf65f37cc83#npm:3.1.4"],\
+          ["@babel/runtime", "npm:7.26.0"],\
+          ["@types/react", null],\
+          ["react", null]\
         ],\
         "packagePeers": [\
           "@types/react",\
