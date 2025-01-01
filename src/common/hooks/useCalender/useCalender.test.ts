@@ -1,3 +1,10 @@
+import { expect, test } from 'vitest';
+
+test('1 is 1', () => {
+  expect(1).toBe(1);
+});
+
+
 // import { renderHook } from '@testing-library/react-hooks';
 // import useCalender from './useCalender';
 // import { format, addDays, startOfWeek } from 'date-fns';
