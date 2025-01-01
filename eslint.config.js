@@ -5,7 +5,7 @@ import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y';
 import prettier from 'eslint-plugin-prettier/recommended';
 export default tseslint.config(
   {
-    ignores: ['**/build/**', '**/dist/**', '**/yarn/**', '**/public/**', '**/.*'],
+    ignores: ['**/build/**', '**/dist/**', '**/yarn/**', '**/public/**', '**/.*', "eslint.config.js"],
   },
   eslint.configs.recommended,
   prettier,

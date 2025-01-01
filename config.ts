@@ -7,5 +7,4 @@ declare global {
     readonly env: ImportMetaEnv;
   }
 }
-export const CONFIG = {
-} as const;
+export const CONFIG = {} as const;
