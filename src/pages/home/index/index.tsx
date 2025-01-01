@@ -1,12 +1,5 @@
-import Calendar from '@/common/components/calendar';
-import React from 'react';
-
 const Home = () => {
-  return (
-    <div>
-      <Calendar />
-    </div>
-  );
+  return <div>home</div>;
 };
 
 export default Home;
