@@ -2,11 +2,13 @@ import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y';
+import prettier from 'eslint-plugin-prettier/recommended';
 export default tseslint.config(
   {
     ignores: ['**/build/**', '**/dist/**', '**/yarn/**', '**/public/**', '**/.*'],
   },
   eslint.configs.recommended,
+  prettier,
   {
     plugins: {
       '@typescript-eslint': tseslint.plugin,
@@ -44,6 +46,8 @@ export default tseslint.config(
       'no-namespace': 'off', // 네임스페이스 사용 규칙 해제
       'ban-ts-comment': 'off', // @
       'no-undef': 'off', // 정의되지 않은 변수 사용 규칙 해제
+
+      "prettier/prettier": "warn", 
 
       'jsx-a11y/alt-text': 'warn', // 이미지에 alt 속성 요구
       'jsx-a11y/anchor-has-content': 'warn', // 앵커 태그가 콘텐츠를 가져야 함
