@@ -47,7 +47,7 @@ export default tseslint.config(
       'ban-ts-comment': 'off', // @
       'no-undef': 'off', // 정의되지 않은 변수 사용 규칙 해제
 
-      "prettier/prettier": "warn", 
+      'prettier/prettier': 'warn', // prettier 규칙
 
       'jsx-a11y/alt-text': 'warn', // 이미지에 alt 속성 요구
       'jsx-a11y/anchor-has-content': 'warn', // 앵커 태그가 콘텐츠를 가져야 함
@@ -60,5 +60,5 @@ export default tseslint.config(
   {
     files: ['src/**/*.{js,jsx,ts,tsx}'],
     extends: [tseslint.configs.disableTypeChecked],
-  }
+  },
 );
