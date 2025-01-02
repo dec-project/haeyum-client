@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Logo from '../Logo';
 
 interface AppBarProps {
   leftContent?: React.ReactNode;
@@ -55,3 +56,5 @@ const Icon = styled.div`
 `;
 
 export default AppBar;
+
+AppBar.logo = Logo;
