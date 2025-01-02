@@ -36,5 +36,5 @@ jobs:
         run: yarn test
 
       # Lint
-      # - name: Lint Code
-      #   run: yarn lint
+      - name: Lint Code
+        run: yarn lint
