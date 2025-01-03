@@ -1,8 +1,4 @@
-import {
-  type AxiosError,
-  type AxiosResponse,
-  type InternalAxiosRequestConfig,
-} from 'axios';
+import type { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 import { getItem } from './localStorage';
 
 export interface ConsoleError {
@@ -10,9 +6,7 @@ export interface ConsoleError {
   data: unknown;
 }
 
-export const requestInterceptor = (
-  config: InternalAxiosRequestConfig
-): InternalAxiosRequestConfig => {
+export const requestInterceptor = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
   const token = getItem<string>('token');
   if (token) {
     config.headers.set('Authorization', `Bearer ${token}`);
@@ -21,7 +15,7 @@ export const requestInterceptor = (
 };
 
 export const successInterceptor = (response: AxiosResponse): AxiosResponse => {
-  return response;
+  return response.data;
 };
 
 export const errorInterceptor = async (error: AxiosError): Promise<void> => {

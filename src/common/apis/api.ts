@@ -1,15 +1,11 @@
-import axios, { AxiosRequestConfig, AxiosInstance } from 'axios'
-import {
-  errorInterceptor,
-  requestInterceptor,
-  successInterceptor,
-} from './interceptors';
+import axios, { AxiosRequestConfig, AxiosInstance } from 'axios';
+import { errorInterceptor, requestInterceptor, successInterceptor } from './interceptors';
 
 export interface ConsoleError {
   status: number;
-  data: unknown; 
-} 
-  
+  data: unknown;
+}
+
 const axiosRequestConfig: AxiosRequestConfig = {
   baseURL: import.meta.env.VITE_API_BASE_URL,
   headers: {
@@ -18,7 +14,7 @@ const axiosRequestConfig: AxiosRequestConfig = {
 };
 
 const api: AxiosInstance = axios.create(axiosRequestConfig);
-  
+
 api.interceptors.request.use(requestInterceptor);
 api.interceptors.response.use(successInterceptor, errorInterceptor);
 
