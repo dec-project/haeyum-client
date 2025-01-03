@@ -1,24 +1,42 @@
+import globals from 'globals';
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y';
-import prettier from 'eslint-plugin-prettier/recommended';
+import eslintPluginPrettier from 'eslint-plugin-prettier';
+
 export default tseslint.config(
   {
-    ignores: ['**/build/**', '**/dist/**', '**/.yarn/**', '**/public/**', '**/.pnp.cjs', '**/.pnp.loader.mjs'],
+    ignores: [
+      '**/build/**',
+      '**/dist/**',
+      '**/.yarn/**',
+      '**/public/**',
+      '**/.pnp.cjs',
+      '**/.pnp.loader.mjs',
+      '.storybook/**',
+      '**/*.test.tsx',
+      '**/*.test.ts',
+      '**/*.stories.tsx',
+      '**/*.stories.ts',
+    ],
   },
-  eslint.configs.recommended,
-  prettier,
   {
+    files: ['**/*.ts', '**/*.tsx'],
     plugins: {
       '@typescript-eslint': tseslint.plugin,
       'react-refresh': reactRefreshPlugin,
       'jsx-a11y': eslintPluginJsxA11y,
+      prettier: eslintPluginPrettier,
     },
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
         projectService: true,
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.node,
       },
     },
     rules: {
@@ -56,9 +74,9 @@ export default tseslint.config(
       'jsx-a11y/no-autofocus': 'warn', // 자동 포커스 사용 제한
       'jsx-a11y/no-noninteractive-element-to-interactive-role': 'warn', // 비인터랙티브 요소에 인터랙티브 역할 제한
     },
-  },
+  },  
   {
-    files: ['src/**/*.{js,jsx,ts,tsx}'],
     extends: [tseslint.configs.disableTypeChecked],
   },
+  eslint.configs.recommended,
 );
