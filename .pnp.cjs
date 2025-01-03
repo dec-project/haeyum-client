@@ -66,6 +66,7 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:3.4.2"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:18.3.1"],\
+          ["react-intersection-observer", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:9.14.1"],\
           ["react-router-dom", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:7.1.1"],\
           ["rollup", "npm:4.29.1"],\
           ["storybook", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:8.4.7"],\
@@ -5116,6 +5117,7 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:3.4.2"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:18.3.1"],\
+          ["react-intersection-observer", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:9.14.1"],\
           ["react-router-dom", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:7.1.1"],\
           ["rollup", "npm:4.29.1"],\
           ["storybook", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:8.4.7"],\
@@ -6760,6 +6762,32 @@ const RAW_RUNTIME_STATE =
         ],\
         "packagePeers": [\
           "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["react-intersection-observer", [\
+      ["npm:9.14.1", {\
+        "packageLocation": "./.yarn/cache/react-intersection-observer-npm-9.14.1-e4dcf156d4-66587560e9.zip/node_modules/react-intersection-observer/",\
+        "packageDependencies": [\
+          ["react-intersection-observer", "npm:9.14.1"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:9.14.1", {\
+        "packageLocation": "./.yarn/__virtual__/react-intersection-observer-virtual-fa781b9037/0/cache/react-intersection-observer-npm-9.14.1-e4dcf156d4-66587560e9.zip/node_modules/react-intersection-observer/",\
+        "packageDependencies": [\
+          ["react-intersection-observer", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:9.14.1"],\
+          ["@types/react", "npm:18.3.18"],\
+          ["@types/react-dom", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:18.3.5"],\
+          ["react", "npm:18.3.1"],\
+          ["react-dom", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react-dom",\
+          "@types/react",\
+          "react-dom",\
           "react"\
         ],\
         "linkType": "HARD"\
