@@ -1,3 +1,4 @@
+import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Home from './pages/home/index';
 import Search from './pages/search/index';
