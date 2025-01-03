@@ -7,15 +7,16 @@ import CompleteButton from './CompleteButton';
 
 interface AppBarProps {
   leftContent?: React.ReactNode;
-  centerContent?: React.ReactNode;
+  text?: string;
   rightContent?: React.ReactNode;
 }
 
-const AppBar = ({ leftContent, centerContent, rightContent }: AppBarProps) => {
+const AppBar = ({ leftContent, text, rightContent }: AppBarProps) => {
   return (
     <Container>
       <Left>
-        {leftContent} {centerContent}
+        {leftContent}
+        <span>{text}</span>
       </Left>
       <Right>
         <Icon>{rightContent}</Icon>
