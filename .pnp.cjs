@@ -51,6 +51,8 @@ const RAW_RUNTIME_STATE =
           ["@vitejs/plugin-react", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:4.3.4"],\
           ["@vitejs/plugin-react-swc", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:3.7.2"],\
           ["date-fns", "npm:4.1.0"],\
+          ["embla-carousel", "npm:8.5.1"],\
+          ["embla-carousel-react", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:8.5.1"],\
           ["eslint", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:9.17.0"],\
           ["eslint-config-prettier", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:9.1.0"],\
           ["eslint-plugin-jsx-a11y", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:6.10.2"],\
@@ -4002,6 +4004,61 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["embla-carousel", [\
+      ["npm:8.5.1", {\
+        "packageLocation": "./.yarn/cache/embla-carousel-npm-8.5.1-ec04b7f5f9-457f3ae6f1.zip/node_modules/embla-carousel/",\
+        "packageDependencies": [\
+          ["embla-carousel", "npm:8.5.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["embla-carousel-react", [\
+      ["npm:8.5.1", {\
+        "packageLocation": "./.yarn/cache/embla-carousel-react-npm-8.5.1-1173b0218f-4194e64897.zip/node_modules/embla-carousel-react/",\
+        "packageDependencies": [\
+          ["embla-carousel-react", "npm:8.5.1"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:8.5.1", {\
+        "packageLocation": "./.yarn/__virtual__/embla-carousel-react-virtual-3aa4ccb048/0/cache/embla-carousel-react-npm-8.5.1-1173b0218f-4194e64897.zip/node_modules/embla-carousel-react/",\
+        "packageDependencies": [\
+          ["embla-carousel-react", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:8.5.1"],\
+          ["@types/react", "npm:18.3.18"],\
+          ["embla-carousel", "npm:8.5.1"],\
+          ["embla-carousel-reactive-utils", "virtual:3aa4ccb048bfa33f459bac98ce1dcea0dc4bb8b7aa131b2ed3e82bd124d7d34ae98cf7e1889e6d5cbb4a55861519d52ff9b1958995f12bad80223e2f1647b4a8#npm:8.5.1"],\
+          ["react", "npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["embla-carousel-reactive-utils", [\
+      ["npm:8.5.1", {\
+        "packageLocation": "./.yarn/cache/embla-carousel-reactive-utils-npm-8.5.1-a2300a7cc2-f9f99f0501.zip/node_modules/embla-carousel-reactive-utils/",\
+        "packageDependencies": [\
+          ["embla-carousel-reactive-utils", "npm:8.5.1"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:3aa4ccb048bfa33f459bac98ce1dcea0dc4bb8b7aa131b2ed3e82bd124d7d34ae98cf7e1889e6d5cbb4a55861519d52ff9b1958995f12bad80223e2f1647b4a8#npm:8.5.1", {\
+        "packageLocation": "./.yarn/__virtual__/embla-carousel-reactive-utils-virtual-e5d4a55089/0/cache/embla-carousel-reactive-utils-npm-8.5.1-a2300a7cc2-f9f99f0501.zip/node_modules/embla-carousel-reactive-utils/",\
+        "packageDependencies": [\
+          ["embla-carousel-reactive-utils", "virtual:3aa4ccb048bfa33f459bac98ce1dcea0dc4bb8b7aa131b2ed3e82bd124d7d34ae98cf7e1889e6d5cbb4a55861519d52ff9b1958995f12bad80223e2f1647b4a8#npm:8.5.1"],\
+          ["@types/embla-carousel", null],\
+          ["embla-carousel", "npm:8.5.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/embla-carousel",\
+          "embla-carousel"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["emoji-regex", [\
       ["npm:8.0.0", {\
         "packageLocation": "./.yarn/cache/emoji-regex-npm-8.0.0-213764015c-b6053ad399.zip/node_modules/emoji-regex/",\
@@ -4995,6 +5052,8 @@ const RAW_RUNTIME_STATE =
           ["@vitejs/plugin-react", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:4.3.4"],\
           ["@vitejs/plugin-react-swc", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:3.7.2"],\
           ["date-fns", "npm:4.1.0"],\
+          ["embla-carousel", "npm:8.5.1"],\
+          ["embla-carousel-react", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:8.5.1"],\
           ["eslint", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:9.17.0"],\
           ["eslint-config-prettier", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:9.1.0"],\
           ["eslint-plugin-jsx-a11y", "virtual:60120ebed8f72ce76be11d54af96d287bc2bfc3e762487461c68faf5ca92ad5ff6c5f5ba553d11a4da8fb1cebd0fbe3e83b308a16270b81c529660e025b94fa6#npm:6.10.2"],\
