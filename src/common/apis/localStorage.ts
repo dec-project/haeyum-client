@@ -4,7 +4,6 @@ const getItem = <T = unknown>(key: string): T | null => {
   return JSON.parse(value);
 };
 
-
 const setItem = (key: string, value: unknown) => {
   window.localStorage.setItem(key, JSON.stringify(value));
 };
