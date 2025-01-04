@@ -4,42 +4,65 @@ import IconChatDot from '@/common/assets/icon/icon-chat-dot.svg';
 import Container from '@/common/components/layout/Container';
 import ArrowRight from '@/common/assets/icon/icon-arrow-right.svg';
 import Sunny from '@/common/assets/icon/sunny.png';
+// import { useParams } from 'react-router-dom';
+// import useWeather from './hooks/useWeather';
+// import useMusic from './hooks/useMusic';
+// import useMovie from './hooks/useMovie';
+import { weatherData, movieData, musicData } from './components/data';
+import { movieSummary, musicSummary } from './types';
 
 const DEFAULT_IMAGE =
   'https://images.unsplash.com/photo-1489641493513-ba4ee84ccea9?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 
 const Trip = () => {
+  // const { calendarId } = useParams();
+
+  // const { data: weatherData } = useWeather(calendarId);
+  // const { data: musicData } = useMusic(calendarId);
+  // const { data: movieData } = useMovie(calendarId);
+
+  // console.log(weatherData);
+  // console.log(musicData);
+  // console.log(movieData);
+
   return (
     <Container>
       <WeatherWrapper>
         <ContentWrapper>
           <WeatherHeader>오늘의 날씨</WeatherHeader>
-          <ContentSubTitle>맑음</ContentSubTitle>
+          <ContentSubTitle>{weatherData.weather}</ContentSubTitle>
         </ContentWrapper>
         <WeatherImage src={Sunny} alt="weather" />
       </WeatherWrapper>
 
       <SectionHeader>노래 TOP 5</SectionHeader>
       <ItemList>
-        <Item>
-          <Image src={DEFAULT_IMAGE} alt="music" />
-          <ContentWrapper>
-            <ContentTitle>1. 그대 없이는 못살아</ContentTitle>
-            <ContentSubTitle>패티킴</ContentSubTitle>
-          </ContentWrapper>
-          <Icon src={ArrowRight} alt="arrow-right" />
-        </Item>
+        {musicData.songSummaries.map((item: musicSummary) => (
+          <Item key={item.songId}>
+            <Image src={item.imgUrl || DEFAULT_IMAGE} alt={`music-${item.songId}`} />
+            <ContentWrapper>
+              <ContentTitle>
+                {item.ranking}. {item.title}
+              </ContentTitle>
+              <ContentSubTitle>{item.artist[0]}</ContentSubTitle>
+            </ContentWrapper>
+            <Icon src={ArrowRight} alt="arrow-right" />
+          </Item>
+        ))}
       </ItemList>
-
       <SectionHeader>영화 TOP 5</SectionHeader>
       <ItemList>
-        <Item>
-          <Image src={DEFAULT_IMAGE} alt="movie" />
-          <ContentWrapper>
-            <ContentTitle>1. 조커</ContentTitle>
-          </ContentWrapper>
-          <Icon src={ArrowRight} alt="arrow-right" />
-        </Item>
+        {movieData.itemList.map((item: movieSummary) => (
+          <Item key={item.movieId}>
+            <Image src={item.img || DEFAULT_IMAGE} alt={`movie-${item.movieId}`} />
+            <ContentWrapper>
+              <ContentTitle>
+                {item.ranking}. {item.title}
+              </ContentTitle>
+            </ContentWrapper>
+            <Icon src={ArrowRight} alt="arrow-right" />
+          </Item>
+        ))}
       </ItemList>
 
       <FixedBottom>
