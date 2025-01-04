@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { TripCard } from '../types';
 
@@ -10,12 +11,18 @@ interface TripCardsProps {
 }
 
 const TripCards = ({ items, count }: TripCardsProps) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = (calendarId: string) => {
+    navigate(`/trip/${calendarId}`);
+  };
+
   return (
     <>
       <ResultCount>검색 결과 {count}</ResultCount>
       <TripCardList>
         {items.map((item) => (
-          <li key={item.calendarId}>
+          <li key={item.calendarId} onClick={() => handleCardClick(item.calendarId)}>
             <ImageWrapper>
               <Image src={item.img || DEFAULT_IMAGE} alt={item.calendarName} />
             </ImageWrapper>

@@ -7,7 +7,7 @@ export interface SearchResult {
 }
 
 export interface TripCard {
-  calendarId: string | null;
+  calendarId: string;
   calendarName: string;
   img: string;
   viewCount: number;
