@@ -26,5 +26,6 @@
 
     "types": ["vite/client", "vitest/globals"]
   },
-  "include": ["src", "eslint.config.js", "vitest.setup.ts", "vitest.config.ts", "vite-env.d.ts", "config.ts", "vite.config.ts"]
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["eslint.config.js"]
 }
