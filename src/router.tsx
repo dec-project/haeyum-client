@@ -3,7 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Home from './pages/home/index';
 import Search from './pages/search/index';
 import Chats from './pages/chats/index';
-import Result from './pages/search/result';
+import Result from './pages/search/result/index';
 
 type routeElement = {
   path: string;
