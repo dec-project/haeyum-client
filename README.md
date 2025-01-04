@@ -1,3 +1,22 @@
+# HAEYUM
+
+## 1. 프로젝트 실행 방법
+
+1-1. Yarn PnP SDK 설치
+- VScode에서 TypeScript, ESLint, Prettier와 같은 도구가 정상적으로 동작하도록 Yarn PnP SDK 설정
+
+```bash
+yarn dlx @yarnpkg/sdks vscode
+```
+
+1-2. 프로젝트 설치 및 실행
+
+```bash
+yarn install
+yarn dev
+```
+
+
 ## git 컨벤션
 
 - feat: 새로운 기능을 추가할 경우
