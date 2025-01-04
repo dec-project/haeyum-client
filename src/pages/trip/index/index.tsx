@@ -1,14 +1,13 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import FixedBottom from '@/common/components/fixedBottom';
 import IconChatDot from '@/common/assets/icon/icon-chat-dot.svg';
-import Container from '@/common/components/layout/Container';
 import ArrowRight from '@/common/assets/icon/icon-arrow-right.svg';
-import Sunny from '@/common/assets/icon/sunny.png';
 // import { useParams } from 'react-router-dom';
 // import useWeather from './hooks/useWeather';
 // import useMusic from './hooks/useMusic';
 // import useMovie from './hooks/useMovie';
-import { weatherData, movieData, musicData } from './components/data';
+import { categoryTabs, newsData, weatherData, movieData, musicData } from './components/data';
 import { movieSummary, musicSummary } from './types';
 
 const DEFAULT_IMAGE =
@@ -21,49 +20,67 @@ const Trip = () => {
   // const { data: musicData } = useMusic(calendarId);
   // const { data: movieData } = useMovie(calendarId);
 
-  // console.log(weatherData);
-  // console.log(musicData);
-  // console.log(movieData);
+  const [activeTab, setActiveTab] = useState(0);
 
   return (
     <Container>
-      <WeatherWrapper>
+      <NewsSection>
+        <MenuBar>
+          {categoryTabs.map((tab, index) => (
+            <Tab key={index} active={activeTab === index} onClick={() => setActiveTab(index)}>
+              {tab}
+            </Tab>
+          ))}
+        </MenuBar>
+        <TextWrapper>
+          <Title>{newsData[activeTab].title}</Title>
+          <Description>{newsData[activeTab].description}</Description>
+          <MoreButton>자세히 보기</MoreButton>
+        </TextWrapper>
+      </NewsSection>
+
+      <WeatherSection>
         <ContentWrapper>
           <WeatherHeader>오늘의 날씨</WeatherHeader>
           <ContentSubTitle>{weatherData.weather}</ContentSubTitle>
         </ContentWrapper>
-        <WeatherImage src={Sunny} alt="weather" />
-      </WeatherWrapper>
+        <WeatherImage src={weatherData.img} alt="weather" />
+      </WeatherSection>
 
-      <SectionHeader>노래 TOP 5</SectionHeader>
-      <ItemList>
-        {musicData.songSummaries.map((item: musicSummary) => (
-          <Item key={item.songId}>
-            <Image src={item.imgUrl || DEFAULT_IMAGE} alt={`music-${item.songId}`} />
-            <ContentWrapper>
-              <ContentTitle>
-                {item.ranking}. {item.title}
-              </ContentTitle>
-              <ContentSubTitle>{item.artist[0]}</ContentSubTitle>
-            </ContentWrapper>
-            <Icon src={ArrowRight} alt="arrow-right" />
-          </Item>
-        ))}
-      </ItemList>
-      <SectionHeader>영화 TOP 5</SectionHeader>
-      <ItemList>
-        {movieData.itemList.map((item: movieSummary) => (
-          <Item key={item.movieId}>
-            <Image src={item.img || DEFAULT_IMAGE} alt={`movie-${item.movieId}`} />
-            <ContentWrapper>
-              <ContentTitle>
-                {item.ranking}. {item.title}
-              </ContentTitle>
-            </ContentWrapper>
-            <Icon src={ArrowRight} alt="arrow-right" />
-          </Item>
-        ))}
-      </ItemList>
+      <ChartSection>
+        <SectionHeader>노래 TOP 5</SectionHeader>
+        <ItemList>
+          {musicData.songSummaries.map((item: musicSummary) => (
+            <Item key={item.songId}>
+              <Image src={item.imgUrl || DEFAULT_IMAGE} alt={`music-${item.songId}`} />
+              <ContentWrapper>
+                <ContentTitle>
+                  {item.ranking}. {item.title}
+                </ContentTitle>
+                <ContentSubTitle>{item.artist[0]}</ContentSubTitle>
+              </ContentWrapper>
+              <Icon src={ArrowRight} alt="arrow-right" />
+            </Item>
+          ))}
+        </ItemList>
+      </ChartSection>
+
+      <ChartSection>
+        <SectionHeader>영화 TOP 5</SectionHeader>
+        <ItemList>
+          {movieData.itemList.map((item: movieSummary) => (
+            <Item key={item.movieId}>
+              <Image src={item.img || DEFAULT_IMAGE} alt={`movie-${item.movieId}`} />
+              <ContentWrapper>
+                <ContentTitle>
+                  {item.ranking}. {item.title}
+                </ContentTitle>
+              </ContentWrapper>
+              <Icon src={ArrowRight} alt="arrow-right" />
+            </Item>
+          ))}
+        </ItemList>
+      </ChartSection>
 
       <FixedBottom>
         <ButtonWrapper>
@@ -77,11 +94,58 @@ const Trip = () => {
   );
 };
 
-const WeatherWrapper = styled.div`
+const Container = styled.div`
+  margin-top: 72px;
+  padding-bottom: 92px;
+`;
+
+const NewsSection = styled.section``;
+
+const MenuBar = styled.ul`
+  display: flex;
+  margin: 0 16px;
+`;
+
+const Tab = styled.li<{ active?: boolean }>`
+  flex: 1;
+  padding: 16px 0 13px 0;
+  max-width: calc(100% / 4);
+  border-bottom: 3px solid ${({ active, theme }) => (active ? theme.themeColors.secondary : theme.colors.gray)};
+  ${({ theme }) => theme.typography.label.bold};
+  text-align: center;
+  color: ${({ active, theme }) => (active ? theme.themeColors.textPrimary : theme.themeColors.textSecondary)};
+`;
+
+const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+  border-top: 1px solid ${({ theme }) => theme.themeColors.border};
+`;
+
+const Title = styled.h1`
+  padding: 20px 0 12px;
+  ${({ theme }) => theme.typography.title1.bold};
+  text-align: center;
+`;
+
+const Description = styled.p`
+  padding: 4px 0 12px;
+`;
+
+const MoreButton = styled.button`
+  margin: 12px 0;
+  padding: 10px 0;
+  background-color: ${({ theme }) => theme.colors.orange200};
+  border-radius: 4px;
+  ${({ theme }) => theme.typography.label.bold};
+`;
+
+const WeatherSection = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 16px 0;
+  padding: 16px;
 `;
 
 const WeatherHeader = styled.h3`
@@ -91,6 +155,10 @@ const WeatherHeader = styled.h3`
 const WeatherImage = styled.img`
   width: 8.125rem;
   border-radius: 4px;
+`;
+
+const ChartSection = styled.section`
+  padding: 0 16px;
 `;
 
 const SectionHeader = styled.h2`
@@ -108,10 +176,11 @@ const Item = styled.li`
 `;
 
 const Image = styled.img`
+  margin-right: 16px;
   width: 48px;
   height: 48px;
+  object-fit: cover;
   border-radius: 4px;
-  margin-right: 16px;
 `;
 
 const ContentWrapper = styled.div`
@@ -150,6 +219,9 @@ const Button = styled.button`
   }
 `;
 
-const ChatIcon = styled.img``;
+const ChatIcon = styled.img`
+  width: 24px;
+  height: 24px;
+`;
 
 export default Trip;
