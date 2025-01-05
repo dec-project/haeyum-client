@@ -1,9 +1,8 @@
-import { useCalendarStore } from '@/common/stores/useCalendarStore';
 import { format } from 'date-fns';
 import styled from 'styled-components';
+import { DatePickerProps } from '.';
 
-export default function DateDisplay() {
-  const { startDate, endDate } = useCalendarStore();
+export default function DateDisplay({ startDate, endDate }: Pick<DatePickerProps, 'startDate' | 'endDate'>) {
   return (
     <Wrapper>
       <Container>
