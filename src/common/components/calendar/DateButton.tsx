@@ -27,8 +27,8 @@ const Wrapper = styled.div`
   flex-direction: row;
   align-items: center;
   width: 100%;
-  padding-top: 1rem;
-  gap: 0.1rem;
+  padding: 1rem 0;
+  gap: 0.3rem;
 `;
 const Container = styled.div`
   display: flex;
@@ -47,7 +47,7 @@ const Container = styled.div`
 `;
 
 const Text = styled.span`
-  ${({ theme }) => theme.typography.body1.regular}
+  ${({ theme }) => theme.typography.nav.regular}
   color: ${({ theme }) => theme.colors.orange500};
   margin: auto;
 `;

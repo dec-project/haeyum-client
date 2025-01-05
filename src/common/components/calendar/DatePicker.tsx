@@ -2,7 +2,6 @@
 import { isSameDay, isSameMonth } from 'date-fns';
 import styled from 'styled-components';
 import { PickerType } from '.';
-import { Title } from './CommonStyle';
 
 interface DatePickerProps {
   title: string;
@@ -37,7 +36,7 @@ export default function DatePicker({
   setPickerType,
 }: DatePickerProps) {
   return (
-    <CalendarWrapper>
+    <Wrapper>
       <Navigation>
         <button
           onClick={() => {
@@ -49,7 +48,7 @@ export default function DatePicker({
       </Navigation>
       <WeekdaysGrid>
         {weekDays.map((day, index) => (
-          <div key={index}>{day}</div>
+          <Text key={index}>{day}</Text>
         ))}
       </WeekdaysGrid>
       <DatesGrid>
@@ -66,29 +65,32 @@ export default function DatePicker({
               isInRange={isInRange(date)}
               disabled={disabled}
             >
-              {date.getDate()}
+              <span>{date.getDate()}</span>
             </DateButton>
           );
         })}
       </DatesGrid>
-    </CalendarWrapper>
+    </Wrapper>
   );
 }
 
 const Navigation = styled.div`
   display: flex;
-  gap: 4rem;
-
+  height: 48px;
+  padding-bottom: 2px;
   button {
     background: none;
     border: none;
     cursor: pointer;
+    width: 100%;
+    padding: 0;
   }
 `;
 
-const CalendarWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 const WeekdaysGrid = styled.div`
@@ -105,12 +107,31 @@ const DatesGrid = styled.div`
 const DateButton = styled.button.withConfig({
   shouldForwardProp: (prop) => !['isCurrentMonth', 'isSelectedDay', 'isInRange', 'disabled'].includes(prop),
 })<DateButtonProps>`
-  padding: 0.5rem;
+  width: 48px;
+  height: 48px;
+  margin: 0;
+  padding: 0;
+  ${({ theme }) => theme.typography.body2.regular}
   border-radius: ${({ isSelectedDay }) => (isSelectedDay ? '9999px' : '0')};
   border: none;
   background-color: ${({ isSelectedDay, isInRange, theme }) =>
     isSelectedDay ? theme.themeColors.secondary : isInRange ? theme.colors.orange200 : 'transparent'};
   color: ${({ isCurrentMonth, disabled, theme }) =>
-    disabled ? '#d1d5db' : isCurrentMonth ? theme.themeColors.textPrimary : '#d1d5db'};
+    disabled ? theme.colors.gray : isCurrentMonth ? theme.themeColors.textPrimary : theme.colors.gray};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+
+  span {
+    background-color: inherit;
+    color: inherit;
+    ${({ theme }) => theme.typography.body2.regular};
+  }
+`;
+
+const Title = styled.span`
+  ${({ theme }) => theme.typography.body1.bold};
+  text-align: center;
+`;
+
+const Text = styled.span`
+  ${({ theme }) => theme.typography.body2.regular};
 `;

@@ -60,5 +60,6 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 200px;
+  height: 100%;
+  padding: 16px;
 `;
