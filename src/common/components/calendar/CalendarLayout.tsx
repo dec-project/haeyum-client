@@ -2,23 +2,54 @@ import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import DateCol from './DateCol';
 import Month from './Month';
-import { PickerType } from '.';
+import { DatePickerProps, PickerType } from '.';
 import Year from './Year';
 
-export default function CalendarLayout() {
+export default function CalendarLayout({
+  startDate,
+  setStartDate,
+  endDate,
+  setEndDate,
+}: Omit<DatePickerProps, 'setPickerType'>) {
   const ref = useRef(null);
   const [pickerType, setPickerType] = useState<PickerType>('date');
 
   const renderPickerByType = (type: PickerType) => {
     switch (type) {
       case 'date':
-        return <DateCol setPickerType={setPickerType} />;
+        return (
+          <DateCol
+            setPickerType={setPickerType}
+            startDate={startDate}
+            endDate={endDate}
+            setStartDate={setStartDate}
+            setEndDate={setEndDate}
+          />
+        );
       case 'month':
-        return <Month setPickerType={setPickerType} />;
+        return (
+          <Month
+            setPickerType={setPickerType}
+            startDate={startDate}
+            endDate={endDate}
+            setStartDate={setStartDate}
+            setEndDate={setEndDate}
+          />
+        );
       case 'year':
-        return <Year setPickerType={setPickerType} />;
+        return (
+          <Year setPickerType={setPickerType} startDate={startDate} endDate={endDate} setStartDate={setStartDate} />
+        );
       default:
-        return <DateCol setPickerType={setPickerType} />;
+        return (
+          <DateCol
+            setPickerType={setPickerType}
+            startDate={startDate}
+            endDate={endDate}
+            setStartDate={setStartDate}
+            setEndDate={setEndDate}
+          />
+        );
     }
   };
   return <Container ref={ref}>{renderPickerByType(pickerType)}</Container>;

@@ -1,14 +1,12 @@
 import { format, addMonths, subMonths, isWithinInterval, differenceInDays } from 'date-fns';
 import { useEffect, useState } from 'react';
-import { useCalendarStore } from '@/common/stores/useCalendarStore';
 import { DatePickerProps } from '.';
 import { Container } from './CommonStyle';
 import useCalender from '../../hooks/useCalender/useCalender';
 import DatePicker from './DatePicker';
 import DateButton from './DateButton';
 
-export default function DateCol({ setPickerType }: DatePickerProps) {
-  const { startDate, endDate, setStartDate, setEndDate } = useCalendarStore();
+export default function DateCol({ setPickerType, startDate, setStartDate, endDate, setEndDate }: DatePickerProps) {
   const [startMonth, setStartMonth] = useState(startDate || endDate || new Date());
   const [endMonth, setEndMonth] = useState(addMonths(startMonth, 1));
   const { startMonthDates, endMonthDates, weekDays } = useCalender(startMonth, endMonth);

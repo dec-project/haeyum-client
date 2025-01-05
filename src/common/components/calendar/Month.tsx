@@ -5,20 +5,19 @@ import CaretDownIcon from '@/common/assets/icon/icon-arrow-down.svg';
 import styled from 'styled-components';
 import { DatePickerProps } from '.';
 import { Container, Header, Img, Title } from './CommonStyle';
-import { useCalendarStore } from '@/common/stores/useCalendarStore';
 import { useEffect } from 'react';
 import useCalender from '../../hooks/useCalender/useCalender';
 
-export default function Month({ setPickerType }: DatePickerProps) {
-  const { startDate, endDate, setStartDate, setEndDate } = useCalendarStore();
-  const { allMonth } = useCalender(startDate || endDate || new Date(), startDate || endDate || new Date());
+export default function Month({ setPickerType, startDate, endDate, setStartDate, setEndDate }: DatePickerProps) {
+  const curDate = startDate || endDate || new Date();
+  const { allMonth } = useCalender(curDate, curDate);
   const onNextYear = () => {
-    if (new Date().getFullYear() === (startDate || endDate || new Date()).getFullYear()) return;
+    if (new Date().getFullYear() === curDate.getFullYear()) return;
     setStartDate(addYears(startDate || new Date(), 1));
   };
 
   const onPrevYear = () => {
-    if (1970 === (startDate || endDate || new Date()).getFullYear()) return;
+    if (1970 === curDate.getFullYear()) return;
     setStartDate(subYears(startDate || new Date(), 1));
   };
 
@@ -40,7 +39,7 @@ export default function Month({ setPickerType }: DatePickerProps) {
               setPickerType('year');
             }}
           >
-            <Title>{format(startDate || endDate || new Date(), 'MMM yyyy')}</Title>
+            <Title>{format(curDate, 'MMM yyyy')}</Title>
           </button>
           <button
             type="button"
@@ -65,7 +64,7 @@ export default function Month({ setPickerType }: DatePickerProps) {
           <MonthButton
             type="button"
             key={index}
-            isSelected={isSameMonth(startDate || endDate || new Date(), month)}
+            isSelected={isSameMonth(curDate, month)}
             onClick={() => onChangeMonth(month)}
           >
             {format(month, 'MMM')}
