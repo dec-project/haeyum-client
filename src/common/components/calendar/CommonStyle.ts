@@ -3,8 +3,10 @@ import styled from 'styled-components';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-  width: 226px;
+  width: 336px;
+  height: 100%;
+  max-width: var(--max-width);
+  min-width: var(--min-width);
 `;
 
 const Header = styled.div`

@@ -13,7 +13,7 @@ export default function DateDisplay({ startDate, endDate }: Pick<DatePickerProps
             <Text>{endDate ? format(endDate, 'yyyy. MM. dd') : '선택되지 않음'}</Text>
           </>
         ) : (
-          <Text>기간을 선택해주세요</Text>
+          <Text title="true">기간을 선택해주세요</Text>
         )}
       </Container>
     </Wrapper>
@@ -25,20 +25,21 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 1rem;
+  padding: 0.75rem;
 `;
 
 const Container = styled.div`
   display: flex;
   align-items: center;
-  width: 225px;
+  width: 336px;
   border: 1px solid ${({ theme }) => theme.colors.orange300};
-  border-radius: 0.25rem;
-  padding: 0.875rem;
+  border-radius: 0.5rem;
+  height: 56px;
 `;
 
 const Text = styled.span`
   ${({ theme }) => theme.typography.body1.regular}
   color: ${({ theme }) => theme.colors.orange500};
-  margin: auto;
+  padding: 0.875rem;
+  margin: ${({ title }) => (title ? '0' : 'auto')};
 `;
