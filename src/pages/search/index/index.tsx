@@ -1,22 +1,17 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import Search from './components/Search';
+import Result from './components/Result';
 
-const Search = () => {
-  const navigate = useNavigate();
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+const SearchPage = () => {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
 
-  const handleSearch = () => {
-    navigate(`/result?startDate=${startDate}&endDate=${endDate}`);
-  };
+  const startDate = queryParams.get('startDate') || '';
+  const endDate = queryParams.get('endDate') || '';
 
-  return (
-    <div>
-      <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} placeholder="Start Date" />
-      <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} placeholder="End Date" />
-      <button onClick={handleSearch}>GO</button>
-    </div>
-  );
+  if (startDate && endDate) {
+    return <Result startDate={startDate} endDate={endDate} />;
+  }
+  return <Search />;
 };
-
-export default Search;
+export default SearchPage;

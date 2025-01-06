@@ -1,13 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import LoadingSpinner from './components/LoadingSpinner';
-import TripCards from './components/TripCards';
-import useResult from './hooks/useResult';
+import LoadingSpinner from './LoadingSpinner';
+import useResult from '../hooks/useResult';
+import TripCards from './TripCards';
+import { SearchParams } from '../types';
 
-const Result = () => {
+const Result = ({ startDate, endDate }: SearchParams) => {
   const navigate = useNavigate();
 
-  const { ref, data, hasNextPage, isFetchingNextPage, isError, error, isLoading } = useResult();
+  const { ref, data, hasNextPage, isFetchingNextPage, isError, error, isLoading } = useResult(startDate, endDate);
 
   if (isLoading) {
     // TODO: 추후 로딩 페이지 추가
