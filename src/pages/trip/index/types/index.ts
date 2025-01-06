@@ -1,7 +1,7 @@
 export interface musicSummary {
   songId: number;
   title: string;
-  artist: string[];
+  artists: string;
   ranking: number;
   imgUrl: string;
 }

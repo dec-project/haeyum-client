@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import LoadingSpinner from './LoadingSpinner';
-import useResult from '../hooks/useResult';
-import TripCards from './TripCards';
 import { SearchParams } from '../types';
+import TripCards from '../components/TripCards';
+import useResult from '../hooks/useResult';
+import LoadingSpinner from '@/common/components/spinner';
 
 const Result = ({ startDate, endDate }: SearchParams) => {
   const navigate = useNavigate();
