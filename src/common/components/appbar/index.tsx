@@ -15,7 +15,7 @@ const AppBar = ({ leftContent, text, rightContent }: AppBarProps) => {
   return (
     <Container>
       <Left>
-        {leftContent}
+        <div>{leftContent}</div>
         <span>{text}</span>
       </Left>
       <Right>
@@ -34,7 +34,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   border: none;
-  padding: 16px;
+  padding: 16px 8px;
   width: 100%;
   height: 72px;
   max-width: var(--max-width);
