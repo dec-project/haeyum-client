@@ -11,12 +11,12 @@ type SlideType = {
   ranking: number;
 };
 
-type PropType = {
+type CarouselLayoutProps = {
   slides: SlideType[];
   options?: EmblaOptionsType;
 };
 
-const CarouselLayout = (props: PropType) => {
+const CarouselLayout = (props: CarouselLayoutProps) => {
   const { slides, options } = props;
   const [emblaRef] = useEmblaCarousel(options);
 
@@ -45,7 +45,6 @@ const CarouselLayout = (props: PropType) => {
 export default CarouselLayout;
 
 const Container = styled.div`
-  max-width: 640px;
   margin: auto;
 `;
 
