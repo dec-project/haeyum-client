@@ -14,9 +14,9 @@ type routeElement = {
 
 const routes: routeElement[] = [
   { path: '/', element: <HomePage /> },
-  { path: '/chats', element: <ChatsPage /> },
   { path: '/search', element: <SearchPage /> },
-  { path: '/trip/:id', element: <TripPage /> },
+  { path: '/chats', element: <ChatsPage /> },
+  { path: '/trip/:calendarId', element: <TripPage /> },
 ];
 
 export const router = createBrowserRouter(routes);
