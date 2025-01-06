@@ -1,14 +1,8 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import api from '@/common/apis/api';
+import { SearchParams } from '../types';
 
-type Params = {
-  startDate: string;
-  endDate: string;
-  page: number;
-  size: number;
-};
-
-const useSearch = ({ startDate, endDate, page = 0, size = 10 }: Params) => {
+const useSearch = ({ startDate, endDate, page = 0, size = 10 }: SearchParams) => {
   const getSearchItems = async ({ pageParam = page }: { pageParam: number }) => {
     try {
       const response = await api.post('/calendar', {

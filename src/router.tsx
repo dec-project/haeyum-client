@@ -1,9 +1,8 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import Home from './pages/home/index';
-import Search from './pages/search/index';
-import Chats from './pages/chats/index';
-import Result from './pages/search/result/index';
+import HomePage from './pages/home/index';
+import SearchPage from './pages/search/index';
+import ChatsPage from './pages/chats/index';
 
 type routeElement = {
   path: string;
@@ -13,10 +12,9 @@ type routeElement = {
 };
 
 const routes: routeElement[] = [
-  { path: '/', element: <Home /> },
-  { path: '/search', element: <Search /> },
-  { path: '/chats', element: <Chats /> },
-  { path: '/result', element: <Result /> },
+  { path: '/', element: <HomePage /> },
+  { path: '/chats', element: <ChatsPage /> },
+  { path: '/search', element: <SearchPage /> },
 ];
 
 export const router = createBrowserRouter(routes);

@@ -13,3 +13,10 @@ export interface TripCard {
   viewCount: number;
   favoriteCount: number;
 }
+
+export interface SearchParams {
+  startDate: string;
+  endDate: string;
+  page?: number;
+  size?: number;
+}

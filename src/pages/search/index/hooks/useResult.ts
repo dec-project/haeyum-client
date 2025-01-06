@@ -1,15 +1,8 @@
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import useSearch from './useSearch';
 
-const useResult = () => {
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-
-  const startDate = queryParams.get('startDate') || '';
-  const endDate = queryParams.get('endDate') || '';
-
+const useResult = (startDate: string, endDate: string) => {
   const { ref, inView } = useInView({ threshold: 1.0 });
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isError, error, isLoading } = useSearch({
