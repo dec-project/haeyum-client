@@ -39,15 +39,15 @@ const Container = styled.div`
   height: 72px;
   max-width: var(--max-width);
   min-width: var(--min-width);
-  span {
-    ${({ theme }) => theme.typography.title3.bold}
-  }
 `;
 
 const Left = styled.div`
   display: flex;
-  align-items: center;
+  align-items: top;
   gap: 1rem;
+  span {
+    ${({ theme }) => theme.typography.title3.bold}
+  }
 `;
 
 const Right = styled.div`
@@ -56,7 +56,6 @@ const Right = styled.div`
 `;
 
 const Icon = styled.div`
-  size: 24px;
   cursor: pointer;
 `;
 

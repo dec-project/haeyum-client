@@ -7,7 +7,7 @@ const Heart = ({ disabled }: { disabled: boolean }) => {
 
   return (
     <Button onClick={onClick}>
-      {disabled ? <img src={HeartEmpty} alt="heart-empty" /> : <img src={HeartFull} alt="heart-empty" />}
+      {disabled ? <img src={HeartEmpty} alt="heart-empty" /> : <img src={HeartFull} alt="heart-full" />}
     </Button>
   );
 };
