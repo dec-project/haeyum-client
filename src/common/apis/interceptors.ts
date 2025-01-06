@@ -34,8 +34,6 @@ export class ApiError extends CustomError {
 }
 
 export class BusinessLogicError extends CustomError {
-  public statusCode?: number;
-
   constructor(message: string, details?: any) {
     super(message, details);
     this.name = 'BusinessLogicError';
