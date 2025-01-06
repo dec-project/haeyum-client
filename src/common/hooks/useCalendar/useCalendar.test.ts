@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
-import useCalender from './useCalender';
+import useCalender from './useCalendar';
 import { format, addDays, startOfWeek, startOfMonth, endOfMonth, eachDayOfInterval, endOfWeek } from 'date-fns';
 
 describe('useCalender Hook', () => {

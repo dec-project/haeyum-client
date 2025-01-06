@@ -6,11 +6,11 @@ import styled from 'styled-components';
 import { DatePickerProps } from '.';
 import { Container, Header, Img, Title } from './CommonStyle';
 import { useEffect } from 'react';
-import useCalender from '../../hooks/useCalender/useCalender';
+import useCalendar from '../../hooks/useCalendar/useCalendar';
 
 export default function Month({ setPickerType, startDate, endDate, setStartDate, setEndDate }: DatePickerProps) {
   const curDate = startDate || endDate || new Date();
-  const { allMonth } = useCalender(curDate, curDate);
+  const { allMonth } = useCalendar(curDate, curDate);
   const onNextYear = () => {
     if (new Date().getFullYear() === curDate.getFullYear()) return;
     setStartDate(addYears(startDate || new Date(), 1));
