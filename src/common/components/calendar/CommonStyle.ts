@@ -5,8 +5,6 @@ const Container = styled.div`
   flex-direction: column;
   width: 336px;
   height: 100%;
-  max-width: var(--max-width);
-  min-width: var(--min-width);
 `;
 
 const Header = styled.div`
