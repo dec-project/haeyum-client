@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import FixedBottom from '@/common/components/fixedBottom';
 import IconChatDot from '@/common/assets/icon/icon-chat-dot.svg';
+import Container from '@/common/components/layout/Container';
 
 const Trip = () => {
   return (
-    <div>
+    <Container>
       <h1>Trips</h1>
       <FixedBottom>
         <ButtonWrapper>
@@ -14,7 +15,7 @@ const Trip = () => {
           </Button>
         </ButtonWrapper>
       </FixedBottom>
-    </div>
+    </Container>
   );
 };
 
