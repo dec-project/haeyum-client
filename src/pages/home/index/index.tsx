@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Carousel from './components/carousel';
 import Layout from './components/layout';
 import { useNavigate } from 'react-router-dom';
+import SearchList from './components/searchList';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const Home = () => {
         <Text>
           <span>실시간 인기 검색 Top 5</span>
         </Text>
+        <SearchList />
       </Container>
     </Layout>
   );
