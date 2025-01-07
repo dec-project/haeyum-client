@@ -3,6 +3,7 @@ import CaretRightIcon from '@/common/assets/icon/icon-arrow-right.svg';
 import { useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../../../../../common/components/spinner';
 import useSearchRanking from '../../hooks/useSearchRanking';
+import DefaultImg from '@/common/assets/logo/logo.svg';
 
 interface SearchListProps {
   calendarId: number;
@@ -29,7 +30,7 @@ const SearchList = () => {
       {searchData.searches.map((data: SearchListProps) => (
         <Item key={data.calendarId}>
           <Content>
-            <Img src={data.img || 'https://picsum.photos/seed/picsum/200/300'} alt={data.calendarName} />
+            <Img src={data.img || DefaultImg} alt={data.calendarName} />
             <Info>
               <Title>{data.calendarName}</Title>
               <Detail>
