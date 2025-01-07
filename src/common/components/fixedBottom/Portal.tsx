@@ -1,28 +1,14 @@
-import React, { useState, useCallback } from 'react';
-import { createPortal } from 'react-dom';
+import { ReactNode, ReactPortal } from 'react';
+import ReactDOM from 'react-dom';
 
-interface GlobalPortalProps {
-  children: React.ReactNode;
+export interface PortalProps {
+  container?: HTMLElement;
+  children?: ReactNode;
 }
 
-const Portal = ({ children }: GlobalPortalProps) => {
-  const [container, setContainer] = useState<HTMLDivElement | null>(null);
-
-  const handleRef = useCallback(
-    (el: HTMLDivElement | null) => {
-      if (!container && el) {
-        setContainer(el);
-      }
-    },
-    [container],
-  );
-
-  return (
-    <>
-      {container && createPortal(children, container)}
-      <div id="portal-container" ref={handleRef} />
-    </>
-  );
+const Portal = (props: PortalProps): ReactPortal => {
+  const { container = document.body, children } = props;
+  return ReactDOM.createPortal(children, container);
 };
 
 export default Portal;
