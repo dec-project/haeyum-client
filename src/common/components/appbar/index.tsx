@@ -4,11 +4,12 @@ import ArrowLeft from './ArrowLeft';
 import Heart from './Heart';
 import GoHome from './GoHome';
 import CompleteButton from './CompleteButton';
+import { ReactNode } from 'react';
 
 interface AppBarProps {
-  leftContent?: React.ReactNode;
+  leftContent?: ReactNode;
   text?: string;
-  rightContent?: React.ReactNode;
+  rightContent?: ReactNode;
 }
 
 const AppBar = ({ leftContent, text, rightContent }: AppBarProps) => {
