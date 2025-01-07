@@ -1,61 +1,43 @@
 import styled from 'styled-components';
 import CaretRightIcon from '@/common/assets/icon/icon-arrow-right.svg';
 import { useNavigate } from 'react-router-dom';
+import LoadingSpinner from '../../../../../common/components/spinner';
+import useSearchRanking from '../../hooks/useSearchRanking';
+
+interface SearchListProps {
+  calendarId: number;
+  calendarName: string;
+  img: string;
+  viewCount: number;
+  favoriteCount: number;
+}
 
 const SearchList = () => {
-  const searchData = [
-    {
-      calenderId: 1,
-      calenderName: '1999년 6월 13일',
-      img: 'https://picsum.photos/seed/picsum/200/300',
-      viewCount: 311,
-      favoriteCount: 11,
-    },
-    {
-      calenderId: 2,
-      calenderName: '1998년 1월 4일',
-      img: 'https://picsum.photos/seed/picsum/200/300',
-      viewCount: 311,
-      favoriteCount: 11,
-    },
-    {
-      calenderId: 3,
-      calenderName: '2001년 5월 30일',
-      img: 'https://picsum.photos/seed/picsum/200/300',
-      viewCount: 311,
-      favoriteCount: 11,
-    },
-    {
-      calenderId: 4,
-      calenderName: '1999년 3월 31일',
-      img: 'https://picsum.photos/seed/picsum/200/300',
-      viewCount: 311,
-      favoriteCount: 11,
-    },
-    {
-      calenderId: 5,
-      calenderName: '1999년 11월 20일',
-      img: 'https://picsum.photos/seed/picsum/200/300',
-      viewCount: 311,
-      favoriteCount: 11,
-    },
-  ];
+  const { data: searchData, isLoading, isError } = useSearchRanking();
   const navigate = useNavigate();
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (isError || !searchData.searches) {
+    return <div>영화 데이터를 가져오는 중 문제가 발생했습니다.</div>;
+  }
 
   return (
     <List>
-      {searchData.map((data) => (
-        <Item key={data.calenderId}>
+      {searchData.searches.map((data: SearchListProps) => (
+        <Item key={data.calendarId}>
           <Content>
-            <Img src={data.img} alt={data.calenderName} />
+            <Img src={data.img || 'https://picsum.photos/seed/picsum/200/300'} alt={data.calendarName} />
             <Info>
-              <Title>{data.calenderName}</Title>
+              <Title>{data.calendarName}</Title>
               <Detail>
                 조회 {data.viewCount} • ❤ {data.favoriteCount}
               </Detail>
             </Info>
           </Content>
-          <Icon src={CaretRightIcon} alt="" onClick={() => navigate(`/trip/${data.calenderId}`)} />
+          <Icon src={CaretRightIcon} alt="" onClick={() => navigate(`/trip/${data.calendarId}`)} />
         </Item>
       ))}
     </List>
