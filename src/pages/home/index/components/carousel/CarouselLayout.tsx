@@ -1,7 +1,7 @@
 import { EmblaOptionsType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
 import styled from 'styled-components';
-import ChatIcon from '../../assets/icon/icon-chat.svg';
+import ChatIcon from '../../../../../common/assets/icon/icon-chat.svg';
 
 type SlideType = {
   chatroomId: number;
