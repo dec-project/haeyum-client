@@ -2,6 +2,7 @@ import { EmblaOptionsType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
 import styled from 'styled-components';
 import ChatIcon from '../../../../../common/assets/icon/icon-chat.svg';
+import DefaultImg from '@/common/assets/logo/logo.svg';
 
 type SlideType = {
   chatroomId: number;
@@ -26,7 +27,7 @@ const CarouselLayout = (props: CarouselLayoutProps) => {
         <CardContainer>
           {slides.map((slide, index) => (
             <Slide key={index}>
-              <SlideImage src={slide.img} alt={slide.chatroomName} />
+              <SlideImage src={slide.img || DefaultImg} alt={slide.chatroomName} />
               <SlideInfo>
                 <Title>{slide.chatroomName}</Title>
                 <Label>
@@ -68,7 +69,6 @@ const SlideImage = styled.img`
   width: 240px;
   height: 320px;
   border-radius: 0.4rem;
-  object-fit: cover;
 `;
 
 const SlideInfo = styled.div`
