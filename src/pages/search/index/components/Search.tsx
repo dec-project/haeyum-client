@@ -7,8 +7,9 @@ const Search = () => {
   const [endDate, setEndDate] = useState('');
 
   const handleSearch = () => {
-    navigate(`/search?startDate=${startDate}&endDate=${endDate}`);
+    navigate(`/search?startDate=${startDate}&endDate=${endDate}`, { replace: true });
   };
+
   return (
     <div>
       <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} placeholder="Start Date" />
