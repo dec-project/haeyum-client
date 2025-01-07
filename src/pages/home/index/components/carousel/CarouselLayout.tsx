@@ -46,7 +46,6 @@ export default CarouselLayout;
 
 const Container = styled.div`
   margin: auto;
-  max-width: var(--max-width);
 `;
 
 const Viewport = styled.div`
@@ -59,7 +58,7 @@ const CardContainer = styled.div`
 `;
 
 const Slide = styled.div`
-  flex: 0 0 40%;
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   align-items: baseline;
