@@ -59,7 +59,7 @@ const CardContainer = styled.div`
 `;
 
 const Slide = styled.div`
-  flex: 0 0 20%;
+  flex: 0 0 40%;
   display: flex;
   flex-direction: column;
   align-items: baseline;

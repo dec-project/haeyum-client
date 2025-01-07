@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import AppBar from '../../../../../common/components/appbar';
 
@@ -12,7 +13,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
 const Container = styled.div`
   margin: auto;
-  max-width: var(--max-width);
 `;
 
 const Wrapper = styled.div`
