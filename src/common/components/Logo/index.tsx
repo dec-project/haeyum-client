@@ -6,8 +6,10 @@ const Logo = () => {
 };
 
 const Img = styled.img`
-  width: 80%;
-  height: 80%;
+  width: 100px;
+  height: 42px;
+  overflow: hidden;
+  object-fit: cover;
 `;
 
 export default Logo;

@@ -46,6 +46,7 @@ export default CarouselLayout;
 
 const Container = styled.div`
   margin: auto;
+  max-width: var(--max-width);
 `;
 
 const Viewport = styled.div`
