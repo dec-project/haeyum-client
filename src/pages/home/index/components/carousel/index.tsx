@@ -1,6 +1,5 @@
 import { EmblaOptionsType } from 'embla-carousel';
 import CarouselLayout from './CarouselLayout';
-import styled from 'styled-components';
 
 const Carousel = () => {
   const OPTIONS: EmblaOptionsType = { dragFree: true };
@@ -42,15 +41,10 @@ const Carousel = () => {
     },
   ];
   return (
-    <Container>
+    <div>
       <CarouselLayout slides={SLIDE_DATA.sort((a, b) => a.ranking - b.ranking)} options={OPTIONS} />
-    </Container>
+    </div>
   );
 };
-
-const Container = styled.div`
-  max-width: var(--max-width);
-  min-width: var(--min-width);
-`;
 
 export default Carousel;
