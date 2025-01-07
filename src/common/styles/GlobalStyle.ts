@@ -3,42 +3,70 @@ import reset from 'styled-reset';
 import Pretendard from '../assets/font/PretendardVariable.woff2';
 
 const GlobalStyle = createGlobalStyle`
-  @font-face {
-    font-family: "pretendard";
-    src: "url(${Pretendard}) format('woff2')";
-  }
   ${reset}
+
+  @font-face {
+    font-family: "Pretendard";
+    src: url(${Pretendard}) format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+  }
+
   :root {
     --min-width: 320px;
     --max-width: 640px;
   }
-  a{
-    text-decoration: none;
-    color: inherit;
-  }
-  *{
+
+  * {
     box-sizing: border-box;
   }
-  *, html, body{
-    background-color: #faf5f0;
-  }
-  html, body {
-    width: 100%;
-    height: 100%;
+
+  html {      
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
   }
 
-  html, body, div, span, h1, h2, h3, h4, h5, h6, p, 
-  a, dl, dt, dd, ol, ul, li, form, label, table{
+  body {
+    font-family: 'Pretendard', -apple-system, Arial, sans-serif;
+    line-height: 1.5;
+    background-color: #faf5f0;
+    color: #211708;
+    vertical-align: baseline;
+  }
+
+  html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 16px;
-    font-family: 'pretendard', sans-serif;
-    font-weight: 400;
-    vertical-align: baseline;
   }
-  ol, ul{
+
+  button, input, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  ol, ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
   }
 `;
 
