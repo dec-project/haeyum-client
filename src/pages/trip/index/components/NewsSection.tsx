@@ -10,7 +10,7 @@ const NewsSection = () => {
     <section>
       <MenuBar>
         {categoryTabs.map((tab, index) => (
-          <Tab key={index} active={activeTab === index} onClick={() => setActiveTab(index)}>
+          <Tab key={index} className={activeTab === index ? 'active' : ''} onClick={() => setActiveTab(index)}>
             {tab}
           </Tab>
         ))}
@@ -29,14 +29,19 @@ const MenuBar = styled.ul`
   margin: 0 16px;
 `;
 
-const Tab = styled.li<{ active?: boolean }>`
+const Tab = styled.li`
   flex: 1;
   padding: 16px 0 13px 0;
-  max-width: calc(100% / 4);
-  border-bottom: 3px solid ${({ active, theme }) => (active ? theme.themeColors.secondary : theme.colors.gray)};
+  border-bottom: 3px solid ${({ theme }) => theme.colors.gray};
   ${({ theme }) => theme.typography.label.bold};
   text-align: center;
-  color: ${({ active, theme }) => (active ? theme.themeColors.textPrimary : theme.themeColors.textSecondary)};
+  color: ${({ theme }) => theme.themeColors.textSecondary};
+  cursor: pointer;
+
+  &.active {
+    border-color: ${({ theme }) => theme.themeColors.secondary};
+    color: ${({ theme }) => theme.themeColors.textPrimary};
+  }
 `;
 
 const TextWrapper = styled.div`
