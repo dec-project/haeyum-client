@@ -9,6 +9,9 @@ interface MovieChartProps {
   calendarId: string;
 }
 
+// TODO: 서버 배포시 반영
+// const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const MovieChart = ({ calendarId }: MovieChartProps) => {
   const { data: movieData, isLoading, isError } = useMovie(calendarId);
 
@@ -29,9 +32,11 @@ const MovieChart = ({ calendarId }: MovieChartProps) => {
         {movieData.itemList.map((item: movieSummary) => (
           <Item key={item.movieId}>
             <Image
-              src={item.img}
+              // TODO: 서버 배포시 반영
+              // src={`${BASE_URL}/${item.img}`}
+              src={`${item.img}`}
               alt={`movie-${item.movieId}`}
-              // TODO: 임시 기본 이미지
+              // TODO: 임시 기본 이미지, 서버 배포시 삭제
               onError={(e) => {
                 e.currentTarget.src = DEFAULT_IMAGE;
               }}

@@ -9,6 +9,8 @@ interface MusicChartProps {
   calendarId: string;
 }
 
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const MusicChart = ({ calendarId }: MusicChartProps) => {
   const { data: musicData, isLoading, isError } = useMusic(calendarId);
 
@@ -29,9 +31,9 @@ const MusicChart = ({ calendarId }: MusicChartProps) => {
         {musicData.songSummaries.map((item: musicSummary) => (
           <Item key={item.songId}>
             <Image
-              src={item.imgUrl}
+              src={`${BASE_URL}/${item.imgUrl}`}
               alt={`music-${item.songId}`}
-              // TODO: 임시 기본 이미지
+              // TODO: 임시 기본 이미지, 서버 배포시 삭제
               onError={(e) => {
                 e.currentTarget.src = DEFAULT_IMAGE;
               }}
