@@ -3,6 +3,7 @@ import Carousel from './components/carousel';
 import Layout from './components/layout';
 import { useNavigate } from 'react-router-dom';
 import SearchList from './components/searchList';
+import SearchInput from '@/common/components/searchInput';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -26,19 +27,6 @@ const Home = () => {
 
 const Container = styled.div`
   padding: 1rem;
-`;
-
-const SearchInput = styled.input`
-  margin-bottom: 12px;
-  padding: 0 15px;
-  width: 100%;
-  height: 48px;
-  border: 1px solid ${({ theme }) => theme.themeColors.border};
-  border-radius: 4px;
-  ${({ theme }) => theme.typography.body1.regular};
-  &::placeholder {
-    color: ${({ theme }) => theme.themeColors.textSecondary};
-  }
 `;
 
 const Text = styled.div`
