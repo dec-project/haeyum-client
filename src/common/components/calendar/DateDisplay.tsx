@@ -35,6 +35,7 @@ const Container = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.orange300};
   border-radius: 0.5rem;
   height: 56px;
+  cursor: pointer;
 `;
 
 const Text = styled.span`
