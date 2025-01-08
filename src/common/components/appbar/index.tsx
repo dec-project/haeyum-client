@@ -31,6 +31,7 @@ const Container = styled.div`
   top: 0;
   left: auto;
   right: auto;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -38,6 +39,7 @@ const Container = styled.div`
   padding: 16px 8px;
   width: 100%;
   height: 72px;
+  background-color: ${({ theme }) => theme.themeColors.background};
   max-width: var(--max-width);
   min-width: var(--min-width);
 `;
