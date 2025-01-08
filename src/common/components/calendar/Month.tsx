@@ -4,7 +4,7 @@ import CaretRightIcon from '@/common/assets/icon/icon-calender-arrow-right.svg';
 import CaretDownIcon from '@/common/assets/icon/icon-arrow-down.svg';
 import styled from 'styled-components';
 import { DatePickerProps } from '.';
-import { Container, Header, Img, Title } from './Common.styles';
+import { Container, Header, Img, Title } from './CommonStyle';
 import { useEffect } from 'react';
 import useCalendar from '../../hooks/useCalendar/useCalendar';
 
