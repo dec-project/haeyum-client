@@ -119,4 +119,4 @@ const DEFAULT_IMAGE =
 
 const DEFAULT_WEATHER_IMAGE = 'https://res.cloudinary.com/dsapqefbg/image/upload/v1736013494/sunny_wgj9nj.png';
 
-export { categoryTabs, newsData, weatherData, movieData, musicData, DEFAULT_IMAGE, DEFAULT_WEATHER_IMAGE };
+export { newsData, weatherData, movieData, musicData, DEFAULT_IMAGE, DEFAULT_WEATHER_IMAGE };
