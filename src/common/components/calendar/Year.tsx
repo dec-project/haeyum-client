@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { DatePickerProps } from '.';
 import CaretLeftIcon from '@/common/assets/icon/icon-calender-arrow-left.svg';
 import CaretRightIcon from '@/common/assets/icon/icon-calender-arrow-right.svg';
-import { Container, Header, Img, Title } from './CommonStyle';
+import { Container, Header, Img, Title } from './Common.styles';
 
 export default function Year({ setPickerType, startDate, endDate, setStartDate }: Omit<DatePickerProps, 'setEndDate'>) {
   const currentDate = startDate || endDate || new Date();

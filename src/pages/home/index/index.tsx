@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import Carousel from './components/carousel';
-import Layout from './components/layout';
+import Carousel from './components/Carousel';
+import Layout from './components/Layout';
 import { useNavigate } from 'react-router-dom';
-import SearchList from './components/searchList';
+import SearchList from './components/SearchList';
 import SearchInput from '@/common/components/searchInput';
 
 const Home = () => {

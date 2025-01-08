@@ -1,7 +1,7 @@
 import { EmblaOptionsType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
 import styled from 'styled-components';
-import ChatIcon from '../../../../../common/assets/icon/icon-chat.svg';
+import ChatIcon from '../../../../common/assets/icon/icon-chat.svg';
 import DefaultImg from '@/common/assets/logo/logo.svg';
 
 type SlideType = {
