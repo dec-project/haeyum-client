@@ -4,6 +4,7 @@ import Calendar from '@/common/components/calendar';
 import { format } from 'date-fns';
 import styled from 'styled-components';
 import AppBar from '@/common/components/appbar';
+import Container from '../../../../common/components/layout/Container';
 
 const Search = () => {
   const navigate = useNavigate();
@@ -26,12 +27,14 @@ const Search = () => {
     <Wrapper>
       <AppBar text="검색" />
       <Container>
-        <Calendar startDate={startDate} endDate={endDate} setEndDate={setEndDate} setStartDate={setStartDate} />
-        <ButtonBox>
-          <Button onClick={handleSearch} disabled={!startDate || !endDate}>
-            <span>GO</span>
-          </Button>
-        </ButtonBox>
+        <Content>
+          <Calendar startDate={startDate} endDate={endDate} setEndDate={setEndDate} setStartDate={setStartDate} />
+          <ButtonBox>
+            <Button onClick={handleSearch} disabled={!startDate || !endDate}>
+              <span>GO</span>
+            </Button>
+          </ButtonBox>
+        </Content>
       </Container>
     </Wrapper>
   );
@@ -43,8 +46,7 @@ const Wrapper = styled.div`
   margin: 0 auto;
 `;
 
-const Container = styled.div`
-  padding-top: 72px;
+const Content = styled.div`
   width: fit-content;
   margin: 0 auto;
   display: flex;
@@ -56,7 +58,7 @@ const Container = styled.div`
 `;
 
 const ButtonBox = styled.div`
-  padding: 12px 16px;
+  padding: 0 16px;
 `;
 
 const Button = styled.button`
