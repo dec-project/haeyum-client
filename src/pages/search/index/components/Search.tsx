@@ -4,7 +4,7 @@ import Calendar from '@/common/components/calendar';
 import { format } from 'date-fns';
 import styled from 'styled-components';
 import AppBar from '@/common/components/appbar';
-import Container from '../../../../common/components/layout/Container';
+import Container from '@/common/components/layout/Container';
 
 const Search = () => {
   const navigate = useNavigate();
