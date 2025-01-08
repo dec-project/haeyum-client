@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Logo from '../Logo';
+import Logo from '../logo';
 import ArrowLeft from './ArrowLeft';
 import Heart from './Heart';
 import GoHome from './GoHome';
