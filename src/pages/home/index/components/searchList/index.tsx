@@ -38,7 +38,7 @@ const SearchList = () => {
               </Detail>
             </Info>
           </Content>
-          <Icon src={CaretRightIcon} alt="" onClick={() => navigate(`/trip/${data.calendarId}`)} />
+          <Icon src={CaretRightIcon} alt="searchInput-button" onClick={() => navigate(`/trip/${data.calendarId}`)} />
         </Item>
       ))}
     </List>
