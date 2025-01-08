@@ -34,7 +34,7 @@ const SearchList = () => {
             <Info>
               <Title>{data.calendarName}</Title>
               <Detail>
-                조회 {data.viewCount} • ❤ {data.favoriteCount}
+                조회 {data.viewCount} • ♥ {data.favoriteCount}
               </Detail>
             </Info>
           </Content>
