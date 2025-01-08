@@ -36,7 +36,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   border: none;
-  padding: 16px 8px;
+  padding: 16px 16px 8px;
   width: 100%;
   height: 72px;
   background-color: ${({ theme }) => theme.themeColors.background};
