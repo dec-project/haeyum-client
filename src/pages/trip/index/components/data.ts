@@ -1,29 +1,33 @@
-const categoryTabs = ['종합', 'IT', '연예', '스포츠'];
-
-const newsData = [
-  {
-    tabs: '종합',
-    title: '아폴로17, 월면 활동 개시',
-    description: '아폴로 17호는 1972년 12월 7일 미국 미국항공우주국(NASA)에 의해 발사된 유인 우주선이다.',
-  },
-  {
-    tabs: 'IT',
-    title: 'MS “AI 데이터센터 구축에 연간 800억달러 투자할 것',
-    description:
-      '마이크로소프트(MS)가 인공지능(AI) 기술 구현을 위한 데이터센터에 연간 800억달러(약 117조7천600억원)를 투자한다고 3일(현지시간) 밝혔습니다.',
-  },
-  {
-    tabs: '연예',
-    title: '애플 CEO도 트럼프에 15억 기부… 빅테크 줄줄이 뭉칫돈',
-    description: '미국 빅테크 업계 거물들이 잇따라 트럼프 취임위원회에 거액을 내놓고 있다.',
-  },
-  {
-    tabs: '스포츠',
-    title: '맨체스터 시티가 돌아왔다!',
-    description:
-      '우리가 알던 맨체스터 시티(이하 맨시티)가 돌아왔다. 엘링 홀란의 멀티골과 사비뉴의 2도움 맹활약을 앞세워 웨스트햄 유나이티드를 4-1로 꺾고 2연승을 질주했다.',
-  },
-];
+const newsData = {
+  itemList: [
+    {
+      category: '종합',
+      title: '아폴로17, 월면 활동 개시',
+      content: '아폴로 17호는 1972년 12월 7일 미국 미국항공우주국(NASA)에 의해 발사된 유인 우주선이다.',
+      url: 'https://news.example.com/general',
+    },
+    {
+      category: '연예',
+      title: '애플 CEO도 트럼프에 15억 기부… 빅테크 줄줄이 뭉칫돈',
+      content: '미국 빅테크 업계 거물들이 잇따라 트럼프 취임위원회에 거액을 내놓고 있다.',
+      url: 'https://news.example.com/entertainment',
+    },
+    {
+      category: '스포츠',
+      title: '맨체스터 시티가 돌아왔다!',
+      content:
+        '우리가 알던 맨체스터 시티(이하 맨시티)가 돌아왔다. 엘링 홀란의 멀티골과 사비뉴의 2도움 맹활약을 앞세워 웨스트햄 유나이티드를 4-1로 꺾고 2연승을 질주했다.',
+      url: 'https://news.example.com/sports',
+    },
+    {
+      category: 'IT',
+      title: 'MS “AI 데이터센터 구축에 연간 800억달러 투자할 것',
+      content:
+        '마이크로소프트(MS)가 인공지능(AI) 기술 구현을 위한 데이터센터에 연간 800억달러(약 117조7천600억원)를 투자한다고 3일(현지시간) 밝혔습니다.',
+      url: 'https://news.example.com/tech',
+    },
+  ],
+};
 
 const weatherData = {
   weather: '흐림',
