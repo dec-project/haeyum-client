@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import CaretRightIcon from '@/common/assets/icon/icon-arrow-right.svg';
 import { useNavigate } from 'react-router-dom';
 import LoadingSpinner from '@/common/components/spinner';
-import useSearchRanking from '../../hooks/useSearchRanking';
+import useSearchRanking from '../hooks/useSearchRanking';
 import DefaultImg from '@/common/assets/logo/logo.svg';
 
 interface SearchListProps {

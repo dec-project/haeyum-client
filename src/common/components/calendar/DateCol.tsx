@@ -1,7 +1,7 @@
 import { format, addMonths, subMonths, isWithinInterval, differenceInDays } from 'date-fns';
 import { useEffect, useState } from 'react';
 import { DatePickerProps } from '.';
-import { Container } from './CommonStyle';
+import { Container } from './Common.styles';
 import DatePicker from './DatePicker';
 import DateButton from './DateButton';
 import useCalendar from '../../hooks/useCalendar/useCalendar';
