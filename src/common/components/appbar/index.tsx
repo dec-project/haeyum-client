@@ -47,18 +47,23 @@ const Container = styled.div`
 const Left = styled.div`
   display: flex;
   align-items: top;
-  gap: 1rem;
-  span {
+
+  & > div {
+    display: flex;
+    align-items: center;
+  }
+
+  & > span {
+    margin-left: 24px;
     ${({ theme }) => theme.typography.title3.bold}
   }
 `;
 
-const Right = styled.div`
-  display: flex;
-  align-items: center;
-`;
+const Right = styled.div``;
 
 const Icon = styled.div`
+  display: flex;
+  align-items: center;
   cursor: pointer;
 `;
 
