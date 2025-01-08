@@ -6,6 +6,7 @@ import ChatsPage from './pages/chats/index';
 import TripPage from './pages/trip/index';
 import Navbar from './common/components/navbar';
 import MyPage from './pages/my/index';
+import TripDetailPage from './pages/trip/detail/index';
 
 type routeElement = {
   path: string;
@@ -26,6 +27,7 @@ const routes: routeElement[] = [
     ],
   },
   { path: '/trip/:calendarId', element: <TripPage /> },
+  { path: '/trip/:id/detail', element: <TripDetailPage /> },
 ];
 
 export const router = createBrowserRouter(routes);
