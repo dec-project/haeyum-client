@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import Logo from '../logo';
 import ArrowLeft from './ArrowLeft';
 import Heart from './Heart';
 import GoHome from './GoHome';
 import CompleteButton from './CompleteButton';
 import { ReactNode } from 'react';
+import Logo from './Logo';
 
 interface AppBarProps {
   leftContent?: ReactNode;
@@ -64,7 +64,7 @@ const Icon = styled.div`
 
 export default AppBar;
 
-AppBar.logo = Logo;
+AppBar.Logo = Logo;
 AppBar.ArrowLeft = ArrowLeft;
 AppBar.Heart = Heart;
 AppBar.GoHome = GoHome;

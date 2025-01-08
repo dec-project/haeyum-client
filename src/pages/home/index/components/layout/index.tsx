@@ -5,7 +5,7 @@ import AppBar from '../../../../../common/components/appbar';
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <Container>
-      <AppBar leftContent={<AppBar.logo />} />
+      <AppBar leftContent={<AppBar.Logo />} />
       <Wrapper>{children}</Wrapper>
     </Container>
   );
