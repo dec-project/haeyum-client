@@ -1,20 +1,31 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Calendar from '../../../../common/components/calendar';
+import { format } from 'date-fns';
 
 const Search = () => {
   const navigate = useNavigate();
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [startDate, setStartDate] = useState<Date | null>(null);
+  const [endDate, setEndDate] = useState<Date | null>(null);
 
   const handleSearch = () => {
-    navigate(`/search?startDate=${startDate}&endDate=${endDate}`, { replace: true });
+    if (!startDate || !endDate) {
+      alert('날짜를 선택해주세요.');
+      return;
+    }
+    if (startDate && endDate) {
+      navigate(`/search?startDate=${format(startDate, 'yyyy-MM-dd')}&endDate=${format(endDate, 'yyyy-MM-dd')}`, {
+        replace: true,
+      });
+    }
   };
 
   return (
     <div>
-      <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} placeholder="Start Date" />
-      <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} placeholder="End Date" />
-      <button onClick={handleSearch}>GO</button>
+      <Calendar startDate={startDate} endDate={endDate} setEndDate={setEndDate} setStartDate={setStartDate} />
+      <button onClick={handleSearch} disabled={!startDate || !endDate}>
+        GO
+      </button>
     </div>
   );
 };
