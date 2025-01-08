@@ -42,6 +42,7 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.themeColors.background};
   max-width: var(--max-width);
   min-width: var(--min-width);
+  background-color: ${({ theme }) => theme.themeColors.background};
 `;
 
 const Left = styled.div`
