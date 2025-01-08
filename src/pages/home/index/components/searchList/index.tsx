@@ -30,7 +30,10 @@ const SearchList = () => {
       {searchData.searches.map((data: SearchListProps) => (
         <Item key={data.calendarId}>
           <Content>
-            <Img src={data.img || DefaultImg} alt={data.calendarName} />
+            <Img
+              src={data.img ? `${import.meta.env.VITE_API_BASE_URL}/${data.img}` : DefaultImg}
+              alt={data.calendarName}
+            />
             <Info>
               <Title>{data.calendarName}</Title>
               <Detail>
