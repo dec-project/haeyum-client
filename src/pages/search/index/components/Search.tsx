@@ -62,11 +62,11 @@ const ButtonBox = styled.div`
 const Button = styled.button`
   width: 84px;
   height: 40px;
-  border-radius: 7px;
+  border-radius: 4px;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   background-color: ${({ theme, disabled }) => (disabled ? theme.colors.gray : theme.themeColors.secondary)};
   span {
-    color: ${({ theme, disabled }) => (disabled ? theme.colors.white : theme.colors.white)};
+    color: ${({ theme, disabled }) => (disabled ? theme.colors.white : theme.themeColors.textPrimary)};
     ${({ theme }) => theme.typography.body1.bold};
   }
 `;
