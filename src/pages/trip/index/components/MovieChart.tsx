@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { movieSummary } from '../types';
 import { DEFAULT_IMAGE } from './data';
@@ -13,6 +14,8 @@ interface MovieChartProps {
 // const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const MovieChart = ({ calendarId }: MovieChartProps) => {
+  const navigate = useNavigate();
+
   const { data: movieData, isLoading, isError } = useMovie(calendarId);
 
   if (isLoading) {
@@ -25,12 +28,16 @@ const MovieChart = ({ calendarId }: MovieChartProps) => {
     return <div>영화 데이터를 가져오는 중 문제가 발생했습니다.</div>;
   }
 
+  const handleDetailClick = (movieId: number) => {
+    navigate(`/trip/${movieId}/detail`);
+  };
+
   return (
     <ChartSection>
       <SectionHeader>영화 TOP 5</SectionHeader>
       <ItemList>
         {movieData.itemList.map((item: movieSummary) => (
-          <Item key={item.movieId}>
+          <Item key={item.movieId} onClick={() => handleDetailClick(item.movieId)}>
             <Image
               // TODO: 서버 배포시 반영
               // src={`${BASE_URL}/${item.img}`}
@@ -70,6 +77,7 @@ const Item = styled.li`
   justify-content: space-between;
   align-items: center;
   padding: 8px 0;
+  cursor: pointer;
 `;
 
 const Image = styled.img`
