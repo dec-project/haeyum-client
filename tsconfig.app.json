@@ -24,7 +24,13 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
 
-    "types": ["vite/client", "vitest/globals"]
+    "types": ["vite/client", "vitest/globals"],
+    
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@/public/*": ["public/*"]
+    }
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["eslint.config.js"]
