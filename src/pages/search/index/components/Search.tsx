@@ -28,6 +28,7 @@ const Search = () => {
       <AppBar text="검색" />
       <Container>
         <Content>
+          <Label>기간</Label>
           <Calendar startDate={startDate} endDate={endDate} setEndDate={setEndDate} setStartDate={setStartDate} />
           <ButtonBox>
             <Button onClick={handleSearch} disabled={!startDate || !endDate}>
@@ -44,6 +45,13 @@ const Wrapper = styled.div`
   width: fit-content;
   height: fit-content;
   margin: 0 auto;
+`;
+
+const Label = styled.span`
+  width: 100%;
+  height: 32px;
+  padding: 0 16px;
+  ${({ theme }) => theme.typography.body1.bold};
 `;
 
 const Content = styled.div`
