@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { musicSummary } from '../types';
+import { MusicSummary } from '../types';
 import ArrowRight from '@/common/assets/icon/icon-arrow-right.svg';
 import useMusic from '../hooks/useMusic';
 import LoadingSpinner from '@/common/components/spinner';
@@ -27,7 +27,7 @@ const MusicChart = ({ calendarId }: MusicChartProps) => {
     <Section>
       <SectionHeader>노래 TOP 5</SectionHeader>
       <ItemList>
-        {musicData.songSummaries.map((item: musicSummary) => (
+        {musicData.songSummaries.map((item: MusicSummary) => (
           <Item key={item.songId}>
             <Image src={`${BASE_URL}/${item.imgUrl}`} alt={`music-${item.songId}`} />
             <ContentWrapper>

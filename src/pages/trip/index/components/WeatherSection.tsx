@@ -26,14 +26,7 @@ const WeatherSection = ({ calendarId }: WeatherSectionProps) => {
         <WeatherHeader>오늘의 날씨</WeatherHeader>
         <ContentSubTitle>{weatherData.weather}</ContentSubTitle>
       </ContentWrapper>
-      <WeatherImage
-        src={weatherData.img}
-        alt="weather"
-        // TODO: 임시 기본 이미지
-        onError={(e) => {
-          e.currentTarget.src = DEFAULT_WEATHER_IMAGE;
-        }}
-      />
+      <WeatherImage src={weatherData.img} alt="weather" />
     </Section>
   );
 };

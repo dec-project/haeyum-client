@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { newsData } from './data';
 // import useNews from '../hooks/useNews';
 // import LoadingSpinner from '@/common/components/spinner';
-import { newsSummary } from '../types';
+import { NewsSummary } from '../types';
 
 interface NewsSectionProps {
   calendarId: string;
@@ -15,10 +15,10 @@ const NewsSection = ({ calendarId }: NewsSectionProps) => {
 
   const [activeTab, setActiveTab] = useState(0);
 
-  const categoryTabs = newsData.itemList.map((news: newsSummary) => news.category);
+  const categoryTabs = newsData.itemList.map((news: NewsSummary) => news.category);
 
   const sortedNews = categoryTabs.map((category) =>
-    newsData.itemList.find((news: newsSummary) => news.category === category),
+    newsData.itemList.find((news: NewsSummary) => news.category === category),
   );
 
   // TODO: API 연동 후 주석 해제
