@@ -4,6 +4,7 @@ import tseslint from 'typescript-eslint';
 import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y';
 import eslintPluginPrettier from 'eslint-plugin-prettier';
+import styledComponentsA11y from 'eslint-plugin-styled-components-a11y';
 
 export default tseslint.config(
   {
@@ -28,6 +29,7 @@ export default tseslint.config(
       'react-refresh': reactRefreshPlugin,
       'jsx-a11y': eslintPluginJsxA11y,
       prettier: eslintPluginPrettier,
+      'styled-components-a11y': styledComponentsA11y,
     },
     languageOptions: {
       parser: tseslint.parser,
@@ -45,25 +47,6 @@ export default tseslint.config(
         'error',
         { allowConstantExport: true }, // React 컴포넌트만 내보내도록 하는 규칙
       ],
-      '@typescript-eslint/explicit-module-boundary-types': 'off', // 함수 반환 타입 명시 규칙 해제
-      '@typescript-eslint/no-unused-vars': 'warn', // 사용하지 않는 변수 사용시 에러 규칙
-      '@typescript-eslint/no-empty-interface': 'error', // 빈 인터페이스 사용 시 에러 규칙
-      '@typescript-eslint/no-var-requires': 'off', // require 사용 규칙 해제
-      '@typescript-eslint/ban-types': 'off', // 특정 타입 사용 제한 규칙 해제
-      '@typescript-eslint/no-non-null-assertion': 'off', // 비-널 단언 연산자 사용 규칙 해제
-      '@typescript-eslint/no-empty-function': 'off', // 빈 함수 규칙 해제
-      '@typescript-eslint/no-namespace': 'off', // 네임스페이스 사용 규칙 해제
-      '@typescript-eslint/ban-ts-comment': 'off', // @ts-ignore 사용 규칙 해제
-
-      'explicit-module-boundary-types': 'off', // 함수 반환 타입 명시 규칙 해제
-      'no-unused-vars': 'warn', // 사용하지 않는 변수 사용시 에러 규칙 해제
-      'no-var-requires': 'off', // require 사용 규칙 해제
-      'ban-types': 'off', // 특정 타입 사용 제한 규칙 해제
-      'no-non-null-assertion': 'off', // 비-널 단언 연산자 사용 규칙 해제
-      'no-empty-function': 'off', // 빈 함수 규칙 해제
-      'no-namespace': 'off', // 네임스페이스 사용 규칙 해제
-      'ban-ts-comment': 'off', // @
-      'no-undef': 'off', // 정의되지 않은 변수 사용 규칙 해제
 
       'prettier/prettier': 'warn', // prettier 규칙
 
@@ -73,8 +56,15 @@ export default tseslint.config(
       'jsx-a11y/label-has-associated-control': 'warn', // label에 컨트롤 연결 요구
       'jsx-a11y/no-autofocus': 'warn', // 자동 포커스 사용 제한
       'jsx-a11y/no-noninteractive-element-to-interactive-role': 'warn', // 비인터랙티브 요소에 인터랙티브 역할 제한
+
+      'styled-components-a11y/alt-text': 'error', // styled-components에 적용되는 규칙
+      'styled-components-a11y/anchor-has-content': 'warn',
+      'styled-components-a11y/aria-role': 'warn',
+      'styled-components-a11y/label-has-associated-control': 'warn',
+      'styled-components-a11y/no-autofocus': 'warn',
+      'styled-components-a11y/no-noninteractive-element-to-interactive-role': 'warn',
     },
-  },  
+  },
   {
     extends: [tseslint.configs.disableTypeChecked],
   },
