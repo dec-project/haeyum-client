@@ -19,7 +19,7 @@ const MusicChart = ({ calendarId }: MusicChartProps) => {
     return <LoadingSpinner />;
   }
 
-  if (isError || !musicData.songSummaries) {
+  if (isError || !musicData.songSummaries || musicData.songSummaries.length === 0) {
     // TODO: 추후 에러 컴포넌트 추가
     return <div>노래 데이터를 가져오는 중 문제가 발생했습니다.</div>;
   }
@@ -30,14 +30,7 @@ const MusicChart = ({ calendarId }: MusicChartProps) => {
       <ItemList>
         {musicData.songSummaries.map((item: musicSummary) => (
           <Item key={item.songId}>
-            <Image
-              src={`${BASE_URL}/${item.imgUrl}`}
-              alt={`music-${item.songId}`}
-              // TODO: 임시 기본 이미지, 서버 배포시 삭제
-              onError={(e) => {
-                e.currentTarget.src = DEFAULT_IMAGE;
-              }}
-            />
+            <Image src={`${BASE_URL}/${item.imgUrl}`} alt={`music-${item.songId}`} />
             <ContentWrapper>
               <ContentTitle>
                 {item.ranking}. {item.title}
