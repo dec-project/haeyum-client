@@ -4,20 +4,24 @@ import { newsData } from './data';
 // import useNews from '../hooks/useNews';
 // import LoadingSpinner from '@/common/components/spinner';
 import { NewsSummary } from '../types';
+// import useNews from '../hooks/useNews';
+// import LoadingSpinner from '@/common/components/spinner';
 
-interface NewsSectionProps {
-  calendarId: string;
-}
+// TODO: API 연동 후 주석 해제
+// interface NewsSectionProps {
+//   calendarId: string;
+// }
 
-const NewsSection = ({ calendarId }: NewsSectionProps) => {
+const NewsSection = () => {
   // TODO: API 연동 후 주석 해제
+  // const NewsSection = ({ calendarId }: NewsSectionProps) => {
   // const { data: newsData, isLoading, isError } = useNews(calendarId);
 
   const [activeTab, setActiveTab] = useState(0);
 
   const categoryTabs = newsData.itemList.map((news: NewsSummary) => news.category);
 
-  const sortedNews = categoryTabs.map((category) =>
+  const sortedNews = categoryTabs.map((category: string) =>
     newsData.itemList.find((news: NewsSummary) => news.category === category),
   );
 
@@ -28,7 +32,7 @@ const NewsSection = ({ calendarId }: NewsSectionProps) => {
   //   return <LoadingSpinner />;
   // }
 
-  // if (isError || !newsData.itemList) {
+  // if (isError || !newsData.itemList || newsData.itemList.length === 0) {
   //   // TODO: 추후 에러 컴포넌트 추가
   //   return <div>뉴스 데이터를 가져오는 중 문제가 발생했습니다.</div>;
   // }
@@ -37,7 +41,7 @@ const NewsSection = ({ calendarId }: NewsSectionProps) => {
   return (
     <section>
       <MenuBar>
-        {categoryTabs.map((tab, index) => (
+        {categoryTabs.map((tab: string, index: number) => (
           <Tab key={index} className={activeTab === index ? 'active' : ''} onClick={() => setActiveTab(index)}>
             {tab}
           </Tab>
