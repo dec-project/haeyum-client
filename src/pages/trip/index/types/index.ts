@@ -1,4 +1,4 @@
-export interface musicSummary {
+export interface MusicSummary {
   songId: number;
   title: string;
   artists: string;
@@ -6,14 +6,14 @@ export interface musicSummary {
   imgUrl: string;
 }
 
-export interface movieSummary {
+export interface MovieSummary {
   movieId: number;
   title: string;
   ranking: number;
   img: string;
 }
 
-export interface newsSummary {
+export interface NewsSummary {
   title: string;
   content: string;
   url: string;

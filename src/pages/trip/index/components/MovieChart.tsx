@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { movieSummary } from '../types';
+import { MovieSummary } from '../types';
 import ArrowRight from '@/common/assets/icon/icon-arrow-right.svg';
 import useMovie from '../hooks/useMovie';
 import LoadingSpinner from '@/common/components/spinner';
@@ -35,7 +35,7 @@ const MovieChart = ({ calendarId }: MovieChartProps) => {
     <ChartSection>
       <SectionHeader>영화 TOP 5</SectionHeader>
       <ItemList>
-        {movieData.itemList.map((item: movieSummary) => (
+        {movieData.itemList.map((item: MovieSummary) => (
           <Item key={item.movieId} onClick={() => handleDetailClick(item.movieId)}>
             <Image
               // TODO: 서버 배포시 반영
