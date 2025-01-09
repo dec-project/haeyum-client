@@ -5,6 +5,7 @@ import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y';
 import eslintPluginPrettier from 'eslint-plugin-prettier';
 import styledComponentsA11y from 'eslint-plugin-styled-components-a11y';
+import eslintPluginVitest from '@vitest/eslint-plugin';
 
 export default tseslint.config(
   {
@@ -16,8 +17,6 @@ export default tseslint.config(
       '**/.pnp.cjs',
       '**/.pnp.loader.mjs',
       '.storybook/**',
-      '**/*.test.tsx',
-      '**/*.test.ts',
       '**/*.stories.tsx',
       '**/*.stories.ts',
     ],
@@ -30,6 +29,7 @@ export default tseslint.config(
       'jsx-a11y': eslintPluginJsxA11y,
       prettier: eslintPluginPrettier,
       'styled-components-a11y': styledComponentsA11y,
+      vitest: eslintPluginVitest,
     },
     languageOptions: {
       parser: tseslint.parser,
@@ -63,6 +63,10 @@ export default tseslint.config(
       'styled-components-a11y/label-has-associated-control': 'warn',
       'styled-components-a11y/no-autofocus': 'warn',
       'styled-components-a11y/no-noninteractive-element-to-interactive-role': 'warn',
+
+      'vitest/expect-expect': 'warn',
+      'vitest/no-disabled-tests': 'warn',
+      'vitest/consistent-test-it': ['warn', { fn: 'it', withinDescribe: 'it' }],
     },
   },
   {
