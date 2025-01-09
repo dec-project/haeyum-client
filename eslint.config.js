@@ -53,9 +53,13 @@ export default tseslint.config(
       'jsx-a11y/alt-text': 'warn', // 이미지에 alt 속성 요구
       'jsx-a11y/anchor-has-content': 'warn', // 앵커 태그가 콘텐츠를 가져야 함
       'jsx-a11y/aria-role': 'warn', // 올바른 ARIA 역할 사용
-      'jsx-a11y/label-has-associated-control': 'warn', // label에 컨트롤 연결 요구
       'jsx-a11y/no-autofocus': 'warn', // 자동 포커스 사용 제한
       'jsx-a11y/no-noninteractive-element-to-interactive-role': 'warn', // 비인터랙티브 요소에 인터랙티브 역할 제한
+      'jsx-a11y/label-has-associated-control': [
+        'warn',
+        { labelComponents: ['label'], labelAttributes: ['htmlFor'], controlComponents: ['input'] }, // 레이블과 연결된 컨트롤 요구
+      ],
+      'jsx-a11y/label-has-for': ['warn', { required: { every: ['id'] } }], // 레이블에 id 연결 요구
 
       'styled-components-a11y/alt-text': 'error', // styled-components에 적용되는 규칙
       'styled-components-a11y/anchor-has-content': 'warn',
