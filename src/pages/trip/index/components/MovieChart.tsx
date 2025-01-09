@@ -15,7 +15,7 @@ interface MovieChartProps {
 const MovieChart = ({ calendarId }: MovieChartProps) => {
   const navigate = useNavigate();
 
-  const { data: movieData, isLoading, isError } = useMovie(calendarId);
+  const { data: movieData, isLoading, isError, error } = useMovie(calendarId);
 
   if (isLoading) {
     // TODO: 추후 로딩 페이지 추가
@@ -23,8 +23,13 @@ const MovieChart = ({ calendarId }: MovieChartProps) => {
   }
 
   if (isError || !movieData.itemList || movieData.itemList.length === 0) {
-    // TODO: 추후 에러 컴포넌트 추가
-    return <div>영화 데이터를 가져오는 중 문제가 발생했습니다.</div>;
+    const errorMessage = error?.message || '영화 데이터를 가져오는 중 문제가 발생했습니다.';
+
+    return (
+      <Section>
+        <p>{errorMessage}</p>
+      </Section>
+    );
   }
 
   const handleDetailClick = (movieId: number) => {
@@ -32,7 +37,7 @@ const MovieChart = ({ calendarId }: MovieChartProps) => {
   };
 
   return (
-    <ChartSection>
+    <Section>
       <SectionHeader>영화 TOP 5</SectionHeader>
       <ItemList>
         {movieData.itemList.map((item: MovieSummary) => (
@@ -52,11 +57,11 @@ const MovieChart = ({ calendarId }: MovieChartProps) => {
           </Item>
         ))}
       </ItemList>
-    </ChartSection>
+    </Section>
   );
 };
 
-const ChartSection = styled.section`
+const Section = styled.section`
   padding: 0 16px;
 `;
 

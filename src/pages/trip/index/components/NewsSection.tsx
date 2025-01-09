@@ -15,7 +15,7 @@ import { NewsSummary } from '../types';
 const NewsSection = () => {
   // TODO: API 연동 후 주석 해제
   // const NewsSection = ({ calendarId }: NewsSectionProps) => {
-  // const { data: newsData, isLoading, isError } = useNews(calendarId);
+  // const { data: newsData, isLoading, isError, error } = useNews(calendarId);
 
   const [activeTab, setActiveTab] = useState(0);
 
@@ -33,8 +33,13 @@ const NewsSection = () => {
   // }
 
   // if (isError || !newsData.itemList || newsData.itemList.length === 0) {
-  //   // TODO: 추후 에러 컴포넌트 추가
-  //   return <div>뉴스 데이터를 가져오는 중 문제가 발생했습니다.</div>;
+  //   const errorMessage = error?.message || '뉴스 데이터를 가져오는 중 문제가 발생했습니다.';
+
+  //   return (
+  //     <Section>
+  //       <p>{errorMessage}</p>
+  //     </Section>
+  //   );
   // }
 
   console.log(`newsData: ${newsData}`);
@@ -55,6 +60,10 @@ const NewsSection = () => {
     </section>
   );
 };
+
+// const Section = styled.section`
+//   padding: 0 16px;
+// `;
 
 const MenuBar = styled.ul`
   display: flex;
