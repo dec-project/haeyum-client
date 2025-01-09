@@ -150,7 +150,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/parser@npm:^7.1.0, @babel/parser@npm:^7.20.7, @babel/parser@npm:^7.25.9, @babel/parser@npm:^7.26.0, @babel/parser@npm:^7.26.3":
+"@babel/parser@npm:^7.1.0, @babel/parser@npm:^7.20.7, @babel/parser@npm:^7.25.9, @babel/parser@npm:^7.26.0, @babel/parser@npm:^7.26.3, @babel/parser@npm:^7.8.4":
   version: 7.26.3
   resolution: "@babel/parser@npm:7.26.3"
   dependencies:
@@ -3211,7 +3211,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jsx-a11y@npm:^6.10.2":
+"eslint-plugin-jsx-a11y@npm:^6.10.2, eslint-plugin-jsx-a11y@npm:^6.2.3":
   version: 6.10.2
   resolution: "eslint-plugin-jsx-a11y@npm:6.10.2"
   dependencies:
@@ -3284,6 +3284,18 @@ __metadata:
   peerDependencies:
     eslint: ">=8"
   checksum: 10c0/8ba697ec92282b747ba20d8759fd2999b9d35f7a0adb7a809fe36e7baaac142b0f2123f78a87c05b811868d7e62d828ded1855fac4913667c470540dfdf0b3dc
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-styled-components-a11y@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "eslint-plugin-styled-components-a11y@npm:2.2.0"
+  dependencies:
+    "@babel/parser": "npm:^7.8.4"
+    eslint-plugin-jsx-a11y: "npm:^6.2.3"
+  peerDependencies:
+    eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9
+  checksum: 10c0/acba188f57d41f47d022a6bda6e66f2ffe6983f44a8af5d3e5ee274dfe9b69c332d285f2829abf3b7b9829ec50370295ad1858ce154ac6c8c5862924045850f1
   languageName: node
   linkType: hard
 
@@ -3811,6 +3823,7 @@ __metadata:
     eslint-plugin-react-hooks: "npm:^5.0.0"
     eslint-plugin-react-refresh: "npm:^0.4.14"
     eslint-plugin-storybook: "npm:^0.11.1"
+    eslint-plugin-styled-components-a11y: "npm:^2.2.0"
     globals: "npm:^15.12.0"
     jsdom: "npm:^25.0.1"
     prettier: "npm:^3.4.2"
