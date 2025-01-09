@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import useWeather from '../hooks/useWeather';
-import { DEFAULT_WEATHER_IMAGE } from './data';
 import LoadingSpinner from '@/common/components/spinner';
 
 interface WeatherSectionProps {
