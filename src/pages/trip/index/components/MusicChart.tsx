@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { musicSummary } from '../types';
-import { DEFAULT_IMAGE } from './data';
 import ArrowRight from '@/common/assets/icon/icon-arrow-right.svg';
 import useMusic from '../hooks/useMusic';
 import LoadingSpinner from '@/common/components/spinner';

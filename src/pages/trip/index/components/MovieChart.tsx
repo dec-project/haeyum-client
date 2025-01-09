@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { movieSummary } from '../types';
-import { DEFAULT_IMAGE } from './data';
 import ArrowRight from '@/common/assets/icon/icon-arrow-right.svg';
 import useMovie from '../hooks/useMovie';
 import LoadingSpinner from '@/common/components/spinner';
