@@ -7,7 +7,7 @@ interface WeatherSectionProps {
 }
 
 const WeatherSection = ({ calendarId }: WeatherSectionProps) => {
-  const { data: weatherData, isLoading, isError } = useWeather(calendarId);
+  const { data: weatherData, isLoading, isError, error } = useWeather(calendarId);
 
   if (isLoading) {
     // TODO: 추후 로딩 페이지 추가
@@ -15,8 +15,13 @@ const WeatherSection = ({ calendarId }: WeatherSectionProps) => {
   }
 
   if (isError || !weatherData) {
-    // TODO: 추후 에러 컴포넌트 추가
-    return <div>날씨 데이터를 가져오는 중 문제가 발생했습니다.</div>;
+    const errorMessage = error?.message || '날씨 데이터를 가져오는 중 문제가 발생했습니다.';
+
+    return (
+      <Section>
+        <p>{errorMessage}</p>
+      </Section>
+    );
   }
 
   return (
