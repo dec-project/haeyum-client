@@ -23,7 +23,7 @@ const MovieChart = ({ calendarId }: MovieChartProps) => {
     return <LoadingSpinner />;
   }
 
-  if (isError || !movieData.itemList) {
+  if (isError || !movieData.itemList || movieData.itemList.length === 0) {
     // TODO: 추후 에러 컴포넌트 추가
     return <div>영화 데이터를 가져오는 중 문제가 발생했습니다.</div>;
   }
@@ -43,10 +43,6 @@ const MovieChart = ({ calendarId }: MovieChartProps) => {
               // src={`${BASE_URL}/${item.img}`}
               src={`${item.img}`}
               alt={`movie-${item.movieId}`}
-              // TODO: 임시 기본 이미지, 서버 배포시 삭제
-              onError={(e) => {
-                e.currentTarget.src = DEFAULT_IMAGE;
-              }}
             />
             <ContentWrapper>
               <ContentTitle>
