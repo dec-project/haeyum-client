@@ -20,7 +20,9 @@ const Trip = () => {
     <>
       <AppBar leftContent={<AppBar.ArrowLeft />} text="" rightContent={<AppBar.Heart disabled />} />
       <Container>
-        <NewsSection calendarId={calendarId} />
+        <NewsSection
+        // calendarId={calendarId}
+        />
         <WeatherSection calendarId={calendarId} />
         <MusicChart calendarId={calendarId} />
         <MovieChart calendarId={calendarId} />

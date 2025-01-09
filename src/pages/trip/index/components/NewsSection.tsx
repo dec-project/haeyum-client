@@ -4,10 +4,7 @@ import { newsData } from './data';
 // import useNews from '../hooks/useNews';
 // import LoadingSpinner from '@/common/components/spinner';
 import { NewsSummary } from '../types';
-// import useNews from '../hooks/useNews';
-// import LoadingSpinner from '@/common/components/spinner';
 
-// TODO: API 연동 후 주석 해제
 // interface NewsSectionProps {
 //   calendarId: string;
 // }
@@ -26,15 +23,12 @@ const NewsSection = () => {
   );
 
   // TODO: API 연동 후 주석 해제
-
   // if (isLoading) {
   //   // TODO: 추후 로딩 페이지 추가
   //   return <LoadingSpinner />;
   // }
-
   // if (isError || !newsData.itemList || newsData.itemList.length === 0) {
   //   const errorMessage = error?.message || '뉴스 데이터를 가져오는 중 문제가 발생했습니다.';
-
   //   return (
   //     <Section>
   //       <p>{errorMessage}</p>
