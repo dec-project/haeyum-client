@@ -24,7 +24,7 @@ const Trip = () => {
       <FixedBottom>
         <ButtonWrapper>
           <Button>
-            <ChatIcon src={IconChatDot} />
+            <ChatIcon src={IconChatDot} alt="chatIcon" />
             <span>90년대 채팅방</span>
           </Button>
         </ButtonWrapper>
