@@ -11,7 +11,7 @@ const useSearch = ({ startDate, endDate, page = 0, size = 10 }: SearchParams) =>
         page: pageParam,
         size,
       });
-      return response;
+      return response.data;
     } catch (error: any) {
       const errorMessage = error.response?.data.message;
       throw new Error(errorMessage);
