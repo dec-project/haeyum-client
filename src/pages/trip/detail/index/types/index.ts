@@ -1,10 +1,3 @@
-export interface MovieInfo {
-  title: string;
-  content: string;
-  releaseDate: string;
-  youtubeAddr: string;
-}
-
 export interface MusicInfo {
   songId: number;
   title: string;
@@ -19,4 +12,11 @@ export interface MusicInfo {
   arrangers: string;
   youtubeAddr: string;
   description: string;
+}
+
+export interface MovieInfo {
+  title: string;
+  content: string;
+  releaseDate: string;
+  youtubeAddr: string;
 }
