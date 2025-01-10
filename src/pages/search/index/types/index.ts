@@ -20,3 +20,11 @@ export interface SearchParams {
   page?: number;
   size?: number;
 }
+
+export interface SearchResponse {
+  count: number;
+  itemList: TripCard[];
+  currentPage: number;
+  totalPages: number;
+  last: boolean;
+}

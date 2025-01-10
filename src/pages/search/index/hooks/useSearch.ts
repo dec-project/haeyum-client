@@ -1,11 +1,11 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import api from '@/common/apis/api';
-import { SearchParams } from '../types';
+import { SearchParams, SearchResponse } from '../types';
 
 const useSearch = ({ startDate, endDate, page = 0, size = 10 }: SearchParams) => {
   const getSearchItems = async ({ pageParam = page }: { pageParam: number }) => {
     try {
-      const response = await api.post('/calendar', {
+      const response = await api.post<SearchResponse>('/calendar', {
         startDate,
         endDate,
         page: pageParam,
@@ -18,7 +18,10 @@ const useSearch = ({ startDate, endDate, page = 0, size = 10 }: SearchParams) =>
     }
   };
 
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isError, error, isLoading } = useInfiniteQuery({
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isError, error, isLoading } = useInfiniteQuery<
+    SearchResponse,
+    Error
+  >({
     queryKey: ['searchData', startDate, endDate, size],
     queryFn: getSearchItems,
     initialPageParam: page,
