@@ -18,10 +18,7 @@ const useSearch = ({ startDate, endDate, page = 0, size = 10 }: SearchParams) =>
     }
   };
 
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isError, error, isLoading } = useInfiniteQuery<
-    SearchResponse,
-    Error
-  >({
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isError, error, isLoading } = useInfiniteQuery({
     queryKey: ['searchData', startDate, endDate, size],
     queryFn: getSearchItems,
     initialPageParam: page,
