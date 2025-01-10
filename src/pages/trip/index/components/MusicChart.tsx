@@ -18,7 +18,7 @@ const MusicChart = ({ calendarId }: MusicChartProps) => {
     return <LoadingSpinner />;
   }
 
-  if (isError || !musicData.songSummaries || musicData.songSummaries.length === 0) {
+  if (isError || !musicData?.songSummaries || musicData.songSummaries.length === 0) {
     const errorMessage = error?.message || '노래 데이터를 가져오는 중 문제가 발생했습니다.';
 
     return (

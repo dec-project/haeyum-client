@@ -18,7 +18,11 @@ const Trip = () => {
 
   return (
     <>
-      <AppBar leftContent={<AppBar.ArrowLeft />} text="" rightContent={<AppBar.Heart disabled />} />
+      <AppBar
+        leftContent={<AppBar.ArrowLeft />}
+        text="여행 정보"
+        rightContent={<AppBar.Heart disabled onClick={() => {}} />}
+      />
       <Container>
         <NewsSection
         // calendarId={calendarId}

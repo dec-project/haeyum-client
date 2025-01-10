@@ -19,3 +19,20 @@ export interface NewsSummary {
   url: string;
   category: string;
 }
+
+export interface MovieResponse {
+  itemList: MovieSummary[];
+}
+
+export interface MusicResponse {
+  songSummaries: MusicSummary[];
+}
+
+export interface NewsResponse {
+  itemList: NewsSummary[];
+}
+
+export interface WeatherResponse {
+  weather: string;
+  img: string;
+}

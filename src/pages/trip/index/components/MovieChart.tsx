@@ -22,7 +22,7 @@ const MovieChart = ({ calendarId }: MovieChartProps) => {
     return <LoadingSpinner />;
   }
 
-  if (isError || !movieData.itemList || movieData.itemList.length === 0) {
+  if (isError || !movieData?.itemList || movieData.itemList.length === 0) {
     const errorMessage = error?.message || '영화 데이터를 가져오는 중 문제가 발생했습니다.';
 
     return (
