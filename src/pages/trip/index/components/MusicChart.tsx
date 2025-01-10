@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import ArrowRight from '@/common/assets/icon/icon-arrow-right.svg';
 import useMusic from '../hooks/useMusic';
 import LoadingSpinner from '@/common/components/spinner';
-// import SkeletonItem from './SkeletonItem';
+import { useNavigate } from 'react-router-dom';
 
 interface MusicChartProps {
   calendarId: string;
@@ -11,7 +11,8 @@ interface MusicChartProps {
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const MusicChart = ({ calendarId }: MusicChartProps) => {
-  const { data: musicData, isLoading, isError, error } = useMusic(calendarId);
+  const navigate = useNavigate();
+  const { data: musicData, isLoading, isError } = useMusic(calendarId);
 
   if (isLoading) {
     // TODO: 추후 로딩 페이지 추가
@@ -27,6 +28,10 @@ const MusicChart = ({ calendarId }: MusicChartProps) => {
       </Section>
     );
   }
+
+  const handleDetail = (musicId: number) => {
+    navigate(`/trip/${calendarId}/detail?musicId=${musicId}`);
+  };
 
   return (
     <Section>

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ArrowRight from '@/common/assets/icon/icon-arrow-right.svg';
 import useMovie from '../hooks/useMovie';
 import LoadingSpinner from '@/common/components/spinner';
+import { useNavigate } from 'react-router-dom';
 
 interface MovieChartProps {
   calendarId: string;
@@ -12,8 +13,7 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const MovieChart = ({ calendarId }: MovieChartProps) => {
   const navigate = useNavigate();
-
-  const { data: movieData, isLoading, isError, error } = useMovie(calendarId);
+  const { data: movieData, isLoading, isError } = useMovie(calendarId);
 
   if (isLoading) {
     // TODO: 추후 로딩 페이지 추가
@@ -30,8 +30,8 @@ const MovieChart = ({ calendarId }: MovieChartProps) => {
     );
   }
 
-  const handleDetailClick = (movieId: number) => {
-    navigate(`/trip/${movieId}/detail`);
+  const handleDetail = (movieId: number) => {
+    navigate(`/trip/${calendarId}/detail?movieId=${movieId}`);
   };
 
   return (
@@ -39,7 +39,7 @@ const MovieChart = ({ calendarId }: MovieChartProps) => {
       <SectionHeader>영화 TOP 5</SectionHeader>
       <ItemList>
         {movieData.itemList.map((item) => (
-          <Item key={item.movieId} onClick={() => handleDetailClick(item.movieId)}>
+          <Item key={item.movieId} onClick={() => handleDetail(item.movieId)}>
             <Image src={`${BASE_URL}/${item.img}`} alt={`movie-${item.movieId}`} />
             <ContentWrapper>
               <ContentTitle>
