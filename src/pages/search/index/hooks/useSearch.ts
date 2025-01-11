@@ -23,11 +23,16 @@ const useSearch = ({ startDate, endDate, page = 0, size = 10 }: SearchParams) =>
     queryFn: getSearchItems,
     initialPageParam: page,
     getNextPageParam: (lastPage) => (lastPage.last ? undefined : lastPage.currentPage + 1),
-    select: (data) => ({
-      items: data.pages.flatMap((page) => page.itemList),
-      count: data.pages[0]?.count || 0,
-      pageParams: data.pageParams,
-    }),
+    select: (data) => {
+      const items = data.pages.flatMap((page) => page.itemList);
+      const count = data.pages[0] ? data.pages[0].count : 0;
+      const pageParams = data.pageParams;
+      return {
+        items: items,
+        count: count,
+        pageParams: pageParams,
+      };
+    },
     enabled: !!startDate && !!endDate,
   });
 
