@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import LoadingSpinner from '@/common/components/spinner';
 import useSearchRanking from '../hooks/useSearchRanking';
 import DefaultImg from '@/common/assets/logo/logo.svg';
-import { SearchRankingList } from '../types';
+import { SearchRanking } from '@/common/apis/ranking/type';
 
 const SearchList = () => {
   const { data: searchData, isLoading, isError } = useSearchRanking();
@@ -13,14 +13,14 @@ const SearchList = () => {
   if (isLoading) {
     return <LoadingSpinner />;
   }
-
+  console.log(searchData);
   if (isError || !searchData?.searches) {
     return <div>영화 데이터를 가져오는 중 문제가 발생했습니다.</div>;
   }
 
   return (
     <List>
-      {searchData.searches.map((data: SearchRankingList) => (
+      {searchData.searches.map((data: SearchRanking) => (
         <Item key={data.calendarId}>
           <Content>
             <Img
