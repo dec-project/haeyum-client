@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { newsData } from './data';
+import { newsData } from '../constants';
+
 // import useNews from '../hooks/useNews';
 // import LoadingSpinner from '@/common/components/spinner';
-import { NewsSummary } from '../types';
 
 // interface NewsSectionProps {
 //   calendarId: string;
@@ -16,10 +16,10 @@ const NewsSection = () => {
 
   const [activeTab, setActiveTab] = useState(0);
 
-  const categoryTabs = newsData.itemList.map((news: NewsSummary) => news.category);
+  const categoryTabs = newsData.itemList.map((news) => news.category);
 
   const sortedNews = categoryTabs.map((category: string) =>
-    newsData.itemList.find((news: NewsSummary) => news.category === category),
+    newsData.itemList.find((news) => news.category === category),
   );
 
   // TODO: API 연동 후 주석 해제
@@ -36,7 +36,6 @@ const NewsSection = () => {
   //   );
   // }
 
-  console.log(`newsData: ${newsData}`);
   return (
     <section>
       <MenuBar>
