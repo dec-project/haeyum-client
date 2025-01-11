@@ -6,6 +6,7 @@ import MovieChart from './components/MovieChart';
 import MusicChart from './components/MusicChart';
 import NewsSection from './components/NewsSection';
 import WeatherSection from './components/WeatherSection';
+import AppBar from '@/common/components/appbar';
 
 const Trip = () => {
   const { calendarId } = useParams<{ calendarId: string }>();
@@ -16,20 +17,23 @@ const Trip = () => {
   }
 
   return (
-    <Container>
-      <NewsSection />
-      <WeatherSection calendarId={calendarId} />
-      <MusicChart calendarId={calendarId} />
-      <MovieChart calendarId={calendarId} />
-      <FixedBottom>
-        <ButtonWrapper>
-          <Button>
-            <ChatIcon src={IconChatDot} alt="chatIcon" />
-            <span>90년대 채팅방</span>
-          </Button>
-        </ButtonWrapper>
-      </FixedBottom>
-    </Container>
+    <>
+      <AppBar leftContent={<AppBar.ArrowLeft />} text="" rightContent={<AppBar.Heart disabled />} />
+      <Container>
+        <NewsSection calendarId={calendarId} />
+        <WeatherSection calendarId={calendarId} />
+        <MusicChart calendarId={calendarId} />
+        <MovieChart calendarId={calendarId} />
+        <FixedBottom>
+          <ButtonWrapper>
+            <Button>
+              <ChatIcon src={IconChatDot} alt="chatIcon" />
+              <span>90년대 채팅방</span>
+            </Button>
+          </ButtonWrapper>
+        </FixedBottom>
+      </Container>
+    </>
   );
 };
 
