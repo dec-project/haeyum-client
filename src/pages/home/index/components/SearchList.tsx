@@ -4,14 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import LoadingSpinner from '@/common/components/spinner';
 import useSearchRanking from '../hooks/useSearchRanking';
 import DefaultImg from '@/common/assets/logo/logo.svg';
-
-interface SearchListProps {
-  calendarId: number;
-  calendarName: string;
-  imgUrl: string;
-  viewCount: number;
-  favoriteCount: number;
-}
+import { SearchRankingList } from '../types';
 
 const SearchList = () => {
   const { data: searchData, isLoading, isError } = useSearchRanking();
@@ -21,17 +14,17 @@ const SearchList = () => {
     return <LoadingSpinner />;
   }
 
-  if (isError || !searchData.searches) {
+  if (isError || !searchData?.searches) {
     return <div>영화 데이터를 가져오는 중 문제가 발생했습니다.</div>;
   }
 
   return (
     <List>
-      {searchData.searches.map((data: SearchListProps) => (
+      {searchData.searches.map((data: SearchRankingList) => (
         <Item key={data.calendarId}>
           <Content>
             <Img
-              src={data.imgUrl ? `${import.meta.env.VITE_API_BASE_URL}/${data.imgUrl}` : DefaultImg}
+              src={data.img ? `${import.meta.env.VITE_API_BASE_URL}/${data.img}` : DefaultImg}
               alt={data.calendarName}
             />
             <Info>
