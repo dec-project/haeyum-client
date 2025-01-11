@@ -1,11 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import api from '@/common/apis/api';
-import { SearchRankingListResponse } from '../types';
+import rankingApi from '@/common/apis/ranking';
 
 const useSearchRanking = () => {
-  const query = useQuery<SearchRankingListResponse>({
+  const query = useQuery({
     queryKey: ['rankingSearch'],
-    queryFn: () => api.get(`/ranking/search`),
+    queryFn: () => rankingApi.getSearchRanking(),
     enabled: true,
   });
 
