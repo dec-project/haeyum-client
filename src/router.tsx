@@ -4,6 +4,8 @@ import HomePage from './pages/home/index';
 import SearchPage from './pages/search/index';
 import ChatsPage from './pages/chats/index';
 import TripPage from './pages/trip/index';
+import Navbar from './common/components/navbar';
+import MyPage from './pages/my/index';
 
 type routeElement = {
   path: string;
@@ -13,9 +15,16 @@ type routeElement = {
 };
 
 const routes: routeElement[] = [
-  { path: '/', element: <HomePage /> },
-  { path: '/search', element: <SearchPage /> },
-  { path: '/chats', element: <ChatsPage /> },
+  {
+    path: '/',
+    element: <Navbar />,
+    children: [
+      { path: '/', element: <HomePage /> },
+      { path: '/search', element: <SearchPage /> },
+      { path: '/chats', element: <ChatsPage /> },
+      { path: '/profile', element: <MyPage /> },
+    ],
+  },
   { path: '/trip/:calendarId', element: <TripPage /> },
 ];
 
