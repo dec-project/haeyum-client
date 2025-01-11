@@ -1,11 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import api from '@/common/apis/api';
-import { NewsResponse } from '../types';
+import searchApi from '@/common/apis/search';
 
-const useNews = (calendarId?: string) => {
-  const query = useQuery<NewsResponse>({
+const useNews = (calendarId: string) => {
+  const query = useQuery({
     queryKey: ['news', calendarId],
-    queryFn: () => api.get(`/search/${calendarId}/news`),
+    queryFn: () => searchApi.getNews(calendarId),
     enabled: !!calendarId,
   });
 
