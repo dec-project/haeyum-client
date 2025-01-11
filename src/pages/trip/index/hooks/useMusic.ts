@@ -1,11 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import api from '@/common/apis/api';
-import { MusicResponse } from '../types';
+import searchApi from '@/common/apis/search';
 
-const useMusic = (calendarId?: string) => {
-  const query = useQuery<MusicResponse>({
+const useMusic = (calendarId: string) => {
+  const query = useQuery({
     queryKey: ['songs', calendarId],
-    queryFn: () => api.get(`/search/${calendarId}/songs`),
+    queryFn: () => searchApi.getMusic(calendarId),
     enabled: !!calendarId,
   });
 
