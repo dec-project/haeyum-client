@@ -1,11 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import api from '@/common/apis/api';
-import { WeatherResponse } from '../types';
+import searchApi from '@/common/apis/search';
 
-const useWeather = (calendarId?: string) => {
-  const query = useQuery<WeatherResponse>({
+const useWeather = (calendarId: string) => {
+  const query = useQuery({
     queryKey: ['weather', calendarId],
-    queryFn: () => api.get(`/weather/${calendarId}`),
+    queryFn: () => searchApi.getWeather(calendarId),
     enabled: !!calendarId,
   });
 
