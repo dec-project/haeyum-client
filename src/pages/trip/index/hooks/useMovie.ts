@@ -1,11 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import api from '@/common/apis/api';
-import { MovieResponse } from '../types';
+import searchApi from '@/common/apis/search';
 
-const useMovie = (calendarId?: string) => {
-  const query = useQuery<MovieResponse>({
+const useMovie = (calendarId: string) => {
+  const query = useQuery({
     queryKey: ['movies', calendarId],
-    queryFn: () => api.get(`/search/${calendarId}/movies`),
+    queryFn: () => searchApi.getMovie(calendarId),
     enabled: !!calendarId,
   });
 
