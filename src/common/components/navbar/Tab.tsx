@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import Home from '@/common/assets/icon/icon-home.svg';
-import Search from '@/common/assets/icon/icon-search.svg';
-import Chat from '@/common/assets/icon/icon-chat.svg';
-import Profile from '@/common/assets/icon/icon-people.svg';
+import Home from '@/common/assets/icon/icon-home.svg?react';
+import Search from '@/common/assets/icon/icon-search.svg?react';
+import Chat from '@/common/assets/icon/icon-chat.svg?react';
+import Profile from '@/common/assets/icon/icon-people.svg?react';
 import { TAB_LIST } from '../../constants/TAB_LIST';
 import { TabType } from '.';
 
@@ -18,7 +18,7 @@ const Tab = ({ tab, currentTab, handleTabClick }: TabProps) => {
   return (
     <List active={currentTab === tab} onClick={() => handleTabClick(tab)}>
       <IconBox>
-        <Icon active={currentTab === tab} src={TAB_ICON[TAB_LIST.indexOf(tab)]} alt={tab} />
+        <Icon as={TAB_ICON[TAB_LIST.indexOf(tab)]} active={currentTab === tab} />
       </IconBox>
       <span>{tab}</span>
     </List>
@@ -49,9 +49,12 @@ const IconBox = styled.div`
   height: 32px;
 `;
 
-const Icon = styled.img.withConfig({ shouldForwardProp: (prop) => prop !== 'active' })<{ active: boolean }>`
+const Icon = styled.svg.withConfig({ shouldForwardProp: (prop) => prop !== 'active' })<{ active: boolean }>`
   width: 24px;
   height: 24px;
+  path:nth-child(1) {
+    fill: ${({ active, theme }) => (active ? theme.themeColors.textPrimary : theme.themeColors.textSecondary)};
+  }
 `;
 
 export default Tab;
