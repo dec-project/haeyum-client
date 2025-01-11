@@ -1,8 +1,8 @@
-export interface SearchRankingListResponse {
-  searches: SearchRankingList[];
+export interface SearchRankingResponse {
+  searches: SearchRanking[];
 }
 
-export interface SearchRankingList {
+export interface SearchRanking {
   calendarId: number;
   calendarDate: number;
   calendarName: string;
