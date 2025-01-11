@@ -10,7 +10,7 @@ export const requestInterceptor = (config: InternalAxiosRequestConfig): Internal
 };
 
 export const successInterceptor = (response: AxiosResponse): AxiosResponse => {
-  return response;
+  return response.data;
 };
 
 export class ApiError extends Error {
