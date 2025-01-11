@@ -23,7 +23,7 @@ const Navbar = () => {
       case '채팅':
         navigate('/chats');
         break;
-      case '프로필':
+      case '내 여행':
         navigate('/profile');
         break;
       default:
@@ -34,7 +34,7 @@ const Navbar = () => {
   useEffect(() => {
     if (pathname.includes('search')) setCurrentTab('검색');
     else if (pathname.includes('chats')) setCurrentTab('채팅');
-    else if (pathname.includes('profile')) setCurrentTab('프로필');
+    else if (pathname.includes('profile')) setCurrentTab('내 여행');
     else setCurrentTab('홈');
   }, [pathname]);
 
