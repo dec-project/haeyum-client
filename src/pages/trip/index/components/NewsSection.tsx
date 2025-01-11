@@ -1,11 +1,39 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { categoryTabs, newsData } from './data';
+import { newsData } from './data';
+// import useNews from '../hooks/useNews';
+// import LoadingSpinner from '@/common/components/spinner';
+import { newsSummary } from '../types';
 
-// TODO: 추후 API 연동
-const NewsSection = () => {
+interface NewsSectionProps {
+  calendarId: string;
+}
+
+const NewsSection = ({ calendarId }: NewsSectionProps) => {
+  // TODO: API 연동 후 주석 해제
+  // const { data: newsData, isLoading, isError } = useNews(calendarId);
+
   const [activeTab, setActiveTab] = useState(0);
 
+  const categoryTabs = newsData.itemList.map((news: newsSummary) => news.category);
+
+  const sortedNews = categoryTabs.map((category) =>
+    newsData.itemList.find((news: newsSummary) => news.category === category),
+  );
+
+  // TODO: API 연동 후 주석 해제
+
+  // if (isLoading) {
+  //   // TODO: 추후 로딩 페이지 추가
+  //   return <LoadingSpinner />;
+  // }
+
+  // if (isError || !newsData.itemList) {
+  //   // TODO: 추후 에러 컴포넌트 추가
+  //   return <div>뉴스 데이터를 가져오는 중 문제가 발생했습니다.</div>;
+  // }
+
+  console.log(`newsData: ${newsData}`);
   return (
     <section>
       <MenuBar>
@@ -16,9 +44,9 @@ const NewsSection = () => {
         ))}
       </MenuBar>
       <TextWrapper>
-        <Title>{newsData[activeTab].title}</Title>
-        <Description>{newsData[activeTab].description}</Description>
-        <MoreButton>자세히 보기</MoreButton>
+        <Title>{sortedNews[activeTab]?.title}</Title>
+        <Description>{sortedNews[activeTab]?.content}</Description>
+        <MoreButton onClick={() => window.open(sortedNews[activeTab]?.url, '_blank')}>자세히 보기</MoreButton>
       </TextWrapper>
     </section>
   );
@@ -67,6 +95,7 @@ const MoreButton = styled.button`
   background-color: ${({ theme }) => theme.colors.orange200};
   border-radius: 4px;
   ${({ theme }) => theme.typography.label.bold};
+  cursor: pointer;
 `;
 
 export default NewsSection;
