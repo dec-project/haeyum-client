@@ -38,7 +38,6 @@ const Navbar = () => {
     else setCurrentTab('홈');
   }, [pathname]);
 
-  console.log('currentTab', currentTab);
   return (
     <Wrapper>
       <Nav>

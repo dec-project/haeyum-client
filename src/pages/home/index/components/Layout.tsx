@@ -1,14 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import AppBar from '../../../../common/components/appbar';
-import Navbar from '../../../../common/components/navbar';
+import AppBar from '@/common/components/appbar';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <Container>
       <AppBar leftContent={<AppBar.Logo />} />
       <Wrapper>{children}</Wrapper>
-      <Navbar />
     </Container>
   );
 };
