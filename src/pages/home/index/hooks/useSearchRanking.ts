@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import rankingApi from '@/common/apis/ranking';
+import { rankingApi } from '@/common/apis/ranking';
 
 const useSearchRanking = () => {
   const query = useQuery({
