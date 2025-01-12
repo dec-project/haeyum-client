@@ -4,7 +4,7 @@ import rankingApi from '@/common/apis/ranking';
 const useSearchRanking = () => {
   const query = useQuery({
     queryKey: ['rankingSearch'],
-    queryFn: () => rankingApi.getSearchRanking,
+    queryFn: rankingApi.getSearchRanking,
     enabled: true,
   });
 

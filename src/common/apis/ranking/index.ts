@@ -2,7 +2,10 @@ import { rankingInstance } from '../instances';
 import { KeywordRankingResponse } from './type';
 
 const rankingApi = {
-  getSearchRanking: rankingInstance.get<KeywordRankingResponse>(`/search`).then((response) => response.data),
+  getSearchRanking: async () => {
+    const response = await rankingInstance.get<KeywordRankingResponse>(`/search`);
+    return response.data;
+  },
 };
 
 export default rankingApi;
