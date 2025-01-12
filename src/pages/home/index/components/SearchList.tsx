@@ -24,7 +24,7 @@ const SearchList = () => {
         <Item key={data.calendarId}>
           <Content>
             <Img
-              src={data.img ? `${import.meta.env.VITE_API_BASE_URL}/${data.img}` : DefaultImg}
+              src={data.imgUrl ? `${import.meta.env.VITE_API_BASE_URL}/${data.imgUrl}` : DefaultImg}
               alt={data.calendarName}
             />
             <Info>

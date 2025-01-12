@@ -8,5 +8,5 @@ export interface SearchRanking {
   calendarName: string;
   viewCount: number;
   favoriteCount: number;
-  img: string;
+  imgUrl: string;
 }
