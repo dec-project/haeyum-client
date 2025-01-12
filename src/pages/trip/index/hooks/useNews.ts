@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import searchApi from '@/common/apis/search';
+import { tripApi } from '@/common/apis/trip';
 
 const useNews = (calendarId: string) => {
   const query = useQuery({
     queryKey: ['news', calendarId],
-    queryFn: () => searchApi.getNews(calendarId),
+    queryFn: () => tripApi.getNews(calendarId),
     enabled: !!calendarId,
   });
 

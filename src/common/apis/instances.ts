@@ -17,8 +17,7 @@ const createApiInstance = (path: string, requireAuth: boolean = false) => {
   return instance;
 };
 
+export const searchInstance = createApiInstance('calendar', false);
 // TODO: weather api 주소 변경 후 수정
-export const calendarInstance = createApiInstance('calendar', false);
-// export const searchInstance = createApiInstance('search', false);
-export const searchInstance = createApiInstance('', false);
+export const tripInstance = createApiInstance('', false);
 export const rankingInstance = createApiInstance('ranking', false);
