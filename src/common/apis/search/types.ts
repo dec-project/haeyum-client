@@ -1,38 +1,22 @@
-export interface NewsSummary {
-  title: string;
-  content: string;
-  url: string;
-  category: string;
+export interface SearchParams {
+  startDate: string;
+  endDate: string;
+  page?: number;
+  size?: number;
 }
 
-export interface MusicSummary {
-  songId: number;
-  title: string;
-  artists: string;
-  ranking: number;
-  imgUrl: string;
+export interface SearchResponse {
+  count: number;
+  itemList: TripCard[];
+  currentPage: number;
+  totalPages: number;
+  last: boolean;
 }
 
-export interface MovieSummary {
-  movieId: number;
-  title: string;
-  ranking: number;
+export interface TripCard {
+  calendarId: string;
+  calendarName: string;
   img: string;
-}
-
-export interface NewsResponse {
-  itemList: NewsSummary[];
-}
-
-export interface MovieResponse {
-  itemList: MovieSummary[];
-}
-
-export interface MusicResponse {
-  songSummaries: MusicSummary[];
-}
-
-export interface WeatherResponse {
-  weather: string;
-  img: string;
+  viewCount: number;
+  favoriteCount: number;
 }

@@ -1,8 +1,8 @@
 import { rankingInstance } from '../instances';
-import { SearchRankingResponse } from './type';
+import { KeywordRankingResponse } from './type';
 
 const rankingApi = {
-  getSearchRanking: rankingInstance.get<SearchRankingResponse>(`/search`).then((response) => response.data),
+  getSearchRanking: rankingInstance.get<KeywordRankingResponse>(`/search`).then((response) => response.data),
 };
 
 export default rankingApi;

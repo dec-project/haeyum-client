@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import LoadingSpinner from '@/common/components/spinner';
 import useSearchRanking from '../hooks/useSearchRanking';
 import DefaultImg from '@/common/assets/logo/logo.svg';
-import { SearchRanking } from '@/common/apis/ranking/type';
+import { KeywordRanking } from '@/common/apis/ranking/type';
 
 const SearchList = () => {
   const { data: searchData, isLoading, isError } = useSearchRanking();
@@ -20,7 +20,7 @@ const SearchList = () => {
 
   return (
     <List>
-      {searchData.searches.map((data: SearchRanking) => (
+      {searchData.searches.map((data: KeywordRanking) => (
         <Item key={data.calendarId}>
           <Content>
             <Img

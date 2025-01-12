@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import TripCards from '../components/TripCards';
 import useResult from '../hooks/useResult';
 import LoadingSpinner from '@/common/components/spinner';
-import { SearchParams } from '@/common/apis/calendar/types';
+import { SearchParams } from '@/common/apis/search/types';
 
 const Result = ({ startDate, endDate }: SearchParams) => {
   const navigate = useNavigate();
