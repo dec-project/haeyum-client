@@ -34,7 +34,7 @@ const MusicChart = ({ calendarId }: MusicChartProps) => {
       <ItemList>
         {musicData.songSummaries.map((item) => (
           <Item key={item.songId}>
-            <Image src={`${BASE_URL}/${item.imgUrl}`} alt={`music-${item.songId}`} />
+            <Image src={`${BASE_URL}${item.imgUrl}`} alt={`music-${item.songId}`} />
             <ContentWrapper>
               <ContentTitle>
                 {item.ranking}. {item.title}
