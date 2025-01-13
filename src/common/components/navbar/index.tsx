@@ -56,12 +56,13 @@ const Nav = styled.nav`
   left: auto;
   right: auto;
   z-index: 100;
-  padding: 8px 8px 12px;
+  padding: 8px 16px 12px;
   display: flex;
   justify-content: space-between;
   width: 100%;
   height: 75px;
-  align-items: center;
+  align-items: flex-start;
+  border-top: 1px solid #f5ebd9;
   background-color: ${({ theme }) => theme.themeColors.background};
   max-width: var(--max-width);
   min-width: var(--min-width);
