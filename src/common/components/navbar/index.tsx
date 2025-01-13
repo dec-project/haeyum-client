@@ -3,7 +3,7 @@ import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import Tab from './Tab';
 import { TabType } from '../../types/TabType';
-import { TAB_ITEM } from '../../constants/tabItem';
+import { TAB_ITEM } from '../../constants/tabItems';
 
 const Navbar = () => {
   const navigate = useNavigate();
