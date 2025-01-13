@@ -25,7 +25,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 0.75rem;
 `;
 
 const Container = styled.div`
@@ -41,6 +40,6 @@ const Container = styled.div`
 const Text = styled.span`
   ${({ theme }) => theme.typography.body1.regular}
   color: ${({ theme }) => theme.colors.orange500};
-  padding: 0.875rem;
+  padding: 16px;
   margin: ${({ title }) => (title ? '0' : 'auto')};
 `;
