@@ -61,7 +61,7 @@ const Button = styled.button`
   border-radius: 4px;
   ${({ theme }) => theme.typography.body1.bold};
 
-  & > span 
+  & > span {
     margin-top: 1px;
   }
 `;
