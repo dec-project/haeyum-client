@@ -56,6 +56,7 @@ const Nav = styled.nav`
   left: auto;
   right: auto;
   z-index: 100;
+  padding: 8px 8px 12px;
   display: flex;
   justify-content: space-between;
   width: 100%;
