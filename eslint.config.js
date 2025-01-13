@@ -61,6 +61,8 @@ export default tseslint.config(
       ],
       'jsx-a11y/label-has-for': ['warn', { required: { every: ['id'] } }], // 레이블에 id 연결 요구
 
+      '@typescript-eslint/no-unused-vars': 'warn', // 사용하지 않는 변수 경고
+
       'styled-components-a11y/alt-text': 'error', // styled-components에 적용되는 규칙
       'styled-components-a11y/anchor-has-content': 'warn',
       'styled-components-a11y/aria-role': 'warn',
