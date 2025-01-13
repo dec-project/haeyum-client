@@ -10,7 +10,6 @@ const TAB_ICON = [Home, Search, Chat, Profile];
 interface TabProps {
   tab: TabType;
   currentTab: TabType;
-  // eslint-disable-next-line no-unused-vars
   handleTabClick: (tab: TabType) => void;
 }
 
