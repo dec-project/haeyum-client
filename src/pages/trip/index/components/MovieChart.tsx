@@ -8,8 +8,7 @@ interface MovieChartProps {
   calendarId: string;
 }
 
-// TODO: 서버 배포시 반영
-// const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const MovieChart = ({ calendarId }: MovieChartProps) => {
   const navigate = useNavigate();
@@ -41,12 +40,7 @@ const MovieChart = ({ calendarId }: MovieChartProps) => {
       <ItemList>
         {movieData.itemList.map((item) => (
           <Item key={item.movieId} onClick={() => handleDetailClick(item.movieId)}>
-            <Image
-              // TODO: 서버 배포시 반영
-              // src={`${BASE_URL}/${item.img}`}
-              src={`${item.img}`}
-              alt={`movie-${item.movieId}`}
-            />
+            <Image src={`${BASE_URL}/${item.img}`} alt={`movie-${item.movieId}`} />
             <ContentWrapper>
               <ContentTitle>
                 {item.ranking}. {item.title}
