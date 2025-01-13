@@ -42,7 +42,7 @@ const Navbar = () => {
     <Wrapper>
       <Nav>
         {TAB_LIST.map((tab) => (
-          <Tab key={tab} tab={tab} currentTab={currentTab} handleTabClick={() => handleTabClick(tab)} />
+          <Tab key={tab} tab={tab} currentTab={currentTab} handleTabClick={handleTabClick} />
         ))}
       </Nav>
       <Outlet />
