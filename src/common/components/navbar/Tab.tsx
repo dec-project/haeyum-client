@@ -1,23 +1,19 @@
+import React from 'react';
 import styled from 'styled-components';
-import Home from '@/common/assets/icon/icon-home.svg?react';
-import Search from '@/common/assets/icon/icon-search.svg?react';
-import Chat from '@/common/assets/icon/icon-chat.svg?react';
-import Profile from '@/common/assets/icon/icon-people.svg?react';
-import { TAB_LIST } from '../../constants/TabList';
-import { TabType } from '.';
+import { TabType } from '../../types/TabType';
 
-const TAB_ICON = [Home, Search, Chat, Profile];
 interface TabProps {
+  icon: React.FC<React.SVGProps<SVGSVGElement>> | undefined;
   tab: TabType;
   currentTab: TabType;
   handleTabClick: (tab: TabType) => void;
 }
 
-const Tab = ({ tab, currentTab, handleTabClick }: TabProps) => {
+const Tab = ({ icon, tab, currentTab, handleTabClick }: TabProps) => {
   return (
     <List active={currentTab === tab} onClick={() => handleTabClick(tab)}>
       <IconBox>
-        <Icon as={TAB_ICON[TAB_LIST.indexOf(tab)]} active={currentTab === tab} />
+        <Icon as={icon} active={currentTab === tab} />
       </IconBox>
       <span>{tab}</span>
     </List>
