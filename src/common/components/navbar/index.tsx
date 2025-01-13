@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import Tab from './Tab';
-import { TAB_ITEM } from '../../constants/TabItem';
 import { TabType } from '../../types/TabType';
+import { TAB_ITEM } from '../../constants/tabItem';
 
 const Navbar = () => {
   const navigate = useNavigate();
