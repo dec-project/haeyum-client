@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-import { TAB_LIST } from '../../constants/TabList';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import Tab from './Tab';
-
-export type TabType = (typeof TAB_LIST)[number];
+import { TAB_ITEM } from '../../constants/TabItem';
+import { TabType } from '../../types/TabType';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -12,37 +11,25 @@ const Navbar = () => {
   const { pathname } = location;
   const [currentTab, setCurrentTab] = useState<TabType>('홈');
   const handleTabClick = (tab: TabType) => {
-    setCurrentTab(tab);
-    switch (tab) {
-      case '홈':
-        navigate('/');
-        break;
-      case '검색':
-        navigate('/search');
-        break;
-      case '채팅':
-        navigate('/chats');
-        break;
-      case '내 여행':
-        navigate('/profile');
-        break;
-      default:
-        break;
+    const selectedTab = TAB_ITEM.find((item) => item.name === tab);
+    if (selectedTab) {
+      setCurrentTab(tab);
+      navigate(selectedTab.path);
     }
   };
 
   useEffect(() => {
-    if (pathname.includes('search')) setCurrentTab('검색');
-    else if (pathname.includes('chats')) setCurrentTab('채팅');
-    else if (pathname.includes('profile')) setCurrentTab('내 여행');
-    else setCurrentTab('홈');
+    const matchedTab = TAB_ITEM.find((item) => pathname === item.path);
+    if (matchedTab) {
+      setCurrentTab(matchedTab.name);
+    }
   }, [pathname]);
 
   return (
     <Wrapper>
       <Nav>
-        {TAB_LIST.map((tab) => (
-          <Tab key={tab} tab={tab} currentTab={currentTab} handleTabClick={handleTabClick} />
+        {TAB_ITEM.map((tab) => (
+          <Tab icon={tab.icon} key={tab.name} tab={tab.name} currentTab={currentTab} handleTabClick={handleTabClick} />
         ))}
       </Nav>
       <Outlet />
