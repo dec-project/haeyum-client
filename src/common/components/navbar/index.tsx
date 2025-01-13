@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { TAB_LIST } from '../../constants/TAB_LIST';
+import { TAB_LIST } from '../../constants/TabList';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import Tab from './Tab';
