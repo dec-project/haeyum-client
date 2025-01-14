@@ -1,9 +1,9 @@
 const movieInfoData = {
   title: '소방관',
   content:
-    '소방관은 2024년 12월 4일 개봉한 대한민국의 영화이다. 2001년 홍제동 주택 화재 사고에 실화를 바탕으로 한 작품이다.',
+    '살리기 위해, 살아남기 위해 하루하루가 마지막 현장인 소방관 팀은 열악한 환경 속에서도 화… 기억해야 할 그 이름 <소방관> 2001년 가장 빛났던 그들의 이야기를 기억하겠습니다.',
   releaseDate: '2024-12-04',
-  youtubeAddr: 'UmagF8Tmk6E',
+  youtubeAddr: 'https://www.youtube.com/watch?v=v1Loj-8dWGY',
 };
 
 const musicInfoData = {

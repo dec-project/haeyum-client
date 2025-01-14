@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import AppBar from '@/common/components/appbar';
+import useMusicDetail from '../hooks/useMusicDetail';
+import LoadingSpinner from '@/common/components/spinner';
 import Container from '@/common/components/layout/Container';
-import { musicInfoData } from './data';
+import AppBar from '@/common/components/appbar';
 
 interface MusicInfoProps {
   calendarId: string;
@@ -9,8 +10,18 @@ interface MusicInfoProps {
 }
 
 const MusicInfo = ({ calendarId, musicId }: MusicInfoProps) => {
-  // TODO: 에러 방지를 위해 임시로 console.log 추가, api 연동 후 삭제
-  console.log(calendarId, musicId);
+  const { data: musicInfoData, isLoading, isError } = useMusicDetail(calendarId, musicId);
+
+  if (isLoading) {
+    // TODO: 추후 로딩 컴포넌트 추가
+    return <LoadingSpinner />;
+  }
+
+  if (isError || !musicInfoData) {
+    // TODO: 추후 에러 컴포넌트 추가
+    return <div>노래 상세 데이터를 가져오는 중 문제가 발생했습니다.</div>;
+  }
+
   return (
     <>
       <AppBar leftContent={<AppBar.ArrowLeft />} text="상세" rightContent={<AppBar.GoHome />} />
@@ -18,9 +29,9 @@ const MusicInfo = ({ calendarId, musicId }: MusicInfoProps) => {
         <VideoSection>
           <IframeWrapper>
             <Iframe
-              src={`https://www.youtube.com/embed/${musicInfoData.youtubeAddr}`}
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              src={`${musicInfoData.youtubeAddr}`}
+              title="Video Player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             ></Iframe>
           </IframeWrapper>
