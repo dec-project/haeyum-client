@@ -3,7 +3,7 @@ import Carousel from './components/Carousel';
 import Layout from './components/Layout';
 import { useNavigate } from 'react-router-dom';
 import SearchList from './components/SearchList';
-import SearchInput from '@/common/components/SearchInput';
+import { SearchInput } from '@/common/components/SearchInput';
 
 const Home = () => {
   const navigate = useNavigate();
