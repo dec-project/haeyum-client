@@ -1,27 +1,29 @@
 import axios, { AxiosInstance } from 'axios';
 import { errorInterceptor, requestInterceptor, successInterceptor } from './interceptors';
 
-const createAxiosInstance = (): AxiosInstance => {
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+const createAxiosInstance = (baseURL: string, headers: { [key: string]: string }): AxiosInstance => {
   return axios.create({
-    baseURL: import.meta.env.VITE_API_BASE_URL,
+    baseURL,
     headers: {
       'Content-Type': 'application/json',
+      ...headers,
     },
   });
 };
 
-const configureInterceptors = (instance: AxiosInstance, requireAuth: boolean): void => {
-  if (requireAuth) {
-    instance.interceptors.request.use(requestInterceptor);
-  }
+const configureInterceptors = (instance: AxiosInstance): void => {
+  instance.interceptors.request.use(requestInterceptor);
   instance.interceptors.response.use(successInterceptor, errorInterceptor);
 };
 
-const createApiInstance = (requireAuth: boolean = false): AxiosInstance => {
-  const instance = createAxiosInstance();
-  configureInterceptors(instance, requireAuth);
+const createApiInstance = (baseURL: string, headers: { [key: string]: string }): AxiosInstance => {
+  const instance = createAxiosInstance(baseURL, headers);
+
+  configureInterceptors(instance);
   return instance;
 };
 
-export const publicApiInstance = createApiInstance(false);
-export const privateApiInstance = createApiInstance(true);
+export const publicApiInstance = createApiInstance(BASE_URL, {});
+export const privateApiInstance = createApiInstance(BASE_URL, {});
