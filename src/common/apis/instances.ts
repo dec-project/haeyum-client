@@ -1,23 +1,27 @@
 import axios, { AxiosInstance } from 'axios';
 import { errorInterceptor, requestInterceptor, successInterceptor } from './interceptors';
 
-const createApiInstance = (path: string, requireAuth: boolean = false) => {
-  const instance: AxiosInstance = axios.create({
-    baseURL: `${import.meta.env.VITE_API_BASE_URL}/${path}`,
+const createAxiosInstance = (): AxiosInstance => {
+  return axios.create({
+    baseURL: import.meta.env.VITE_API_BASE_URL,
     headers: {
       'Content-Type': 'application/json',
     },
   });
+};
 
+const configureInterceptors = (instance: AxiosInstance, requireAuth: boolean): void => {
   if (requireAuth) {
     instance.interceptors.request.use(requestInterceptor);
   }
   instance.interceptors.response.use(successInterceptor, errorInterceptor);
+};
 
+const createApiInstance = (requireAuth: boolean = false): AxiosInstance => {
+  const instance = createAxiosInstance();
+  configureInterceptors(instance, requireAuth);
   return instance;
 };
 
-export const searchInstance = createApiInstance('calendar', false);
-// TODO: weather api 주소 변경 후 수정
-export const tripInstance = createApiInstance('', false);
-export const rankingInstance = createApiInstance('ranking', false);
+export const publicApiInstance = createApiInstance(false);
+export const privateApiInstance = createApiInstance(true);
