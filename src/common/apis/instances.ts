@@ -20,7 +20,6 @@ const configureInterceptors = (instance: AxiosInstance): void => {
 
 const createApiInstance = (baseURL: string, headers: { [key: string]: string }): AxiosInstance => {
   const instance = createAxiosInstance(baseURL, headers);
-
   configureInterceptors(instance);
   return instance;
 };
