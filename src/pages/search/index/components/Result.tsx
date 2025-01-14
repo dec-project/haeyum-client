@@ -43,20 +43,6 @@ const Container = styled.div`
   padding: 0 16px 16px 16px;
 `;
 
-// const SearchInput = styled.input`
-//   margin: 12px 0;
-//   padding: 0 15px;
-//   width: 100%;
-//   height: 48px;
-//   border: 1px solid ${({ theme }) => theme.themeColors.border};
-//   border-radius: 4px;
-//   ${({ theme }) => theme.typography.body1.regular};
-
-//   &::placeholder {
-//     color: ${({ theme }) => theme.themeColors.textSecondary};
-//   }
-// `;
-
 const SearchResultSection = styled.section`
   display: flex;
   flex-direction: column;
