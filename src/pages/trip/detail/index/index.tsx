@@ -2,7 +2,7 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import MovieInfo from './components/MovieInfo';
 import MusicInfo from './components/MusicInfo';
 
-function DetailPage() {
+const TripDetailPage = () => {
   const { calendarId } = useParams<{ calendarId: string }>();
   const [searchParams] = useSearchParams();
 
@@ -15,11 +15,11 @@ function DetailPage() {
   }
 
   return (
-    <div>
+    <>
       {calendarId && movieId && <MovieInfo calendarId={calendarId} movieId={movieId} />}
       {calendarId && musicId && <MusicInfo calendarId={calendarId} musicId={musicId} />}
-    </div>
+    </>
   );
-}
+};
 
-export default DetailPage;
+export default TripDetailPage;
