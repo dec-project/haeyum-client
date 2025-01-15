@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import ArrowRight from '@/common/assets/icon/icon-arrow-right.svg';
 import useMovie from '../hooks/useMovie';
 import LoadingSpinner from '@/common/components/spinner';
-import { useNavigate } from 'react-router-dom';
 
 interface MovieChartProps {
   calendarId: string;
@@ -13,7 +12,7 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const MovieChart = ({ calendarId }: MovieChartProps) => {
   const navigate = useNavigate();
-  const { data: movieData, isLoading, isError } = useMovie(calendarId);
+  const { data: movieData, isLoading, isError, error } = useMovie(calendarId);
 
   if (isLoading) {
     // TODO: 추후 로딩 페이지 추가

@@ -12,7 +12,7 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const MusicChart = ({ calendarId }: MusicChartProps) => {
   const navigate = useNavigate();
-  const { data: musicData, isLoading, isError } = useMusic(calendarId);
+  const { data: musicData, isLoading, isError, error } = useMusic(calendarId);
 
   if (isLoading) {
     // TODO: 추후 로딩 페이지 추가
@@ -38,7 +38,7 @@ const MusicChart = ({ calendarId }: MusicChartProps) => {
       <SectionHeader>노래 TOP 5</SectionHeader>
       <ItemList>
         {musicData.songSummaries.map((item) => (
-          <Item key={item.songId}>
+          <Item key={item.songId} onClick={() => handleDetail(item.songId)}>
             <Image src={`${BASE_URL}${item.imgUrl}`} alt={`music-${item.songId}`} />
             <ContentWrapper>
               <ContentTitle>
