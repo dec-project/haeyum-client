@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { newsData } from '../constants';
+import { newsData } from './constants';
 
 // import useNews from '../hooks/useNews';
 // import LoadingSpinner from '@/common/components/spinner';
