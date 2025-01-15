@@ -1,7 +1,7 @@
 import { TripCard } from '@/common/apis/search/types';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { DEFAULT_IMAGE } from '../constants';
+import { DEFAULT_IMAGE } from './constants';
 
 interface TripCardsProps {
   items: TripCard[];
