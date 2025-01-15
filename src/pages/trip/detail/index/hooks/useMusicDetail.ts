@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import api from '@/common/apis/api';
+import { tripApi } from '@/common/apis/trip';
 
 const useMusicDetail = (calendarId: string, musicId: string) => {
   const query = useQuery({
     queryKey: ['music', calendarId, musicId],
-    queryFn: () => api.get(`/search/${calendarId}/songs/${musicId}`),
+    queryFn: () => tripApi.getMusicDetail(calendarId, musicId),
     enabled: !!calendarId && !!musicId,
   });
 

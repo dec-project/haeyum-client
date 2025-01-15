@@ -18,4 +18,12 @@ export const tripApi = {
     const response = await publicApiInstance.get<MovieResponse>(`/search/${calendarId}/movies`);
     return response.data;
   },
+  getMovieDetail: async (calendarId: string, movieId: string) => {
+    const response = await publicApiInstance.get<any>(`/search/${calendarId}/movies/${movieId}`);
+    return response.data;
+  },
+  getMusicDetail: async (calendarId: string, musicId: string) => {
+    const response = await publicApiInstance.get<any>(`/search/${calendarId}/songs/${musicId}`);
+    return response.data;
+  },
 };
