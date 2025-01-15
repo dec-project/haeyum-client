@@ -4,7 +4,7 @@ import TripCards from '../components/TripCards';
 import useResult from '../hooks/useResult';
 import LoadingSpinner from '@/common/components/spinner';
 import { SearchParams } from '@/common/apis/search/types';
-import { SearchInput } from '@/common/components/SearchInput';
+import SearchInput from '@/common/components/SearchInput';
 
 const Result = ({ startDate, endDate }: SearchParams) => {
   const navigate = useNavigate();
