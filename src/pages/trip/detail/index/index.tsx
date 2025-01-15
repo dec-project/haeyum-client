@@ -1,5 +1,5 @@
-const Detail = () => {
+const TripDetailPage = () => {
   return <div>Detail</div>;
 };
 
-export default Detail;
+export default TripDetailPage;
