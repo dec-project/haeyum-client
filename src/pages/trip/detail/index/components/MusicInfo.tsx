@@ -3,6 +3,7 @@ import useMusicDetail from '../hooks/useMusicDetail';
 import LoadingSpinner from '@/common/components/spinner';
 import Container from '@/common/components/layout/Container';
 import AppBar from '@/common/components/appbar';
+import { formattedDate } from '../utils';
 
 interface MusicInfoProps {
   calendarId: string;
@@ -38,7 +39,11 @@ const MusicInfo = ({ calendarId, musicId }: MusicInfoProps) => {
         </VideoSection>
         <ContentSection>
           <Title>{musicInfoData.title}</Title>
-          <ReleaseDate>{musicInfoData.releaseDate}</ReleaseDate>
+          <ReleaseDate>
+            {musicInfoData.artists}
+            <br />
+            {formattedDate(musicInfoData.releaseDate)} | {musicInfoData.genre}
+          </ReleaseDate>
         </ContentSection>
         <ContentSection>
           <Description>{musicInfoData.lyrics}</Description>
