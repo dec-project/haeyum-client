@@ -8,6 +8,7 @@ import Navbar from './common/components/navbar';
 import MyPage from './pages/my/index';
 import TripDetailPage from './pages/trip/detail/index';
 import ChatRoom from './pages/chats/room';
+import LoginPage from './pages/auth/login';
 
 type routeElement = {
   path: string;
@@ -30,6 +31,7 @@ const routes: routeElement[] = [
   { path: '/trip/:calendarId', element: <TripPage /> },
   { path: '/chats/:roomId', element: <ChatRoom /> },
   { path: '/trip/:calendarId/detail', element: <TripDetailPage /> },
+  { path: '/login', element: <LoginPage /> },
 ];
 
 export const router = createBrowserRouter(routes);
