@@ -1,5 +1,5 @@
 import { publicApiInstance } from '../instances';
-import { MovieResponse, MusicResponse, NewsResponse, WeatherResponse } from './types';
+import { MovieDetail, MovieResponse, MusicDetail, MusicResponse, NewsResponse, WeatherResponse } from './types';
 
 export const tripApi = {
   getNews: async (calendarId: string) => {
@@ -19,11 +19,11 @@ export const tripApi = {
     return response.data;
   },
   getMovieDetail: async (calendarId: string, movieId: string) => {
-    const response = await publicApiInstance.get<any>(`/search/${calendarId}/movies/${movieId}`);
+    const response = await publicApiInstance.get<MovieDetail>(`/search/${calendarId}/movies/${movieId}`);
     return response.data;
   },
   getMusicDetail: async (calendarId: string, musicId: string) => {
-    const response = await publicApiInstance.get<any>(`/search/${calendarId}/songs/${musicId}`);
+    const response = await publicApiInstance.get<MusicDetail>(`/search/${calendarId}/songs/${musicId}`);
     return response.data;
   },
 };

@@ -36,3 +36,24 @@ export interface MovieSummary {
   ranking: number;
   img: string;
 }
+
+export interface MovieDetail {
+  title: string;
+  content: string;
+  releaseDate: string;
+  youtubeAddr: string;
+}
+
+export interface MusicDetail {
+  songId: number;
+  title: string;
+  artists: string;
+  releaseDate: string;
+  genre: string;
+  albumTitle: string;
+  lyrics: string;
+  lyricists: string;
+  composers: string;
+  arrangers: string;
+  youtubeAddr: string;
+}
