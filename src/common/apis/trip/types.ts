@@ -6,7 +6,7 @@ export interface NewsSummary {
   title: string;
   content: string;
   url: string;
-  category: string;
+  img: string;
 }
 
 export interface WeatherResponse {
