@@ -50,10 +50,6 @@ export interface MusicDetail {
   artists: string;
   releaseDate: string;
   genre: string;
-  albumTitle: string;
   lyrics: string;
-  lyricists: string;
-  composers: string;
-  arrangers: string;
   youtubeAddr: string;
 }
