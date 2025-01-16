@@ -6,6 +6,8 @@ interface NewsSectionProps {
   calendarId: string;
 }
 
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const NewsSection = ({ calendarId }: NewsSectionProps) => {
   const { data: newsData, isLoading, isError, error } = useNews(calendarId);
 
@@ -32,13 +34,13 @@ const NewsSection = ({ calendarId }: NewsSectionProps) => {
       </MenuBar>
       <NewsCardList>
         {newsData?.itemList.map((news, index) => (
-          <NewsCard key={index} onClick={() => window.open(news?.url, '_blank')}>
+          <NewsCard key={index} onClick={() => window.open(news.url, '_blank')}>
             <ImageWrapper>
-              <Image src={news.img} alt="news" />
+              <Image src={`${BASE_URL}${news.img}`} alt="news" />
             </ImageWrapper>
             <TextWrapper>
-              <Title>{news?.title}</Title>
-              <Description>{news?.content}</Description>
+              <Title>{news.title}</Title>
+              <Description>{news.content}</Description>
             </TextWrapper>
           </NewsCard>
         ))}
@@ -47,33 +49,8 @@ const NewsSection = ({ calendarId }: NewsSectionProps) => {
   );
 };
 
-const TextWrapper = styled.div`
-  margin: 12px 0;
-`;
-
-const ImageWrapper = styled.div`
-  position: relative;
-  padding-bottom: 56%; // 100:56 비율 (높이를 너비의 56%로 설정)
-  width: 100%;
-`;
-
-const Image = styled.img`
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(50, 50);
-  width: 100%;
-  height: 100%;
-  border-radius: 4px;
-  object-fit: cover;
-`;
-
 const Section = styled.section`
   padding: 0 16px;
-`;
-
-const NewsCard = styled.li`
-  cursor: pointer;
 `;
 
 const MenuBar = styled.div`
@@ -98,6 +75,31 @@ const NewsCardList = styled.ul`
   gap: 12px;
   padding: 16px;
   border-top: 1px solid ${({ theme }) => theme.themeColors.border};
+`;
+
+const NewsCard = styled.li`
+  cursor: pointer;
+`;
+
+const ImageWrapper = styled.div`
+  position: relative;
+  padding-bottom: 56%;
+  width: 100%;
+`;
+
+const Image = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(50, 50);
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  object-fit: cover;
+`;
+
+const TextWrapper = styled.div`
+  margin: 12px 0;
 `;
 
 const Title = styled.h1`

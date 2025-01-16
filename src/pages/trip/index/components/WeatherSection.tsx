@@ -6,6 +6,8 @@ interface WeatherSectionProps {
   calendarId: string;
 }
 
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const WeatherSection = ({ calendarId }: WeatherSectionProps) => {
   const { data: weatherData, isLoading, isError, error } = useWeather(calendarId);
 
@@ -30,7 +32,7 @@ const WeatherSection = ({ calendarId }: WeatherSectionProps) => {
         <WeatherHeader>오늘의 날씨</WeatherHeader>
         <ContentSubTitle>{weatherData.weather}</ContentSubTitle>
       </ContentWrapper>
-      <WeatherImage src={weatherData.img} alt="weather" />
+      <WeatherImage src={`${BASE_URL}${weatherData.img}`} alt="weather" />
     </Section>
   );
 };
