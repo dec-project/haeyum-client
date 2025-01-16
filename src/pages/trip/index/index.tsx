@@ -24,9 +24,7 @@ const Trip = () => {
         rightContent={<AppBar.Heart disabled onClick={() => {}} />}
       />
       <Container>
-        <NewsSection
-        // calendarId={calendarId}
-        />
+        <NewsSection calendarId={calendarId} />
         <WeatherSection calendarId={calendarId} />
         <MusicChart calendarId={calendarId} />
         <MovieChart calendarId={calendarId} />
