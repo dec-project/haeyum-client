@@ -53,6 +53,7 @@ const Item = styled.div`
   display: flex;
   align-items: center;
   padding: 8px 0px;
+  cursor: pointer;
 `;
 
 const Img = styled.img`
