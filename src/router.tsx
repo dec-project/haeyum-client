@@ -7,6 +7,7 @@ import TripPage from './pages/trip/index';
 import Navbar from './common/components/navbar';
 import MyPage from './pages/my/index';
 import TripDetailPage from './pages/trip/detail/index';
+import ChatRoom from './pages/chats/room';
 
 type routeElement = {
   path: string;
@@ -28,6 +29,7 @@ const routes: routeElement[] = [
   },
   { path: '/trip/:calendarId', element: <TripPage /> },
   { path: '/trip/:id/detail', element: <TripDetailPage /> },
+  { path: '/chats/:roomId', element: <ChatRoom /> },
 ];
 
 export const router = createBrowserRouter(routes);
