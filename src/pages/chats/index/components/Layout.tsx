@@ -4,10 +4,10 @@ import { ReactNode } from 'react';
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
-    <div>
+    <>
       <AppBar text="채팅" />
       <Container>{children}</Container>
-    </div>
+    </>
   );
 };
 
