@@ -3,6 +3,7 @@ import useChatList from './hooks/useChatList';
 import styled from 'styled-components';
 import Layout from './components/Layout';
 import { format } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -21,11 +22,18 @@ const Chats = () => {
       </div>
     );
   }
+
+  const navigate = useNavigate();
+
+  const onClickChat = (roomId: number) => {
+    navigate(`/chats/${roomId}`);
+  };
+
   return (
     <Layout>
       <div>
         {chatListData.map((chat) => (
-          <ChatItem key={chat.roomId}>
+          <ChatItem key={chat.roomId} onClick={() => onClickChat(chat.roomId)}>
             <Img src={`${BASE_URL}${chat.imgUrl}`} alt="avatar" />
             <ChatDetails>
               <div>
