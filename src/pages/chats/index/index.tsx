@@ -33,23 +33,23 @@ const Chats = () => {
     <Layout>
       <div>
         {chatListData.map((chat) => (
-          <ChatItem key={chat.roomId} onClick={() => onClickChat(chat.roomId)}>
+          <Item key={chat.roomId} onClick={() => onClickChat(chat.roomId)}>
             <Img src={`${BASE_URL}${chat.imgUrl}`} alt="avatar" />
-            <ChatDetails>
+            <Details>
               <div>
-                <ChatTitle>{chat.name}</ChatTitle>
-                <ChatMessage>{chat.lastMessage || '첫 번째 메시지를 작성해주세요'}</ChatMessage>
+                <Title>{chat.name}</Title>
+                <LastMessage>{chat.lastMessage || '첫 번째 메시지를 작성해주세요'}</LastMessage>
               </div>
-              <ChatDate>{chat.lastMessageDate || format(Date(), 'yyyy년 MM월 dd일')}</ChatDate>
-            </ChatDetails>
-          </ChatItem>
+              <LastDate>{chat.lastMessageDate || format(Date(), 'yyyy년 MM월 dd일')}</LastDate>
+            </Details>
+          </Item>
         ))}
       </div>
     </Layout>
   );
 };
 
-const ChatItem = styled.div`
+const Item = styled.div`
   display: flex;
   align-items: center;
   padding: 8px 0px;
@@ -63,7 +63,7 @@ const Img = styled.img`
   margin-right: 16px;
 `;
 
-const ChatDetails = styled.div`
+const Details = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -75,16 +75,16 @@ const ChatDetails = styled.div`
   }
 `;
 
-const ChatTitle = styled.span`
+const Title = styled.span`
   ${({ theme }) => theme.typography.body1.medium};
 `;
 
-const ChatDate = styled.span`
+const LastDate = styled.span`
   ${({ theme }) => theme.typography.body2.regular};
   color: ${({ theme }) => theme.themeColors.textSecondary};
 `;
 
-const ChatMessage = styled.span`
+const LastMessage = styled.span`
   ${({ theme }) => theme.typography.body2.regular};
   color: ${({ theme }) => theme.themeColors.textSecondary};
 `;
