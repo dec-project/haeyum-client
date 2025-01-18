@@ -53,3 +53,6 @@ export interface MusicDetail {
   lyrics: string;
   youtubeAddr: string;
 }
+export interface FavoriteResponse {
+  isFavorite?: boolean;
+}
