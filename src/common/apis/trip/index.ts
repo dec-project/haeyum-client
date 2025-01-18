@@ -1,5 +1,13 @@
-import { publicApiInstance } from '../instances';
-import { MovieDetail, MovieResponse, MusicDetail, MusicResponse, NewsResponse, WeatherResponse } from './types';
+import {
+  FavoriteResponse,
+  MovieDetail,
+  MovieResponse,
+  MusicDetail,
+  MusicResponse,
+  NewsResponse,
+  WeatherResponse,
+} from './types';
+import { privateApiInstance, publicApiInstance } from '../instances';
 
 export const tripApi = {
   getNews: async (calendarId: string) => {
@@ -24,6 +32,10 @@ export const tripApi = {
   },
   getMusicDetail: async (calendarId: string, musicId: string) => {
     const response = await publicApiInstance.get<MusicDetail>(`/search/${calendarId}/songs/${musicId}`);
+    return response.data;
+  },
+  toggleFavorite: async (calendarId: string) => {
+    const response = await privateApiInstance.post<FavoriteResponse>(`/favorite/${calendarId}`);
     return response.data;
   },
 };

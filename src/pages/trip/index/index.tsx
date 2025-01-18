@@ -7,6 +7,7 @@ import MusicChart from './components/MusicChart';
 import NewsSection from './components/NewsSection';
 import WeatherSection from './components/WeatherSection';
 import AppBar from '@/common/components/appbar';
+import { tripApi } from '@/common/apis/trip';
 
 const Trip = () => {
   const { calendarId } = useParams<{ calendarId: string }>();
@@ -16,6 +17,11 @@ const Trip = () => {
     return <div>해당 날짜 정보가 없습니다.</div>;
   }
 
+  // TODO: 인증 테스트용 - 찜 작업시 삭제 예정
+  const handleToggleFavorite = async () => {
+    await tripApi.toggleFavorite(calendarId);
+  };
+
   return (
     <>
       <AppBar
@@ -24,6 +30,7 @@ const Trip = () => {
         rightContent={<AppBar.Heart disabled onClick={() => {}} />}
       />
       <Container>
+        <button onClick={handleToggleFavorite}>TEST BUTTON</button>
         <NewsSection calendarId={calendarId} />
         <WeatherSection calendarId={calendarId} />
         <MusicChart calendarId={calendarId} />
