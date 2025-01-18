@@ -35,7 +35,7 @@ export const tripApi = {
     return response.data;
   },
   toggleFavorite: async (calendarId: string) => {
-    const response = await privateApiInstance.post<FavoriteResponse>(`/favorite/${calendarId}`);
+    const response = await privateApiInstance.put<FavoriteResponse>(`/favorite/${calendarId}`);
     return response.data;
   },
 };
