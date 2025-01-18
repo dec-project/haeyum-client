@@ -13,16 +13,39 @@ const createAxiosInstance = (baseURL: string, headers: { [key: string]: string }
   });
 };
 
-const configureInterceptors = (instance: AxiosInstance): void => {
+const configureRequestInterceptors = (instance: AxiosInstance): void => {
   instance.interceptors.request.use(requestInterceptor);
+};
+
+const configureResponseInterceptors = (instance: AxiosInstance): void => {
   instance.interceptors.response.use(successInterceptor, errorInterceptor);
 };
 
-const createApiInstance = (baseURL: string, headers: { [key: string]: string }): AxiosInstance => {
+const createApiInstance = (
+  baseURL: string,
+  headers: { [key: string]: string },
+  options: {
+    useRequestInterceptors?: boolean;
+    useResponseInterceptors?: boolean;
+  } = { useRequestInterceptors: false, useResponseInterceptors: false },
+): AxiosInstance => {
   const instance = createAxiosInstance(baseURL, headers);
-  configureInterceptors(instance);
+
+  if (options.useRequestInterceptors) {
+    configureRequestInterceptors(instance);
+  }
+
+  if (options.useResponseInterceptors) {
+    configureResponseInterceptors(instance);
+  }
+
   return instance;
 };
 
-export const publicApiInstance = createApiInstance(BASE_URL, {});
-export const privateApiInstance = createApiInstance(BASE_URL, {});
+export const publicApiInstance = createApiInstance(BASE_URL, {}, { useResponseInterceptors: true });
+
+export const privateApiInstance = createApiInstance(
+  BASE_URL,
+  {},
+  { useRequestInterceptors: true, useResponseInterceptors: true },
+);
