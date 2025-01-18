@@ -1,12 +1,13 @@
 import { TripCard } from '@/common/apis/search/types';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { DEFAULT_IMAGE } from './constants';
 
 interface TripCardsProps {
   items: TripCard[];
   count: number;
 }
+
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const TripCards = ({ items, count }: TripCardsProps) => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const TripCards = ({ items, count }: TripCardsProps) => {
         {items.map((item) => (
           <li key={item.calendarId} onClick={() => handleCardClick(item.calendarId)}>
             <ImageWrapper>
-              <Image src={item.img || DEFAULT_IMAGE} alt={item.calendarName} />
+              <Image src={`${BASE_URL}${item.img}`} alt={item.calendarName} />
             </ImageWrapper>
             <TextWrapper>
               <Title>{item.calendarName}</Title>

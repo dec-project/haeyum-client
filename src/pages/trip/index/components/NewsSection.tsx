@@ -34,7 +34,7 @@ const NewsSection = ({ calendarId }: NewsSectionProps) => {
         {newsData?.itemList.map((news, index) => (
           <NewsCard key={index} onClick={() => window.open(news.url, '_blank')}>
             <ImageWrapper>
-              <Image src={`${news.img}`} alt="news" />
+              <Image src={news.img} alt="news" />
             </ImageWrapper>
             <TextWrapper>
               <Title>{news.title}</Title>
