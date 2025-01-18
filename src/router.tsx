@@ -9,6 +9,7 @@ import MyPage from './pages/my/index';
 import TripDetailPage from './pages/trip/detail/index';
 import ChatRoom from './pages/chats/room';
 import LoginPage from './pages/auth/login';
+import CallbackPage from './pages/auth/callback';
 
 type routeElement = {
   path: string;
@@ -32,6 +33,7 @@ const routes: routeElement[] = [
   { path: '/chats/:roomId', element: <ChatRoom /> },
   { path: '/trip/:calendarId/detail', element: <TripDetailPage /> },
   { path: '/login', element: <LoginPage /> },
+  { path: '/oauth/kakao/authorize/fallback', element: <CallbackPage /> },
 ];
 
 export const router = createBrowserRouter(routes);
