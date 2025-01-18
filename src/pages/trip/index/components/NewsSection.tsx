@@ -6,8 +6,6 @@ interface NewsSectionProps {
   calendarId: string;
 }
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
 const NewsSection = ({ calendarId }: NewsSectionProps) => {
   const { data: newsData, isLoading, isError, error } = useNews(calendarId);
 
@@ -36,7 +34,7 @@ const NewsSection = ({ calendarId }: NewsSectionProps) => {
         {newsData?.itemList.map((news, index) => (
           <NewsCard key={index} onClick={() => window.open(news.url, '_blank')}>
             <ImageWrapper>
-              <Image src={`${BASE_URL}${news.img}`} alt="news" />
+              <Image src={`${news.img}`} alt="news" />
             </ImageWrapper>
             <TextWrapper>
               <Title>{news.title}</Title>
