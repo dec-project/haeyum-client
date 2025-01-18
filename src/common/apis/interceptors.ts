@@ -1,11 +1,23 @@
 import type { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
-import { getItem } from './localStorage';
+import { useAuthStore } from '../stores/useAuthStore';
 
 export const requestInterceptor = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
-  const token = getItem<string>('token');
-  if (token) {
-    config.headers.set('Authorization', `Bearer ${token}`);
+  const {
+    accessToken,
+    //  refreshToken
+  } = useAuthStore.getState();
+
+  if (!config?.headers) {
+    return config;
   }
+
+  if (accessToken) {
+    config.headers.Authorization = `Bearer ${accessToken}`;
+  }
+
+  // if (refreshToken) {
+  //   config.headers[''] = refreshToken;
+  // }
   return config;
 };
 
@@ -25,20 +37,6 @@ export class ApiError extends Error {
   }
 }
 
-export class ClientError extends ApiError {
-  constructor(statusCode: number, message: string, details?: any) {
-    super(statusCode, message, details);
-    this.name = 'ClientError';
-  }
-}
-
-export class ServerError extends ApiError {
-  constructor(statusCode: number, message: string, details?: any) {
-    super(statusCode, message, details);
-    this.name = 'ServerError';
-  }
-}
-
 interface ErrorResponse {
   code: string;
   message: string;
@@ -50,8 +48,8 @@ export const errorInterceptor = async (error: AxiosError<ErrorResponse>): Promis
 
     const apiError =
       status >= 400 && status < 500
-        ? new ClientError(status, data?.message || '클라이언트 오류가 발생했습니다.', data)
-        : new ServerError(status, data?.message || '서버 처리 중 오류가 발생했습니다.', data);
+        ? new ApiError(status, data?.message || '클라이언트 오류가 발생했습니다.', data)
+        : new ApiError(status, data?.message || '서버 처리 중 오류가 발생했습니다.', data);
 
     console.error(apiError);
     return Promise.reject(apiError);
