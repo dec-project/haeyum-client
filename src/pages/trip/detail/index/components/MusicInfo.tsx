@@ -4,6 +4,7 @@ import LoadingSpinner from '@/common/components/spinner';
 import Container from '@/common/components/layout/Container';
 import AppBar from '@/common/components/appbar';
 import { formattedDate } from '../utils';
+import DOMPurify from 'dompurify';
 
 interface MusicInfoProps {
   calendarId: string;
@@ -22,6 +23,8 @@ const MusicInfo = ({ calendarId, musicId }: MusicInfoProps) => {
     // TODO: 추후 에러 컴포넌트 추가
     return <div>노래 상세 데이터를 가져오는 중 문제가 발생했습니다.</div>;
   }
+
+  const cleanedLyrics = DOMPurify.sanitize(musicInfoData.lyrics);
 
   return (
     <>
@@ -46,7 +49,7 @@ const MusicInfo = ({ calendarId, musicId }: MusicInfoProps) => {
           </ReleaseDate>
         </ContentSection>
         <ContentSection>
-          <Description>{musicInfoData.lyrics}</Description>
+          <Description dangerouslySetInnerHTML={{ __html: cleanedLyrics }} />
         </ContentSection>
       </Container>
     </>
