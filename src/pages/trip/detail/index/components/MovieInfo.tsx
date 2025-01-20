@@ -3,7 +3,7 @@ import useMovieDetail from '../hooks/useMovieDetail';
 import LoadingSpinner from '@/common/components/spinner';
 import Container from '@/common/components/layout/Container';
 import AppBar from '@/common/components/appbar';
-import { formattedDate } from '../utils';
+import { format } from 'date-fns';
 
 interface MovieInfoProps {
   calendarId: string;
@@ -39,7 +39,7 @@ const MovieInfo = ({ calendarId, movieId }: MovieInfoProps) => {
         </VideoSection>
         <ContentSection>
           <Title>{movieInfoData.title}</Title>
-          <ReleaseDate>{formattedDate(movieInfoData.releaseDate)}</ReleaseDate>
+          <ReleaseDate>{format(new Date(movieInfoData.releaseDate), 'yyyy년 M월 d일')}</ReleaseDate>
         </ContentSection>
         <ContentSection>
           <Description>{movieInfoData.content}</Description>

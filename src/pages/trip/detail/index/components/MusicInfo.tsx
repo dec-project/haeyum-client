@@ -3,7 +3,7 @@ import useMusicDetail from '../hooks/useMusicDetail';
 import LoadingSpinner from '@/common/components/spinner';
 import Container from '@/common/components/layout/Container';
 import AppBar from '@/common/components/appbar';
-import { formattedDate } from '../utils';
+import { format } from 'date-fns';
 import DOMPurify from 'dompurify';
 
 interface MusicInfoProps {
@@ -45,7 +45,7 @@ const MusicInfo = ({ calendarId, musicId }: MusicInfoProps) => {
           <ReleaseDate>
             {musicInfoData.artists}
             <br />
-            {formattedDate(musicInfoData.releaseDate)} | {musicInfoData.genre}
+            {format(new Date(musicInfoData.releaseDate), 'yyyy년 M월 d일')} | {musicInfoData.genre}
           </ReleaseDate>
         </ContentSection>
         <ContentSection>
