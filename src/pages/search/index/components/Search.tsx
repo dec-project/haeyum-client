@@ -11,7 +11,7 @@ const Search = () => {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
 
-  const handleSearch = () => {
+  const handleSearcClick = () => {
     if (!startDate || !endDate) {
       alert('날짜를 선택해주세요.');
       return;
@@ -31,7 +31,7 @@ const Search = () => {
           <Label>기간</Label>
           <Calendar startDate={startDate} endDate={endDate} setEndDate={setEndDate} setStartDate={setStartDate} />
           <ButtonBox>
-            <Button onClick={handleSearch} disabled={!startDate || !endDate}>
+            <Button onClick={handleSearcClick} disabled={!startDate || !endDate}>
               <span>GO</span>
             </Button>
           </ButtonBox>
