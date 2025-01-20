@@ -29,7 +29,7 @@ const MovieChart = ({ calendarId }: MovieChartProps) => {
     );
   }
 
-  const handleDetail = (movieId: number) => {
+  const handleDetailClick = (movieId: number) => {
     navigate(`/trip/${calendarId}/detail?movieId=${movieId}`);
   };
 
@@ -38,7 +38,7 @@ const MovieChart = ({ calendarId }: MovieChartProps) => {
       <SectionHeader>영화 TOP 5</SectionHeader>
       <ItemList>
         {movieData.itemList.map((item) => (
-          <Item key={item.movieId} onClick={() => handleDetail(item.movieId)}>
+          <Item key={item.movieId} onClick={() => handleDetailClick(item.movieId)}>
             <Image src={`${BASE_URL}/${item.img}`} alt={`movie-${item.movieId}`} />
             <ContentWrapper>
               <ContentTitle>

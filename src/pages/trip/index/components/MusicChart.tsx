@@ -29,7 +29,7 @@ const MusicChart = ({ calendarId }: MusicChartProps) => {
     );
   }
 
-  const handleDetail = (musicId: number) => {
+  const handleDetailClick = (musicId: number) => {
     navigate(`/trip/${calendarId}/detail?musicId=${musicId}`);
   };
 
@@ -38,7 +38,7 @@ const MusicChart = ({ calendarId }: MusicChartProps) => {
       <SectionHeader>노래 TOP 5</SectionHeader>
       <ItemList>
         {musicData.songSummaries.map((item) => (
-          <Item key={item.songId} onClick={() => handleDetail(item.songId)}>
+          <Item key={item.songId} onClick={() => handleDetailClick(item.songId)}>
             <Image src={`${BASE_URL}${item.imgUrl}`} alt={`music-${item.songId}`} />
             <ContentWrapper>
               <ContentTitle>
