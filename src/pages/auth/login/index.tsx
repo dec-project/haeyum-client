@@ -37,6 +37,7 @@ const Button = styled.button`
   gap: 16px;
   background-color: #fee500;
   border-radius: 4px;
+  cursor: pointer;
   ${({ theme }) => theme.typography.body1.bold};
 `;
 
