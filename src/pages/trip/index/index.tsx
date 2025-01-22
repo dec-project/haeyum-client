@@ -7,19 +7,34 @@ import MusicChart from './components/MusicChart';
 import NewsSection from './components/NewsSection';
 import WeatherSection from './components/WeatherSection';
 import AppBar from '@/common/components/appbar';
-import { tripApi } from '@/common/apis/trip';
+import { useFavorite, usePutFavorite } from './hooks/useFavorite';
+import useAuthStore from '@/common/stores/useAuthStore';
+import { useState } from 'react';
 
-const Trip = () => {
+const TripPage = () => {
   const { calendarId } = useParams<{ calendarId: string }>();
+  const [, setErrorMessage] = useState<string>('');
+
+  const { data: favoriteData, isLoading } = useFavorite(calendarId as string);
+  const { mutate: toggleFavorite } = usePutFavorite();
+  const isLogin = useAuthStore.getState().isLogin();
+
+  const isActive = favoriteData.isFavorite;
 
   if (!calendarId) {
     // TODO: 추후 에러 컴포넌트 추가
     return <div>해당 날짜 정보가 없습니다.</div>;
   }
 
-  // TODO: 인증 테스트용 - 찜 작업시 삭제 예정
-  const handleToggleFavorite = async () => {
-    await tripApi.toggleFavorite(calendarId);
+  if (isLoading) return <div>로딩 중...</div>;
+
+  const handleFavoriteClick = () => {
+    if (!isLogin) {
+      // TODO: 에러 컴포넌트 추가
+      setErrorMessage('로그인 후 찜 기능을 사용할 수 있습니다.');
+    }
+
+    toggleFavorite(calendarId);
   };
 
   return (
@@ -27,10 +42,9 @@ const Trip = () => {
       <AppBar
         leftContent={<AppBar.ArrowLeft />}
         text="여행 정보"
-        rightContent={<AppBar.Heart disabled onClick={() => {}} />}
+        rightContent={<AppBar.Heart onClick={handleFavoriteClick} isActive={isActive} />}
       />
       <Container>
-        <button onClick={handleToggleFavorite}>TEST BUTTON</button>
         <NewsSection calendarId={calendarId} />
         <WeatherSection calendarId={calendarId} />
         <MusicChart calendarId={calendarId} />
@@ -76,4 +90,4 @@ const ChatIcon = styled.img`
   height: 24px;
 `;
 
-export default Trip;
+export default TripPage;
