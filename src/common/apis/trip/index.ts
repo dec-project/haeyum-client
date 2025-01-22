@@ -34,7 +34,11 @@ export const tripApi = {
     const response = await publicApiInstance.get<MusicDetail>(`/search/${calendarId}/songs/${musicId}`);
     return response.data;
   },
-  toggleFavorite: async (calendarId: string) => {
+  getFavorite: async (calendarId: string) => {
+    const response = await privateApiInstance.get<FavoriteResponse>(`/favorite/${calendarId}`);
+    return response.data;
+  },
+  putFavorite: async (calendarId: string) => {
     const response = await privateApiInstance.put<FavoriteResponse>(`/favorite/${calendarId}`);
     return response.data;
   },
