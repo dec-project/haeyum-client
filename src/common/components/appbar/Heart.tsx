@@ -2,10 +2,15 @@ import { Button } from './CommonStyle';
 import HeartEmpty from '@/common/assets/icon/icon-heart-empty.svg';
 import HeartFull from '@/common/assets/icon/icon-heart-full.svg';
 
-const Heart = ({ disabled, onClick }: { disabled: boolean; onClick: () => void }) => {
+interface HeartProps {
+  isActive: boolean;
+  onClick: () => void;
+}
+
+const Heart = ({ isActive, onClick }: HeartProps) => {
   return (
     <Button onClick={onClick}>
-      {disabled ? <img src={HeartEmpty} alt="heart-empty" /> : <img src={HeartFull} alt="heart-full" />}
+      {isActive ? <img src={HeartFull} alt="heart-full" /> : <img src={HeartEmpty} alt="heart-empty" />}
     </Button>
   );
 };
