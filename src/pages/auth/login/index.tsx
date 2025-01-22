@@ -1,6 +1,8 @@
 import FixedBottom from '@/common/components/fixedBottom';
 import styled from 'styled-components';
 import IconKakao from '@/common/assets/icon/icon-kakao.svg';
+import AppBar from '@/common/components/appbar';
+import Container from '@/common/components/layout/Container';
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const KAKAO_REST_API_KEY = import.meta.env.VITE_KAKAO_REST_API_KEY;
@@ -13,14 +15,17 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      <FixedBottom>
-        <Button onClick={handleRedirectToKakao}>
-          <KakaoIcon src={IconKakao} alt="kakao-icon" />
-          <span>카카오 로그인</span>
-        </Button>
-      </FixedBottom>
-    </div>
+    <>
+      <AppBar leftContent={<AppBar.ArrowLeft />} text="로그인" />
+      <Container>
+        <FixedBottom>
+          <Button onClick={handleRedirectToKakao}>
+            <KakaoIcon src={IconKakao} alt="kakao-icon" />
+            <span>카카오 로그인</span>
+          </Button>
+        </FixedBottom>
+      </Container>
+    </>
   );
 };
 
