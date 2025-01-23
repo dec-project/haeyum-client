@@ -3,13 +3,13 @@ import useChatMessages from './hooks/useChatMessages';
 import LoadingSpinner from '@/common/components/spinner';
 import { useEffect, useRef, useState } from 'react';
 import { CompatClient, Stomp } from '@stomp/stompjs';
-import { getItem } from '@/common/apis/localStorage';
 import styled from 'styled-components';
 import Container from '@/common/components/layout/Container';
 import ChatMessageItem from './components/ChatContent';
 import ChatInput from './components/ChatInput';
 import SockJS from 'sockjs-client';
 import Layout from './components/Layout';
+import { useLocalStorage } from '@/common/hooks/useCalendar/userLocalStorage';
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -22,11 +22,10 @@ type ChatMessage = {
   content: string;
 };
 
-const accessToken = getItem('accessToken');
-const userId = getItem('userId');
-
 const ChatRoom = () => {
   const { roomId, roomName } = useParams<{ roomId: string; roomName: string }>();
+  const accessToken = useLocalStorage('accessToken');
+  const userId = useLocalStorage('userId');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const {
