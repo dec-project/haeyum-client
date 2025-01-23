@@ -23,6 +23,7 @@ type ChatMessage = {
 };
 
 const accessToken = getItem('accessToken');
+const userId = getItem('userId');
 
 const ChatRoom = () => {
   const { roomId, roomName } = useParams<{ roomId: string; roomName: string }>();
@@ -39,7 +40,6 @@ const ChatRoom = () => {
   useEffect(() => {
     setChatHistory(chatMessageData || []);
   }, [chatMessageData]);
-  console.log('chatHistory', chatHistory);
   // TODO : 토큰 재발급 로직 추가해야 함 (토큰 만료시)
   useEffect(() => {
     const connect = () => {
@@ -103,9 +103,9 @@ const ChatRoom = () => {
           return (
             <div key={`${data.chatRoomId}-${index}`}>
               {currentDate !== previousDate && <DateLabel>{currentDate}</DateLabel>}
-              <ContentWrapper isUser={data.senderId === 'test'}>
+              <ContentWrapper isUser={data.senderId === userId}>
                 <Img src={`${BASE_URL}${data.profileImg}`} alt="messageIcon" />
-                <ChatMessageItem sender={data.senderName} content={data.content} isUser={data.senderId === 'test'} />
+                <ChatMessageItem sender={data.senderName} content={data.content} isUser={data.senderId === userId} />
               </ContentWrapper>
             </div>
           );
