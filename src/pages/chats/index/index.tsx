@@ -29,20 +29,18 @@ const Chats = () => {
 
   return (
     <Layout>
-      <div>
-        {chatListData.map((chat) => (
-          <Item key={chat.roomId} onClick={() => onClickChat({ roomId: chat.roomId, roomName: chat.name })}>
-            <Img src={`${BASE_URL}${chat.imgUrl}`} alt="avatar" />
-            <Details>
-              <div>
-                <Title>{chat.name}</Title>
-                <LastMessage>{chat.lastMessage || '첫 번째 메시지를 작성해주세요'}</LastMessage>
-              </div>
-              <LastDate>{chat.lastMessageDate || ''}</LastDate>
-            </Details>
-          </Item>
-        ))}
-      </div>
+      {chatListData.map((chat) => (
+        <Item key={chat.roomId} onClick={() => onClickChat({ roomId: chat.roomId, roomName: chat.name })}>
+          <Img src={`${BASE_URL}${chat.imgUrl}`} alt="avatar" />
+          <Details>
+            <div>
+              <Title>{chat.name}</Title>
+              <LastMessage>{chat.lastMessage || '첫 번째 메시지를 작성해주세요'}</LastMessage>
+            </div>
+            <LastDate>{chat.lastMessageDate || ''}</LastDate>
+          </Details>
+        </Item>
+      ))}
     </Layout>
   );
 };
