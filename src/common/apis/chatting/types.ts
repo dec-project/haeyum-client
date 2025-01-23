@@ -8,4 +8,15 @@ interface ChatList {
 
 type ChatListResponse = ChatList[];
 
-export type { ChatListResponse };
+interface ChatMessage {
+  chatRoomId: string;
+  senderId: string;
+  senderName: string;
+  profileImg: string;
+  date: string;
+  content: string;
+}
+
+type ChatMessageResponse = ChatMessage[];
+
+export type { ChatListResponse, ChatMessageResponse };
