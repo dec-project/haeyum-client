@@ -24,15 +24,15 @@ const Chats = () => {
     );
   }
 
-  const onClickChat = (roomId: number) => {
-    navigate(`/chats/${roomId}`);
+  const onClickChat = ({ roomId, roomName }: { roomId: number; roomName: String }) => {
+    navigate(`/chats/${roomId}/${roomName}`);
   };
 
   return (
     <Layout>
       <div>
         {chatListData.map((chat) => (
-          <Item key={chat.roomId} onClick={() => onClickChat(chat.roomId)}>
+          <Item key={chat.roomId} onClick={() => onClickChat({ roomId: chat.roomId, roomName: chat.name })}>
             <Img src={`${BASE_URL}${chat.imgUrl}`} alt="avatar" />
             <Details>
               <div>
