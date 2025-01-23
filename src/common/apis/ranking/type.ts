@@ -10,3 +10,12 @@ export interface KeywordRanking {
   favoriteCount: number;
   imgUrl: string;
 }
+
+export interface ChatRanking {
+  roomId: number;
+  name: string;
+  lastMessageDate: string;
+  imgUrl: string;
+}
+
+export type ChatRankingResponse = ChatRanking[];
