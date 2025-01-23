@@ -32,7 +32,7 @@ const Result = ({ startDate, endDate }: SearchParams) => {
     <>
       <AppBar
         leftContent={<AppBar.ArrowLeft />}
-        text={`${format(startDate, 'yyyy년 M월 d일')} - ${format(endDate, '2024년 M월 d일')}`}
+        text={`${format(startDate, 'yyyy년 M월 d일')} - ${format(endDate, 'yyyy년 M월 d일')}`}
       />
       <Container>
         <SearchInput placeholder="어느 시기로 가볼까요" onClick={() => navigate('/search')} />
