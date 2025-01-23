@@ -2,15 +2,14 @@ import { useParams } from 'react-router-dom';
 import useChatMessages from './hooks/useChatMessages';
 import LoadingSpinner from '@/common/components/spinner';
 import { useEffect, useRef, useState } from 'react';
-import { CompatClient } from '@stomp/stompjs';
+import { CompatClient, Stomp } from '@stomp/stompjs';
 import { getItem } from '@/common/apis/localStorage';
 import styled from 'styled-components';
 import Container from '@/common/components/layout/Container';
 import AppBar from '@/common/components/appbar';
 import ChatMessageItem from './components/ChatContent';
 import ChatInput from './components/ChatInput';
-import { useWebSocket } from './hooks/useWebSocket';
-import { useSendMessage } from './hooks/useSendMessage';
+import SockJS from 'sockjs-client';
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -43,22 +42,45 @@ const ChatRoom = () => {
     setChatHistory(chatMessageData || []);
   }, [chatMessageData]);
 
-  useWebSocket({
-    roomId: roomId || '',
-    accessToken,
-    onMessage: (newMessage: ChatMessage) => {
-      setChatHistory((prev) => [...prev, newMessage]);
-    },
-  });
+  useEffect(() => {
+    const connect = () => {
+      const socket = new SockJS(`${BASE_URL}/ws`);
+      client.current = Stomp.over(socket);
 
-  const handleSendMessage = () =>
-    useSendMessage({
-      client: client.current,
-      message,
-      roomId: roomId || '',
-      accessToken,
-      resetMessage: () => setMessage(''),
-    });
+      client.current.debug = () => {};
+
+      client.current.connect(
+        { Authorization: `Bearer ${accessToken}` },
+        () => {
+          client.current?.subscribe(
+            `/sub/chatroom/${roomId}`,
+            (message) => {
+              const newMessage = JSON.parse(message.body);
+              setChatHistory((prev) => [...prev, newMessage]);
+            },
+            { Authorization: `Bearer ${accessToken}` },
+          );
+        },
+        (error: any) => {
+          console.error('WebSocket connection error:', error);
+        },
+      );
+    };
+
+    connect();
+
+    return () => {
+      client.current?.disconnect();
+    };
+  }, [roomId]);
+
+  const handleSendMessage = () => {
+    if (client.current && message.trim()) {
+      const chatMessage = { chatRoomId: roomId, content: message };
+      client.current.send('/pub/message', { Authorization: `Bearer ${accessToken}` }, JSON.stringify(chatMessage));
+      setMessage('');
+    }
+  };
 
   if (isChatMessageLoading) {
     return <LoadingSpinner />;
