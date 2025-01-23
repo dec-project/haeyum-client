@@ -24,8 +24,6 @@ type ChatMessage = {
 
 const accessToken = getItem('accessToken');
 
-const IMG = 'https://picsum.photos/seed/picsum/200/300';
-
 const ChatRoom = () => {
   const { roomId, roomName } = useParams<{ roomId: string; roomName: string }>();
   const [message, setMessage] = useState('');
@@ -116,7 +114,6 @@ const ChatRoom = () => {
         <NoMessage>첫 번째 메시지를 남겨주세요 ✏️</NoMessage>
       )}
       <InputWrapper>
-        <Img src={IMG} alt="inputIcon" />
         <ChatInput message={message} onMessageChange={setMessage} onSendMessage={handleSendMessage} />
       </InputWrapper>
     </Layout>
