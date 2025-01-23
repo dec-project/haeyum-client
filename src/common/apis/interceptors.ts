@@ -50,7 +50,7 @@ export const errorInterceptor = async (error: AxiosError<ErrorResponse>): Promis
   const handleLogout = (message: string) => {
     clearTokens();
     window.location.href = '/login';
-    return Promise.reject(new Error(message));
+    return Promise.reject(message);
   };
 
   if (!refreshToken) {
@@ -61,6 +61,12 @@ export const errorInterceptor = async (error: AxiosError<ErrorResponse>): Promis
     const { code } = error.response.data;
 
     if (code === 'ET') {
+      const isRefreshRequest = config.url?.includes('/refresh');
+
+      if (isRefreshRequest) {
+        return Promise.reject(error);
+      }
+
       try {
         const response = await privateApiInstance.get('/refresh');
         const newAccessToken = response.data.accessToken;
