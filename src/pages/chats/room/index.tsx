@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useChatMessages from './hooks/useChatMessages';
 import LoadingSpinner from '@/common/components/spinner';
 import { useEffect, useRef, useState } from 'react';
@@ -28,6 +28,7 @@ const userId = getItem('userId');
 const ChatRoom = () => {
   const { roomId, roomName } = useParams<{ roomId: string; roomName: string }>();
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
   const {
     data: chatMessageData,
     isLoading: isChatMessageLoading,
@@ -74,6 +75,11 @@ const ChatRoom = () => {
   }, [roomId]);
 
   const handleSendMessage = () => {
+    if (!accessToken || !client.current?.connected) {
+      alert('로그인 후 이용해주세요.');
+      navigate('/login');
+      return;
+    }
     if (client.current && message.trim()) {
       const chatMessage = { chatRoomId: roomId, content: message };
       client.current.send('/pub/message', { Authorization: `Bearer ${accessToken}` }, JSON.stringify(chatMessage));
