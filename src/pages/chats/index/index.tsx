@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Chats = () => {
+  const navigate = useNavigate();
   const { data: chatListData, isLoading, isError, error } = useChatList();
 
   if (isLoading) {
@@ -22,8 +23,6 @@ const Chats = () => {
       </div>
     );
   }
-
-  const navigate = useNavigate();
 
   const onClickChat = (roomId: number) => {
     navigate(`/chats/${roomId}`);
