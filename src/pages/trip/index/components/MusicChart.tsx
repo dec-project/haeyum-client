@@ -74,8 +74,8 @@ const Item = styled.li`
 
 const Image = styled.img`
   margin-right: 16px;
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   object-fit: cover;
   border-radius: 4px;
 `;
