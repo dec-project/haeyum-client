@@ -30,8 +30,8 @@ const routes: routeElement[] = [
     ],
   },
   { path: '/trip/:calendarId', element: <TripPage /> },
-  { path: '/chats/:roomId', element: <ChatRoom /> },
   { path: '/trip/:calendarId/detail', element: <TripDetailPage /> },
+  { path: '/chats/:roomId/:roomName', element: <ChatRoom /> },
   { path: '/login', element: <LoginPage /> },
   { path: '/oauth/kakao/authorize/fallback', element: <CallbackPage /> },
 ];
