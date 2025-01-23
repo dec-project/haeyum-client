@@ -6,10 +6,10 @@ import { CompatClient, Stomp } from '@stomp/stompjs';
 import { getItem } from '@/common/apis/localStorage';
 import styled from 'styled-components';
 import Container from '@/common/components/layout/Container';
-import AppBar from '@/common/components/appbar';
 import ChatMessageItem from './components/ChatContent';
 import ChatInput from './components/ChatInput';
 import SockJS from 'sockjs-client';
+import Layout from './components/Layout';
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -97,8 +97,7 @@ const ChatRoom = () => {
   }
 
   return (
-    <Container>
-      <AppBar leftContent={<AppBar.ArrowLeft />} text={roomName} />
+    <Layout roomName={roomName}>
       {chatHistory.length > 0 ? (
         chatHistory.map((data, index) => {
           const currentDate = data.date;
@@ -120,7 +119,7 @@ const ChatRoom = () => {
         <Img src={IMG} alt="inputIcon" />
         <ChatInput message={message} onMessageChange={setMessage} onSendMessage={handleSendMessage} />
       </InputWrapper>
-    </Container>
+    </Layout>
   );
 };
 
