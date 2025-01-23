@@ -41,7 +41,7 @@ const TripPage = () => {
     <>
       <AppBar
         leftContent={<AppBar.ArrowLeft />}
-        text="여행 정보"
+        text="여행"
         rightContent={<AppBar.Heart onClick={handleFavoriteClick} isActive={isActive} />}
       />
       <Container>
