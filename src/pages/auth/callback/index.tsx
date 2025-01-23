@@ -12,9 +12,10 @@ const CallbackPage = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const accessToken = urlParams.get('accessToken');
     const refreshToken = urlParams.get('refreshToken');
+    const userId = urlParams.get('socialSub');
 
-    if (accessToken && refreshToken) {
-      setTokens(accessToken, refreshToken);
+    if (accessToken && refreshToken && userId) {
+      setTokens(accessToken, refreshToken, userId);
       navigate('/');
     } else {
       setErrorMessage('토큰이 없습니다.');
