@@ -9,6 +9,12 @@ interface ChatInputProps {
 }
 
 const ChatInput: React.FC<ChatInputProps> = ({ message, onMessageChange, onSendMessage }) => {
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      onSendMessage();
+    }
+  };
+
   return (
     <InputContainer>
       <InputField
@@ -16,6 +22,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ message, onMessageChange, onSendM
         value={message}
         onChange={(e) => onMessageChange(e.target.value)}
         placeholder="대화를 입력해주세요."
+        onKeyPress={handleKeyPress}
       />
       <SendButton onClick={onSendMessage}>
         <Icon as={ChatSubmit} />
