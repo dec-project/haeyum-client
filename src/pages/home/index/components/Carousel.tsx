@@ -15,7 +15,6 @@ const Carousel = () => {
   if (isError || !ChatData) {
     return <Container>채팅 데이터를 가져오는 중 문제가 발생했습니다.</Container>;
   }
-
   return (
     <div>
       <CarouselLayout slides={ChatData} options={OPTIONS} />
