@@ -6,4 +6,8 @@ export const chatApi = {
     const response = await publicApiInstance.get<ChatListResponse>('/chatroom');
     return response.data;
   },
+  getChatMessages: async (roomId: number) => {
+    const response = await publicApiInstance.get(`/chat/${roomId}`);
+    return response.data;
+  },
 };
