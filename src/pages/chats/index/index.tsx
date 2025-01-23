@@ -3,6 +3,7 @@ import useChatList from './hooks/useChatList';
 import styled from 'styled-components';
 import Layout from './components/Layout';
 import { useNavigate } from 'react-router-dom';
+import { convertDate } from './utils/convertDate';
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -37,7 +38,7 @@ const Chats = () => {
               <Title>{chat.name}</Title>
               <LastMessage>{chat.lastMessage || '첫 번째 메시지를 남겨주세요 ✏️'}</LastMessage>
             </div>
-            <LastDate>{chat.lastMessageDate || ''}</LastDate>
+            <LastDate>{convertDate(chat.lastMessageDate) || ''}</LastDate>
           </Details>
         </Item>
       ))}
