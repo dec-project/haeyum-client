@@ -1,6 +1,7 @@
 import type { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 import { useAuthStore } from '../stores/useAuthStore';
 import { privateApiInstance } from './instances';
+import { getItem } from './localStorage';
 
 export const requestInterceptor = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
   const { accessToken } = useAuthStore.getState();
@@ -63,8 +64,9 @@ export const errorInterceptor = async (error: AxiosError<ErrorResponse>): Promis
       try {
         const response = await privateApiInstance.get('/refresh');
         const newAccessToken = response.data.accessToken;
+        const userId = getItem('userId') as string;
 
-        setTokens(newAccessToken, refreshToken);
+        setTokens(newAccessToken, refreshToken, userId);
         config.headers.Authorization = `Bearer ${newAccessToken}`;
         return privateApiInstance(config);
       } catch {
