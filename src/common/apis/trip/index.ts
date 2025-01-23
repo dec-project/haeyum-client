@@ -10,6 +10,10 @@ import {
 import { privateApiInstance, publicApiInstance } from '../instances';
 
 export const tripApi = {
+  getView: async (calendarId: string) => {
+    const response = await publicApiInstance.get(`/view/${calendarId}`);
+    return response.data;
+  },
   getNews: async (calendarId: string) => {
     const response = await publicApiInstance.get<NewsResponse>(`/search/${calendarId}/news`);
     return response.data;

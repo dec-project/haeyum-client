@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import FixedBottom from '@/common/components/fixedBottom';
 import IconChatDot from '@/common/assets/icon/icon-chat-dot.svg';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import MovieChart from './components/MovieChart';
 import MusicChart from './components/MusicChart';
 import NewsSection from './components/NewsSection';
@@ -10,12 +10,21 @@ import AppBar from '@/common/components/appbar';
 import { useFavorite, usePutFavorite } from './hooks/useFavorite';
 import useAuthStore from '@/common/stores/useAuthStore';
 import { useState } from 'react';
+import { useViewCount } from './hooks/useViewCount';
 
 const TripPage = () => {
   const { calendarId } = useParams<{ calendarId: string }>();
   const [, setErrorMessage] = useState<string>('');
+  const navigate = useNavigate();
 
-  const { data: favoriteData, isLoading } = useFavorite(calendarId as string);
+  if (!calendarId) {
+    setErrorMessage('calendarId가 없습니다.');
+    return;
+  }
+
+  useViewCount(calendarId);
+
+  const { data: favoriteData, isLoading } = useFavorite(calendarId);
   const { mutate: toggleFavorite } = usePutFavorite();
   const isLogin = useAuthStore.getState().isLogin();
 
@@ -30,11 +39,13 @@ const TripPage = () => {
 
   const handleFavoriteClick = () => {
     if (!isLogin) {
-      // TODO: 에러 컴포넌트 추가
-      setErrorMessage('로그인 후 찜 기능을 사용할 수 있습니다.');
+      // TODO: 에러 컴포넌트 추가 후 수정
+      if (confirm('로그인 후 찜 기능을 사용할 수 있습니다.')) {
+        navigate('/login');
+      }
+    } else {
+      toggleFavorite(calendarId);
     }
-
-    toggleFavorite(calendarId);
   };
 
   return (
