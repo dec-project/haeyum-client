@@ -2,7 +2,6 @@ import LoadingSpinner from '@/common/components/spinner';
 import useChatList from './hooks/useChatList';
 import styled from 'styled-components';
 import Layout from './components/Layout';
-import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -39,7 +38,7 @@ const Chats = () => {
                 <Title>{chat.name}</Title>
                 <LastMessage>{chat.lastMessage || '첫 번째 메시지를 작성해주세요'}</LastMessage>
               </div>
-              <LastDate>{chat.lastMessageDate || format(Date(), 'yyyy-MM-dd')}</LastDate>
+              <LastDate>{chat.lastMessageDate || ''}</LastDate>
             </Details>
           </Item>
         ))}
