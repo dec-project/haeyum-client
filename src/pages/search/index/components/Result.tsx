@@ -5,6 +5,8 @@ import useResult from '../hooks/useResult';
 import LoadingSpinner from '@/common/components/spinner';
 import { SearchParams } from '@/common/apis/search/types';
 import SearchInput from '@/common/components/SearchInput';
+import AppBar from '@/common/components/appbar';
+import { format } from 'date-fns';
 
 const Result = ({ startDate, endDate }: SearchParams) => {
   const navigate = useNavigate();
@@ -27,14 +29,20 @@ const Result = ({ startDate, endDate }: SearchParams) => {
   }
 
   return (
-    <Container>
-      <SearchInput placeholder="어느 시기로 가볼까요" onClick={() => navigate('/search')} />
-      <SearchResultSection>
-        <TripCards items={data.items} count={data.count} />
-        {!isFetchingNextPage && hasNextPage && <LoadingSpinner />}
-        <div ref={ref} style={{ height: 1 }} />
-      </SearchResultSection>
-    </Container>
+    <>
+      <AppBar
+        leftContent={<AppBar.ArrowLeft />}
+        text={`${format(new Date(startDate), 'yyyy년 M월 d일')} - ${format(new Date(endDate), 'yyyy년 M월 d일')}`}
+      />
+      <Container>
+        <SearchInput placeholder="어느 시기로 가볼까요" onClick={() => navigate('/search')} />
+        <SearchResultSection>
+          <TripCards items={data.items} count={data.count} />
+          {!isFetchingNextPage && hasNextPage && <LoadingSpinner />}
+          <div ref={ref} style={{ height: 1 }} />
+        </SearchResultSection>
+      </Container>
+    </>
   );
 };
 
