@@ -2,14 +2,15 @@ import { useParams } from 'react-router-dom';
 import useChatMessages from './hooks/useChatMessages';
 import LoadingSpinner from '@/common/components/spinner';
 import { useEffect, useRef, useState } from 'react';
-import { CompatClient, Stomp } from '@stomp/stompjs';
-import SockJS from 'sockjs-client';
+import { CompatClient } from '@stomp/stompjs';
 import { getItem } from '@/common/apis/localStorage';
 import styled from 'styled-components';
 import Container from '@/common/components/layout/Container';
 import AppBar from '@/common/components/appbar';
 import ChatMessageItem from './components/ChatContent';
 import ChatInput from './components/ChatInput';
+import { useWebSocket } from './hooks/useWebSocket';
+import { useSendMessage } from './hooks/useSendMessage';
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -27,7 +28,7 @@ const accessToken = getItem('accessToken');
 const IMG = 'https://picsum.photos/seed/picsum/200/300';
 
 const ChatRoom = () => {
-  const { roomId } = useParams<{ roomId: string }>();
+  const { roomId, roomName } = useParams<{ roomId: string; roomName: string }>();
   const [message, setMessage] = useState('');
   const {
     data: chatMessageData,
@@ -42,45 +43,22 @@ const ChatRoom = () => {
     setChatHistory(chatMessageData || []);
   }, [chatMessageData]);
 
-  useEffect(() => {
-    const connect = () => {
-      const socket = new SockJS(`${BASE_URL}/ws`);
-      client.current = Stomp.over(socket);
+  useWebSocket({
+    roomId: roomId || '',
+    accessToken,
+    onMessage: (newMessage: ChatMessage) => {
+      setChatHistory((prev) => [...prev, newMessage]);
+    },
+  });
 
-      client.current.debug = () => {};
-
-      client.current.connect(
-        { Authorization: `Bearer ${accessToken}` },
-        () => {
-          client.current?.subscribe(
-            `/sub/chatroom/${roomId}`,
-            (message) => {
-              const newMessage = JSON.parse(message.body);
-              setChatHistory((prev) => [...prev, newMessage]);
-            },
-            { Authorization: `Bearer ${accessToken}` },
-          );
-        },
-        (error: any) => {
-          console.error('WebSocket connection error:', error);
-        },
-      );
-    };
-
-    connect();
-
-    return () => {
-      client.current?.disconnect();
-    };
-  }, [roomId]);
-
-  const handleSendMessage = () => {
-    if (client.current && message.trim()) {
-      const chatMessage = { chatRoomId: roomId, content: message };
-      client.current.send('/pub/message', { Authorization: `Bearer ${accessToken}` }, JSON.stringify(chatMessage));
-      setMessage('');
-    }
-  };
+  const handleSendMessage = () =>
+    useSendMessage({
+      client: client.current,
+      message,
+      roomId: roomId || '',
+      accessToken,
+      resetMessage: () => setMessage(''),
+    });
 
   if (isChatMessageLoading) {
     return <LoadingSpinner />;
@@ -97,7 +75,7 @@ const ChatRoom = () => {
 
   return (
     <Container>
-      <AppBar leftContent={<AppBar.ArrowLeft />} text="90년대" />
+      <AppBar leftContent={<AppBar.ArrowLeft />} text={roomName} />
       {chatHistory.length > 0 ? (
         chatHistory.map((data, index) => {
           const currentDate = data.date;
