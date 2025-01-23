@@ -39,7 +39,7 @@ const Chats = () => {
                 <Title>{chat.name}</Title>
                 <LastMessage>{chat.lastMessage || '첫 번째 메시지를 작성해주세요'}</LastMessage>
               </div>
-              <LastDate>{chat.lastMessageDate || format(Date(), 'yyyy년 MM월 dd일')}</LastDate>
+              <LastDate>{chat.lastMessageDate || format(Date(), 'yyyy-MM-dd')}</LastDate>
             </Details>
           </Item>
         ))}
