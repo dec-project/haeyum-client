@@ -35,7 +35,7 @@ const Chats = () => {
           <Details>
             <div>
               <Title>{chat.name}</Title>
-              <LastMessage>{chat.lastMessage || '첫 번째 메시지를 작성해주세요'}</LastMessage>
+              <LastMessage>{chat.lastMessage || '첫 번째 메시지를 남겨주세요 ✏️'}</LastMessage>
             </div>
             <LastDate>{chat.lastMessageDate || ''}</LastDate>
           </Details>
