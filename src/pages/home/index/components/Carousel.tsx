@@ -1,48 +1,24 @@
 import { EmblaOptionsType } from 'embla-carousel';
 import CarouselLayout from './CarouselLayout';
+import useChatRanking from '../hooks/useChatRanking';
+import LoadingSpinner from '@/common/components/spinner';
+import { Container } from '@/common/components/calendar/CommonStyle';
 
 const Carousel = () => {
   const OPTIONS: EmblaOptionsType = { dragFree: true };
-  const SLIDE_DATA = [
-    {
-      chatroomId: 1,
-      chatroomName: '전체 채팅방',
-      chatCnt: 177,
-      img: 'https://picsum.photos/seed/picsum/200/300',
-      ranking: 0,
-    },
-    {
-      chatroomId: 2,
-      chatroomName: '1980s',
-      chatCnt: 150,
-      img: 'https://picsum.photos/seed/picsum/200/300',
-      ranking: 1,
-    },
-    {
-      chatroomId: 3,
-      chatroomName: '1990s',
-      chatCnt: 120,
-      img: 'https://picsum.photos/seed/picsum/200/300',
-      ranking: 2,
-    },
-    {
-      chatroomId: 4,
-      chatroomName: '2000s',
-      chatCnt: 100,
-      img: 'https://picsum.photos/seed/picsum/200/300',
-      ranking: 3,
-    },
-    {
-      chatroomId: 5,
-      chatroomName: '2010s',
-      chatCnt: 180,
-      img: 'https://picsum.photos/seed/picsum/200/300',
-      ranking: 4,
-    },
-  ];
+  const { data: ChatData, isLoading, isError } = useChatRanking();
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (isError || !ChatData) {
+    return <Container>채팅 데이터를 가져오는 중 문제가 발생했습니다.</Container>;
+  }
+
   return (
     <div>
-      <CarouselLayout slides={SLIDE_DATA.sort((a, b) => a.ranking - b.ranking)} options={OPTIONS} />
+      <CarouselLayout slides={ChatData} options={OPTIONS} />
     </div>
   );
 };
