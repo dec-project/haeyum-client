@@ -39,7 +39,7 @@ const ChatRoom = () => {
   useEffect(() => {
     setChatHistory(chatMessageData || []);
   }, [chatMessageData]);
-
+  console.log('chatHistory', chatHistory);
   // TODO : 토큰 재발급 로직 추가해야 함 (토큰 만료시)
   useEffect(() => {
     const connect = () => {
