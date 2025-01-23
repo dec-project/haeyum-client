@@ -30,5 +30,8 @@ export default defineConfig({
       },
     },
   },
+  define: {
+    global: {},
+  },
   cacheDir: '.yarn/.vite',
 });
