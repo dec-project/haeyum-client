@@ -10,6 +10,9 @@ const useProfileEdit = () => {
         alert('닉네임은 2~10자 이내여야 합니다.');
       }
     },
+    onSuccess: () => {
+      alert('프로필 수정이 완료되었습니다.');
+    },
   });
 
   return { ...mutate };
