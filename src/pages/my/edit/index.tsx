@@ -12,7 +12,7 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const ProfileEdit = () => {
   const { data: profileData, isLoading: isProfileLoading, isError: isProfileError, error: profileError } = useProfile();
   const navigate = useNavigate();
-  const { mutate, isPending, isSuccess } = useProfileEdit();
+  const { mutate, isPending: isProfileEditLoading, isSuccess: isProfileEditSuccess } = useProfileEdit();
   const [profileImage, setProfileImage] = useState<string | ArrayBuffer | null>(null);
   const [file, setFile] = useState<File | null>(null);
   const [nickname, setNickname] = useState<string>('');
@@ -37,8 +37,8 @@ const ProfileEdit = () => {
     mutate({ nickname: nickname, profileImg: file });
   };
 
-  if (isSuccess) navigate('/profile');
-  if (isProfileLoading || isPending) return <LoadingSpinner />;
+  if (isProfileEditSuccess) navigate('/profile');
+  if (isProfileLoading || isProfileEditLoading) return <LoadingSpinner />;
   if (isProfileError) {
     const errorMessage = profileError?.message || '프로필 데이터를 가져오는 중 문제가 발생했습니다.';
     if ((profileError as any).statusCode === 403) {
