@@ -13,4 +13,10 @@ interface ProfileFavoriteList {
 interface ProfileFavoriteListResponse {
   itemList: ProfileFavoriteList[];
 }
-export type { ProfileList, ProfileFavoriteList, ProfileFavoriteListResponse };
+
+interface ProfileEditList {
+  nickname: string;
+  profileImg: File | null;
+}
+
+export type { ProfileList, ProfileFavoriteList, ProfileFavoriteListResponse, ProfileEditList };
