@@ -9,7 +9,7 @@ import ChatMessageItem from './components/ChatContent';
 import ChatInput from './components/ChatInput';
 import SockJS from 'sockjs-client';
 import Layout from './components/Layout';
-import { useLocalStorage } from '@/common/hooks/useCalendar/userLocalStorage';
+import useLocalStorage from '@/common/hooks/useLocalStorage';
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 

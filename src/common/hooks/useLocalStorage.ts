@@ -16,4 +16,4 @@ const useLocalStorage = (key: string) => {
   return storedValue;
 };
 
-export { useLocalStorage };
+export default useLocalStorage;
