@@ -1,8 +1,16 @@
+import Container from '@/common/components/layout/Container';
+import Layout from './components/Layout';
+import ProfileFavorite from './components/ProfileFavorite';
+import Profile from './components/Profile';
+
 const MyPage = () => {
   return (
-    <div>
-      <h1>My Page</h1>
-    </div>
+    <Layout>
+      <Container>
+        <Profile />
+        <ProfileFavorite />
+      </Container>
+    </Layout>
   );
 };
 
