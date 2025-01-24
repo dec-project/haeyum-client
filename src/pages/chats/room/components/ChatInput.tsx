@@ -8,7 +8,7 @@ interface ChatInputProps {
   onSendMessage: () => void;
 }
 
-const ChatInput: React.FC<ChatInputProps> = ({ message, onMessageChange, onSendMessage }) => {
+const ChatInput = ({ message, onMessageChange, onSendMessage }: ChatInputProps) => {
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       onSendMessage();
