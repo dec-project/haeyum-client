@@ -14,7 +14,7 @@ export const profileApi = {
     return response.data;
   },
   getProfileFavorite: async () => {
-    const response = await privateApiInstance.get<ProfileFavoriteListResponse>('/member/profile/favorite');
+    const response = await privateApiInstance.get<ProfileFavoriteListResponse>('/member/favorite');
     return response.data;
   },
 };
