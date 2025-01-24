@@ -7,7 +7,6 @@ const createAxiosInstance = (baseURL: string, headers: { [key: string]: string }
   return axios.create({
     baseURL,
     headers: {
-      'Content-Type': 'application/json',
       ...headers,
     },
   });
@@ -42,10 +41,26 @@ const createApiInstance = (
   return instance;
 };
 
-export const publicApiInstance = createApiInstance(BASE_URL, {}, { useResponseInterceptors: true });
+export const publicApiInstance = createApiInstance(
+  BASE_URL,
+  {
+    'Content-Type': 'application/json',
+  },
+  { useResponseInterceptors: true },
+);
 
 export const privateApiInstance = createApiInstance(
   BASE_URL,
-  {},
+  {
+    'Content-Type': 'application/json',
+  },
+  { useRequestInterceptors: true, useResponseInterceptors: true },
+);
+
+export const formDataApiInstance = createApiInstance(
+  BASE_URL,
+  {
+    'Content-Type': 'multipart/form-data',
+  },
   { useRequestInterceptors: true, useResponseInterceptors: true },
 );
