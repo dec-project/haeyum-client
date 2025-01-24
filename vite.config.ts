@@ -30,5 +30,8 @@ export default defineConfig({
       },
     },
   },
+  define: {
+    global: 'window',
+  },
   cacheDir: '.yarn/.vite',
 });
