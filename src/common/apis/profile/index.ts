@@ -1,16 +1,18 @@
 import { formDataApiInstance, privateApiInstance } from '../instances';
-import { ProfileFavoriteListResponse, ProfileList } from './types';
+import { ProfileEditList, ProfileFavoriteListResponse, ProfileList } from './types';
 
 export const profileApi = {
   getProfile: async () => {
     const response = await privateApiInstance.get<ProfileList>('/member/profile');
     return response.data;
   },
-  putProfile: async (profile: ProfileList) => {
+  putProfile: async (profile: ProfileEditList) => {
     const profileFormData = new FormData();
-    profileFormData.append('profileImg', profile.profileImg);
+    if (profile.profileImg) {
+      profileFormData.append('profileImg', profile.profileImg);
+    }
     profileFormData.append('nickname', profile.nickname);
-    const response = await formDataApiInstance.put<ProfileList>('/member/profile', profileFormData);
+    const response = await formDataApiInstance.put<ProfileEditList>('/member/profile', profileFormData);
     return response.data;
   },
   getProfileFavorite: async () => {
