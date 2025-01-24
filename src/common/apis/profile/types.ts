@@ -10,6 +10,7 @@ interface ProfileFavoriteList {
   isFavorite: boolean;
 }
 
-type ProfileFavoriteListResponse = ProfileFavoriteList[];
-
+interface ProfileFavoriteListResponse {
+  itemList: ProfileFavoriteList[];
+}
 export type { ProfileList, ProfileFavoriteList, ProfileFavoriteListResponse };
