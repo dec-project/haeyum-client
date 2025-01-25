@@ -27,6 +27,10 @@ const ProfileFavorite = () => {
     return <FavoriteContainer>{errorMessage}</FavoriteContainer>;
   }
 
+  const handleFavoriteClick = (id: number) => {
+    navigate(`/trip/${id}`);
+  };
+
   return (
     <FavoriteContainer>
       <span>내가 찜한 여행</span>
@@ -34,7 +38,7 @@ const ProfileFavorite = () => {
         <NoData>기억나는 추억을 추가해보세요 📒</NoData>
       ) : (
         favoriteData?.itemList.map((item, index) => (
-          <FavoriteItem key={index}>
+          <FavoriteItem key={index} onClick={() => handleFavoriteClick(item.calendarId)}>
             <FavoriteImg src={item.img} alt="여행 이미지" />
             <FavoriteDate>{item.calendarName}</FavoriteDate>
             <FavoriteIcon as={HeartFull} />
