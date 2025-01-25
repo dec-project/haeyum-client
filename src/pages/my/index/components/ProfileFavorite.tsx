@@ -3,6 +3,7 @@ import useProfileFavorite from '../hooks/useProfileFavorite';
 import LoadingSpinner from '@/common/components/spinner';
 import { useNavigate } from 'react-router-dom';
 import HeartFull from '@/common/assets/icon/icon-heart-full.svg?react';
+import useLocalStorage from '@/common/hooks/useLocalStorage';
 
 const ProfileFavorite = () => {
   const {
@@ -13,12 +14,12 @@ const ProfileFavorite = () => {
   } = useProfileFavorite();
 
   const navigate = useNavigate();
-
+  const accessToken = useLocalStorage('accessToken');
   if (isFavoriteLoading) return <LoadingSpinner />;
 
-  if (isFavoriteError) {
+  if (isFavoriteError || !favoriteData) {
     const errorMessage = favoriteError?.message || '프로필 찜 데이터를 가져오는 중 문제가 발생했습니다.';
-    if ((favoriteError as any).statusCode === 403) {
+    if (!accessToken || (favoriteError as any).statusCode === 403) {
       navigate('/login');
     }
 
