@@ -1,6 +1,6 @@
 import Container from '@/common/components/layout/Container';
 import LoadingSpinner from '@/common/components/spinner';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import useProfile from '../index/hooks/useProfile';
@@ -17,8 +17,12 @@ const ProfileEdit = () => {
   const [file, setFile] = useState<File | null>(null);
   const [nickname, setNickname] = useState<string>('');
 
-  const handleImageChange = (e: any) => {
-    const file = e.target.files[0];
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files) {
+      return;
+    }
+    const file = files[0];
     if (file) {
       if (!file.type.startsWith('image/')) {
         alert('이미지 파일만 업로드할 수 있습니다.');
