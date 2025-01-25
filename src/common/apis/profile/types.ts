@@ -4,9 +4,9 @@ interface ProfileList {
 }
 
 interface ProfileFavoriteList {
-  calenderId: number;
+  calendarId: number;
   img: string;
-  calenderName: string;
+  calendarName: string;
   isFavorite: boolean;
 }
 

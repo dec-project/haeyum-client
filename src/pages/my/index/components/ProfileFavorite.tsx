@@ -36,7 +36,7 @@ const ProfileFavorite = () => {
         favoriteData?.itemList.map((item, index) => (
           <FavoriteItem key={index}>
             <FavoriteImg src={item.img} alt="여행 이미지" />
-            <FavoriteDate>{item.calenderName}</FavoriteDate>
+            <FavoriteDate>{item.calendarName}</FavoriteDate>
             <FavoriteIcon as={HeartFull} />
           </FavoriteItem>
         ))
