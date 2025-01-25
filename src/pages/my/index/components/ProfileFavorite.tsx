@@ -17,6 +17,7 @@ const ProfileFavorite = () => {
   const accessToken = useLocalStorage('accessToken');
   if (isFavoriteLoading) return <LoadingSpinner />;
 
+  // TODO: 에러 처리 추후 intercepter 수정 시 지워야 함
   if (isFavoriteError || !favoriteData) {
     const errorMessage = favoriteError?.message || '프로필 찜 데이터를 가져오는 중 문제가 발생했습니다.';
     if (!accessToken || (favoriteError as any).statusCode === 403) {
@@ -32,8 +33,8 @@ const ProfileFavorite = () => {
       {favoriteData?.itemList.length === 0 ? (
         <NoData>기억나는 추억을 추가해보세요 📒</NoData>
       ) : (
-        favoriteData?.itemList.map((item) => (
-          <FavoriteItem key={item.calenderId}>
+        favoriteData?.itemList.map((item, index) => (
+          <FavoriteItem key={index}>
             <FavoriteImg src={item.img} alt="여행 이미지" />
             <FavoriteDate>{item.calenderName}</FavoriteDate>
             <FavoriteIcon as={HeartFull} />
