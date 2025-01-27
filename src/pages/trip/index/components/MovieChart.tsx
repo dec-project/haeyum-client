@@ -36,10 +36,10 @@ const MovieChart = ({ calendarId }: MovieChartProps) => {
   return (
     <Section>
       <SectionHeader>영화 TOP 5</SectionHeader>
-      <ItemList>
+      <ul>
         {movieData.itemList.map((item) => (
           <Item key={item.movieId} onClick={() => handleDetailClick(item.movieId)}>
-            <Image src={`${BASE_URL}${item.img}`} alt={`movie-${item.movieId}`} />
+            <Image src={`${BASE_URL}${item.imgUrl}`} alt={`movie-${item.movieId}`} />
             <ContentWrapper>
               <ContentTitle>
                 {item.ranking}. {item.title}
@@ -48,7 +48,7 @@ const MovieChart = ({ calendarId }: MovieChartProps) => {
             <Icon src={ArrowRight} alt="arrow-right" />
           </Item>
         ))}
-      </ItemList>
+      </ul>
     </Section>
   );
 };
@@ -61,8 +61,6 @@ const SectionHeader = styled.h2`
   padding: 20px 0 12px;
   ${({ theme }) => theme.typography.title2.bold};
 `;
-
-const ItemList = styled.ul``;
 
 const Item = styled.li`
   display: flex;

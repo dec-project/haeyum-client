@@ -21,9 +21,9 @@ const TripCards = ({ items, count }: TripCardsProps) => {
       <ResultCount>검색 결과 {count}</ResultCount>
       <TripCardList>
         {items.map((item) => (
-          <li key={item.calendarId} onClick={() => handleCardClick(item.calendarId)}>
+          <Card key={item.calendarId} onClick={() => handleCardClick(item.calendarId)}>
             <ImageWrapper>
-              <Image src={`${BASE_URL}${item.img}`} alt={item.calendarName} />
+              <Image src={`${BASE_URL}${item.imgUrl}`} alt={item.calendarName} />
             </ImageWrapper>
             <TextWrapper>
               <Title>{item.calendarName}</Title>
@@ -31,7 +31,7 @@ const TripCards = ({ items, count }: TripCardsProps) => {
                 조회 {item.viewCount} · ♥ {item.favoriteCount}
               </Counts>
             </TextWrapper>
-          </li>
+          </Card>
         ))}
       </TripCardList>
     </>
@@ -48,6 +48,10 @@ const TripCardList = styled.ul`
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   padding: 16px 0;
+`;
+
+const Card = styled.li`
+  cursor: pointer;
 `;
 
 const ImageWrapper = styled.div`

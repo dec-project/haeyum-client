@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import HeartFull from '@/common/assets/icon/icon-heart-full.svg?react';
 import useLocalStorage from '@/common/hooks/useLocalStorage';
 
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const ProfileFavorite = () => {
   const {
     data: favoriteData,
@@ -39,7 +41,7 @@ const ProfileFavorite = () => {
       ) : (
         favoriteData?.itemList.map((item, index) => (
           <FavoriteItem key={index} onClick={() => handleFavoriteClick(item.calendarId)}>
-            <FavoriteImg src={item.img} alt="여행 이미지" />
+            <FavoriteImg src={`${BASE_URL}${item.img}`} alt="여행 이미지" />
             <FavoriteDate>{item.calendarName}</FavoriteDate>
             <FavoriteIcon as={HeartFull} />
           </FavoriteItem>
