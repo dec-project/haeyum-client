@@ -1,0 +1,92 @@
+import styled from 'styled-components';
+import CaretRightIcon from '@/common/assets/icon/icon-arrow-right.svg';
+import { useNavigate } from 'react-router-dom';
+import LoadingSpinner from '@/common/components/spinner';
+import useSearchRanking from '../hooks/useSearchRanking';
+import DefaultImg from '@/common/assets/logo/logo.svg';
+import { KeywordRanking } from '@/common/apis/ranking/type';
+
+const SearchList = () => {
+  const { data: searchData, isLoading, isError } = useSearchRanking();
+  const navigate = useNavigate();
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (isError || !searchData?.searches) {
+    return <div>영화 데이터를 가져오는 중 문제가 발생했습니다.</div>;
+  }
+
+  return (
+    <List>
+      {searchData.searches.map((data: KeywordRanking) => (
+        <Item key={data.calendarId}>
+          <Content>
+            <Img
+              src={data.imgUrl ? `${import.meta.env.VITE_API_BASE_URL}/${data.imgUrl}` : DefaultImg}
+              alt={data.calendarName}
+            />
+            <Info>
+              <Title>{data.calendarName}</Title>
+              <Detail>
+                조회 {data.viewCount} • ♥ {data.favoriteCount}
+              </Detail>
+            </Info>
+          </Content>
+          <Icon src={CaretRightIcon} alt="search-input-button" onClick={() => navigate(`/trip/${data.calendarId}`)} />
+        </Item>
+      ))}
+    </List>
+  );
+};
+
+const List = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Img = styled.img`
+  width: 75px;
+  height: 75px;
+  border-radius: 4px;
+`;
+
+const Icon = styled.img`
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+`;
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
+
+const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0 0 16px;
+`;
+
+const Item = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-radius: 4px;
+`;
+
+const Title = styled.div`
+  ${({ theme }) => theme.typography.body1.bold};
+`;
+
+const Detail = styled.div`
+  ${({ theme }) => theme.typography.body2.regular};
+  color: ${({ theme }) => theme.themeColors.textSecondary};
+`;
+
+export default SearchList;

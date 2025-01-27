@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "tsBuildInfoFile": ".yarn/.cache/tsconfig.app.tsbuildinfo",
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
@@ -8,11 +8,12 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": true,
+    "allowJs": true,
     "jsx": "react-jsx",
     "esModuleInterop": true,
 
@@ -21,7 +22,16 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    "types": ["vite/client", "vitest/globals"],
+    
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@/public/*": ["public/*"]
+    }
   },
-  "include": ["src"]
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["eslint.config.js"]
 }
