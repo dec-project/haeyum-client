@@ -6,12 +6,12 @@ export interface NewsSummary {
   title: string;
   content: string;
   url: string;
-  img: string;
+  imgUrl: string;
 }
 
 export interface WeatherResponse {
   weather: string;
-  img: string;
+  imgUrl: string;
 }
 
 export interface MusicResponse {
@@ -34,7 +34,7 @@ export interface MovieSummary {
   movieId: number;
   title: string;
   ranking: number;
-  img: string;
+  imgUrl: string;
 }
 
 export interface MovieDetail {

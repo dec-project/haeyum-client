@@ -16,7 +16,7 @@ export interface SearchResponse {
 export interface TripCard {
   calendarId: string;
   calendarName: string;
-  img: string;
+  imgUrl: string;
   viewCount: number;
   favoriteCount: number;
 }

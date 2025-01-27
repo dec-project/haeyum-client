@@ -3,7 +3,6 @@ import CaretRightIcon from '@/common/assets/icon/icon-arrow-right.svg';
 import { useNavigate } from 'react-router-dom';
 import LoadingSpinner from '@/common/components/spinner';
 import useSearchRanking from '../hooks/useSearchRanking';
-import DefaultImg from '@/common/assets/logo/logo.svg';
 import { KeywordRanking } from '@/common/apis/ranking/type';
 
 const SearchList = () => {
@@ -23,10 +22,7 @@ const SearchList = () => {
       {searchData.searches.map((data: KeywordRanking) => (
         <Item key={data.calendarId}>
           <Content>
-            <Img
-              src={data.imgUrl ? `${import.meta.env.VITE_API_BASE_URL}/${data.imgUrl}` : DefaultImg}
-              alt={data.calendarName}
-            />
+            <Img src={`${import.meta.env.VITE_API_BASE_URL}${data.imgUrl}`} alt={data.calendarName} />
             <Info>
               <Title>{data.calendarName}</Title>
               <Detail>

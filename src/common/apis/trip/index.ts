@@ -19,7 +19,7 @@ export const tripApi = {
     return response.data;
   },
   getWeather: async (calendarId: string) => {
-    const response = await publicApiInstance.get<WeatherResponse>(`/search/weather/${calendarId}`);
+    const response = await publicApiInstance.get<WeatherResponse>(`/search/${calendarId}/weather`);
     return response.data;
   },
   getMusic: async (calendarId: string) => {
