@@ -54,4 +54,4 @@ jobs:
       # Upload
       - name: Upload to S3
         run: |
-          aws s3 sync ./build s3://haeyum-bucket --delete
+          aws s3 sync ./dist s3://haeyum-bucket --delete
