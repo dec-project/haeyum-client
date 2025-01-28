@@ -32,7 +32,7 @@ const Container = styled.div`
   align-items: center;
   width: 336px;
   border: 1px solid ${({ theme }) => theme.colors.orange300};
-  border-radius: 0.5rem;
+  border-radius: 4px;
   height: 56px;
   cursor: pointer;
 `;

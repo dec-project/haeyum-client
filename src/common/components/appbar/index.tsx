@@ -16,7 +16,7 @@ const AppBar = ({ leftContent, text, rightContent }: AppBarProps) => {
   return (
     <Container>
       <Left>
-        <div>{leftContent}</div>
+        {leftContent && <div>{leftContent}</div>}
         <span>{text}</span>
       </Left>
       <Right>
@@ -50,12 +50,12 @@ const Left = styled.div`
   align-items: top;
 
   & > div {
+    margin-right: 24px;
     display: flex;
     align-items: center;
   }
 
   & > span {
-    margin-left: 24px;
     ${({ theme }) => theme.typography.title3.bold}
   }
 `;

@@ -10,24 +10,18 @@ const Home = () => {
 
   return (
     <Layout>
-      <Container>
-        <SearchInput placeholder="어느 시기로 가볼까요" onClick={() => navigate('/search')} />
-        <Text>
-          <span>실시간 인기 채팅방</span>
-        </Text>
-        <Carousel />
-        <Text>
-          <span>실시간 인기 검색 Top 5</span>
-        </Text>
-        <SearchList />
-      </Container>
+      <SearchInput placeholder="어느 시기로 가볼까요" onClick={() => navigate('/search')} />
+      <Text>
+        <span>실시간 인기 채팅방</span>
+      </Text>
+      <Carousel />
+      <Text>
+        <span>실시간 인기 검색 Top 5</span>
+      </Text>
+      <SearchList />
     </Layout>
   );
 };
-
-const Container = styled.div`
-  padding: 1rem;
-`;
 
 const Text = styled.div`
   padding: 20px 0 12px 0;

@@ -101,6 +101,7 @@ const WeekdaysGrid = styled.div`
 const DatesGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 24px;
 `;
 
 const DateButton = styled.button.withConfig({
