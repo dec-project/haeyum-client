@@ -30,11 +30,9 @@ const Search = () => {
         <Content>
           <Label>기간</Label>
           <Calendar startDate={startDate} endDate={endDate} setEndDate={setEndDate} setStartDate={setStartDate} />
-          <ButtonBox>
-            <Button onClick={handleSearcClick} disabled={!startDate || !endDate}>
-              <span>GO</span>
-            </Button>
-          </ButtonBox>
+          <Button onClick={handleSearcClick} disabled={!startDate || !endDate}>
+            <span>GO</span>
+          </Button>
         </Content>
       </Container>
     </Wrapper>
@@ -50,8 +48,7 @@ const Wrapper = styled.div`
 const Label = styled.span`
   width: 100%;
   height: 32px;
-  padding: 0 16px;
-  ${({ theme }) => theme.typography.body1.bold};
+  ${({ theme }) => theme.typography.body1.medium};
 `;
 
 const Content = styled.div`
@@ -60,13 +57,6 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: end;
-  & > button {
-    margin: 0 16px;
-  }
-`;
-
-const ButtonBox = styled.div`
-  padding: 0 16px;
 `;
 
 const Button = styled.button`
