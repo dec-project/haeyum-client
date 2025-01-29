@@ -2,10 +2,10 @@ import CaretLeftIcon from '@/common/assets/icon/icon-arrow-back.svg';
 import { Button } from './CommonStyle';
 import { useNavigate } from 'react-router-dom';
 
-const ArrowLeft = () => {
+const ArrowLeft = ({ locate = -1 }: { locate: string | number }) => {
   const navigate = useNavigate();
   const onClick = () => {
-    navigate(-1);
+    navigate(locate as string);
   };
 
   return (
