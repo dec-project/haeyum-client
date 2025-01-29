@@ -28,7 +28,7 @@ const TripPage = () => {
   const { mutate: toggleFavorite } = usePutFavorite();
   const isLogin = useAuthStore.getState().isLogin();
 
-  const isActive = favoriteData.isFavorite;
+  const isActive = favoriteData && favoriteData.isFavorite ? favoriteData.isFavorite : false;
 
   if (!calendarId) {
     // TODO: 추후 에러 컴포넌트 추가
