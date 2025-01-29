@@ -1,7 +1,6 @@
 import { format, subYears, addYears, isSameMonth } from 'date-fns';
 import CaretLeftIcon from '@/common/assets/icon/icon-calender-arrow-left.svg';
 import CaretRightIcon from '@/common/assets/icon/icon-calender-arrow-right.svg';
-import CaretDownIcon from '@/common/assets/icon/icon-arrow-down.svg';
 import styled from 'styled-components';
 import { DatePickerProps } from '.';
 import { Container, Header, Img, Title } from './CommonStyle';
@@ -41,14 +40,14 @@ export default function Month({ setPickerType, startDate, endDate, setStartDate,
           >
             <Title>{format(curDate, 'MMM yyyy')}</Title>
           </button>
-          <button
+          <SubmitButton
             type="button"
             onClick={() => {
               setPickerType('date');
             }}
           >
-            <Img src={CaretDownIcon} />
-          </button>
+            <span>확인</span>
+          </SubmitButton>
         </YearDisplay>
         <ButtonGroup>
           <button type="button" onClick={onPrevYear}>
@@ -67,7 +66,7 @@ export default function Month({ setPickerType, startDate, endDate, setStartDate,
             isSelected={isSameMonth(curDate, month)}
             onClick={() => onChangeMonth(month)}
           >
-            {format(month, 'MMM')}
+            <span>{format(month, 'MMM')}</span>
           </MonthButton>
         ))}
       </MonthGrid>
@@ -81,8 +80,8 @@ const YearDisplay = styled.span`
 
 const ButtonGroup = styled.div`
   button {
-    width: 1.7rem;
-    height: 1rem;
+    width: 24px;
+    height: 24px;
     background: none;
     border: none;
   }
@@ -96,15 +95,33 @@ const MonthGrid = styled.div`
 const MonthButton = styled.button.withConfig({
   shouldForwardProp: (prop) => !['isSelected'].includes(prop),
 })<{ isSelected: boolean }>`
-  border-radius: 9999px;
+  border-radius: 24px;
   border: none;
-  padding: 0.875rem;
-  ${({ theme }) => theme.typography.label.medium}
+  padding: 16px;
   background-color: ${({ isSelected, theme }) => (isSelected ? theme.themeColors.secondary : 'transparent')};
-  color: ${({ isSelected, theme }) => (isSelected ? theme.colors.white : theme.themeColors.textPrimary)};
 
   &:hover {
     background-color: ${({ isSelected, theme }) => (isSelected ? theme.colors.orange400 : theme.colors.orange200)};
     color: ${({ isSelected, theme }) => (isSelected ? theme.themeColors.textPrimary : theme.colors.white)};
+    cursor: pointer;
+  }
+
+  & > span {
+    ${({ theme }) => theme.typography.label.medium}
+    color: ${({ isSelected, theme }) => (isSelected ? theme.colors.white : theme.themeColors.textPrimary)};
+  }
+`;
+
+const SubmitButton = styled.button`
+  width: fit-content;
+  height: fit-content;
+  padding: 5px 12px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: ${({ theme }) => theme.themeColors.secondary};
+  & > span {
+    color: ${({ theme }) => theme.colors.white};
+    ${({ theme }) => theme.typography.label.medium}
   }
 `;

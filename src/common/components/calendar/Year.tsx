@@ -61,8 +61,9 @@ const YearGrid = styled.div`
 const YearButton = styled.button.withConfig({
   shouldForwardProp: (prop) => !['isSelected'].includes(prop),
 })<{ isSelected: boolean }>`
-  padding: 0.875rem;
-  border-radius: 9999px;
+  padding: 16px;
+  cursor: pointer;
+  border-radius: 24px;
   ${({ theme }) => theme.typography.body1.regular}
   background-color: ${({ isSelected, theme }) => (isSelected ? theme.colors.orange400 : 'transparent')};
   color: ${({ isSelected, theme }) => (isSelected ? theme.colors.white : theme.themeColors.textPrimary)};
