@@ -1,4 +1,4 @@
-import { publicApiInstance } from '../instances';
+import { publicApiInstance, privateApiInstance } from '../instances';
 import { ChatListResponse, ChatMessageResponse } from './types';
 
 export const chatApi = {
@@ -7,7 +7,7 @@ export const chatApi = {
     return response.data;
   },
   getChatMessages: async (roomId: number) => {
-    const response = await publicApiInstance.get<ChatMessageResponse>(`/chat/${roomId}`);
+    const response = await privateApiInstance.get<ChatMessageResponse>(`/chat/${roomId}`);
     return response.data;
   },
 };
