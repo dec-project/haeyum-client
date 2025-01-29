@@ -18,9 +18,9 @@ export default function Calendar({
   setEndDate,
 }: Omit<DatePickerProps, 'setPickerType'>) {
   return (
-    <div>
+    <>
       <DateDisplay startDate={startDate} endDate={endDate} />
       <CalendarLayout startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate} />
-    </div>
+    </>
   );
 }

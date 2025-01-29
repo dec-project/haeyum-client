@@ -16,7 +16,6 @@ const SearchList = () => {
   if (isError || !searchData?.searches) {
     return <div>영화 데이터를 가져오는 중 문제가 발생했습니다.</div>;
   }
-
   return (
     <List>
       {searchData.searches.map((data: KeywordRanking) => (

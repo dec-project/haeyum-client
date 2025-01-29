@@ -30,7 +30,7 @@ const Wrapper = styled.div`
 const Container = styled.div`
   display: flex;
   align-items: center;
-  width: 336px;
+  width: 100%;
   border: 1px solid ${({ theme }) => theme.colors.orange300};
   border-radius: 4px;
   height: 56px;

@@ -20,6 +20,7 @@ interface DateButtonProps {
   isSelectedDay: boolean;
   isInRange: boolean;
   disabled: boolean;
+  isEnd: boolean;
 }
 
 export default function DatePicker({
@@ -53,18 +54,23 @@ export default function DatePicker({
       <DatesGrid>
         {dates.map((date, index) => {
           const disabled = !isSameMonth(currentMonth, date) || isDateDisabled(date);
+          const isSelectedDay =
+            (startDate ? isSameDay(startDate, date) : false) || (endDate ? isSameDay(endDate, date) : false);
+          const isEnd = endDate ? isSameDay(endDate, date) : false;
+
           return (
             <DateButton
               key={index}
               onClick={() => !disabled && onChangeDate(date)}
               isCurrentMonth={isSameMonth(currentMonth, date)}
-              isSelectedDay={
-                (startDate ? isSameDay(startDate, date) : false) || (endDate ? isSameDay(endDate, date) : false)
-              }
+              isSelectedDay={isSelectedDay}
               isInRange={isInRange(date)}
               disabled={disabled}
+              isEnd={isEnd}
             >
-              <span>{date.getDate()}</span>
+              <div>
+                <span>{date.getDate()}</span>
+              </div>
             </DateButton>
           );
         })}
@@ -96,34 +102,47 @@ const WeekdaysGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   place-items: center;
+  width: 100%;
 `;
 
 const DatesGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   margin-bottom: 24px;
+  place-items: center;
+  width: 100%;
 `;
 
 const DateButton = styled.button.withConfig({
-  shouldForwardProp: (prop) => !['isCurrentMonth', 'isSelectedDay', 'isInRange', 'disabled'].includes(prop),
+  shouldForwardProp: (prop) => !['isCurrentMonth', 'isSelectedDay', 'isInRange', 'isEnd', 'disabled'].includes(prop),
 })<DateButtonProps>`
-  width: 48px;
+  width: 100%;
   height: 48px;
-  margin: 0;
-  padding: 0;
-  ${({ theme }) => theme.typography.body2.regular}
-  border-radius: ${({ isSelectedDay }) => (isSelectedDay ? '9999px' : '0')};
   border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: ${({ isSelectedDay, isInRange, theme }) =>
-    isSelectedDay ? theme.themeColors.secondary : isInRange ? theme.colors.orange200 : 'transparent'};
-  color: ${({ isCurrentMonth, disabled, theme }) =>
-    disabled ? theme.colors.gray : isCurrentMonth ? theme.themeColors.textPrimary : theme.colors.gray};
+    !isSelectedDay && isInRange ? theme.colors.orange200 : 'transparent'};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+  background-image: ${({ isInRange, isSelectedDay, isEnd, theme }) =>
+    isInRange &&
+    isSelectedDay &&
+    `linear-gradient(${isEnd ? '240deg' : '90deg'}, transparent 50%, ${theme.colors.orange200} 0)`};
 
-  span {
-    background-color: inherit;
-    color: inherit;
-    ${({ theme }) => theme.typography.body2.regular};
+  & > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: ${({ isSelectedDay }) => (isSelectedDay ? '24px' : '0')};
+    background-color: ${({ isSelectedDay, theme }) => (isSelectedDay ? theme.themeColors.secondary : 'transparent')};
+    color: ${({ isCurrentMonth, disabled, theme }) =>
+      disabled ? theme.colors.gray : isCurrentMonth ? theme.themeColors.textPrimary : theme.colors.gray};
+    & > span {
+      ${({ theme }) => theme.typography.body2.regular};
+    }
   }
 `;
 

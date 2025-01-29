@@ -40,7 +40,7 @@ const Search = () => {
 };
 
 const Wrapper = styled.div`
-  width: fit-content;
+  width: 100%;
   height: fit-content;
   margin: 0 auto;
 `;
@@ -52,7 +52,7 @@ const Label = styled.span`
 `;
 
 const Content = styled.div`
-  width: fit-content;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

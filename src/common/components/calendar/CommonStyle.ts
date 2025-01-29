@@ -3,8 +3,9 @@ import styled from 'styled-components';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 336px;
+  width: 100%;
   height: 100%;
+  margin-bottom: 20px;
 `;
 
 const Header = styled.div`
@@ -14,7 +15,6 @@ const Header = styled.div`
   padding: 0.5rem;
 
   button {
-    background: none;
     border: none;
     cursor: pointer;
   }
@@ -27,6 +27,7 @@ const Title = styled.span`
 const Img = styled.img`
   height: 15px;
   margin-top: 5px;
+  margin-left: 10px;
 `;
 
 export { Container, Header, Title, Img };
