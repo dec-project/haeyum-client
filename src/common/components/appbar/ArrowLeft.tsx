@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const ArrowLeft = ({ locate = -1 }: { locate?: string | number }) => {
   const navigate = useNavigate();
   const onClick = () => {
-    navigate(locate as string);
+    history.length <= 2 ? navigate('/', { replace: true }) : navigate(locate as string);
   };
 
   return (
