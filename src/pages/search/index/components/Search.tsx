@@ -5,6 +5,7 @@ import { format } from 'date-fns';
 import styled from 'styled-components';
 import AppBar from '@/common/components/appbar';
 import Container from '@/common/components/layout/Container';
+import MetaTag from '@/common/components/MetaTag';
 
 const Search = () => {
   const navigate = useNavigate();
@@ -25,6 +26,11 @@ const Search = () => {
 
   return (
     <Wrapper>
+      <MetaTag
+        title="헤윰 - 검색페이지"
+        description="지금 날짜를 검색해, 시간 여행 기록을 확인해 보세요."
+        keywords="검색페이지, 프로필, 설정, 계정 관리, 헤윰"
+      />
       <AppBar text="검색" />
       <Container>
         <Content>
