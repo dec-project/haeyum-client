@@ -4,11 +4,9 @@ interface Props {
   title: string;
   description: string;
   keywords: string;
-  imgsrc?: string;
-  url: string;
 }
 const MetaTag = (props: Props) => {
-  const { title, description, keywords, imgsrc, url } = props;
+  const { title, description, keywords } = props;
 
   return (
     <Helmet>
@@ -21,10 +19,10 @@ const MetaTag = (props: Props) => {
       <meta property="og:title" content={title} />
       <meta property="og:site_name" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={imgsrc} />
-      <meta property="og:url" content={url} />
+      <meta property="og:image" content={'/src/common/assets/logo/logo.svg'} />
+      <meta property="og:url" content={window.location.href} />
 
-      <link rel="canonical" href={url} />
+      <link rel="canonical" href={window.location.href} />
     </Helmet>
   );
 };
