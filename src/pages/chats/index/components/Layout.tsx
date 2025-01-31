@@ -10,7 +10,6 @@ const Layout = ({ children }: { children: ReactNode }) => {
         title="헤윰 - 채팅목록"
         description="참여 중인 채팅방을 확인하고, 새로운 대화를 시작해 보세요!"
         keywords="채팅, 대화, 시간 여행, 헤윰"
-        url={window.location.href}
       />
       <AppBar text="채팅" />
       <Container>{children}</Container>
