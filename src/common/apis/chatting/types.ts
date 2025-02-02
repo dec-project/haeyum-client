@@ -1,9 +1,9 @@
 interface ChatList {
   chatroomId: number;
-  name: String;
-  lastMessage: String;
-  lastMessageDate: String;
-  imgUrl: String;
+  name: string;
+  lastMessage: string;
+  lastMessageDate: string;
+  imgUrl: string;
 }
 
 type ChatListResponse = ChatList[];
