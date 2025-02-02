@@ -53,7 +53,14 @@ const TripPage = () => {
   const decadeName = `${getDecadeNumber(calendarDate)}년대`;
 
   const handleChatNavigate = () => {
-    navigate(`/chats/${chatroomId}/${decadeName}`);
+    if (!isLogin) {
+      // TODO: 에러 컴포넌트 추가 후 수정
+      if (confirm('로그인 후 채팅방 기능을 사용할 수 있습니다.')) {
+        navigate('/login');
+      }
+    } else {
+      navigate(`/chats/${chatroomId}/${decadeName}`);
+    }
   };
 
   return (
