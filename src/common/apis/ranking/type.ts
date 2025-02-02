@@ -3,6 +3,7 @@ export interface KeywordRankingResponse {
 }
 
 export interface KeywordRanking {
+  chatroomId: number;
   calendarId: number;
   calendarDate: number;
   calendarName: string;

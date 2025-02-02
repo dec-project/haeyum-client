@@ -37,7 +37,7 @@ const routes: routeElement[] = [
       },
       { path: '/trip/:calendarId/:calendarDate/:chatroomId', element: <TripPage /> },
       { path: '/trip/:calendarId/detail', element: <TripDetailPage /> },
-      { path: '/chats/:roomId/:roomName', element: <ChatRoom /> },
+      { path: '/chats/:chatroomId/:roomName', element: <ChatRoom /> },
       { path: '/login', element: <LoginPage /> },
       { path: '/oauth/kakao/authorize/fallback', element: <CallbackPage /> },
       { path: '/profile/edit', element: <ProfileEdit /> },
