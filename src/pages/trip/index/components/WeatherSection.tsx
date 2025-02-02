@@ -17,13 +17,10 @@ const WeatherSection = ({ calendarId }: WeatherSectionProps) => {
   }
 
   if (isError || !weatherData) {
-    const errorMessage = error?.message || '날씨 데이터를 가져오는 중 문제가 발생했습니다.';
-
-    return (
-      <Section>
-        <p>{errorMessage}</p>
-      </Section>
-    );
+    const errorMessage = error?.message || '해당 날짜의 날씨 데이터가 없습니다.';
+    // TODO: 추후 에러 컴포넌트 추가
+    console.error(errorMessage);
+    return null;
   }
 
   return (

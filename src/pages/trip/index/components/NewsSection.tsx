@@ -7,7 +7,7 @@ interface NewsSectionProps {
 }
 
 const NewsSection = ({ calendarId }: NewsSectionProps) => {
-  const { data: newsData, isLoading, isError, error } = useNews(calendarId);
+  const { data: newsData, isLoading, isError } = useNews(calendarId);
 
   const category = ['최신 기사'];
 
@@ -17,12 +17,9 @@ const NewsSection = ({ calendarId }: NewsSectionProps) => {
   }
 
   if (isError || !newsData?.itemList || newsData.itemList.length === 0) {
-    const errorMessage = error?.message || '뉴스 데이터를 가져오는 중 문제가 발생했습니다.';
-    return (
-      <Section>
-        <p>{errorMessage}</p>
-      </Section>
-    );
+    // TODO: 추후 에러 컴포넌트 추가
+    console.error('해당 날짜의 뉴스 데이터가 없습니다.');
+    return null;
   }
 
   return (
@@ -47,9 +44,9 @@ const NewsSection = ({ calendarId }: NewsSectionProps) => {
   );
 };
 
-const Section = styled.section`
-  padding: 0 16px;
-`;
+// const Section = styled.section`
+//   padding: 0 16px;
+// `;
 
 const MenuBar = styled.div`
   display: flex;
