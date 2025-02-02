@@ -3,7 +3,6 @@ import useProfileFavorite from '../hooks/useProfileFavorite';
 import LoadingSpinner from '@/common/components/spinner';
 import { useNavigate } from 'react-router-dom';
 import HeartFull from '@/common/assets/icon/icon-heart-full.svg?react';
-import useLocalStorage from '@/common/hooks/useLocalStorage';
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -16,19 +15,14 @@ const ProfileFavorite = () => {
   } = useProfileFavorite();
 
   const navigate = useNavigate();
-  const accessToken = useLocalStorage('accessToken');
   if (isFavoriteLoading) return <LoadingSpinner />;
 
   // TODO: 에러 처리 추후 intercepter 수정 시 지워야 함
   if (isFavoriteError || !favoriteData) {
     const errorMessage = favoriteError?.message || '프로필 찜 데이터를 가져오는 중 문제가 발생했습니다.';
-    if (!accessToken || (favoriteError as any).statusCode === 403) {
-      navigate('/login');
-    }
-
-    return <FavoriteContainer>{errorMessage}</FavoriteContainer>;
+    console.error(errorMessage);
+    return null;
   }
-
   const handleFavoriteClick = (id: number) => {
     navigate(`/trip/${id}`);
   };
