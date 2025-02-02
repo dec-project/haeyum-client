@@ -12,6 +12,7 @@ import LoginPage from './pages/auth/login';
 import CallbackPage from './pages/auth/callback';
 import ProfileEdit from './pages/my/edit';
 import ScrollToTop from './common/components/scrollToTop';
+import ErrorPage from './pages/error';
 
 type routeElement = {
   path: string;
@@ -24,6 +25,8 @@ const routes: routeElement[] = [
   {
     path: '/',
     element: <ScrollToTop />,
+    // TODO: 추후 에러 컴포넌트 추가
+    errorElement: <></>,
     children: [
       {
         path: '/',
@@ -41,6 +44,7 @@ const routes: routeElement[] = [
       { path: '/login', element: <LoginPage /> },
       { path: '/oauth/kakao/authorize/fallback', element: <CallbackPage /> },
       { path: '/profile/edit', element: <ProfileEdit /> },
+      { path: '*', element: <ErrorPage /> },
     ],
   },
 ];
