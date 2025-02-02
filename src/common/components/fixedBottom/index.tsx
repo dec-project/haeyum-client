@@ -21,7 +21,7 @@ const BottomContainer = styled.div`
   bottom: 0;
   left: 50%;
   z-index: 500;
-  padding: 0px 16px 20px 16px;
+  padding: 20px 16px 20px 16px;
   width: 100%;
   min-width: var(--min-width);
   max-width: var(--max-width);
