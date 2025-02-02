@@ -1,5 +1,5 @@
 import { tripApi } from '@/common/apis/trip';
-import useAuthStore from '@/common/stores/useAuthStore';
+import { useAuthStore } from '@/common/stores/useAuthStore';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 export const useFavorite = (calendarId: string) => {

@@ -45,5 +45,3 @@ export const useAuthStore = create<AuthStore>((set) => ({
   },
   isLogin: () => Boolean(getItem('accessToken')),
 }));
-
-export default useAuthStore;
