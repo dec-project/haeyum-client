@@ -1,10 +1,10 @@
 import { chatApi } from '@/common/apis/chatting';
 import { useQuery } from '@tanstack/react-query';
 
-const useChatMessages = (roomId: string) => {
+const useChatMessages = (chatroomId: string) => {
   const query = useQuery({
-    queryKey: ['chatMessages', roomId],
-    queryFn: () => chatApi.getChatMessages(Number(roomId)),
+    queryKey: ['chatMessages', chatroomId],
+    queryFn: () => chatApi.getChatMessages(Number(chatroomId)),
   });
 
   return { ...query };
