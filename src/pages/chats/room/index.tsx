@@ -35,6 +35,10 @@ const ChatRoom = () => {
 
   // TODO : 토큰 재발급 로직 추가해야 함 (토큰 만료시)
   useEffect(() => {
+    if (!accessToken) {
+      navigate('/login', { replace: true });
+      return;
+    }
     const connect = () => {
       const socket = new SockJS(`${BASE_URL}/ws`);
 
