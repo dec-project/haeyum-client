@@ -128,7 +128,7 @@ const DateButton = styled.button.withConfig({
   background-image: ${({ isInRange, isSelectedDay, isEnd, theme }) =>
     isInRange &&
     isSelectedDay &&
-    `linear-gradient(${isEnd ? '240deg' : '90deg'}, transparent 50%, ${theme.colors.orange200} 0)`};
+    `linear-gradient(${isEnd ? '270deg' : '90deg'}, transparent 50%, ${theme.colors.orange200} 0)`};
 
   & > div {
     display: flex;
