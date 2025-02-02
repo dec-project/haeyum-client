@@ -17,8 +17,8 @@ const CarouselLayout = (props: CarouselLayoutProps) => {
   const { slides, options } = props;
   const [emblaRef] = useEmblaCarousel(options);
   const navigate = useNavigate();
-  const onClickChat = ({ roomId, roomName }: { roomId: number; roomName: String }) => {
-    navigate(`/chats/${roomId}/${roomName}`);
+  const onClickChat = ({ chatroomId, roomName }: { chatroomId: number; roomName: string }) => {
+    navigate(`/chats/${chatroomId}/${roomName}`);
   };
 
   return (
@@ -26,7 +26,7 @@ const CarouselLayout = (props: CarouselLayoutProps) => {
       <Viewport ref={emblaRef}>
         <CardContainer>
           {slides.map((slide, index) => (
-            <Slide key={index} onClick={() => onClickChat({ roomId: slide.chatroomId, roomName: slide.name })}>
+            <Slide key={index} onClick={() => onClickChat({ chatroomId: slide.chatroomId, roomName: slide.name })}>
               <SlideImage src={`${BASE_URL}${slide.imgUrl}` || DefaultImg} alt={slide.name} />
               <SlideInfo>
                 <Title>{slide.name}</Title>
