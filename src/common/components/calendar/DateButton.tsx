@@ -8,13 +8,13 @@ interface DateButtonProps {
 export default function DateButton({ prevMonths, nextMonths }: DateButtonProps) {
   return (
     <Wrapper>
-      <Container>
-        <button onClick={prevMonths}>
+      <Container onClick={prevMonths}>
+        <button>
           <Text>이전 달</Text>
         </button>
       </Container>
-      <Container>
-        <button onClick={nextMonths}>
+      <Container onClick={nextMonths}>
+        <button>
           <Text>다음 달</Text>
         </button>
       </Container>
@@ -37,12 +37,12 @@ const Container = styled.div`
   width: 100%;
   border: 1px solid ${({ theme }) => theme.colors.orange300};
   border-radius: 0.25rem;
-  padding: 0.5rem;
+  padding: 8px;
   margin: auto;
+  cursor: pointer;
   button {
     background: none;
     border: none;
-    cursor: pointer;
   }
 `;
 
