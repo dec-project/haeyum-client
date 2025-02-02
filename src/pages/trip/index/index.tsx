@@ -8,7 +8,7 @@ import NewsSection from './components/NewsSection';
 import WeatherSection from './components/WeatherSection';
 import AppBar from '@/common/components/appbar';
 import { useFavorite, usePutFavorite } from './hooks/useFavorite';
-import useAuthStore from '@/common/stores/useAuthStore';
+import { useAuthStore } from '@/common/stores/useAuthStore';
 import { useState } from 'react';
 import { useViewCount } from './hooks/useViewCount';
 import { format } from 'date-fns';
