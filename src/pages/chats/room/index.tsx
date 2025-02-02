@@ -43,7 +43,7 @@ const ChatRoom = () => {
   // TODO : 토큰 재발급 로직 추가해야 함 (토큰 만료시)
   useEffect(() => {
     const connect = () => {
-      const socket = new SockJS(`${BASE_URL}/wss`);
+      const socket = new SockJS(`${BASE_URL}/ws`);
       client.current = Stomp.over(socket);
 
       client.current.debug = () => {};
