@@ -12,7 +12,7 @@ export interface KeywordRanking {
 }
 
 export interface ChatRanking {
-  roomId: number;
+  chatroomId: number;
   name: string;
   lastMessageDate: string;
   imgUrl: string;

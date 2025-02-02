@@ -1,5 +1,5 @@
 interface ChatList {
-  roomId: number;
+  chatroomId: number;
   name: String;
   lastMessage: String;
   lastMessageDate: String;
@@ -9,7 +9,7 @@ interface ChatList {
 type ChatListResponse = ChatList[];
 
 interface ChatMessage {
-  chatRoomId: string;
+  chatroomId: string;
   senderId: string;
   senderName: string;
   profileImg: string;

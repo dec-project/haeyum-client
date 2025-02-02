@@ -31,7 +31,7 @@ const Chats = () => {
   return (
     <Layout>
       {chatListData.map((chat) => (
-        <Item key={chat.roomId} onClick={() => onClickChat({ roomId: chat.roomId, roomName: chat.name })}>
+        <Item key={chat.chatroomId} onClick={() => onClickChat({ roomId: chat.chatroomId, roomName: chat.name })}>
           <Img src={`${BASE_URL}${chat.imgUrl}`} alt="avatar" />
           <Details>
             <div>

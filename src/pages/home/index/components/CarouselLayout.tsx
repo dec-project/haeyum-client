@@ -26,7 +26,7 @@ const CarouselLayout = (props: CarouselLayoutProps) => {
       <Viewport ref={emblaRef}>
         <CardContainer>
           {slides.map((slide, index) => (
-            <Slide key={index} onClick={() => onClickChat({ roomId: slide.roomId, roomName: slide.name })}>
+            <Slide key={index} onClick={() => onClickChat({ roomId: slide.chatroomId, roomName: slide.name })}>
               <SlideImage src={`${BASE_URL}${slide.imgUrl}` || DefaultImg} alt={slide.name} />
               <SlideInfo>
                 <Title>{slide.name}</Title>
