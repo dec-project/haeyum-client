@@ -35,7 +35,7 @@ const routes: routeElement[] = [
           { path: '/profile', element: <MyPage /> },
         ],
       },
-      { path: '/trip/:calendarId', element: <TripPage /> },
+      { path: '/trip/:calendarId/:calendarDate/:chatroomId', element: <TripPage /> },
       { path: '/trip/:calendarId/detail', element: <TripDetailPage /> },
       { path: '/chats/:roomId/:roomName', element: <ChatRoom /> },
       { path: '/login', element: <LoginPage /> },
