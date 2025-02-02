@@ -12,8 +12,8 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const TripCards = ({ items, count }: TripCardsProps) => {
   const navigate = useNavigate();
 
-  const handleCardClick = (calendarId: string) => {
-    navigate(`/trip/${calendarId}`);
+  const handleCardClick = (calendarId: string, calendarDate: string, chatroomId: number) => {
+    navigate(`/trip/${calendarId}/${calendarDate}/${chatroomId}`);
   };
 
   return (
@@ -21,7 +21,10 @@ const TripCards = ({ items, count }: TripCardsProps) => {
       <ResultCount>검색 결과 {count}</ResultCount>
       <TripCardList>
         {items.map((item) => (
-          <Card key={item.calendarId} onClick={() => handleCardClick(item.calendarId)}>
+          <Card
+            key={item.calendarId}
+            onClick={() => handleCardClick(item.calendarId, item.calendarDate, item.chatroomId)}
+          >
             <ImageWrapper>
               <Image src={`${BASE_URL}${item.imgUrl}`} alt={item.calendarName} />
             </ImageWrapper>
