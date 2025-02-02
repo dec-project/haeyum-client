@@ -4,11 +4,14 @@ import styled from 'styled-components';
 import Layout from './components/Layout';
 import { useNavigate } from 'react-router-dom';
 import { convertDate } from './utils/convertDate';
+import { useAuthStore } from '@/common/stores/useAuthStore';
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Chats = () => {
   const navigate = useNavigate();
+  const isLogin = useAuthStore.getState().isLogin();
+
   const { data: chatListData, isLoading, isError, error } = useChatList();
 
   if (isLoading) {
@@ -25,7 +28,11 @@ const Chats = () => {
   }
 
   const onClickChat = ({ chatroomId, roomName }: { chatroomId: number; roomName: String }) => {
-    navigate(`/chats/${chatroomId}/${roomName}`);
+    if (!isLogin) {
+      navigate('/login');
+    } else {
+      navigate(`/chats/${chatroomId}/${roomName}`);
+    }
   };
 
   return (
