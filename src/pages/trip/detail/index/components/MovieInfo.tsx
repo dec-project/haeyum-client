@@ -20,7 +20,8 @@ const MovieInfo = ({ calendarId, movieId }: MovieInfoProps) => {
 
   if (isError || !movieInfoData) {
     // TODO: 추후 에러 컴포넌트 추가
-    return <div>영화 상세 데이터를 가져오는 중 문제가 발생했습니다.</div>;
+    console.error('해당 날짜의 영화 상세 데이터가 없습니다.');
+    return null;
   }
 
   return (
