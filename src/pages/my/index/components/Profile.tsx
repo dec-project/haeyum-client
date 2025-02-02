@@ -12,11 +12,8 @@ const Profile = () => {
 
   if (isProfileError) {
     const errorMessage = profileError?.message || '프로필 데이터를 가져오는 중 문제가 발생했습니다.';
-    if ((profileError as any).statusCode === 403) {
-      navigate('/login');
-    }
-
-    return <ProfileContainer>{errorMessage}</ProfileContainer>;
+    console.error(errorMessage);
+    return null;
   }
 
   const handleEditProfile = () => {
