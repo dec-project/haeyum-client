@@ -19,7 +19,10 @@ const SearchList = () => {
   return (
     <List>
       {searchData.searches.map((data: KeywordRanking) => (
-        <Item key={data.calendarId}>
+        <Item
+          key={data.calendarId}
+          onClick={() => navigate(`/trip/${data.calendarId}/${data.calendarDate}/${data.chatroomId}`)}
+        >
           <Content>
             <Img src={`${import.meta.env.VITE_API_BASE_URL}${data.imgUrl}`} alt={data.calendarName} />
             <Info>
@@ -29,11 +32,7 @@ const SearchList = () => {
               </Detail>
             </Info>
           </Content>
-          <Icon
-            src={CaretRightIcon}
-            alt="search-input-button"
-            onClick={() => navigate(`/trip/${data.calendarId}/${data.calendarDate}/${data.chatroomId}`)}
-          />
+          <Icon src={CaretRightIcon} alt="search-input-button" />
         </Item>
       ))}
     </List>
@@ -52,9 +51,8 @@ const Img = styled.img`
 `;
 
 const Icon = styled.img`
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
+  width: 28px;
+  height: 28px;
 `;
 
 const Content = styled.div`
@@ -77,6 +75,7 @@ const Item = styled.div`
   justify-content: space-between;
   padding: 12px 0;
   border-radius: 4px;
+  cursor: pointer;
 `;
 
 const Title = styled.div`
