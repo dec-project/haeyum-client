@@ -12,7 +12,7 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const MovieChart = ({ calendarId }: MovieChartProps) => {
   const navigate = useNavigate();
-  const { data: movieData, isLoading, isError, error } = useMovie(calendarId);
+  const { data: movieData, isLoading, isError } = useMovie(calendarId);
 
   if (isLoading) {
     // TODO: 추후 로딩 페이지 추가
@@ -20,13 +20,9 @@ const MovieChart = ({ calendarId }: MovieChartProps) => {
   }
 
   if (isError || !movieData?.itemList || movieData.itemList.length === 0) {
-    const errorMessage = error?.message || '영화 데이터를 가져오는 중 문제가 발생했습니다.';
-
-    return (
-      <Section>
-        <p>{errorMessage}</p>
-      </Section>
-    );
+    // TODO: 추후 에러 컴포넌트 추가
+    console.error('해당 날짜의 영화 데이터가 없습니다.');
+    return null;
   }
 
   const handleDetailClick = (movieId: number) => {
