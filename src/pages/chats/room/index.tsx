@@ -14,7 +14,7 @@ import useLocalStorage from '@/common/hooks/useLocalStorage';
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 type ChatMessage = {
-  chatRoomId: string;
+  chatroomId: string;
   senderId: string;
   senderName: string;
   profileImg: string;
@@ -43,7 +43,7 @@ const ChatRoom = () => {
   // TODO : 토큰 재발급 로직 추가해야 함 (토큰 만료시)
   useEffect(() => {
     const connect = () => {
-      const socket = new SockJS(`${BASE_URL}/ws`);
+      const socket = new SockJS(`${BASE_URL}/wss`);
       client.current = Stomp.over(socket);
 
       client.current.debug = () => {};
@@ -80,7 +80,7 @@ const ChatRoom = () => {
       return;
     }
     if (client.current && message.trim()) {
-      const chatMessage = { chatRoomId: roomId, content: message };
+      const chatMessage = { chatroomId: roomId, content: message };
       client.current.send('/pub/message', { Authorization: `Bearer ${accessToken}` }, JSON.stringify(chatMessage));
       setMessage('');
     }
@@ -106,7 +106,7 @@ const ChatRoom = () => {
           const currentDate = data.date;
           const previousDate = index > 0 ? chatHistory[index - 1].date : null;
           return (
-            <div key={`${data.chatRoomId}-${index}`}>
+            <div key={`${data.chatroomId}-${index}`}>
               {currentDate !== previousDate && <DateLabel>{currentDate}</DateLabel>}
               <ContentWrapper isUser={data.senderId === userId}>
                 <Img src={`${BASE_URL}${data.profileImg}`} alt="messageIcon" />
