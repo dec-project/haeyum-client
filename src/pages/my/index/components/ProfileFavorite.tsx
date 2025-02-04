@@ -23,8 +23,9 @@ const ProfileFavorite = () => {
     console.error(errorMessage);
     return null;
   }
-  const handleFavoriteClick = (id: number) => {
-    navigate(`/trip/${id}`);
+
+  const handleFavoriteClick = (id: number, date: string, chatroomId: number) => {
+    navigate(`/trip/${id}/${date}/${chatroomId}`);
   };
 
   return (
@@ -34,7 +35,10 @@ const ProfileFavorite = () => {
         <NoData>기억나는 추억을 추가해보세요 📒</NoData>
       ) : (
         favoriteData?.itemList.map((item, index) => (
-          <FavoriteItem key={index} onClick={() => handleFavoriteClick(item.calendarId)}>
+          <FavoriteItem
+            key={index}
+            onClick={() => handleFavoriteClick(item.calendarId, item.calendarDate, item.chatroomId)}
+          >
             <FavoriteImg src={`${BASE_URL}${item.img}`} alt="여행 이미지" />
             <FavoriteDate>{item.calendarName}</FavoriteDate>
             <FavoriteIcon as={HeartFull} />
