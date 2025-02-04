@@ -41,7 +41,7 @@ const ProfileEdit = () => {
     mutate({ nickname: nickname, profileImg: file });
   };
 
-  if (isProfileEditSuccess) navigate('/profile');
+  if (isProfileEditSuccess) navigate('/profile', { replace: true });
   if (isProfileLoading || isProfileEditLoading) return <LoadingSpinner />;
   if (isProfileError) {
     const errorMessage = profileError?.message || '프로필 데이터를 가져오는 중 문제가 발생했습니다.';
