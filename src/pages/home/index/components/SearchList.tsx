@@ -1,21 +1,30 @@
 import styled from 'styled-components';
 import CaretRightIcon from '@/common/assets/icon/icon-arrow-right.svg';
 import { useNavigate } from 'react-router-dom';
-import LoadingSpinner from '@/common/components/spinner';
-import useSearchRanking from '../hooks/useSearchRanking';
+// import LoadingSpinner from '@/common/components/spinner';
+import { useSearchRanking } from '../hooks/useSearchRanking';
 import { KeywordRanking } from '@/common/apis/ranking/type';
 
 const SearchList = () => {
-  const { data: searchData, isLoading, isError } = useSearchRanking();
+  const {
+    data: searchData,
+    //  isLoading,
+    isError,
+  } = useSearchRanking();
   const navigate = useNavigate();
 
-  if (isLoading) {
-    return <LoadingSpinner />;
+  // if (isLoading) {
+  //   return <LoadingSpinner />;
+  // }
+
+  if (!searchData || searchData.searches.length === 0) {
+    return null;
   }
 
-  if (isError || !searchData?.searches) {
-    return <div>영화 데이터를 가져오는 중 문제가 발생했습니다.</div>;
+  if (isError) {
+    return <div>검색 리스트 데이터를 가져오는 중 문제가 발생했습니다.</div>;
   }
+
   return (
     <List>
       {searchData.searches.map((data: KeywordRanking) => (
