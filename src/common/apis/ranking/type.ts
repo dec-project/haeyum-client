@@ -17,6 +17,7 @@ export interface ChatRanking {
   name: string;
   lastMessageDate: string;
   imgUrl: string;
+  chatCnt: number;
 }
 
 export type ChatRankingResponse = ChatRanking[];
