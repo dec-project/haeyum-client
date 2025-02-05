@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import useMusicDetail from '../hooks/useMusicDetail';
-import LoadingSpinner from '@/common/components/spinner';
-import Container from '@/common/components/layout/Container';
-import AppBar from '@/common/components/appbar';
+import { useMusicDetail } from '../hooks/useMusicDetail';
 import { format } from 'date-fns';
 import DOMPurify from 'dompurify';
+import YouTubePlayer from './Video';
+import Container from '@/common/components/layout/Container';
 
 interface MusicInfoProps {
   calendarId: string;
@@ -12,61 +11,43 @@ interface MusicInfoProps {
 }
 
 const MusicInfo = ({ calendarId, musicId }: MusicInfoProps) => {
-  const { data: musicInfoData, isLoading, isError } = useMusicDetail(calendarId, musicId);
-
-  if (isLoading) {
-    // TODO: 추후 로딩 컴포넌트 추가
-    return <LoadingSpinner />;
-  }
+  const { data: musicInfoData, isError } = useMusicDetail(calendarId, musicId);
 
   if (isError || !musicInfoData) {
-    // TODO: 추후 에러 컴포넌트 추가
-    console.error('해당 날짜의 노래 상세 데이터가 없습니다.');
     return null;
   }
 
   const cleanedLyrics = DOMPurify.sanitize(musicInfoData.lyrics);
 
   return (
-    <>
-      <AppBar leftContent={<AppBar.ArrowLeft />} text="상세" rightContent={<AppBar.GoHome />} />
-      <Container>
-        <VideoSection>
-          <IframeWrapper>
-            <Iframe
-              src={`${musicInfoData.youtubeAddr}`}
-              title="Video Player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></Iframe>
-          </IframeWrapper>
-        </VideoSection>
-        <ContentSection>
-          <Title>{musicInfoData.title}</Title>
-          <ReleaseDate>
-            {musicInfoData.artists}
-            <br />
-            {format(new Date(musicInfoData.releaseDate), 'yyyy년 M월 d일')} | {musicInfoData.genre}
-          </ReleaseDate>
-        </ContentSection>
-        <ContentSection>
-          <Description dangerouslySetInnerHTML={{ __html: cleanedLyrics }} />
-        </ContentSection>
-      </Container>
-    </>
+    <Container>
+      <VideoSection>
+        <VideoWrapper>
+          <YouTubePlayer videoId={`${musicInfoData.youtubeAddr}`} />
+        </VideoWrapper>
+      </VideoSection>
+      <ContentSection>
+        <Title>{musicInfoData.title}</Title>
+        <ReleaseDate>
+          {musicInfoData.artists}
+          <br />
+          {format(new Date(musicInfoData.releaseDate), 'yyyy년 M월 d일')} | {musicInfoData.genre}
+        </ReleaseDate>
+      </ContentSection>
+      <ContentSection>
+        <Description dangerouslySetInnerHTML={{ __html: cleanedLyrics }} />
+      </ContentSection>
+    </Container>
   );
 };
 
 const VideoSection = styled.section`
   padding: 16px 0;
-`;
-
-const IframeWrapper = styled.div`
   position: relative;
   padding-bottom: 56.25%;
 `;
 
-const Iframe = styled.iframe`
+const VideoWrapper = styled.div`
   position: absolute;
   top: 0;
   left: 0;
