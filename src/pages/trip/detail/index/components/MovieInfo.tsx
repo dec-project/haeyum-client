@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import useMovieDetail from '../hooks/useMovieDetail';
-import LoadingSpinner from '@/common/components/spinner';
+import { useMovieDetail } from '../hooks/useMovieDetail';
 import Container from '@/common/components/layout/Container';
-import AppBar from '@/common/components/appbar';
 import { format } from 'date-fns';
+import YouTubePlayer from './Video';
 
 interface MovieInfoProps {
   calendarId: string;
@@ -11,12 +10,7 @@ interface MovieInfoProps {
 }
 
 const MovieInfo = ({ calendarId, movieId }: MovieInfoProps) => {
-  const { data: movieInfoData, isLoading, isError } = useMovieDetail(calendarId, movieId);
-
-  if (isLoading) {
-    // TODO: 추후 로딩 컴포넌트 추가
-    return <LoadingSpinner />;
-  }
+  const { data: movieInfoData, isError } = useMovieDetail(calendarId, movieId);
 
   if (isError || !movieInfoData) {
     // TODO: 추후 에러 컴포넌트 추가
@@ -25,41 +19,30 @@ const MovieInfo = ({ calendarId, movieId }: MovieInfoProps) => {
   }
 
   return (
-    <>
-      <AppBar leftContent={<AppBar.ArrowLeft />} text="상세" rightContent={<AppBar.GoHome />} />
-      <Container>
-        <VideoSection>
-          <IframeWrapper>
-            <Iframe
-              src={`${movieInfoData.youtubeAddr}`}
-              title="Video Player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></Iframe>
-          </IframeWrapper>
-        </VideoSection>
-        <ContentSection>
-          <Title>{movieInfoData.title}</Title>
-          <ReleaseDate>{format(new Date(movieInfoData.releaseDate), 'yyyy년 M월 d일')}</ReleaseDate>
-        </ContentSection>
-        <ContentSection>
-          <Description>{movieInfoData.content}</Description>
-        </ContentSection>
-      </Container>
-    </>
+    <Container>
+      <VideoSection>
+        <VideoWrapper>
+          <YouTubePlayer videoId={`${movieInfoData.youtubeAddr}`} />
+        </VideoWrapper>
+      </VideoSection>
+      <ContentSection>
+        <Title>{movieInfoData.title}</Title>
+        <ReleaseDate>{format(new Date(movieInfoData.releaseDate), 'yyyy년 M월 d일')}</ReleaseDate>
+      </ContentSection>
+      <ContentSection>
+        <Description>{movieInfoData.content}</Description>
+      </ContentSection>
+    </Container>
   );
 };
 
 const VideoSection = styled.section`
   padding: 16px 0;
-`;
-
-const IframeWrapper = styled.div`
   position: relative;
   padding-bottom: 56.25%;
 `;
 
-const Iframe = styled.iframe`
+const VideoWrapper = styled.div`
   position: absolute;
   top: 0;
   left: 0;
