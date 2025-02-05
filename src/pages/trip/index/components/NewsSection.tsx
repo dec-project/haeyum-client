@@ -1,24 +1,16 @@
 import styled from 'styled-components';
-import useNews from '../hooks/useNews';
-import LoadingSpinner from '@/common/components/spinner';
+import { useNews } from '../hooks/useNews';
 
 interface NewsSectionProps {
   calendarId: string;
 }
 
 const NewsSection = ({ calendarId }: NewsSectionProps) => {
-  const { data: newsData, isLoading, isError } = useNews(calendarId);
+  const { data: newsData, isError } = useNews(calendarId);
 
   const category = ['최신 기사'];
 
-  if (isLoading) {
-    // TODO: 추후 로딩 페이지 추가
-    return <LoadingSpinner />;
-  }
-
   if (isError || !newsData?.itemList || newsData.itemList.length === 0) {
-    // TODO: 추후 에러 컴포넌트 추가
-    console.error('해당 날짜의 뉴스 데이터가 없습니다.');
     return null;
   }
 

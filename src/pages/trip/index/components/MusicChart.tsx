@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import ArrowRight from '@/common/assets/icon/icon-arrow-right.svg';
-import useMusic from '../hooks/useMusic';
-import LoadingSpinner from '@/common/components/spinner';
+import { useMusic } from '../hooks/useMusic';
 import { useNavigate } from 'react-router-dom';
 
 interface MusicChartProps {
@@ -12,16 +11,9 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const MusicChart = ({ calendarId }: MusicChartProps) => {
   const navigate = useNavigate();
-  const { data: musicData, isLoading, isError } = useMusic(calendarId);
-
-  if (isLoading) {
-    // TODO: 추후 로딩 페이지 추가
-    return <LoadingSpinner />;
-  }
+  const { data: musicData, isError } = useMusic(calendarId);
 
   if (isError || !musicData?.songSummaries || musicData.songSummaries.length === 0) {
-    // TODO: 추후 에러 컴포넌트 추가
-    console.error('해당 날짜의 노래 데이터가 없습니다.');
     return null;
   }
 
