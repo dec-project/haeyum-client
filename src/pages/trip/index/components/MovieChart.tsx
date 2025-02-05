@@ -1,8 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import ArrowRight from '@/common/assets/icon/icon-arrow-right.svg';
-import useMovie from '../hooks/useMovie';
-import LoadingSpinner from '@/common/components/spinner';
+import { useMovie } from '../hooks/useMovie';
 
 interface MovieChartProps {
   calendarId: string;
@@ -12,16 +11,9 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const MovieChart = ({ calendarId }: MovieChartProps) => {
   const navigate = useNavigate();
-  const { data: movieData, isLoading, isError } = useMovie(calendarId);
-
-  if (isLoading) {
-    // TODO: 추후 로딩 페이지 추가
-    return <LoadingSpinner />;
-  }
+  const { data: movieData, isError } = useMovie(calendarId);
 
   if (isError || !movieData?.itemList || movieData.itemList.length === 0) {
-    // TODO: 추후 에러 컴포넌트 추가
-    console.error('해당 날짜의 영화 데이터가 없습니다.');
     return null;
   }
 

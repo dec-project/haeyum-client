@@ -9,10 +9,11 @@ import WeatherSection from './components/WeatherSection';
 import AppBar from '@/common/components/appbar';
 import { useFavorite, usePutFavorite } from './hooks/useFavorite';
 import { useAuthStore } from '@/common/stores/useAuthStore';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useViewCount } from './hooks/useViewCount';
 import { format } from 'date-fns';
 import { getDecadeNumber } from './utils';
+import Loading from '@/common/components/Loading';
 
 const TripPage = () => {
   const { calendarId, calendarDate, chatroomId } = useParams();
@@ -26,7 +27,7 @@ const TripPage = () => {
 
   useViewCount(calendarId);
 
-  const { data: favoriteData, isLoading } = useFavorite(calendarId);
+  const { data: favoriteData } = useFavorite(calendarId);
   const { mutate: toggleFavorite } = usePutFavorite();
   const isLogin = useAuthStore.getState().isLogin();
 
@@ -36,8 +37,6 @@ const TripPage = () => {
     // TODO: 추후 에러 컴포넌트 추가
     return <div>해당 날짜 정보가 없습니다.</div>;
   }
-
-  if (isLoading) return <div>로딩 중...</div>;
 
   const handleFavoriteClick = () => {
     if (!isLogin) {
@@ -70,20 +69,22 @@ const TripPage = () => {
         text={`${format(new Date(calendarDate), 'yyyy년 M월 d일')}`}
         rightContent={<AppBar.Heart onClick={handleFavoriteClick} isActive={isActive} />}
       />
-      <Container>
-        <NewsSection calendarId={calendarId} />
-        <WeatherSection calendarId={calendarId} />
-        <MusicChart calendarId={calendarId} />
-        <MovieChart calendarId={calendarId} />
-        <FixedBottom>
-          <ButtonWrapper>
-            <Button onClick={handleChatNavigate}>
-              <ChatIcon src={IconChatDot} alt="chatIcon" />
-              <span>{decadeName} 채팅방</span>
-            </Button>
-          </ButtonWrapper>
-        </FixedBottom>
-      </Container>
+      <Suspense fallback={<Loading />}>
+        <Container>
+          <NewsSection calendarId={calendarId} />
+          <WeatherSection calendarId={calendarId} />
+          <MusicChart calendarId={calendarId} />
+          <MovieChart calendarId={calendarId} />
+          <FixedBottom>
+            <ButtonWrapper>
+              <Button onClick={handleChatNavigate}>
+                <ChatIcon src={IconChatDot} alt="chatIcon" />
+                <span>{decadeName} 채팅방</span>
+              </Button>
+            </ButtonWrapper>
+          </FixedBottom>
+        </Container>
+      </Suspense>
     </>
   );
 };
