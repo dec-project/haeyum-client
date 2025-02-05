@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import useChatMessages from './hooks/useChatMessages';
+import { useChatMessages } from './hooks/useChatMessages';
 import LoadingSpinner from '@/common/components/spinner';
 import { useEffect, useRef, useState } from 'react';
 import { CompatClient, Stomp } from '@stomp/stompjs';

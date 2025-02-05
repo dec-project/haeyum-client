@@ -1,5 +1,5 @@
 import LoadingSpinner from '@/common/components/spinner';
-import useChatList from './hooks/useChatList';
+import { useChatList } from './hooks/useChatList';
 import styled from 'styled-components';
 import Layout from './components/Layout';
 import { useNavigate } from 'react-router-dom';
