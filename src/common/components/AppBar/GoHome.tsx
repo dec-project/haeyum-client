@@ -1,4 +1,3 @@
-import React from 'react';
 import HomeIcon from '@/common/assets/icon/icon-home.svg';
 import { Button } from './CommonStyle';
 import { useNavigate } from 'react-router-dom';
