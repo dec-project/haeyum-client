@@ -1,4 +1,4 @@
-import FixedBottom from '@/common/components/fixedBottom';
+import FixedBottom from '@/common/components/FixedBottom';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
