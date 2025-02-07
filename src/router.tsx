@@ -4,14 +4,14 @@ import HomePage from './pages/home/index';
 import SearchPage from './pages/search/index';
 import ChatsPage from './pages/chats/index';
 import TripPage from './pages/trip/index';
-import Navbar from './common/components/navbar';
+import Navbar from './common/components/NavBar';
 import MyPage from './pages/my/index';
 import TripDetailPage from './pages/trip/detail/index';
 import ChatRoom from './pages/chats/room';
 import LoginPage from './pages/auth/login';
 import CallbackPage from './pages/auth/callback';
 import ProfileEdit from './pages/my/edit';
-import ScrollToTop from './common/components/scrollToTop';
+import ScrollToTop from './common/components/ScrollToTop';
 import ErrorPage from './pages/error';
 
 type routeElement = {

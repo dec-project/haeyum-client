@@ -2,10 +2,10 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import TripCards from '../components/TripCards';
 import useResult from '../hooks/useResult';
-import LoadingSpinner from '@/common/components/spinner';
+import LoadingSpinner from '@/common/components/Spinner';
 import { SearchParams } from '@/common/apis/search/types';
 import SearchInput from '@/common/components/SearchInput';
-import AppBar from '@/common/components/appbar';
+import AppBar from '@/common/components/AppBar';
 import { format } from 'date-fns';
 import Loading from '@/common/components/Loading';
 

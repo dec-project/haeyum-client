@@ -1,4 +1,4 @@
-import LoadingSpinner from '@/common/components/spinner';
+import LoadingSpinner from '@/common/components/Spinner';
 import { useChatList } from './hooks/useChatList';
 import styled from 'styled-components';
 import Layout from './components/Layout';

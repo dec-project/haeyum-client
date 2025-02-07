@@ -1,6 +1,6 @@
 import React from 'react';
-import AppBar from '@/common/components/appbar';
-import Container from '@/common/components/layout/Container';
+import AppBar from '@/common/components/AppBar';
+import Container from '@/common/components/Layout/Container';
 import MetaTag from '@/common/components/MetaTag';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {

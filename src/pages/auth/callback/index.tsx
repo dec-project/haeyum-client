@@ -1,4 +1,4 @@
-import Container from '@/common/components/layout/Container';
+import Container from '@/common/components/Layout/Container';
 import { useAuthStore } from '@/common/stores/useAuthStore';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';

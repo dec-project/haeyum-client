@@ -1,8 +1,8 @@
-import FixedBottom from '@/common/components/fixedBottom';
 import styled from 'styled-components';
 import IconKakao from '@/common/assets/icon/icon-kakao.svg';
-import AppBar from '@/common/components/appbar';
-import Container from '@/common/components/layout/Container';
+import AppBar from '@/common/components/AppBar';
+import Container from '@/common/components/Layout/Container';
+import FixedBottom from '@/common/components/FixedBottom';
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const KAKAO_REST_API_KEY = import.meta.env.VITE_KAKAO_REST_API_KEY;

@@ -3,7 +3,7 @@ import { useMusicDetail } from '../hooks/useMusicDetail';
 import { format } from 'date-fns';
 import DOMPurify from 'dompurify';
 import YouTubePlayer from './Video';
-import Container from '@/common/components/layout/Container';
+import Container from '@/common/components/Layout/Container';
 
 interface MusicInfoProps {
   calendarId: string;
