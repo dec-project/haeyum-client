@@ -1,16 +1,16 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useChatMessages } from './hooks/useChatMessages';
-import LoadingSpinner from '@/common/components/spinner';
+import LoadingSpinner from '@/common/components/Spinner';
 import { useEffect, useRef, useState } from 'react';
 import { CompatClient, Stomp } from '@stomp/stompjs';
 import styled from 'styled-components';
-import Container from '@/common/components/layout/Container';
 import ChatMessageItem from './components/ChatContent';
 import ChatInput from './components/ChatInput';
 import SockJS from 'sockjs-client';
 import Layout from './components/Layout';
 import useLocalStorage from '@/common/hooks/useLocalStorage';
 import { ChatMessageResponse } from '@/common/apis/chatting/types';
+import Container from '@/common/components/Layout/Container';
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 

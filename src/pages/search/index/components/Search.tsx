@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Calendar from '@/common/components/calendar';
 import { format } from 'date-fns';
 import styled from 'styled-components';
-import AppBar from '@/common/components/appbar';
-import Container from '@/common/components/layout/Container';
+import AppBar from '@/common/components/AppBar';
 import MetaTag from '@/common/components/MetaTag';
+import Container from '@/common/components/Layout/Container';
+import Calendar from '@/common/components/Calendar';
 
 const Search = () => {
   const navigate = useNavigate();

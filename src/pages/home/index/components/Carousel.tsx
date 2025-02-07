@@ -2,7 +2,7 @@ import { EmblaOptionsType } from 'embla-carousel';
 import CarouselLayout from './CarouselLayout';
 import { useChatRanking } from '../hooks/useChatRanking';
 // import LoadingSpinner from '@/common/components/spinner';
-import { Container } from '@/common/components/calendar/CommonStyle';
+import { Container } from '@/common/components/Calendar/CommonStyle';
 
 const Carousel = () => {
   const OPTIONS: EmblaOptionsType = { dragFree: true };

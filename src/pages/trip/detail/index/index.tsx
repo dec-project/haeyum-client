@@ -1,7 +1,7 @@
 import { useParams, useSearchParams } from 'react-router-dom';
 import MovieInfo from './components/MovieInfo';
 import MusicInfo from './components/MusicInfo';
-import AppBar from '@/common/components/appbar';
+import AppBar from '@/common/components/AppBar';
 import { Suspense } from 'react';
 import Loading from '@/common/components/Loading';
 

@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import FixedBottom from '@/common/components/fixedBottom';
+import FixedBottom from '@/common/components/FixedBottom';
 import IconChatDot from '@/common/assets/icon/icon-chat-dot.svg';
 import { useNavigate, useParams } from 'react-router-dom';
 import MovieChart from './components/MovieChart';
 import MusicChart from './components/MusicChart';
 import NewsSection from './components/NewsSection';
 import WeatherSection from './components/WeatherSection';
-import AppBar from '@/common/components/appbar';
+import AppBar from '@/common/components/AppBar';
 import { useFavorite, usePutFavorite } from './hooks/useFavorite';
 import { useAuthStore } from '@/common/stores/useAuthStore';
 import { Suspense, useState } from 'react';

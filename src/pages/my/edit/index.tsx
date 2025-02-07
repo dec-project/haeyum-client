@@ -1,12 +1,12 @@
-import Container from '@/common/components/layout/Container';
-import LoadingSpinner from '@/common/components/spinner';
+import Container from '@/common/components/Layout/Container';
+import LoadingSpinner from '@/common/components/Spinner';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import useProfile from '../index/hooks/useProfile';
 import Camera from '@/common/assets/icon/icon-camera.svg?react';
 import useProfileEdit from '../index/hooks/useProfileEdit';
-import AppBar from '@/common/components/appbar';
+import AppBar from '@/common/components/AppBar';
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const ProfileEdit = () => {

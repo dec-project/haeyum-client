@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { useMovieDetail } from '../hooks/useMovieDetail';
-import Container from '@/common/components/layout/Container';
 import { format } from 'date-fns';
 import YouTubePlayer from './Video';
+import Container from '@/common/components/Layout/Container';
 
 interface MovieInfoProps {
   calendarId: string;

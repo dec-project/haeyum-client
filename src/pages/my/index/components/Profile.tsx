@@ -1,4 +1,4 @@
-import LoadingSpinner from '@/common/components/spinner';
+import LoadingSpinner from '@/common/components/Spinner';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import useProfile from '../hooks/useProfile';
