@@ -12,7 +12,7 @@ import LoginPage from './pages/auth/login';
 import CallbackPage from './pages/auth/callback';
 import ProfileEdit from './pages/my/edit';
 import ScrollToTop from './common/components/ScrollToTop';
-import ErrorPage from './pages/error';
+import ErrorPage from './pages/error/index';
 
 type routeElement = {
   path: string;
