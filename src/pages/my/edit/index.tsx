@@ -38,6 +38,10 @@ const ProfileEdit = () => {
   };
 
   const handleEditProfile = () => {
+    if (nickname.length < 2 || nickname.length > 10) {
+      alert('닉네임은 2~10자 이내여야 합니다.');
+      return;
+    }
     mutate({ nickname: nickname, profileImg: file });
   };
 
@@ -52,7 +56,7 @@ const ProfileEdit = () => {
   return (
     <>
       <AppBar
-        leftContent={<AppBar.ArrowLeft />}
+        leftContent={<AppBar.BackButton />}
         text="프로필 수정"
         rightContent={
           <AppBar.CompleteButton

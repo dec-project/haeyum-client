@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import ArrowLeft from './ArrowLeft';
+import BackButton from './BackButton';
 import Heart from './Heart';
 import GoHome from './GoHome';
 import CompleteButton from './CompleteButton';
@@ -72,7 +72,7 @@ const Icon = styled.div`
 export default AppBar;
 
 AppBar.Logo = Logo;
-AppBar.ArrowLeft = ArrowLeft;
+AppBar.BackButton = BackButton;
 AppBar.Heart = Heart;
 AppBar.GoHome = GoHome;
 AppBar.CompleteButton = CompleteButton;

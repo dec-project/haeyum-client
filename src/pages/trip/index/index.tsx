@@ -65,7 +65,7 @@ const TripPage = () => {
   return (
     <>
       <AppBar
-        leftContent={<AppBar.ArrowLeft />}
+        leftContent={<AppBar.BackButton />}
         text={`${format(new Date(calendarDate), 'yyyy년 M월 d일')}`}
         rightContent={<AppBar.Heart onClick={handleFavoriteClick} isActive={isActive} />}
       />

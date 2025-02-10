@@ -19,7 +19,7 @@ const TripDetailPage = () => {
 
   return (
     <>
-      <AppBar leftContent={<AppBar.ArrowLeft />} text="상세" rightContent={<AppBar.GoHome />} />
+      <AppBar leftContent={<AppBar.BackButton />} text="상세" rightContent={<AppBar.GoHome />} />
       <Suspense fallback={<Loading />}>
         {calendarId && movieId && <MovieInfo calendarId={calendarId} movieId={movieId} />}
         {calendarId && musicId && <MusicInfo calendarId={calendarId} musicId={musicId} />}

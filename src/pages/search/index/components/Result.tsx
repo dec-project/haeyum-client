@@ -25,7 +25,7 @@ const Result = ({ startDate, endDate }: SearchParams) => {
   return (
     <>
       <AppBar
-        leftContent={<AppBar.ArrowLeft />}
+        leftContent={<AppBar.BackButton />}
         text={`${format(new Date(startDate), 'yyyy년 M월 d일')} - ${format(new Date(endDate), 'yyyy년 M월 d일')}`}
       />
       {isLoading && <Loading />}
