@@ -5,7 +5,7 @@ import { ReactNode } from 'react';
 const Layout = ({ children, roomName }: { children: ReactNode; roomName: string | undefined }) => {
   return (
     <>
-      <AppBar leftContent={<AppBar.ArrowLeft />} text={roomName} />
+      <AppBar leftContent={<AppBar.BackButton />} text={roomName} />
       <Container>{children}</Container>
     </>
   );
