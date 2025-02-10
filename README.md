@@ -150,7 +150,7 @@ yarn dev
 - 일정 지연이 예상될 경우 미리 공유
 
 **3. 코드 작성 및 협업 규칙**
-[디렉토리 구조 및 코드 스타일 가이드
+- [디렉토리 구조 및 코드 스타일 가이드
 ](https://berlin-paris-london.notion.site/165ea610f98a80ddbdd5d3a5ba26971f?pvs=4)
 
 **4. Git 컨벤션 ([링크](https://berlin-paris-london.notion.site/Git-f74c7a92d6ee428a883e845875336238?pvs=4))**
@@ -167,8 +167,22 @@ yarn dev
 **5. PR 및 코드 리뷰 규칙**
 - 기능 구현 후 PR 요청
 - 1명의 코드 리뷰 승인 후 머지 가능
+- 리뷰는 Pn 룰을 사용
+  - P1: 꼭 반영해주세요
+  - P2: 적극적으로 고려해주세요
+  - P3: 웬만하면 반영해 주세요
+  - P4: 반영해도 좋고 넘어가도 좋습니다
+  - P5: 그냥 사소한 의견입니다
+
+    <details>
+    <summary>적용 예시 (더보기)</summary>
+      
+      - [#66 마이페이지 컴포넌트 추가](https://github.com/dec-project/haeyum-client/pull/66)
+      - [#29 검색 결과 리스트 페이지 구현](https://github.com/dec-project/haeyum-client/pull/29)
+
+
+    </details>
+
 - feature -> develop 은 rebase merge 사용
 - develop -> main은 merge commit 사용
   - release 과정에서 문제가 발생할 경우, merge commit으로 어떤 시점의 develop 브랜치가 main에 머지되었는지 확인 가능
-
-
