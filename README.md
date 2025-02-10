@@ -12,6 +12,7 @@
 
 
 ## 1\. 소개
+
 헤윰은 사용자가 특정 기간을 선택하면 해당 날짜의 뉴스, 날씨, 음악 차트 TOP 5, 영화 차트 TOP 5를 보여주는 디지털 여행 플랫폼입니다. 또, 해당 시대별 채팅방을 제공해 추억을 공유할 수 있습니다.
 
 https://github.com/user-attachments/assets/e716fbf0-24c9-493a-aedd-a656f33b0a58
@@ -70,6 +71,7 @@ https://github.com/user-attachments/assets/e716fbf0-24c9-493a-aedd-a656f33b0a58
 **7. 찜 기능 (회원)**
 - 원하는 날짜의 여행 페이지 저장 기능
 
+
 **8. 프로필 수정 (회원)**
 - 프로필 이미지 및 프로필 명 수정 기능
 
@@ -107,7 +109,7 @@ https://github.com/user-attachments/assets/e716fbf0-24c9-493a-aedd-a656f33b0a58
 
 ## 7\. 기술 스택 및 라이브러리
 
-- React, Typescript
+- React, TypeScript
 - Vite, Yarn
 - React Router Dom
 - TanStack Query, Zustand
@@ -115,7 +117,7 @@ https://github.com/user-attachments/assets/e716fbf0-24c9-493a-aedd-a656f33b0a58
 - ESLint, Prettier
 - Axios, Stompjs, Sockjs-client
 - Date-fns, DOMPurify
-- React Intersection Observer, Embla Carouse
+- React Intersection Observer, Embla Carousel
 - React Helmet Async
 - S3, Cloudfront
 
@@ -130,6 +132,7 @@ https://github.com/user-attachments/assets/e716fbf0-24c9-493a-aedd-a656f33b0a58
 yarn dlx @yarnpkg/sdks vscode
 ```
 
+
 **2. 프로젝트 설치 및 실행**
 
 ```bash
@@ -137,11 +140,13 @@ yarn install
 yarn dev
 ```
 
+
 ## 9\. 그라운드 룰
 
 **1. 커뮤니케이션**
 - 공식 협업 툴: Discord, Notion 사용
 - 데일리 스크럼 및 회의록은 Notion에 정리하여 관리
+
 
 **2. 일정 및 회의**
 - 데일리 스크럼: 매일 AM 09:30 - 10:00
@@ -149,9 +154,11 @@ yarn dev
 - 진행 상황 공유: Discord 및 GitHub Issues 활용
 - 일정 지연이 예상될 경우 미리 공유
 
+
 **3. 코드 작성 및 협업 규칙**
 - [디렉토리 구조 및 코드 스타일 가이드
 ](https://berlin-paris-london.notion.site/165ea610f98a80ddbdd5d3a5ba26971f?pvs=4)
+
 
 **4. Git 컨벤션 ([링크](https://berlin-paris-london.notion.site/Git-f74c7a92d6ee428a883e845875336238?pvs=4))**
 - feat: 새로운 기능을 추가할 경우
