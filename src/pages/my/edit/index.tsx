@@ -7,7 +7,7 @@ import useProfile from '../index/hooks/useProfile';
 import Camera from '@/common/assets/icon/icon-camera.svg?react';
 import useProfileEdit from '../index/hooks/useProfileEdit';
 import AppBar from '@/common/components/AppBar';
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+import { BASE_URL } from '@/config';
 
 const ProfileEdit = () => {
   const { data: profileData, isLoading: isProfileLoading, isError: isProfileError, error: profileError } = useProfile();

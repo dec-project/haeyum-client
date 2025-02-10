@@ -3,8 +3,7 @@ import useProfileFavorite from '../hooks/useProfileFavorite';
 import LoadingSpinner from '@/common/components/Spinner';
 import { useNavigate } from 'react-router-dom';
 import HeartFull from '@/common/assets/icon/icon-heart-full.svg?react';
-
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+import { BASE_URL } from '@/config';
 
 const ProfileFavorite = () => {
   const {

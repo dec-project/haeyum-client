@@ -5,13 +5,12 @@ import ChatIcon from '@/common/assets/icon/icon-chat.svg';
 import DefaultImg from '@/common/assets/logo/logo.svg';
 import { ChatRanking } from '@/common/apis/ranking/type';
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '@/config';
 
 type CarouselLayoutProps = {
   slides: ChatRanking[];
   options?: EmblaOptionsType;
 };
-
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const CarouselLayout = (props: CarouselLayoutProps) => {
   const { slides, options } = props;

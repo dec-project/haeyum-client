@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 import { useWeather } from '../hooks/useWeather';
+import { BASE_URL } from '@/config';
 
 interface WeatherSectionProps {
   calendarId: string;
 }
-
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const WeatherSection = ({ calendarId }: WeatherSectionProps) => {
   const { data: weatherData, isError } = useWeather(calendarId);

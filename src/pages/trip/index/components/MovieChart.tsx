@@ -2,12 +2,11 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import ArrowRight from '@/common/assets/icon/icon-arrow-right.svg';
 import { useMovie } from '../hooks/useMovie';
+import { BASE_URL } from '@/config';
 
 interface MovieChartProps {
   calendarId: string;
 }
-
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const MovieChart = ({ calendarId }: MovieChartProps) => {
   const navigate = useNavigate();
