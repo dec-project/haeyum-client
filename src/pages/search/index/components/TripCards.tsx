@@ -1,13 +1,12 @@
 import { TripCard } from '@/common/apis/search/types';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { BASE_URL } from '@/config';
 
 interface TripCardsProps {
   items: TripCard[];
   count: number;
 }
-
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const TripCards = ({ items, count }: TripCardsProps) => {
   const navigate = useNavigate();

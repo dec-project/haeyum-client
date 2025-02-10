@@ -5,8 +5,7 @@ import Layout from './components/Layout';
 import { useNavigate } from 'react-router-dom';
 import { convertDate } from './utils/convertDate';
 import { useAuthStore } from '@/common/stores/useAuthStore';
-
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+import { BASE_URL } from '@/config';
 
 const Chats = () => {
   const navigate = useNavigate();

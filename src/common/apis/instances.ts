@@ -1,7 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 import { errorInterceptor, requestInterceptor, successInterceptor } from './interceptors';
-
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+import { BASE_URL } from '@/config';
 
 const createAxiosInstance = (baseURL: string, headers: { [key: string]: string }): AxiosInstance => {
   return axios.create({

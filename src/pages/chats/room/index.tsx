@@ -11,8 +11,7 @@ import Layout from './components/Layout';
 import useLocalStorage from '@/common/hooks/useLocalStorage';
 import { ChatMessageResponse } from '@/common/apis/chatting/types';
 import Container from '@/common/components/Layout/Container';
-
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+import { BASE_URL } from '@/config';
 
 const ChatRoom = () => {
   const { chatroomId, roomName } = useParams<{ chatroomId: string; roomName: string }>();
