@@ -80,13 +80,13 @@ https://github.com/user-attachments/assets/e716fbf0-24c9-493a-aedd-a656f33b0a58
 
 **1. 웹 서빙 아키텍처**
 
-<img src='https://res.cloudinary.com/dsapqefbg/image/upload/v1739199294/aws-architecture_ymimgf.png' alt='aws-architecture' width="90%">
+<img src='https://res.cloudinary.com/dsapqefbg/image/upload/v1739199294/aws-architecture_ymimgf.png' alt='aws-architecture' width="800px">
 
 <br/>
 
 **2. Oauth 아키텍처**
 
-<img src='https://res.cloudinary.com/dsapqefbg/image/upload/v1739199587/oauth-architecture_x5znth.png' alt='aws-architecture' width="95%">
+<img src='https://res.cloudinary.com/dsapqefbg/image/upload/v1739199587/oauth-architecture_x5znth.png' alt='aws-architecture' width="800px">
 
 
 ## 4\. 개발 과정
