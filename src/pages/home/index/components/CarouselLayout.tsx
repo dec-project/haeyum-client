@@ -31,7 +31,7 @@ const CarouselLayout = (props: CarouselLayoutProps) => {
               <SlideInfo>
                 <Title>{slide.name}</Title>
                 <Label>
-                  <Chat src={ChatIcon} alt="chat" />
+                  <Chat src={ChatIcon} alt="채팅 아이콘" role="presentation" />
                   <Count>{slide.chatCnt}</Count>
                 </Label>
               </SlideInfo>

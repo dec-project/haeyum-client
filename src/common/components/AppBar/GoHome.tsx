@@ -10,7 +10,7 @@ const GoHome = () => {
 
   return (
     <Button onClick={onClick}>
-      <img src={HomeIcon} alt="home-icon" />
+      <img src={HomeIcon} alt="홈으로 이동" />
     </Button>
   );
 };

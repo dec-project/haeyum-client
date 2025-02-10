@@ -71,7 +71,7 @@ const ProfileEdit = () => {
           <ProfilePictureWrapper>
             <ProfilePicture
               src={profileImage ? (profileImage as string) : `${BASE_URL}${profileData?.profileImg}`}
-              alt="Profile"
+              alt="프로필 이미지"
             />
             <CameraIconWrapper htmlFor="file-input">
               <CameraIcon as={Camera} />

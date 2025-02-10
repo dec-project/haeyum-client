@@ -107,7 +107,7 @@ const ChatRoom = () => {
             <div key={`${data.chatroomId}-${index}`}>
               {currentDate !== previousDate && <DateLabel>{currentDate}</DateLabel>}
               <ContentWrapper isUser={data.senderId === userId}>
-                <Img src={`${BASE_URL}${data.profileImg}`} alt="messageIcon" />
+                <Img src={`${BASE_URL}${data.profileImg}`} alt="메시지 발신 아이콘" />
                 <ChatMessageItem sender={data.senderName} content={data.content} isUser={data.senderId === userId} />
               </ContentWrapper>
             </div>

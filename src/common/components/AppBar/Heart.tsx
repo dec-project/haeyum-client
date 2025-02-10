@@ -10,7 +10,7 @@ interface HeartProps {
 const Heart = ({ isActive, onClick }: HeartProps) => {
   return (
     <Button onClick={onClick}>
-      {isActive ? <img src={HeartFull} alt="heart-full" /> : <img src={HeartEmpty} alt="heart-empty" />}
+      {isActive ? <img src={HeartFull} alt="찜 선택" /> : <img src={HeartEmpty} alt="찜 해제" />}
     </Button>
   );
 };
