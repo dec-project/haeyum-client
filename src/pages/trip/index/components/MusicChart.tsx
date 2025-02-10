@@ -27,14 +27,14 @@ const MusicChart = ({ calendarId }: MusicChartProps) => {
       <ItemList>
         {musicData.songSummaries.map((item) => (
           <Item key={item.songId} onClick={() => handleDetailClick(item.songId)}>
-            <Image src={`${BASE_URL}${item.imgUrl}`} alt={`music-${item.songId}`} />
+            <Image src={`${BASE_URL}${item.imgUrl}`} alt={`${item.title}`} />
             <ContentWrapper>
               <ContentTitle>
                 {item.ranking}. {item.title}
               </ContentTitle>
               <ContentSubTitle>{item.artists}</ContentSubTitle>
             </ContentWrapper>
-            <Icon src={ArrowRight} alt="arrow-right" />
+            <Icon src={ArrowRight} alt="노래 상세 이동" />
           </Item>
         ))}
       </ItemList>

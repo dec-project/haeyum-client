@@ -20,7 +20,7 @@ const WeatherSection = ({ calendarId }: WeatherSectionProps) => {
         <WeatherHeader>오늘의 날씨</WeatherHeader>
         <ContentSubTitle>{weatherData.weather}</ContentSubTitle>
       </ContentWrapper>
-      <WeatherImage src={`${BASE_URL}${weatherData.imgUrl}`} alt="weather" />
+      <WeatherImage src={`${BASE_URL}${weatherData.imgUrl}`} alt={`${weatherData.weather}`} />
     </Section>
   );
 };

@@ -78,7 +78,7 @@ const TripPage = () => {
           <FixedBottom>
             <ButtonWrapper>
               <Button onClick={handleChatNavigate}>
-                <ChatIcon src={IconChatDot} alt="chatIcon" />
+                <ChatIcon src={IconChatDot} alt="채팅 아이콘" role="presentation" />
                 <span>{decadeName} 채팅방</span>
               </Button>
             </ButtonWrapper>

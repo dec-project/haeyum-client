@@ -27,13 +27,13 @@ const MovieChart = ({ calendarId }: MovieChartProps) => {
       <ul>
         {movieData.itemList.map((item) => (
           <Item key={item.movieId} onClick={() => handleDetailClick(item.movieId)}>
-            <Image src={`${BASE_URL}${item.imgUrl}`} alt={`movie-${item.movieId}`} />
+            <Image src={`${BASE_URL}${item.imgUrl}`} alt={`${item.title}`} />
             <ContentWrapper>
               <ContentTitle>
                 {item.ranking}. {item.title}
               </ContentTitle>
             </ContentWrapper>
-            <Icon src={ArrowRight} alt="arrow-right" />
+            <Icon src={ArrowRight} alt="영화 상세 이동" />
           </Item>
         ))}
       </ul>

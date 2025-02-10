@@ -39,7 +39,7 @@ const ProfileFavorite = () => {
             key={index}
             onClick={() => handleFavoriteClick(item.calendarId, item.calendarDate, item.chatroomId)}
           >
-            <FavoriteImg src={`${BASE_URL}${item.img}`} alt="여행 이미지" />
+            <FavoriteImg src={`${BASE_URL}${item.img}`} alt={`${item.calendarName} 이미지`} />
             <FavoriteDate>{item.calendarName}</FavoriteDate>
             <FavoriteIcon as={HeartFull} />
           </FavoriteItem>
