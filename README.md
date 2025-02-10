@@ -25,11 +25,11 @@ https://github.com/user-attachments/assets/e716fbf0-24c9-493a-aedd-a656f33b0a58
 
 - [Wireframe](https://www.figma.com/design/vLhGTebCbboGPPXBkuF1XB/DEC?node-id=45-8947&p=f&t=Idkn71SzyJrqEGiU-0)
 
-  <img src='https://res.cloudinary.com/dsapqefbg/image/upload/v1739174843/wireframe_2_t9afrz.png' width="80%">
+  <img src='https://res.cloudinary.com/dsapqefbg/image/upload/v1739174843/wireframe_2_t9afrz.png' alt='wireframe' width="80%">
 
 - [Design](https://www.figma.com/design/vLhGTebCbboGPPXBkuF1XB/DEC?node-id=332-20988&p=f&t=Idkn71SzyJrqEGiU-0)
 
-  <img src='https://res.cloudinary.com/dsapqefbg/image/upload/v1739174289/design_ptegcn.png' width="80%">
+  <img src='https://res.cloudinary.com/dsapqefbg/image/upload/v1739174289/design_ptegcn.png' alt='design' width="80%">
 
 
 ## 3\. 주요 기능
@@ -74,6 +74,19 @@ https://github.com/user-attachments/assets/e716fbf0-24c9-493a-aedd-a656f33b0a58
 
 **8. 프로필 수정 (회원)**
 - 프로필 이미지 및 프로필 명 수정 기능
+
+
+## 5\. 아키텍처
+
+**1. 웹 서빙 아키텍처**
+
+<img src='https://res.cloudinary.com/dsapqefbg/image/upload/v1739199294/aws-architecture_ymimgf.png' alt='aws-architecture' width="90%">
+
+<br/>
+
+**2. Oauth 아키텍처**
+
+<img src='https://res.cloudinary.com/dsapqefbg/image/upload/v1739199587/oauth-architecture_x5znth.png' alt='aws-architecture' width="95%">
 
 
 ## 4\. 개발 과정
