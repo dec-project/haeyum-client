@@ -4,9 +4,8 @@ import AppBar from '@/common/components/AppBar';
 import Container from '@/common/components/Layout/Container';
 import FixedBottom from '@/common/components/FixedBottom';
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const KAKAO_REST_API_KEY = import.meta.env.VITE_KAKAO_REST_API_KEY;
-const REDIRECT_URI = `${BASE_URL}/oauth/kakao/authorize/fallback`;
+const REDIRECT_URI = import.meta.env.VITE_KAKAO_REDIRECT_URI;
 
 const LoginPage = () => {
   const handleRedirectToKakao = () => {
@@ -16,11 +15,11 @@ const LoginPage = () => {
 
   return (
     <>
-      <AppBar leftContent={<AppBar.ArrowLeft />} text="로그인" />
+      <AppBar leftContent={<AppBar.BackButton />} text="로그인" />
       <Container>
         <FixedBottom>
           <Button onClick={handleRedirectToKakao}>
-            <KakaoIcon src={IconKakao} alt="kakao-icon" />
+            <KakaoIcon src={IconKakao} alt="카카오 로그인" role="presentation" />
             <span>카카오 로그인</span>
           </Button>
         </FixedBottom>
