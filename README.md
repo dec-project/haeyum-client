@@ -3,19 +3,24 @@
 [1. 소개](#1-소개)<br/>
 [2. PRD, 와이어 프레임, 디자인](#2-prd-와이어-프레임-디자인)<br/>
 [3. 주요 기능](#3-주요-기능)<br/>
-[4. 개발 과정](#4-개발-과정)<br/>
-[5. 멤버 구성](#5-멤버-구성)<br/>
-[6. 개발 기간](#6-개발-기간)<br/>
-[7. 기술 스택 및 라이브러리](#7-기술-스택-및-라이브러리)<br/>
-[8. 프로젝트 실행 방법](#8-프로젝트-실행-방법)<br/>
-[9. 그라운드 룰](#9-그라운드-룰)<br/>
+[4. 아키텍처](#4-아키텍처)<br/>
+[5. 개발 과정](#5-개발-과정)<br/>
+[6. 멤버 구성](#6-멤버-구성)<br/>
+[7. 개발 기간](#7-개발-기간)<br/>
+[8. 기술 스택 및 라이브러리](#8-기술-스택-및-라이브러리)<br/>
+[9. 프로젝트 실행 방법](#9-프로젝트-실행-방법)<br/>
+[10. 그라운드 룰](#10-그라운드-룰)<br/>
 
 
 ## 1\. 소개
 
 헤윰은 사용자가 특정 기간을 선택하면 해당 날짜의 뉴스, 날씨, 음악 차트 TOP 5, 영화 차트 TOP 5를 보여주는 디지털 여행 플랫폼입니다. 또, 해당 시대별 채팅방을 제공해 추억을 공유할 수 있습니다.
 
-https://github.com/user-attachments/assets/e716fbf0-24c9-493a-aedd-a656f33b0a58
+<video src="https://res.cloudinary.com/dsapqefbg/video/upload/v1739200299/demo_ivnhq6.mov" controls width="300">
+</video>
+
+- [서비스 링크](https://www.haeyum.kr/)
+- [헤윰 데모 영상](https://youtube.com/shorts/mUCJO__wmtA)
 
 
 ## 2. PRD, 와이어 프레임, 디자인
@@ -76,7 +81,7 @@ https://github.com/user-attachments/assets/e716fbf0-24c9-493a-aedd-a656f33b0a58
 - 프로필 이미지 및 프로필 명 수정 기능
 
 
-## 5\. 아키텍처
+## 4\. 아키텍처
 
 **1. 웹 서빙 아키텍처**
 
@@ -89,7 +94,7 @@ https://github.com/user-attachments/assets/e716fbf0-24c9-493a-aedd-a656f33b0a58
 <img src='https://res.cloudinary.com/dsapqefbg/image/upload/v1739199587/oauth-architecture_x5znth.png' alt='aws-architecture' width="800px">
 
 
-## 4\. 개발 과정
+## 5\. 개발 과정
 
 **1. User Story 중심 개발 ([스토리 보드](https://github.com/orgs/dec-project/projects/14/views/16), [노션](https://berlin-paris-london.notion.site/162ea610f98a800dbdd1f9abf5bcbea5?pvs=4))**
 - User Story를 생성해 기능별로 분류
@@ -104,7 +109,7 @@ https://github.com/user-attachments/assets/e716fbf0-24c9-493a-aedd-a656f33b0a58
 - 일요일: 스토리 리뷰 및 회고
 
 
-## 5\. 멤버 구성
+## 6\. 멤버 구성
 
 | 이름   | 담당 업무                 |
 | ----- | ----------------------- |
@@ -114,13 +119,13 @@ https://github.com/user-attachments/assets/e716fbf0-24c9-493a-aedd-a656f33b0a58
 | 김상균 | BE 개발                  | 
 
 
-## 6\. 개발 기간
+## 7\. 개발 기간
 
 - 총 기간: 2024.12.9 - 2025.1.26 (7주)
 - 기획/디자인 2주 + 개발 5주
 
 
-## 7\. 기술 스택 및 라이브러리
+## 8\. 기술 스택 및 라이브러리
 
 - React, TypeScript
 - Vite, Yarn
@@ -135,7 +140,7 @@ https://github.com/user-attachments/assets/e716fbf0-24c9-493a-aedd-a656f33b0a58
 - S3, Cloudfront
 
 
-## 8\. 프로젝트 실행 방법
+## 9\. 프로젝트 실행 방법
 
 **1. Yarn PnP SDK 설치**
 
@@ -153,8 +158,7 @@ yarn install
 yarn dev
 ```
 
-
-## 9\. 그라운드 룰
+## 10\. 그라운드 룰
 
 **1. 커뮤니케이션**
 - 공식 협업 툴: Discord, Notion 사용
