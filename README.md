@@ -16,7 +16,14 @@
 
 헤윰은 사용자가 특정 기간을 선택하면 해당 날짜의 뉴스, 날씨, 음악 차트 TOP 5, 영화 차트 TOP 5를 보여주는 디지털 여행 플랫폼입니다. 또, 해당 시대별 채팅방을 제공해 추억을 공유할 수 있습니다.
 
-- [데모 영상](https://youtube.com/shorts/mUCJO__wmtA)
+<div>
+  <img src='./docs/demo_short.gif' alt='result' width='300px'>
+  <img src='./docs/demo_short_2.gif' alt='result' width='300px'>
+</div>
+
+<br/>
+
+- [전체 데모 영상](https://youtube.com/shorts/mUCJO__wmtA)
 - [서비스 링크](https://www.haeyum.kr/)
 
 
