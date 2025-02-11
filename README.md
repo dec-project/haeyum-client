@@ -88,7 +88,7 @@
 
 **2. Oauth 아키텍처**
 
-<img src='https://res.cloudinary.com/dsapqefbg/image/upload/v1739199587/oauth-architecture_x5znth.png' alt='aws-architecture' width="800px">
+<img src='https://res.cloudinary.com/dsapqefbg/image/upload/v1739256332/oauth-architecture_oqf5yc.png' alt='aws-architecture' width="800px">
 
 
 ## 5\. 개발 과정
