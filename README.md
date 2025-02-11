@@ -25,6 +25,7 @@
 
 - [전체 데모 영상](https://youtube.com/shorts/mUCJO__wmtA)
 - [서비스 링크](https://www.haeyum.kr/)
+- [노션](https://berlin-paris-london.notion.site/DEC-140ea610f98a809d995dcc48537f2a45?pvs=4)
 
 
 ## 2. PRD, 와이어 프레임, 디자인
@@ -34,11 +35,13 @@
 
 - [Wireframe](https://www.figma.com/design/vLhGTebCbboGPPXBkuF1XB/DEC?node-id=45-8947&p=f&t=Idkn71SzyJrqEGiU-0)
 
-  <img src='https://res.cloudinary.com/dsapqefbg/image/upload/v1739174843/wireframe_2_t9afrz.png' alt='wireframe' width="80%">
+
+  <img src='./docs/wireframe_2.png' alt='wireframe' width="80%">
+
 
 - [Design](https://www.figma.com/design/vLhGTebCbboGPPXBkuF1XB/DEC?node-id=332-20988&p=f&t=Idkn71SzyJrqEGiU-0)
 
-  <img src='https://res.cloudinary.com/dsapqefbg/image/upload/v1739174289/design_ptegcn.png' alt='design' width="80%">
+  <img src='./docs/design.png' alt='design' width='80%'>
 
 
 ## 3\. 주요 기능
