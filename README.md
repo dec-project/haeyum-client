@@ -89,13 +89,13 @@
 
 **1. 웹 서빙 아키텍처**
 
-<img src='https://res.cloudinary.com/dsapqefbg/image/upload/v1739199294/aws-architecture_ymimgf.png' alt='aws-architecture' width="800px">
+<img src='./docs/aws-architecture.png' alt='aws-architecture' width="800px">
 
 <br/>
 
 **2. Oauth 아키텍처**
 
-<img src='https://res.cloudinary.com/dsapqefbg/image/upload/v1739256332/oauth-architecture_oqf5yc.png' alt='aws-architecture' width="800px">
+<img src='./docs/oauth-architecture.png' alt='aws-architecture' width="800px">
 
 
 ## 5\. 개발 과정
