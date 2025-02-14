@@ -106,6 +106,14 @@
 
 <img src='./docs/oauth-architecture.png' alt='aws-architecture' width="800px">
 
+<br/>
+
+**3. 채팅 아키텍처**
+
+<img src='./docs/chat-architecture.png' alt='aws-architecture' width="800px">
+
+<br/>
+
 
 ## 5\. 개발 과정
 
