@@ -1,14 +1,16 @@
-import LoadingSpinner from '@/common/components/spinner';
-import useChatList from './hooks/useChatList';
+import LoadingSpinner from '@/common/components/Spinner';
+import { useChatList } from './hooks/useChatList';
 import styled from 'styled-components';
 import Layout from './components/Layout';
 import { useNavigate } from 'react-router-dom';
 import { convertDate } from './utils/convertDate';
-
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+import { useAuthStore } from '@/common/stores/useAuthStore';
+import { BASE_URL } from '@/config';
 
 const Chats = () => {
   const navigate = useNavigate();
+  const isLogin = useAuthStore.getState().isLogin();
+
   const { data: chatListData, isLoading, isError, error } = useChatList();
 
   if (isLoading) {
@@ -24,15 +26,19 @@ const Chats = () => {
     );
   }
 
-  const onClickChat = ({ roomId, roomName }: { roomId: number; roomName: String }) => {
-    navigate(`/chats/${roomId}/${roomName}`);
+  const onClickChat = ({ chatroomId, roomName }: { chatroomId: number; roomName: String }) => {
+    if (!isLogin) {
+      navigate('/login');
+    } else {
+      navigate(`/chats/${chatroomId}/${roomName}`);
+    }
   };
 
   return (
     <Layout>
       {chatListData.map((chat) => (
-        <Item key={chat.roomId} onClick={() => onClickChat({ roomId: chat.roomId, roomName: chat.name })}>
-          <Img src={`${BASE_URL}${chat.imgUrl}`} alt="avatar" />
+        <Item key={chat.chatroomId} onClick={() => onClickChat({ chatroomId: chat.chatroomId, roomName: chat.name })}>
+          <Img src={`${BASE_URL}${chat.imgUrl}`} alt="채팅 프로필 이미지" />
           <Details>
             <div>
               <Title>{chat.name}</Title>

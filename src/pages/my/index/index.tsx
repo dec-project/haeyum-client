@@ -1,4 +1,4 @@
-import Container from '@/common/components/layout/Container';
+import Container from '@/common/components/Layout/Container';
 import Layout from './components/Layout';
 import ProfileFavorite from './components/ProfileFavorite';
 import Profile from './components/Profile';

@@ -1,15 +1,15 @@
 interface ChatList {
-  roomId: number;
-  name: String;
-  lastMessage: String;
-  lastMessageDate: String;
-  imgUrl: String;
+  chatroomId: number;
+  name: string;
+  lastMessage: string;
+  lastMessageDate: string;
+  imgUrl: string;
 }
 
 type ChatListResponse = ChatList[];
 
 interface ChatMessage {
-  chatRoomId: string;
+  chatroomId: string;
   senderId: string;
   senderName: string;
   profileImg: string;

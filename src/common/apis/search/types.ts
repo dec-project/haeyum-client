@@ -14,9 +14,11 @@ export interface SearchResponse {
 }
 
 export interface TripCard {
+  chatroomId: number;
+  calendarDate: string;
   calendarId: string;
   calendarName: string;
-  img: string;
+  imgUrl: string;
   viewCount: number;
   favoriteCount: number;
 }

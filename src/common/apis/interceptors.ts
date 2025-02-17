@@ -53,6 +53,16 @@ export const errorInterceptor = async (error: AxiosError<ErrorResponse>): Promis
     return Promise.reject(message);
   };
 
+  if (error.response?.status === 500) {
+    console.error('500 Internal Server Error');
+    return Promise.reject(new ApiError(500, '', error.response?.data));
+  }
+
+  if (error.response?.status === 404) {
+    console.error(`404 Not Found`);
+    return Promise.reject(new ApiError(404, '', error.response.data));
+  }
+
   if (!refreshToken) {
     return handleLogout('Refresh Token이 없습니다. 로그인 페이지로 이동합니다.');
   }

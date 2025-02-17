@@ -1,29 +1,20 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import useChatMessages from './hooks/useChatMessages';
-import LoadingSpinner from '@/common/components/spinner';
+import { useChatMessages } from './hooks/useChatMessages';
+import LoadingSpinner from '@/common/components/Spinner';
 import { useEffect, useRef, useState } from 'react';
 import { CompatClient, Stomp } from '@stomp/stompjs';
 import styled from 'styled-components';
-import Container from '@/common/components/layout/Container';
 import ChatMessageItem from './components/ChatContent';
 import ChatInput from './components/ChatInput';
 import SockJS from 'sockjs-client';
 import Layout from './components/Layout';
 import useLocalStorage from '@/common/hooks/useLocalStorage';
-
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
-type ChatMessage = {
-  chatRoomId: string;
-  senderId: string;
-  senderName: string;
-  profileImg: string;
-  date: string;
-  content: string;
-};
+import { ChatMessageResponse } from '@/common/apis/chatting/types';
+import Container from '@/common/components/Layout/Container';
+import { BASE_URL } from '@/config';
 
 const ChatRoom = () => {
-  const { roomId, roomName } = useParams<{ roomId: string; roomName: string }>();
+  const { chatroomId, roomName } = useParams<{ chatroomId: string; roomName: string }>();
   const accessToken = useLocalStorage('accessToken');
   const userId = useLocalStorage('userId');
   const [message, setMessage] = useState('');
@@ -33,17 +24,23 @@ const ChatRoom = () => {
     isLoading: isChatMessageLoading,
     isError: isChatMessageError,
     error: chatMessageError,
-  } = useChatMessages(roomId || '');
-  const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
+  } = useChatMessages(chatroomId || '');
+  const [chatHistory, setChatHistory] = useState<ChatMessageResponse>([]);
   const client = useRef<CompatClient | null>(null);
 
   useEffect(() => {
     setChatHistory(chatMessageData || []);
   }, [chatMessageData]);
+
   // TODO : 토큰 재발급 로직 추가해야 함 (토큰 만료시)
   useEffect(() => {
+    if (!accessToken) {
+      navigate('/login', { replace: true });
+      return;
+    }
     const connect = () => {
       const socket = new SockJS(`${BASE_URL}/ws`);
+
       client.current = Stomp.over(socket);
 
       client.current.debug = () => {};
@@ -52,7 +49,7 @@ const ChatRoom = () => {
         { Authorization: `Bearer ${accessToken}` },
         () => {
           client.current?.subscribe(
-            `/sub/chatroom/${roomId}`,
+            `/sub/chatroom/${chatroomId}`,
             (message) => {
               const newMessage = JSON.parse(message.body);
               setChatHistory((prev) => [...prev, newMessage]);
@@ -71,7 +68,7 @@ const ChatRoom = () => {
     return () => {
       client.current?.disconnect();
     };
-  }, [roomId]);
+  }, [chatroomId]);
 
   const handleSendMessage = () => {
     if (!accessToken || !client.current?.connected) {
@@ -80,7 +77,7 @@ const ChatRoom = () => {
       return;
     }
     if (client.current && message.trim()) {
-      const chatMessage = { chatRoomId: roomId, content: message };
+      const chatMessage = { chatroomId: chatroomId, content: message };
       client.current.send('/pub/message', { Authorization: `Bearer ${accessToken}` }, JSON.stringify(chatMessage));
       setMessage('');
     }
@@ -106,10 +103,10 @@ const ChatRoom = () => {
           const currentDate = data.date;
           const previousDate = index > 0 ? chatHistory[index - 1].date : null;
           return (
-            <div key={`${data.chatRoomId}-${index}`}>
+            <div key={`${data.chatroomId}-${index}`}>
               {currentDate !== previousDate && <DateLabel>{currentDate}</DateLabel>}
               <ContentWrapper isUser={data.senderId === userId}>
-                <Img src={`${BASE_URL}${data.profileImg}`} alt="messageIcon" />
+                <Img src={`${BASE_URL}${data.profileImg}`} alt="메시지 발신 아이콘" />
                 <ChatMessageItem sender={data.senderName} content={data.content} isUser={data.senderId === userId} />
               </ContentWrapper>
             </div>

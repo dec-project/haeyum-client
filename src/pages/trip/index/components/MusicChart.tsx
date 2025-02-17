@@ -1,32 +1,19 @@
 import styled from 'styled-components';
 import ArrowRight from '@/common/assets/icon/icon-arrow-right.svg';
-import useMusic from '../hooks/useMusic';
-import LoadingSpinner from '@/common/components/spinner';
+import { useMusic } from '../hooks/useMusic';
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '@/config';
 
 interface MusicChartProps {
   calendarId: string;
 }
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
 const MusicChart = ({ calendarId }: MusicChartProps) => {
   const navigate = useNavigate();
-  const { data: musicData, isLoading, isError, error } = useMusic(calendarId);
-
-  if (isLoading) {
-    // TODO: 추후 로딩 페이지 추가
-    return <LoadingSpinner />;
-  }
+  const { data: musicData, isError } = useMusic(calendarId);
 
   if (isError || !musicData?.songSummaries || musicData.songSummaries.length === 0) {
-    const errorMessage = error?.message || '노래 데이터를 가져오는 중 문제가 발생했습니다.';
-
-    return (
-      <Section>
-        <p>{errorMessage}</p>
-      </Section>
-    );
+    return null;
   }
 
   const handleDetailClick = (musicId: number) => {
@@ -39,14 +26,14 @@ const MusicChart = ({ calendarId }: MusicChartProps) => {
       <ItemList>
         {musicData.songSummaries.map((item) => (
           <Item key={item.songId} onClick={() => handleDetailClick(item.songId)}>
-            <Image src={`${BASE_URL}${item.imgUrl}`} alt={`music-${item.songId}`} />
+            <Image src={`${BASE_URL}${item.imgUrl}`} alt={`${item.title}`} />
             <ContentWrapper>
               <ContentTitle>
                 {item.ranking}. {item.title}
               </ContentTitle>
               <ContentSubTitle>{item.artists}</ContentSubTitle>
             </ContentWrapper>
-            <Icon src={ArrowRight} alt="arrow-right" />
+            <Icon src={ArrowRight} alt="노래 상세 이동" />
           </Item>
         ))}
       </ItemList>
@@ -70,6 +57,7 @@ const Item = styled.li`
   justify-content: space-between;
   align-items: center;
   padding: 8px 0;
+  cursor: pointer;
 `;
 
 const Image = styled.img`

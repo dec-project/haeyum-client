@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import useProfileFavorite from '../hooks/useProfileFavorite';
-import LoadingSpinner from '@/common/components/spinner';
+import LoadingSpinner from '@/common/components/Spinner';
 import { useNavigate } from 'react-router-dom';
 import HeartFull from '@/common/assets/icon/icon-heart-full.svg?react';
-import useLocalStorage from '@/common/hooks/useLocalStorage';
+import { BASE_URL } from '@/config';
 
 const ProfileFavorite = () => {
   const {
@@ -14,21 +14,17 @@ const ProfileFavorite = () => {
   } = useProfileFavorite();
 
   const navigate = useNavigate();
-  const accessToken = useLocalStorage('accessToken');
   if (isFavoriteLoading) return <LoadingSpinner />;
 
   // TODO: 에러 처리 추후 intercepter 수정 시 지워야 함
   if (isFavoriteError || !favoriteData) {
     const errorMessage = favoriteError?.message || '프로필 찜 데이터를 가져오는 중 문제가 발생했습니다.';
-    if (!accessToken || (favoriteError as any).statusCode === 403) {
-      navigate('/login');
-    }
-
-    return <FavoriteContainer>{errorMessage}</FavoriteContainer>;
+    console.error(errorMessage);
+    return null;
   }
 
-  const handleFavoriteClick = (id: number) => {
-    navigate(`/trip/${id}`);
+  const handleFavoriteClick = (id: number, date: string, chatroomId: number) => {
+    navigate(`/trip/${id}/${date}/${chatroomId}`);
   };
 
   return (
@@ -38,8 +34,11 @@ const ProfileFavorite = () => {
         <NoData>기억나는 추억을 추가해보세요 📒</NoData>
       ) : (
         favoriteData?.itemList.map((item, index) => (
-          <FavoriteItem key={index} onClick={() => handleFavoriteClick(item.calendarId)}>
-            <FavoriteImg src={item.img} alt="여행 이미지" />
+          <FavoriteItem
+            key={index}
+            onClick={() => handleFavoriteClick(item.calendarId, item.calendarDate, item.chatroomId)}
+          >
+            <FavoriteImg src={`${BASE_URL}${item.img}`} alt={`${item.calendarName} 이미지`} />
             <FavoriteDate>{item.calendarName}</FavoriteDate>
             <FavoriteIcon as={HeartFull} />
           </FavoriteItem>

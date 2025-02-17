@@ -1,13 +1,9 @@
 import { chatApi } from '@/common/apis/chatting';
 import { useQuery } from '@tanstack/react-query';
 
-const useChatMessages = (roomId: string) => {
-  const query = useQuery({
-    queryKey: ['chatMessages', roomId],
-    queryFn: () => chatApi.getChatMessages(Number(roomId)),
+export const useChatMessages = (chatroomId: string) => {
+  return useQuery({
+    queryKey: ['chatMessages', chatroomId],
+    queryFn: () => chatApi.getChatMessages(Number(chatroomId)),
   });
-
-  return { ...query };
 };
-
-export default useChatMessages;

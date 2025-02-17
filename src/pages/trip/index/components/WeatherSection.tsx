@@ -1,29 +1,16 @@
 import styled from 'styled-components';
-import useWeather from '../hooks/useWeather';
-import LoadingSpinner from '@/common/components/spinner';
+import { useWeather } from '../hooks/useWeather';
+import { BASE_URL } from '@/config';
 
 interface WeatherSectionProps {
   calendarId: string;
 }
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
 const WeatherSection = ({ calendarId }: WeatherSectionProps) => {
-  const { data: weatherData, isLoading, isError, error } = useWeather(calendarId);
-
-  if (isLoading) {
-    // TODO: 추후 로딩 페이지 추가
-    return <LoadingSpinner />;
-  }
+  const { data: weatherData, isError } = useWeather(calendarId);
 
   if (isError || !weatherData) {
-    const errorMessage = error?.message || '날씨 데이터를 가져오는 중 문제가 발생했습니다.';
-
-    return (
-      <Section>
-        <p>{errorMessage}</p>
-      </Section>
-    );
+    return null;
   }
 
   return (
@@ -32,7 +19,7 @@ const WeatherSection = ({ calendarId }: WeatherSectionProps) => {
         <WeatherHeader>오늘의 날씨</WeatherHeader>
         <ContentSubTitle>{weatherData.weather}</ContentSubTitle>
       </ContentWrapper>
-      <WeatherImage src={`${BASE_URL}${weatherData.img}`} alt="weather" />
+      <WeatherImage src={`${BASE_URL}${weatherData.imgUrl}`} alt={`${weatherData.weather}`} />
     </Section>
   );
 };

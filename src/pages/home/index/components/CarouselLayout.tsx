@@ -1,24 +1,23 @@
 import { EmblaOptionsType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
 import styled from 'styled-components';
-// import ChatIcon from '../../../../common/assets/icon/icon-chat.svg';
+import ChatIcon from '@/common/assets/icon/icon-chat.svg';
 import DefaultImg from '@/common/assets/logo/logo.svg';
 import { ChatRanking } from '@/common/apis/ranking/type';
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '@/config';
 
 type CarouselLayoutProps = {
   slides: ChatRanking[];
   options?: EmblaOptionsType;
 };
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
 const CarouselLayout = (props: CarouselLayoutProps) => {
   const { slides, options } = props;
   const [emblaRef] = useEmblaCarousel(options);
   const navigate = useNavigate();
-  const onClickChat = ({ roomId, roomName }: { roomId: number; roomName: String }) => {
-    navigate(`/chats/${roomId}/${roomName}`);
+  const onClickChat = ({ chatroomId, roomName }: { chatroomId: number; roomName: string }) => {
+    navigate(`/chats/${chatroomId}/${roomName}`);
   };
 
   return (
@@ -26,15 +25,14 @@ const CarouselLayout = (props: CarouselLayoutProps) => {
       <Viewport ref={emblaRef}>
         <CardContainer>
           {slides.map((slide, index) => (
-            <Slide key={index} onClick={() => onClickChat({ roomId: slide.roomId, roomName: slide.name })}>
+            <Slide key={index} onClick={() => onClickChat({ chatroomId: slide.chatroomId, roomName: slide.name })}>
               <SlideImage src={`${BASE_URL}${slide.imgUrl}` || DefaultImg} alt={slide.name} />
               <SlideInfo>
                 <Title>{slide.name}</Title>
-                {/* TODO : api 추가 되면 주석 해제 해줘야 함 */}
-                {/* <Label>
-                  <Chat src={ChatIcon} alt="chat" />
+                <Label>
+                  <Chat src={ChatIcon} alt="채팅 아이콘" role="presentation" />
                   <Count>{slide.chatCnt}</Count>
-                </Label> */}
+                </Label>
               </SlideInfo>
             </Slide>
           ))}
@@ -81,17 +79,17 @@ const Title = styled.div`
   ${({ theme }) => theme.typography.body1.medium}
 `;
 
-// const Label = styled.div`
-//   display: flex;
-//   align-items: center;
-// `;
+const Label = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
-// const Chat = styled.img`
-//   width: 1.2rem;
-//   height: 1.2rem;
-// `;
+const Chat = styled.img`
+  width: 1.2rem;
+  height: 1.2rem;
+`;
 
-// const Count = styled.div`
-//   ${({ theme }) => theme.typography.body2.regular}
-//   color: ${({ theme }) => theme.colors.orange500};
-// `;
+const Count = styled.div`
+  ${({ theme }) => theme.typography.body2.regular}
+  color: ${({ theme }) => theme.colors.orange500};
+`;

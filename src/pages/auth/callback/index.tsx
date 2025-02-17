@@ -1,30 +1,23 @@
-import Container from '@/common/components/layout/Container';
-import { useAuthStore } from '@/common/stores/useAuthStore';
-import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Container from '@/common/components/Layout/Container';
+import LoadingSpinner from '@/common/components/Spinner';
+import { useUser } from './hooks/useUser';
 
 const CallbackPage = () => {
   const navigate = useNavigate();
-  const { setTokens } = useAuthStore();
-  const [errorMessage, setErrorMessage] = useState<string>('');
+  const { mutate, isError } = useUser();
 
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const accessToken = urlParams.get('accessToken');
-    const refreshToken = urlParams.get('refreshToken');
-    const userId = urlParams.get('socialSub');
+  const urlParams = new URLSearchParams(window.location.search);
+  const code = urlParams.get('code');
 
-    if (accessToken && refreshToken && userId) {
-      setTokens(accessToken, refreshToken, userId);
-      navigate('/');
-    } else {
-      setErrorMessage('토큰이 없습니다.');
-      navigate('/login');
-    }
-  }, [navigate, setTokens]);
+  if (!code) {
+    navigate('/login');
+    return;
+  }
 
-  // TODO: 디자인 수정 or 로딩 페이지 추가
-  return <Container>{errorMessage ? errorMessage : '로그인 중입니다'}</Container>;
+  mutate(code);
+
+  return <Container>{isError ? '로그인 중 오류가 발생했습니다.' : <LoadingSpinner />}</Container>;
 };
 
 export default CallbackPage;

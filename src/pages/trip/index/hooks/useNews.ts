@@ -1,14 +1,9 @@
-import { useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import { tripApi } from '@/common/apis/trip';
 
-const useNews = (calendarId: string) => {
-  const query = useQuery({
+export const useNews = (calendarId: string) => {
+  return useSuspenseQuery({
     queryKey: ['news', calendarId],
     queryFn: () => tripApi.getNews(calendarId),
-    enabled: !!calendarId,
   });
-
-  return { ...query };
 };
-
-export default useNews;

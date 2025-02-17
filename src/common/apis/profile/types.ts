@@ -4,7 +4,9 @@ interface ProfileList {
 }
 
 interface ProfileFavoriteList {
+  chatroomId: number;
   calendarId: number;
+  calendarDate: string;
   img: string;
   calendarName: string;
   isFavorite: boolean;

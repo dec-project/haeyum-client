@@ -1,26 +1,25 @@
-import FixedBottom from '@/common/components/fixedBottom';
 import styled from 'styled-components';
 import IconKakao from '@/common/assets/icon/icon-kakao.svg';
-import AppBar from '@/common/components/appbar';
-import Container from '@/common/components/layout/Container';
+import AppBar from '@/common/components/AppBar';
+import Container from '@/common/components/Layout/Container';
+import FixedBottom from '@/common/components/FixedBottom';
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-const KAKAO_REST_API_KEY = import.meta.env.VITE_KAKAO_REST_API_KEY;
-const REDIRECT_URI = `${BASE_URL}/oauth/kakao/authorize/fallback`;
+const KAKAO_CLIENT_ID = import.meta.env.VITE_KAKAO_CLIENT_ID;
+const KAKAO_REDIRECT_URI = import.meta.env.VITE_KAKAO_REDIRECT_URI;
 
 const LoginPage = () => {
   const handleRedirectToKakao = () => {
-    const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${KAKAO_REST_API_KEY}&redirect_uri=${REDIRECT_URI}`;
+    const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${KAKAO_CLIENT_ID}&redirect_uri=${KAKAO_REDIRECT_URI}`;
     window.location.href = kakaoAuthUrl;
   };
 
   return (
     <>
-      <AppBar leftContent={<AppBar.ArrowLeft />} text="로그인" />
+      <AppBar leftContent={<AppBar.BackButton />} text="로그인" />
       <Container>
         <FixedBottom>
           <Button onClick={handleRedirectToKakao}>
-            <KakaoIcon src={IconKakao} alt="kakao-icon" />
+            <KakaoIcon src={IconKakao} alt="카카오 로그인" role="presentation" />
             <span>카카오 로그인</span>
           </Button>
         </FixedBottom>

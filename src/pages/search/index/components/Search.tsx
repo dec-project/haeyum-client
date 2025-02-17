@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Calendar from '@/common/components/calendar';
 import { format } from 'date-fns';
 import styled from 'styled-components';
-import AppBar from '@/common/components/appbar';
-import Container from '@/common/components/layout/Container';
+import AppBar from '@/common/components/AppBar';
+import MetaTag from '@/common/components/MetaTag';
+import Container from '@/common/components/Layout/Container';
+import Calendar from '@/common/components/Calendar';
 
 const Search = () => {
   const navigate = useNavigate();
@@ -25,16 +26,18 @@ const Search = () => {
 
   return (
     <Wrapper>
+      <MetaTag
+        title="헤윰 - 검색페이지"
+        description="지금 날짜를 검색해, 시간 여행 기록을 확인해 보세요."
+        keywords="검색페이지, 프로필, 설정, 계정 관리, 헤윰"
+      />
       <AppBar text="검색" />
       <Container>
         <Content>
-          <Label>기간</Label>
           <Calendar startDate={startDate} endDate={endDate} setEndDate={setEndDate} setStartDate={setStartDate} />
-          <ButtonBox>
-            <Button onClick={handleSearcClick} disabled={!startDate || !endDate}>
-              <span>GO</span>
-            </Button>
-          </ButtonBox>
+          <Button onClick={handleSearcClick} disabled={!startDate || !endDate}>
+            <span>GO</span>
+          </Button>
         </Content>
       </Container>
     </Wrapper>
@@ -42,31 +45,17 @@ const Search = () => {
 };
 
 const Wrapper = styled.div`
-  width: fit-content;
+  width: 100%;
   height: fit-content;
   margin: 0 auto;
 `;
 
-const Label = styled.span`
-  width: 100%;
-  height: 32px;
-  padding: 0 16px;
-  ${({ theme }) => theme.typography.body1.bold};
-`;
-
 const Content = styled.div`
-  width: fit-content;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: end;
-  & > button {
-    margin: 0 16px;
-  }
-`;
-
-const ButtonBox = styled.div`
-  padding: 0 16px;
 `;
 
 const Button = styled.button`

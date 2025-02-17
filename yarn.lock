@@ -4139,8 +4139,10 @@ __metadata:
     prettier: "npm:^3.4.2"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
+    react-helmet-async: "npm:^2.0.5"
     react-intersection-observer: "npm:^9.14.1"
     react-router-dom: "npm:^7.0.2"
+    react-router-sitemap: "npm:^1.2.0"
     rollup: "npm:^4.29.1"
     sockjs-client: "npm:^1.6.1"
     storybook: "npm:8.4.7"
@@ -4310,6 +4312,15 @@ __metadata:
     hasown: "npm:^2.0.2"
     side-channel: "npm:^1.1.0"
   checksum: 10c0/03966f5e259b009a9bf1a78d60da920df198af4318ec004f57b8aef1dd3fe377fbc8cce63a96e8c810010302654de89f9e19de1cd8ad0061d15be28a695465c7
+  languageName: node
+  linkType: hard
+
+"invariant@npm:^2.2.4":
+  version: 2.2.4
+  resolution: "invariant@npm:2.2.4"
+  dependencies:
+    loose-envify: "npm:^1.0.0"
+  checksum: 10c0/5af133a917c0bcf65e84e7f23e779e7abc1cd49cb7fdc62d00d1de74b0d8c1b5ee74ac7766099fb3be1b05b26dfc67bab76a17030d2fe7ea2eef867434362dfc
   languageName: node
   linkType: hard
 
@@ -4832,7 +4843,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loose-envify@npm:^1.1.0":
+"loose-envify@npm:^1.0.0, loose-envify@npm:^1.1.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
   dependencies:
@@ -5597,6 +5608,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-fast-compare@npm:^3.2.2":
+  version: 3.2.2
+  resolution: "react-fast-compare@npm:3.2.2"
+  checksum: 10c0/0bbd2f3eb41ab2ff7380daaa55105db698d965c396df73e6874831dbafec8c4b5b08ba36ff09df01526caa3c61595247e3269558c284e37646241cba2b90a367
+  languageName: node
+  linkType: hard
+
+"react-helmet-async@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "react-helmet-async@npm:2.0.5"
+  dependencies:
+    invariant: "npm:^2.2.4"
+    react-fast-compare: "npm:^3.2.2"
+    shallowequal: "npm:^1.1.0"
+  peerDependencies:
+    react: ^16.6.0 || ^17.0.0 || ^18.0.0
+  checksum: 10c0/f390ea8bf13c2681850e5f8eb5b73d8613f407c245a5fd23e9db9b2cc14a3700dd1ce992d3966632886d1d613083294c2aeee009193f49dfa7d145d9f13ea2b0
+  languageName: node
+  linkType: hard
+
 "react-intersection-observer@npm:^9.14.1":
   version: 9.14.1
   resolution: "react-intersection-observer@npm:9.14.1"
@@ -5640,6 +5671,18 @@ __metadata:
     react: ">=18"
     react-dom: ">=18"
   checksum: 10c0/2dc5b231dd21aab21378c615b1e373149007d173e90db984e6f708b5ee4b28923b3cf88ce7d6f727be927829b37ba37c01436f9f7abeb84ba3d1bfc9ecd4bc72
+  languageName: node
+  linkType: hard
+
+"react-router-sitemap@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "react-router-sitemap@npm:1.2.0"
+  dependencies:
+    sitemap: "npm:^1.6.0"
+  peerDependencies:
+    react: ^15.1.0 || ^16.0.0
+    react-router: ^2.3.0 || ^3.2.1 || ^4.3.0
+  checksum: 10c0/dc369b4670ce66844a4a69cca992ac424ac7ab34f7236978bf8b361618eb296fc740375e7ce3ef516489ef92763ef1db9eabc79c80d92154fe1def245f7180ed
   languageName: node
   linkType: hard
 
@@ -6011,7 +6054,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shallowequal@npm:1.1.0":
+"shallowequal@npm:1.1.0, shallowequal@npm:^1.1.0":
   version: 1.1.0
   resolution: "shallowequal@npm:1.1.0"
   checksum: 10c0/b926efb51cd0f47aa9bc061add788a4a650550bbe50647962113a4579b60af2abe7b62f9b02314acc6f97151d4cf87033a2b15fc20852fae306d1a095215396c
@@ -6093,6 +6136,16 @@ __metadata:
   version: 4.1.0
   resolution: "signal-exit@npm:4.1.0"
   checksum: 10c0/41602dce540e46d599edba9d9860193398d135f7ff72cab629db5171516cfae628d21e7bfccde1bbfdf11c48726bc2a6d1a8fb8701125852fbfda7cf19c6aa83
+  languageName: node
+  linkType: hard
+
+"sitemap@npm:^1.6.0":
+  version: 1.13.0
+  resolution: "sitemap@npm:1.13.0"
+  dependencies:
+    underscore: "npm:^1.7.0"
+    url-join: "npm:^1.1.0"
+  checksum: 10c0/71f51ac50f3fbcf9774a74018c67f6499ab6cd924acf8d3ed3acb437a6f916e003cb05ceab55b759b52c0e952e4f550abdac399e1d96933300731909682f0aa1
   languageName: node
   linkType: hard
 
@@ -6686,6 +6739,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"underscore@npm:^1.7.0":
+  version: 1.13.7
+  resolution: "underscore@npm:1.13.7"
+  checksum: 10c0/fad2b4aac48847674aaf3c30558f383399d4fdafad6dd02dd60e4e1b8103b52c5a9e5937e0cc05dacfd26d6a0132ed0410ab4258241240757e4a4424507471cd
+  languageName: node
+  linkType: hard
+
 "undici-types@npm:~6.20.0":
   version: 6.20.0
   resolution: "undici-types@npm:6.20.0"
@@ -6748,6 +6808,13 @@ __metadata:
   dependencies:
     punycode: "npm:^2.1.0"
   checksum: 10c0/4ef57b45aa820d7ac6496e9208559986c665e49447cb072744c13b66925a362d96dd5a46c4530a6b8e203e5db5fe849369444440cb22ecfc26c679359e5dfa3c
+  languageName: node
+  linkType: hard
+
+"url-join@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "url-join@npm:1.1.0"
+  checksum: 10c0/813a22d0f91600e2f029f06018eb006e34607cf26d829bfdb3ec0650b3c16b94ca6303c1ce84997bd81534909b9460fa54d6be44c0751ff6a2c818ac9165bfb0
   languageName: node
   linkType: hard
 

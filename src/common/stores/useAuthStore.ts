@@ -11,6 +11,7 @@ interface AuthStore extends AuthState {
   setTokens: (accessToken: string, refreshToken: string, userId: string) => void;
   clearTokens: () => void;
   isLogin: () => boolean;
+  isLogout: () => boolean;
 }
 
 const getStorageToken = (): AuthState => ({
@@ -44,6 +45,5 @@ export const useAuthStore = create<AuthStore>((set) => ({
     set(() => initialState);
   },
   isLogin: () => Boolean(getItem('accessToken')),
+  isLogout: () => Boolean(!getItem('accessToken')),
 }));
-
-export default useAuthStore;

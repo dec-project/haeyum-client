@@ -1,14 +1,9 @@
-import { useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import { tripApi } from '@/common/apis/trip';
 
-const useMovie = (calendarId: string) => {
-  const query = useQuery({
+export const useMovie = (calendarId: string) => {
+  return useSuspenseQuery({
     queryKey: ['movies', calendarId],
     queryFn: () => tripApi.getMovie(calendarId),
-    enabled: !!calendarId,
   });
-
-  return { ...query };
 };
-
-export default useMovie;

@@ -1,28 +1,17 @@
 import styled from 'styled-components';
-import useNews from '../hooks/useNews';
-import LoadingSpinner from '@/common/components/spinner';
+import { useNews } from '../hooks/useNews';
 
 interface NewsSectionProps {
   calendarId: string;
 }
 
 const NewsSection = ({ calendarId }: NewsSectionProps) => {
-  const { data: newsData, isLoading, isError, error } = useNews(calendarId);
+  const { data: newsData, isError } = useNews(calendarId);
 
   const category = ['최신 기사'];
 
-  if (isLoading) {
-    // TODO: 추후 로딩 페이지 추가
-    return <LoadingSpinner />;
-  }
-
   if (isError || !newsData?.itemList || newsData.itemList.length === 0) {
-    const errorMessage = error?.message || '뉴스 데이터를 가져오는 중 문제가 발생했습니다.';
-    return (
-      <Section>
-        <p>{errorMessage}</p>
-      </Section>
-    );
+    return null;
   }
 
   return (
@@ -34,7 +23,7 @@ const NewsSection = ({ calendarId }: NewsSectionProps) => {
         {newsData?.itemList.map((news, index) => (
           <NewsCard key={index} onClick={() => window.open(news.url, '_blank')}>
             <ImageWrapper>
-              <Image src={news.img} alt="news" />
+              <Image src={news.imgUrl} alt={`${news.title}`} />
             </ImageWrapper>
             <TextWrapper>
               <Title>{news.title}</Title>
@@ -47,9 +36,9 @@ const NewsSection = ({ calendarId }: NewsSectionProps) => {
   );
 };
 
-const Section = styled.section`
-  padding: 0 16px;
-`;
+// const Section = styled.section`
+//   padding: 0 16px;
+// `;
 
 const MenuBar = styled.div`
   display: flex;

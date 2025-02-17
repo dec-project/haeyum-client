@@ -1,13 +1,13 @@
-import Container from '@/common/components/layout/Container';
-import LoadingSpinner from '@/common/components/spinner';
+import Container from '@/common/components/Layout/Container';
+import LoadingSpinner from '@/common/components/Spinner';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import useProfile from '../index/hooks/useProfile';
 import Camera from '@/common/assets/icon/icon-camera.svg?react';
 import useProfileEdit from '../index/hooks/useProfileEdit';
-import AppBar from '@/common/components/appbar';
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+import AppBar from '@/common/components/AppBar';
+import { BASE_URL } from '@/config';
 
 const ProfileEdit = () => {
   const { data: profileData, isLoading: isProfileLoading, isError: isProfileError, error: profileError } = useProfile();
@@ -38,24 +38,25 @@ const ProfileEdit = () => {
   };
 
   const handleEditProfile = () => {
+    if (nickname.length < 2 || nickname.length > 10) {
+      alert('닉네임은 2~10자 이내여야 합니다.');
+      return;
+    }
     mutate({ nickname: nickname, profileImg: file });
   };
 
-  if (isProfileEditSuccess) navigate('/profile');
+  if (isProfileEditSuccess) navigate('/profile', { replace: true });
   if (isProfileLoading || isProfileEditLoading) return <LoadingSpinner />;
   if (isProfileError) {
     const errorMessage = profileError?.message || '프로필 데이터를 가져오는 중 문제가 발생했습니다.';
-    if ((profileError as any).statusCode === 403) {
-      navigate('/login');
-    }
-
-    return <Container>{errorMessage}</Container>;
+    console.error(errorMessage);
+    return null;
   }
 
   return (
     <>
       <AppBar
-        leftContent={<AppBar.ArrowLeft />}
+        leftContent={<AppBar.BackButton />}
         text="프로필 수정"
         rightContent={
           <AppBar.CompleteButton
@@ -70,7 +71,7 @@ const ProfileEdit = () => {
           <ProfilePictureWrapper>
             <ProfilePicture
               src={profileImage ? (profileImage as string) : `${BASE_URL}${profileData?.profileImg}`}
-              alt="Profile"
+              alt="프로필 이미지"
             />
             <CameraIconWrapper htmlFor="file-input">
               <CameraIcon as={Camera} />

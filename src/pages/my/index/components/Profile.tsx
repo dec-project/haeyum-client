@@ -1,9 +1,9 @@
-import LoadingSpinner from '@/common/components/spinner';
+import LoadingSpinner from '@/common/components/Spinner';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import useProfile from '../hooks/useProfile';
+import { BASE_URL } from '@/config';
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const Profile = () => {
   const { data: profileData, isLoading: isProfileLoading, isError: isProfileError, error: profileError } = useProfile();
   const navigate = useNavigate();
@@ -12,11 +12,8 @@ const Profile = () => {
 
   if (isProfileError) {
     const errorMessage = profileError?.message || '프로필 데이터를 가져오는 중 문제가 발생했습니다.';
-    if ((profileError as any).statusCode === 403) {
-      navigate('/login');
-    }
-
-    return <ProfileContainer>{errorMessage}</ProfileContainer>;
+    console.error(errorMessage);
+    return null;
   }
 
   const handleEditProfile = () => {

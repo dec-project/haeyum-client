@@ -1,11 +1,11 @@
-import AppBar from '@/common/components/appbar';
-import Container from '@/common/components/layout/Container';
+import AppBar from '@/common/components/AppBar';
+import Container from '@/common/components/Layout/Container';
 import { ReactNode } from 'react';
 
 const Layout = ({ children, roomName }: { children: ReactNode; roomName: string | undefined }) => {
   return (
     <>
-      <AppBar leftContent={<AppBar.ArrowLeft />} text={roomName} />
+      <AppBar leftContent={<AppBar.BackButton />} text={roomName} />
       <Container>{children}</Container>
     </>
   );

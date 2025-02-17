@@ -1,19 +1,18 @@
 import { TripCard } from '@/common/apis/search/types';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { BASE_URL } from '@/config';
 
 interface TripCardsProps {
   items: TripCard[];
   count: number;
 }
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
 const TripCards = ({ items, count }: TripCardsProps) => {
   const navigate = useNavigate();
 
-  const handleCardClick = (calendarId: string) => {
-    navigate(`/trip/${calendarId}`);
+  const handleCardClick = (calendarId: string, calendarDate: string, chatroomId: number) => {
+    navigate(`/trip/${calendarId}/${calendarDate}/${chatroomId}`);
   };
 
   return (
@@ -21,9 +20,12 @@ const TripCards = ({ items, count }: TripCardsProps) => {
       <ResultCount>검색 결과 {count}</ResultCount>
       <TripCardList>
         {items.map((item) => (
-          <li key={item.calendarId} onClick={() => handleCardClick(item.calendarId)}>
+          <Card
+            key={item.calendarId}
+            onClick={() => handleCardClick(item.calendarId, item.calendarDate, item.chatroomId)}
+          >
             <ImageWrapper>
-              <Image src={`${BASE_URL}${item.img}`} alt={item.calendarName} />
+              <Image src={`${BASE_URL}${item.imgUrl}`} alt={item.calendarName} />
             </ImageWrapper>
             <TextWrapper>
               <Title>{item.calendarName}</Title>
@@ -31,7 +33,7 @@ const TripCards = ({ items, count }: TripCardsProps) => {
                 조회 {item.viewCount} · ♥ {item.favoriteCount}
               </Counts>
             </TextWrapper>
-          </li>
+          </Card>
         ))}
       </TripCardList>
     </>
@@ -48,6 +50,10 @@ const TripCardList = styled.ul`
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   padding: 16px 0;
+`;
+
+const Card = styled.li`
+  cursor: pointer;
 `;
 
 const ImageWrapper = styled.div`

@@ -1,32 +1,39 @@
 import styled from 'styled-components';
 import CaretRightIcon from '@/common/assets/icon/icon-arrow-right.svg';
 import { useNavigate } from 'react-router-dom';
-import LoadingSpinner from '@/common/components/spinner';
-import useSearchRanking from '../hooks/useSearchRanking';
-import DefaultImg from '@/common/assets/logo/logo.svg';
+// import LoadingSpinner from '@/common/components/spinner';
+import { useSearchRanking } from '../hooks/useSearchRanking';
 import { KeywordRanking } from '@/common/apis/ranking/type';
 
 const SearchList = () => {
-  const { data: searchData, isLoading, isError } = useSearchRanking();
+  const {
+    data: searchData,
+    //  isLoading,
+    isError,
+  } = useSearchRanking();
   const navigate = useNavigate();
 
-  if (isLoading) {
-    return <LoadingSpinner />;
+  // if (isLoading) {
+  //   return <LoadingSpinner />;
+  // }
+
+  if (!searchData || searchData.searches.length === 0) {
+    return null;
   }
 
-  if (isError || !searchData?.searches) {
-    return <div>영화 데이터를 가져오는 중 문제가 발생했습니다.</div>;
+  if (isError) {
+    return <div>검색 리스트 데이터를 가져오는 중 문제가 발생했습니다.</div>;
   }
 
   return (
     <List>
       {searchData.searches.map((data: KeywordRanking) => (
-        <Item key={data.calendarId}>
+        <Item
+          key={data.calendarId}
+          onClick={() => navigate(`/trip/${data.calendarId}/${data.calendarDate}/${data.chatroomId}`)}
+        >
           <Content>
-            <Img
-              src={data.imgUrl ? `${import.meta.env.VITE_API_BASE_URL}/${data.imgUrl}` : DefaultImg}
-              alt={data.calendarName}
-            />
+            <Img src={`${import.meta.env.VITE_API_BASE_URL}${data.imgUrl}`} alt={data.calendarName} />
             <Info>
               <Title>{data.calendarName}</Title>
               <Detail>
@@ -34,7 +41,7 @@ const SearchList = () => {
               </Detail>
             </Info>
           </Content>
-          <Icon src={CaretRightIcon} alt="search-input-button" onClick={() => navigate(`/trip/${data.calendarId}`)} />
+          <Icon src={CaretRightIcon} alt="실시간 인기 검색 이동" />
         </Item>
       ))}
     </List>
@@ -53,9 +60,8 @@ const Img = styled.img`
 `;
 
 const Icon = styled.img`
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
+  width: 28px;
+  height: 28px;
 `;
 
 const Content = styled.div`
@@ -78,6 +84,7 @@ const Item = styled.div`
   justify-content: space-between;
   padding: 12px 0;
   border-radius: 4px;
+  cursor: pointer;
 `;
 
 const Title = styled.div`
