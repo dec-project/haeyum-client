@@ -20,6 +20,12 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Build project
+        run: yarn build
+
       # Deploy
       - name: Deploy to S3
         uses: aws-actions/configure-aws-credentials@v4
