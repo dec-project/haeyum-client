@@ -1,12 +1,18 @@
 import CaretLeftIcon from '@/common/assets/icon/icon-arrow-back.svg';
 import { Button } from './CommonStyle';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const BackButton = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
+  // TODO : 임시 수정
   const onClick = () => {
-    navigate(-1);
+    if (location.key === 'default' || document.referrer === '' || history.length === 1) {
+      navigate('/', { replace: true });
+    } else {
+      navigate(-1);
+    }
   };
 
   return (
