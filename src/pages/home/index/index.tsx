@@ -12,11 +12,11 @@ const Home = () => {
     <Layout>
       <SearchInput placeholder="어느 시기로 가볼까요" onClick={() => navigate('/search')} />
       <Text>
-        <span>실시간 인기 채팅방</span>
+        <span>일별 인기 채팅방</span>
       </Text>
       <Carousel />
       <Text>
-        <span>실시간 인기 검색 Top 5</span>
+        <span>일별 인기 검색 Top 5</span>
       </Text>
       <SearchList />
     </Layout>

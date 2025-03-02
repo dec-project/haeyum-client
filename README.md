@@ -121,7 +121,7 @@
 - User Story를 생성해 기능별로 분류
 - Sprint 단위(1주)로 Task를 계획, 우선 순위 지정
 - 각 기능들을 하나의 완성된 스토리가 되도록 정의
-  - 예: `사용자는 실시간 인기 검색 Top5 중 원하는 트립카드를 선택해 여행 페이지로 이동할 수 있다.`
+  - 예: `사용자는 일별 인기 검색 Top5 중 원하는 트립카드를 선택해 여행 페이지로 이동할 수 있다.`
 
 
 **2. Sprint 프로세스 ([스프린트 보드](https://github.com/orgs/dec-project/projects/14/views/19), [노션](https://www.notion.so/berlin-paris-london/DEC-140ea610f98a809d995dcc48537f2a45?pvs=4#157ea610f98a80dda28ddb4f8f0a6631))**
