@@ -41,7 +41,7 @@ const SearchList = () => {
               </Detail>
             </Info>
           </Content>
-          <Icon src={CaretRightIcon} alt="실시간 인기 검색 이동" />
+          <Icon src={CaretRightIcon} alt="일별 인기 검색 이동" />
         </Item>
       ))}
     </List>
