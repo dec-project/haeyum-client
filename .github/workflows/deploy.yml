@@ -38,3 +38,8 @@ jobs:
       - name: Upload to S3
         run: |
           aws s3 sync ./dist s3://haeyum-bucket --delete
+
+      # Invalidation
+      - name: Invalidate CloudFront Cache
+        run: |
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"     
