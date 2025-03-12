@@ -13,7 +13,7 @@ const CallbackPage = () => {
 
   useEffect(() => {
     if (!code) {
-      navigate('/login');
+      navigate('/');
       return;
     }
 
