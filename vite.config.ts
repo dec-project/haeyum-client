@@ -10,6 +10,7 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
       '@public': path.resolve(__dirname, 'public'),
     },
+    conditions: ['pnp'],
   },
   server: {
     port: 3000,
